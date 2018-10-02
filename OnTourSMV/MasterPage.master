@@ -18,11 +18,11 @@
             <DynamicSelectedStyle BackColor="#5D7B9D" />
             <Items>
                 <asp:MenuItem Text="Contratos" Value="Contratos">
-                    <asp:MenuItem NavigateUrl="~/ListarContratos.aspx" Text="Listar" Value="Listar"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/View/ListarContratos.aspx" Text="Listar" Value="Listar"></asp:MenuItem>
                 </asp:MenuItem>
                 <asp:MenuItem Text="Paquetes" Value="Paquetes"></asp:MenuItem>
                 <asp:MenuItem Text="Transacciones" Value="Transacciones"></asp:MenuItem>
-                <asp:MenuItem Text="Clientes" Value="Clientes"></asp:MenuItem>
+                <asp:MenuItem NavigateUrl="~/View/AgregarCliente.aspx" Text="Clientes" Value="Clientes"></asp:MenuItem>
                 <asp:MenuItem Text="Salir" Value="Salir"></asp:MenuItem>
             </Items>
             <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" />

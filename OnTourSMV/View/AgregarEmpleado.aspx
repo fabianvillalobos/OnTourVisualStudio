@@ -61,7 +61,9 @@
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;DESC_TIPO_USUARIO&quot;, &quot;ID_TIPO_USUARIO&quot; FROM &quot;TIPO_USUARIO&quot; ORDER BY &quot;DESC_TIPO_USUARIO&quot;, &quot;ID_TIPO_USUARIO&quot;"></asp:SqlDataSource>
                 </td>
                 <td><asp:Label ID="Label5" runat="server" Text="Fecha Nacimiento"></asp:Label></td>
-                <td><asp:TextBox ID="txtFechaNac" runat="server" TextMode="Date"></asp:TextBox></td>
+                <td>
+                    <asp:TextBox ID="txtFechaNac" runat="server" Width="132px"></asp:TextBox>
+                </td>
             </tr>
             <tr>
                 <td><asp:Label ID="Label6" runat="server" Text="Telefono"></asp:Label></td>

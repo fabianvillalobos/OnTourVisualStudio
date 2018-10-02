@@ -36,10 +36,11 @@ public partial class AgregarEmpleado : System.Web.UI.Page
                 activo = "F";
             }
             int idUsuario = int.Parse(DropDownListTipoCliente.SelectedValue);
+
             //DateTime fechaNac = DateTime.Parse(txtFechaNac.Text);
             //String fn = txtFechaNac.Text;
             //DateTime fechaNac = DateTime.ParseExact(fn, "dd-mon-yy", null);
-          
+            //char fechaNac = char.Parse(fn);
             //DateTime dt = DateTime.ParseExact(txtFechaNac.ToString(), "MM/dd/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
             //String fn = dt.ToString("dd-mon-yy", CultureInfo.InstalledUICulture);
             //DateTime fechaNac = DateTime.Parse(fn);
@@ -57,7 +58,7 @@ public partial class AgregarEmpleado : System.Web.UI.Page
                 DIRECCION_EMP = direccion,
                 ACTIVO = activo,
                 ID_USR = idUsuario,
-                //FECHA_NACIMIENTO_EMP = fechaNac,
+                //FECHA_NACIMIENTO_EMP = date,
                 FONO_EMP = fono
             };
             db.EMPLEADOes.Add(empleado);

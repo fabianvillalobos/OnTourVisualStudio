@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="ListarCliente.aspx.cs" Inherits="ListarCliente" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controller/ListarCliente.aspx.cs" Inherits="ListarCliente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="NUMRUT_CLI" DataSourceID="SqlDataSourceListarCliente">
+    <asp:GridView ID="GridViewListarCLiente" runat="server" AutoGenerateColumns="False" DataKeyNames="NUMRUT_CLI" DataSourceID="SqlDataSourceListarCliente">
         <Columns>
             <asp:BoundField DataField="NUMRUT_CLI" HeaderText="Rut" ReadOnly="True" SortExpression="NUMRUT_CLI" />
             <asp:BoundField DataField="DRUT_CLI" HeaderText="Dv" SortExpression="DRUT_CLI" />

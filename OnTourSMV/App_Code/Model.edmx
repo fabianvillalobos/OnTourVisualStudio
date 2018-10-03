@@ -390,6 +390,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="SP_INSERTAUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="PARAM_LOGIN_USR" Type="varchar2" Mode="In" />
+          <Parameter Name="PARAM_PASS_USR" Type="varchar2" Mode="In" />
+          <Parameter Name="PARAM_ID_TIPO_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="PARAM_ACTIVO" Type="char" Mode="In" />
+          <Parameter Name="PARA_ID_USR" Type="number" Mode="Out" />
+        </Function>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="ONTOUR" store:Type="Tables" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="ONTOUR" store:Type="Tables" />
@@ -995,6 +1002,13 @@
             <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
+          <FunctionImport Name="SP_INSERTAUSUARIO">
+            <Parameter Name="PARAM_LOGIN_USR" Mode="In" Type="String" />
+            <Parameter Name="PARAM_PASS_USR" Mode="In" Type="String" />
+            <Parameter Name="PARAM_ID_TIPO_USUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="PARAM_ACTIVO" Mode="In" Type="String" />
+            <Parameter Name="PARA_ID_USR" Mode="Out" Type="Decimal" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1182,6 +1196,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_INSERTAUSUARIO" FunctionName="Model.Store.SP_INSERTAUSUARIO" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

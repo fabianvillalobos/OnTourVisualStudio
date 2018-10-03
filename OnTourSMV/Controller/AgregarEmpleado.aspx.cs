@@ -58,7 +58,7 @@ public partial class AgregarEmpleado : System.Web.UI.Page
                 DIRECCION_EMP = direccion,
                 ACTIVO = activo,
                 ID_USR = idUsuario,
-                //FECHA_NACIMIENTO_EMP = date,
+                FECHA_NACIMIENTO_EMP = null,
                 FONO_EMP = fono
             };
             db.EMPLEADO.Add(empleado);

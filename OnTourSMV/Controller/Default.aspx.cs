@@ -20,7 +20,7 @@ public partial class _Default : System.Web.UI.Page
 
         try
         {
-            if (bd.USUARIO.Any(it => it.LOGIN_USR == usuario && it.PASS_USR == clave))
+            if (bd.USUARIOs.Any(it => it.LOGIN_USR == usuario && it.PASS_USR == clave))
             {
                 Response.Redirect("PaginaPpal.aspx");
             }

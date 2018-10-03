@@ -62,7 +62,7 @@
                 </td>
                 <td><asp:Label ID="Label5" runat="server" Text="Fecha Nacimiento"></asp:Label></td>
                 <td>
-                    <asp:TextBox ID="txtFechaNac" runat="server" Width="132px"></asp:TextBox>
+                    <asp:TextBox ID="txtFechaNac" runat="server" Width="132px" TextMode="Date"></asp:TextBox>
                 </td>
             </tr>
             <tr>

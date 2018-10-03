@@ -9,7 +9,7 @@ public partial class ListarCliente : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //lkhgffgb
-        jdcfvgbhnjfgh
+        
+        
     }
 }

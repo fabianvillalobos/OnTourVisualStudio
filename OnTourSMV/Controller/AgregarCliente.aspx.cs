@@ -57,7 +57,7 @@ public partial class AgregarCliente : System.Web.UI.Page
                 FONO_CLI = telefono,                
             };
 
-            bd.CLIENTEs.Add(cliente);
+            bd.CLIENTE.Add(cliente);
             bd.SaveChanges();
             lblAviso.Text = "Cliente Creado";
 

@@ -61,7 +61,7 @@ public partial class AgregarEmpleado : System.Web.UI.Page
                 //FECHA_NACIMIENTO_EMP = date,
                 FONO_EMP = fono
             };
-            db.EMPLEADOes.Add(empleado);
+            db.EMPLEADO.Add(empleado);
             db.SaveChanges();
             LabelAviso.Text = "Empleado creado";
         }

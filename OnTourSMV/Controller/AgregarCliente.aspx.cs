@@ -59,7 +59,7 @@ public partial class AgregarCliente : System.Web.UI.Page
 
             bd.CLIENTE.Add(cliente);
             bd.SaveChanges();
-            lblAviso.Text = "Cliente Creado";
+            lblAviso.Text = "Cliente Creado testing";
 
         }
         catch (Exception ex)

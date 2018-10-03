@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ModelOnTour.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACTIVIDAD">
           <Key>
             <PropertyRef Name="ID_ACTIVIDAD" />
@@ -17,337 +17,6 @@
           <Property Name="ACTIVO" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="ID_TIPO_ACTIVIDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ID_CONTRATO" Type="number" Precision="38" Scale="0" Nullable="false" />
-        </EntityType>
-        <EntityType Name="APEX$_ACL">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="USERNAME" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="PRIV" Type="varchar2" MaxLength="1" Nullable="false" />
-          <Property Name="CREATED_ON" Type="date" Nullable="false" />
-          <Property Name="CREATED_BY" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="UPDATED_ON" Type="date" />
-          <Property Name="UPDATED_BY" Type="varchar2" MaxLength="255" />
-        </EntityType>
-        <EntityType Name="APEX$_WS_FILES">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="DATA_GRID_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="ROW_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="WEBPAGE_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="COMPONENT_LEVEL" Type="varchar2" MaxLength="30" />
-          <Property Name="NAME" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="IMAGE_ALIAS" Type="varchar2" MaxLength="255" />
-          <Property Name="IMAGE_ATTRIBUTES" Type="varchar2" MaxLength="255" />
-          <Property Name="CONTENT" Type="blob" />
-          <Property Name="CONTENT_LAST_UPDATE" Type="date" />
-          <Property Name="MIME_TYPE" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="CONTENT_CHARSET" Type="varchar2" MaxLength="255" />
-          <Property Name="CONTENT_FILENAME" Type="varchar2" MaxLength="500" />
-          <Property Name="DESCRIPTION" Type="varchar2" MaxLength="4000" />
-          <Property Name="CREATED_ON" Type="date" Nullable="false" />
-          <Property Name="CREATED_BY" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="UPDATED_ON" Type="date" />
-          <Property Name="UPDATED_BY" Type="varchar2" MaxLength="255" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ONTOUR.APEX$_WS_HISTORY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="APEX$_WS_HISTORY">
-          <Key>
-            <PropertyRef Name="ROW_ID" />
-            <PropertyRef Name="WS_APP_ID" />
-            <PropertyRef Name="DATA_GRID_ID" />
-          </Key>
-          <Property Name="ROW_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="DATA_GRID_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="COLUMN_NAME" Type="varchar2" MaxLength="255" />
-          <Property Name="OLD_VALUE" Type="varchar2" MaxLength="4000" />
-          <Property Name="NEW_VALUE" Type="varchar2" MaxLength="4000" />
-          <Property Name="APPLICATION_USER_ID" Type="varchar2" MaxLength="255" />
-          <Property Name="CHANGE_DATE" Type="date" />
-        </EntityType>
-        <EntityType Name="APEX$_WS_LINKS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="DATA_GRID_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="ROW_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="WEBPAGE_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="COMPONENT_LEVEL" Type="varchar2" MaxLength="30" />
-          <Property Name="TAGS" Type="varchar2" MaxLength="4000" />
-          <Property Name="SHOW_ON_HOMEPAGE" Type="varchar2" MaxLength="1" />
-          <Property Name="LINK_NAME" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="URL" Type="varchar2" MaxLength="4000" Nullable="false" />
-          <Property Name="LINK_DESCRIPTION" Type="varchar2" MaxLength="4000" />
-          <Property Name="DISPLAY_SEQUENCE" Type="number" Precision="38" Scale="0" />
-          <Property Name="CREATED_ON" Type="date" Nullable="false" />
-          <Property Name="CREATED_BY" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="UPDATED_ON" Type="date" />
-          <Property Name="UPDATED_BY" Type="varchar2" MaxLength="255" />
-        </EntityType>
-        <EntityType Name="APEX$_WS_NOTES">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="DATA_GRID_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="ROW_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="WEBPAGE_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="COMPONENT_LEVEL" Type="varchar2" MaxLength="30" />
-          <Property Name="CONTENT" Type="clob" />
-          <Property Name="CREATED_ON" Type="date" Nullable="false" />
-          <Property Name="CREATED_BY" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="UPDATED_ON" Type="date" />
-          <Property Name="UPDATED_BY" Type="varchar2" MaxLength="255" />
-        </EntityType>
-        <EntityType Name="APEX$_WS_ROWS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="DATA_GRID_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="UNIQUE_VALUE" Type="varchar2" MaxLength="255" />
-          <Property Name="TAGS" Type="varchar2" MaxLength="4000" />
-          <Property Name="PARENT_ROW_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="OWNER" Type="varchar2" MaxLength="255" />
-          <Property Name="GEOCODE" Type="varchar2" MaxLength="512" />
-          <Property Name="LOAD_ORDER" Type="number" Precision="38" Scale="0" />
-          <Property Name="CHANGE_COUNT" Type="number" Precision="38" Scale="0" />
-          <Property Name="CREATED_ON" Type="date" Nullable="false" />
-          <Property Name="CREATED_BY" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="UPDATED_ON" Type="date" />
-          <Property Name="UPDATED_BY" Type="varchar2" MaxLength="255" />
-          <Property Name="C001" Type="varchar2" MaxLength="4000" />
-          <Property Name="C002" Type="varchar2" MaxLength="4000" />
-          <Property Name="C003" Type="varchar2" MaxLength="4000" />
-          <Property Name="C004" Type="varchar2" MaxLength="4000" />
-          <Property Name="C005" Type="varchar2" MaxLength="4000" />
-          <Property Name="C006" Type="varchar2" MaxLength="4000" />
-          <Property Name="C007" Type="varchar2" MaxLength="4000" />
-          <Property Name="C008" Type="varchar2" MaxLength="4000" />
-          <Property Name="C009" Type="varchar2" MaxLength="4000" />
-          <Property Name="C010" Type="varchar2" MaxLength="4000" />
-          <Property Name="C011" Type="varchar2" MaxLength="4000" />
-          <Property Name="C012" Type="varchar2" MaxLength="4000" />
-          <Property Name="C013" Type="varchar2" MaxLength="4000" />
-          <Property Name="C014" Type="varchar2" MaxLength="4000" />
-          <Property Name="C015" Type="varchar2" MaxLength="4000" />
-          <Property Name="C016" Type="varchar2" MaxLength="4000" />
-          <Property Name="C017" Type="varchar2" MaxLength="4000" />
-          <Property Name="C018" Type="varchar2" MaxLength="4000" />
-          <Property Name="C019" Type="varchar2" MaxLength="4000" />
-          <Property Name="C020" Type="varchar2" MaxLength="4000" />
-          <Property Name="C021" Type="varchar2" MaxLength="4000" />
-          <Property Name="C022" Type="varchar2" MaxLength="4000" />
-          <Property Name="C023" Type="varchar2" MaxLength="4000" />
-          <Property Name="C024" Type="varchar2" MaxLength="4000" />
-          <Property Name="C025" Type="varchar2" MaxLength="4000" />
-          <Property Name="C026" Type="varchar2" MaxLength="4000" />
-          <Property Name="C027" Type="varchar2" MaxLength="4000" />
-          <Property Name="C028" Type="varchar2" MaxLength="4000" />
-          <Property Name="C029" Type="varchar2" MaxLength="4000" />
-          <Property Name="C030" Type="varchar2" MaxLength="4000" />
-          <Property Name="C031" Type="varchar2" MaxLength="4000" />
-          <Property Name="C032" Type="varchar2" MaxLength="4000" />
-          <Property Name="C033" Type="varchar2" MaxLength="4000" />
-          <Property Name="C034" Type="varchar2" MaxLength="4000" />
-          <Property Name="C035" Type="varchar2" MaxLength="4000" />
-          <Property Name="C036" Type="varchar2" MaxLength="4000" />
-          <Property Name="C037" Type="varchar2" MaxLength="4000" />
-          <Property Name="C038" Type="varchar2" MaxLength="4000" />
-          <Property Name="C039" Type="varchar2" MaxLength="4000" />
-          <Property Name="C040" Type="varchar2" MaxLength="4000" />
-          <Property Name="C041" Type="varchar2" MaxLength="4000" />
-          <Property Name="C042" Type="varchar2" MaxLength="4000" />
-          <Property Name="C043" Type="varchar2" MaxLength="4000" />
-          <Property Name="C044" Type="varchar2" MaxLength="4000" />
-          <Property Name="C045" Type="varchar2" MaxLength="4000" />
-          <Property Name="C046" Type="varchar2" MaxLength="4000" />
-          <Property Name="C047" Type="varchar2" MaxLength="4000" />
-          <Property Name="C048" Type="varchar2" MaxLength="4000" />
-          <Property Name="C049" Type="varchar2" MaxLength="4000" />
-          <Property Name="C050" Type="varchar2" MaxLength="4000" />
-          <Property Name="N001" Type="number" Precision="38" Scale="0" />
-          <Property Name="N002" Type="number" Precision="38" Scale="0" />
-          <Property Name="N003" Type="number" Precision="38" Scale="0" />
-          <Property Name="N004" Type="number" Precision="38" Scale="0" />
-          <Property Name="N005" Type="number" Precision="38" Scale="0" />
-          <Property Name="N006" Type="number" Precision="38" Scale="0" />
-          <Property Name="N007" Type="number" Precision="38" Scale="0" />
-          <Property Name="N008" Type="number" Precision="38" Scale="0" />
-          <Property Name="N009" Type="number" Precision="38" Scale="0" />
-          <Property Name="N010" Type="number" Precision="38" Scale="0" />
-          <Property Name="N011" Type="number" Precision="38" Scale="0" />
-          <Property Name="N012" Type="number" Precision="38" Scale="0" />
-          <Property Name="N013" Type="number" Precision="38" Scale="0" />
-          <Property Name="N014" Type="number" Precision="38" Scale="0" />
-          <Property Name="N015" Type="number" Precision="38" Scale="0" />
-          <Property Name="N016" Type="number" Precision="38" Scale="0" />
-          <Property Name="N017" Type="number" Precision="38" Scale="0" />
-          <Property Name="N018" Type="number" Precision="38" Scale="0" />
-          <Property Name="N019" Type="number" Precision="38" Scale="0" />
-          <Property Name="N020" Type="number" Precision="38" Scale="0" />
-          <Property Name="N021" Type="number" Precision="38" Scale="0" />
-          <Property Name="N022" Type="number" Precision="38" Scale="0" />
-          <Property Name="N023" Type="number" Precision="38" Scale="0" />
-          <Property Name="N024" Type="number" Precision="38" Scale="0" />
-          <Property Name="N025" Type="number" Precision="38" Scale="0" />
-          <Property Name="N026" Type="number" Precision="38" Scale="0" />
-          <Property Name="N027" Type="number" Precision="38" Scale="0" />
-          <Property Name="N028" Type="number" Precision="38" Scale="0" />
-          <Property Name="N029" Type="number" Precision="38" Scale="0" />
-          <Property Name="N030" Type="number" Precision="38" Scale="0" />
-          <Property Name="N031" Type="number" Precision="38" Scale="0" />
-          <Property Name="N032" Type="number" Precision="38" Scale="0" />
-          <Property Name="N033" Type="number" Precision="38" Scale="0" />
-          <Property Name="N034" Type="number" Precision="38" Scale="0" />
-          <Property Name="N035" Type="number" Precision="38" Scale="0" />
-          <Property Name="N036" Type="number" Precision="38" Scale="0" />
-          <Property Name="N037" Type="number" Precision="38" Scale="0" />
-          <Property Name="N038" Type="number" Precision="38" Scale="0" />
-          <Property Name="N039" Type="number" Precision="38" Scale="0" />
-          <Property Name="N040" Type="number" Precision="38" Scale="0" />
-          <Property Name="N041" Type="number" Precision="38" Scale="0" />
-          <Property Name="N042" Type="number" Precision="38" Scale="0" />
-          <Property Name="N043" Type="number" Precision="38" Scale="0" />
-          <Property Name="N044" Type="number" Precision="38" Scale="0" />
-          <Property Name="N045" Type="number" Precision="38" Scale="0" />
-          <Property Name="N046" Type="number" Precision="38" Scale="0" />
-          <Property Name="N047" Type="number" Precision="38" Scale="0" />
-          <Property Name="N048" Type="number" Precision="38" Scale="0" />
-          <Property Name="N049" Type="number" Precision="38" Scale="0" />
-          <Property Name="N050" Type="number" Precision="38" Scale="0" />
-          <Property Name="D001" Type="date" />
-          <Property Name="D002" Type="date" />
-          <Property Name="D003" Type="date" />
-          <Property Name="D004" Type="date" />
-          <Property Name="D005" Type="date" />
-          <Property Name="D006" Type="date" />
-          <Property Name="D007" Type="date" />
-          <Property Name="D008" Type="date" />
-          <Property Name="D009" Type="date" />
-          <Property Name="D010" Type="date" />
-          <Property Name="D011" Type="date" />
-          <Property Name="D012" Type="date" />
-          <Property Name="D013" Type="date" />
-          <Property Name="D014" Type="date" />
-          <Property Name="D015" Type="date" />
-          <Property Name="D016" Type="date" />
-          <Property Name="D017" Type="date" />
-          <Property Name="D018" Type="date" />
-          <Property Name="D019" Type="date" />
-          <Property Name="D020" Type="date" />
-          <Property Name="D021" Type="date" />
-          <Property Name="D022" Type="date" />
-          <Property Name="D023" Type="date" />
-          <Property Name="D024" Type="date" />
-          <Property Name="D025" Type="date" />
-          <Property Name="D026" Type="date" />
-          <Property Name="D027" Type="date" />
-          <Property Name="D028" Type="date" />
-          <Property Name="D029" Type="date" />
-          <Property Name="D030" Type="date" />
-          <Property Name="D031" Type="date" />
-          <Property Name="D032" Type="date" />
-          <Property Name="D033" Type="date" />
-          <Property Name="D034" Type="date" />
-          <Property Name="D035" Type="date" />
-          <Property Name="D036" Type="date" />
-          <Property Name="D037" Type="date" />
-          <Property Name="D038" Type="date" />
-          <Property Name="D039" Type="date" />
-          <Property Name="D040" Type="date" />
-          <Property Name="D041" Type="date" />
-          <Property Name="D042" Type="date" />
-          <Property Name="D043" Type="date" />
-          <Property Name="D044" Type="date" />
-          <Property Name="D045" Type="date" />
-          <Property Name="D046" Type="date" />
-          <Property Name="D047" Type="date" />
-          <Property Name="D048" Type="date" />
-          <Property Name="D049" Type="date" />
-          <Property Name="D050" Type="date" />
-          <Property Name="CLOB001" Type="clob" />
-          <Property Name="SEARCH_CLOB" Type="clob" />
-        </EntityType>
-        <EntityType Name="APEX$_WS_TAGS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="DATA_GRID_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="ROW_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="WEBPAGE_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="COMPONENT_LEVEL" Type="varchar2" MaxLength="30" />
-          <Property Name="TAG" Type="varchar2" MaxLength="4000" />
-          <Property Name="CREATED_ON" Type="date" Nullable="false" />
-          <Property Name="CREATED_BY" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="UPDATED_ON" Type="date" />
-          <Property Name="UPDATED_BY" Type="varchar2" MaxLength="255" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ONTOUR.APEX$_WS_WEBPG_SECTION_HISTORY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="APEX$_WS_WEBPG_SECTION_HISTORY">
-          <Key>
-            <PropertyRef Name="SECTION_ID" />
-            <PropertyRef Name="WS_APP_ID" />
-            <PropertyRef Name="WEBPAGE_ID" />
-            <PropertyRef Name="APPLICATION_USER_ID" />
-            <PropertyRef Name="CHANGE_DATE" />
-          </Key>
-          <Property Name="SECTION_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WEBPAGE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="OLD_DISPLAY_SEQUENCE" Type="number" Precision="38" Scale="0" />
-          <Property Name="NEW_DISPLAY_SEQUENCE" Type="number" Precision="38" Scale="0" />
-          <Property Name="OLD_TITLE" Type="varchar2" MaxLength="4000" />
-          <Property Name="NEW_TITLE" Type="varchar2" MaxLength="4000" />
-          <Property Name="OLD_CONTENT" Type="clob" />
-          <Property Name="NEW_CONTENT" Type="clob" />
-          <Property Name="APPLICATION_USER_ID" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="CHANGE_DATE" Type="date" Nullable="false" />
-        </EntityType>
-        <EntityType Name="APEX$_WS_WEBPG_SECTIONS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WEBPAGE_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="DISPLAY_SEQUENCE" Type="number" Precision="38" Scale="0" />
-          <Property Name="SECTION_TYPE" Type="varchar2" MaxLength="30" Nullable="false" />
-          <Property Name="TITLE" Type="varchar2" MaxLength="4000" />
-          <Property Name="CONTENT" Type="clob" />
-          <Property Name="CONTENT_UPPER" Type="clob" />
-          <Property Name="NAV_START_WEBPAGE_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="NAV_MAX_LEVEL" Type="number" Precision="38" Scale="0" />
-          <Property Name="NAV_INCLUDE_LINK" Type="varchar2" MaxLength="1" />
-          <Property Name="DATA_GRID_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="REPORT_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="DATA_SECTION_STYLE" Type="number" Precision="38" Scale="0" />
-          <Property Name="CHART_TYPE" Type="varchar2" MaxLength="255" />
-          <Property Name="CHART_3D" Type="varchar2" MaxLength="1" />
-          <Property Name="CHART_LABEL" Type="varchar2" MaxLength="255" />
-          <Property Name="LABEL_AXIS_TITLE" Type="varchar2" MaxLength="255" />
-          <Property Name="CHART_VALUE" Type="varchar2" MaxLength="255" />
-          <Property Name="VALUE_AXIS_TITLE" Type="varchar2" MaxLength="255" />
-          <Property Name="CHART_AGGREGATE" Type="varchar2" MaxLength="255" />
-          <Property Name="CHART_SORTING" Type="varchar2" MaxLength="255" />
-          <Property Name="CREATED_ON" Type="date" Nullable="false" />
-          <Property Name="CREATED_BY" Type="varchar2" MaxLength="255" Nullable="false" />
-          <Property Name="UPDATED_ON" Type="date" />
-          <Property Name="UPDATED_BY" Type="varchar2" MaxLength="255" />
         </EntityType>
         <EntityType Name="CLIENTE">
           <Key>
@@ -397,85 +66,6 @@ warning 6002: The table/view 'ONTOUR.APEX$_WS_WEBPG_SECTION_HISTORY' does not ha
           <Property Name="NUMRUT_CLI" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ACTIVO" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
-        <EntityType Name="DEMO_CUSTOMERS">
-          <Key>
-            <PropertyRef Name="CUSTOMER_ID" />
-          </Key>
-          <Property Name="CUSTOMER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="CUST_FIRST_NAME" Type="varchar2" MaxLength="20" Nullable="false" />
-          <Property Name="CUST_LAST_NAME" Type="varchar2" MaxLength="20" Nullable="false" />
-          <Property Name="CUST_STREET_ADDRESS1" Type="varchar2" MaxLength="60" />
-          <Property Name="CUST_STREET_ADDRESS2" Type="varchar2" MaxLength="60" />
-          <Property Name="CUST_CITY" Type="varchar2" MaxLength="30" />
-          <Property Name="CUST_STATE" Type="varchar2" MaxLength="2" />
-          <Property Name="CUST_POSTAL_CODE" Type="varchar2" MaxLength="10" />
-          <Property Name="PHONE_NUMBER1" Type="varchar2" MaxLength="25" />
-          <Property Name="PHONE_NUMBER2" Type="varchar2" MaxLength="25" />
-          <Property Name="CREDIT_LIMIT" Type="number" Precision="9" Scale="2" />
-          <Property Name="CUST_EMAIL" Type="varchar2" MaxLength="30" />
-        </EntityType>
-        <EntityType Name="DEMO_ORDER_ITEMS">
-          <Key>
-            <PropertyRef Name="ORDER_ITEM_ID" />
-          </Key>
-          <Property Name="ORDER_ITEM_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
-          <Property Name="ORDER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="PRODUCT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="UNIT_PRICE" Type="number" Precision="8" Scale="2" Nullable="false" />
-          <Property Name="QUANTITY" Type="number" Precision="8" Scale="0" Nullable="false" />
-        </EntityType>
-        <EntityType Name="DEMO_ORDERS">
-          <Key>
-            <PropertyRef Name="ORDER_ID" />
-          </Key>
-          <Property Name="ORDER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="CUSTOMER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="ORDER_TOTAL" Type="number" Precision="8" Scale="2" />
-          <Property Name="ORDER_TIMESTAMP" Type="date" />
-          <Property Name="USER_ID" Type="number" Precision="38" Scale="0" />
-        </EntityType>
-        <EntityType Name="DEMO_PRODUCT_INFO">
-          <Key>
-            <PropertyRef Name="PRODUCT_ID" />
-          </Key>
-          <Property Name="PRODUCT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="PRODUCT_NAME" Type="varchar2" MaxLength="50" />
-          <Property Name="PRODUCT_DESCRIPTION" Type="varchar2" MaxLength="2000" />
-          <Property Name="CATEGORY" Type="varchar2" MaxLength="30" />
-          <Property Name="PRODUCT_AVAIL" Type="varchar2" MaxLength="1" />
-          <Property Name="LIST_PRICE" Type="number" Precision="8" Scale="2" />
-          <Property Name="PRODUCT_IMAGE" Type="blob" />
-          <Property Name="MIMETYPE" Type="varchar2" MaxLength="255" />
-          <Property Name="FILENAME" Type="varchar2" MaxLength="400" />
-          <Property Name="IMAGE_LAST_UPDATE" Type="date" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'ONTOUR.DEMO_STATES' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="DEMO_STATES">
-          <Property Name="ST" Type="varchar2" MaxLength="30" />
-          <Property Name="STATE_NAME" Type="varchar2" MaxLength="30" />
-        </EntityType>-->
-        <EntityType Name="DEMO_USERS">
-          <Key>
-            <PropertyRef Name="USER_ID" />
-          </Key>
-          <Property Name="USER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="USER_NAME" Type="varchar2" MaxLength="100" />
-          <Property Name="PASSWORD" Type="varchar2" MaxLength="4000" />
-          <Property Name="CREATED_ON" Type="date" />
-          <Property Name="QUOTA" Type="number" Precision="38" Scale="0" />
-          <Property Name="PRODUCTS" Type="char" MaxLength="1" />
-          <Property Name="EXPIRES_ON" Type="date" />
-          <Property Name="ADMIN_USER" Type="char" MaxLength="1" />
-        </EntityType>
-        <EntityType Name="DEPT">
-          <Key>
-            <PropertyRef Name="DEPTNO" />
-          </Key>
-          <Property Name="DEPTNO" Type="number" Precision="2" Scale="0" Nullable="false" />
-          <Property Name="DNAME" Type="varchar2" MaxLength="14" />
-          <Property Name="LOC" Type="varchar2" MaxLength="13" />
-        </EntityType>
         <EntityType Name="DOCUMENTO">
           <Key>
             <PropertyRef Name="ID_DOCUMENTO" />
@@ -488,19 +78,6 @@ warning 6013: The table/view 'ONTOUR.DEMO_STATES' does not have a primary key de
           <Property Name="FECHA_SUBIDA_DOC" Type="date" Nullable="false" />
           <Property Name="DESC_DOCUMENTO" Type="varchar2" MaxLength="250" />
           <Property Name="ACTIVO" Type="char" MaxLength="1" Nullable="false" />
-        </EntityType>
-        <EntityType Name="EMP">
-          <Key>
-            <PropertyRef Name="EMPNO" />
-          </Key>
-          <Property Name="EMPNO" Type="number" Precision="4" Scale="0" Nullable="false" />
-          <Property Name="ENAME" Type="varchar2" MaxLength="10" />
-          <Property Name="JOB" Type="varchar2" MaxLength="9" />
-          <Property Name="MGR" Type="number" Precision="4" Scale="0" />
-          <Property Name="HIREDATE" Type="date" />
-          <Property Name="SAL" Type="number" Precision="7" Scale="2" />
-          <Property Name="COMM" Type="number" Precision="7" Scale="2" />
-          <Property Name="DEPTNO" Type="number" Precision="2" Scale="0" />
         </EntityType>
         <EntityType Name="EMPLEADO">
           <Key>
@@ -595,114 +172,6 @@ warning 6013: The table/view 'ONTOUR.DEMO_STATES' does not have a primary key de
           <Property Name="ID_TIPO_USUARIO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ACTIVO" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
-        <Association Name="APEX$_WS_FILES_FK">
-          <End Role="APEX$_WS_ROWS" Type="Self.APEX$_WS_ROWS" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="APEX$_WS_FILES" Type="Self.APEX$_WS_FILES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="APEX$_WS_ROWS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="APEX$_WS_FILES">
-              <PropertyRef Name="ROW_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="APEX$_WS_LINKS_FK">
-          <End Role="APEX$_WS_ROWS" Type="Self.APEX$_WS_ROWS" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="APEX$_WS_LINKS" Type="Self.APEX$_WS_LINKS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="APEX$_WS_ROWS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="APEX$_WS_LINKS">
-              <PropertyRef Name="ROW_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="APEX$_WS_NOTES_FK">
-          <End Role="APEX$_WS_ROWS" Type="Self.APEX$_WS_ROWS" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="APEX$_WS_NOTES" Type="Self.APEX$_WS_NOTES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="APEX$_WS_ROWS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="APEX$_WS_NOTES">
-              <PropertyRef Name="ROW_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="APEX$_WS_TAGS_FK">
-          <End Role="APEX$_WS_ROWS" Type="Self.APEX$_WS_ROWS" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="APEX$_WS_TAGS" Type="Self.APEX$_WS_TAGS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="APEX$_WS_ROWS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="APEX$_WS_TAGS">
-              <PropertyRef Name="ROW_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="DEMO_ORDER_ITEMS_FK">
-          <End Role="DEMO_ORDERS" Type="Self.DEMO_ORDERS" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="DEMO_ORDER_ITEMS" Type="Self.DEMO_ORDER_ITEMS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DEMO_ORDERS">
-              <PropertyRef Name="ORDER_ID" />
-            </Principal>
-            <Dependent Role="DEMO_ORDER_ITEMS">
-              <PropertyRef Name="ORDER_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="DEMO_ORDER_ITEMS_PRODUCT_ID_FK">
-          <End Role="DEMO_PRODUCT_INFO" Type="Self.DEMO_PRODUCT_INFO" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="DEMO_ORDER_ITEMS" Type="Self.DEMO_ORDER_ITEMS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DEMO_PRODUCT_INFO">
-              <PropertyRef Name="PRODUCT_ID" />
-            </Principal>
-            <Dependent Role="DEMO_ORDER_ITEMS">
-              <PropertyRef Name="PRODUCT_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="DEMO_ORDERS_CUSTOMER_ID_FK">
-          <End Role="DEMO_CUSTOMERS" Type="Self.DEMO_CUSTOMERS" Multiplicity="1" />
-          <End Role="DEMO_ORDERS" Type="Self.DEMO_ORDERS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DEMO_CUSTOMERS">
-              <PropertyRef Name="CUSTOMER_ID" />
-            </Principal>
-            <Dependent Role="DEMO_ORDERS">
-              <PropertyRef Name="CUSTOMER_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="DEMO_ORDERS_USER_ID_FK">
-          <End Role="DEMO_USERS" Type="Self.DEMO_USERS" Multiplicity="0..1" />
-          <End Role="DEMO_ORDERS" Type="Self.DEMO_ORDERS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DEMO_USERS">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="DEMO_ORDERS">
-              <PropertyRef Name="USER_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ACTIVIDAD_CONTRATO">
           <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="1" />
           <End Role="ACTIVIDAD" Type="Self.ACTIVIDAD" Multiplicity="*" />
@@ -921,51 +390,13 @@ warning 6013: The table/view 'ONTOUR.DEMO_STATES' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="SYS_C007000">
-          <End Role="EMP" Type="Self.EMP" Multiplicity="0..1" />
-          <End Role="EMP1" Type="Self.EMP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EMP">
-              <PropertyRef Name="EMPNO" />
-            </Principal>
-            <Dependent Role="EMP1">
-              <PropertyRef Name="MGR" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="SYS_C007001">
-          <End Role="DEPT" Type="Self.DEPT" Multiplicity="0..1" />
-          <End Role="EMP" Type="Self.EMP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DEPT">
-              <PropertyRef Name="DEPTNO" />
-            </Principal>
-            <Dependent Role="EMP">
-              <PropertyRef Name="DEPTNO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="ModelOnTourStoreContainer">
+        <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="ONTOUR" store:Type="Tables" />
-          <EntitySet Name="APEX$_ACL" EntityType="Self.APEX$_ACL" Schema="ONTOUR" store:Type="Tables" />
-          <EntitySet Name="APEX$_WS_FILES" EntityType="Self.APEX$_WS_FILES" Schema="ONTOUR" store:Type="Tables" />
-          <EntitySet Name="APEX$_WS_LINKS" EntityType="Self.APEX$_WS_LINKS" Schema="ONTOUR" store:Type="Tables" />
-          <EntitySet Name="APEX$_WS_NOTES" EntityType="Self.APEX$_WS_NOTES" Schema="ONTOUR" store:Type="Tables" />
-          <EntitySet Name="APEX$_WS_ROWS" EntityType="Self.APEX$_WS_ROWS" Schema="ONTOUR" store:Type="Tables" />
-          <EntitySet Name="APEX$_WS_TAGS" EntityType="Self.APEX$_WS_TAGS" Schema="ONTOUR" store:Type="Tables" />
-          <EntitySet Name="APEX$_WS_WEBPG_SECTIONS" EntityType="Self.APEX$_WS_WEBPG_SECTIONS" Schema="ONTOUR" store:Type="Tables" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="ONTOUR" store:Type="Tables" />
           <EntitySet Name="CONTRATO" EntityType="Self.CONTRATO" Schema="ONTOUR" store:Type="Tables" />
           <EntitySet Name="CONTRATO_PAQUETE" EntityType="Self.CONTRATO_PAQUETE" Schema="ONTOUR" store:Type="Tables" />
           <EntitySet Name="CUENTA" EntityType="Self.CUENTA" Schema="ONTOUR" store:Type="Tables" />
-          <EntitySet Name="DEMO_CUSTOMERS" EntityType="Self.DEMO_CUSTOMERS" Schema="ONTOUR" store:Type="Tables" />
-          <EntitySet Name="DEMO_ORDER_ITEMS" EntityType="Self.DEMO_ORDER_ITEMS" Schema="ONTOUR" store:Type="Tables" />
-          <EntitySet Name="DEMO_ORDERS" EntityType="Self.DEMO_ORDERS" Schema="ONTOUR" store:Type="Tables" />
-          <EntitySet Name="DEMO_PRODUCT_INFO" EntityType="Self.DEMO_PRODUCT_INFO" Schema="ONTOUR" store:Type="Tables" />
-          <EntitySet Name="DEMO_USERS" EntityType="Self.DEMO_USERS" Schema="ONTOUR" store:Type="Tables" />
-          <EntitySet Name="DEPT" EntityType="Self.DEPT" Schema="ONTOUR" store:Type="Tables" />
           <EntitySet Name="DOCUMENTO" EntityType="Self.DOCUMENTO" Schema="ONTOUR" store:Type="Tables" />
-          <EntitySet Name="EMP" EntityType="Self.EMP" Schema="ONTOUR" store:Type="Tables" />
           <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" Schema="ONTOUR" store:Type="Tables" />
           <EntitySet Name="PAQUETEVIAJE" EntityType="Self.PAQUETEVIAJE" Schema="ONTOUR" store:Type="Tables" />
           <EntitySet Name="SERVICIO" EntityType="Self.SERVICIO" Schema="ONTOUR" store:Type="Tables" />
@@ -976,65 +407,6 @@ warning 6013: The table/view 'ONTOUR.DEMO_STATES' does not have a primary key de
           <EntitySet Name="TIPO_USUARIO" EntityType="Self.TIPO_USUARIO" Schema="ONTOUR" store:Type="Tables" />
           <EntitySet Name="TRANSACCION" EntityType="Self.TRANSACCION" Schema="ONTOUR" store:Type="Tables" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="ONTOUR" store:Type="Tables" />
-          <EntitySet Name="APEX$_WS_HISTORY" EntityType="Self.APEX$_WS_HISTORY" store:Type="Tables" store:Schema="ONTOUR">
-            <DefiningQuery>SELECT 
-"APEX$_WS_HISTORY"."ROW_ID" AS "ROW_ID", 
-"APEX$_WS_HISTORY"."WS_APP_ID" AS "WS_APP_ID", 
-"APEX$_WS_HISTORY"."DATA_GRID_ID" AS "DATA_GRID_ID", 
-"APEX$_WS_HISTORY"."COLUMN_NAME" AS "COLUMN_NAME", 
-"APEX$_WS_HISTORY"."OLD_VALUE" AS "OLD_VALUE", 
-"APEX$_WS_HISTORY"."NEW_VALUE" AS "NEW_VALUE", 
-"APEX$_WS_HISTORY"."APPLICATION_USER_ID" AS "APPLICATION_USER_ID", 
-"APEX$_WS_HISTORY"."CHANGE_DATE" AS "CHANGE_DATE"
-FROM "ONTOUR"."APEX$_WS_HISTORY" "APEX$_WS_HISTORY"</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="APEX$_WS_WEBPG_SECTION_HISTORY" EntityType="Self.APEX$_WS_WEBPG_SECTION_HISTORY" store:Type="Tables" store:Schema="ONTOUR">
-            <DefiningQuery>SELECT 
-"APEX$_WS_WEBPG_SECTION_HISTORY"."SECTION_ID" AS "SECTION_ID", 
-"APEX$_WS_WEBPG_SECTION_HISTORY"."WS_APP_ID" AS "WS_APP_ID", 
-"APEX$_WS_WEBPG_SECTION_HISTORY"."WEBPAGE_ID" AS "WEBPAGE_ID", 
-"APEX$_WS_WEBPG_SECTION_HISTORY"."OLD_DISPLAY_SEQUENCE" AS "OLD_DISPLAY_SEQUENCE", 
-"APEX$_WS_WEBPG_SECTION_HISTORY"."NEW_DISPLAY_SEQUENCE" AS "NEW_DISPLAY_SEQUENCE", 
-"APEX$_WS_WEBPG_SECTION_HISTORY"."OLD_TITLE" AS "OLD_TITLE", 
-"APEX$_WS_WEBPG_SECTION_HISTORY"."NEW_TITLE" AS "NEW_TITLE", 
-"APEX$_WS_WEBPG_SECTION_HISTORY"."OLD_CONTENT" AS "OLD_CONTENT", 
-"APEX$_WS_WEBPG_SECTION_HISTORY"."NEW_CONTENT" AS "NEW_CONTENT", 
-"APEX$_WS_WEBPG_SECTION_HISTORY"."APPLICATION_USER_ID" AS "APPLICATION_USER_ID", 
-"APEX$_WS_WEBPG_SECTION_HISTORY"."CHANGE_DATE" AS "CHANGE_DATE"
-FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="APEX$_WS_FILES_FK" Association="Self.APEX$_WS_FILES_FK">
-            <End Role="APEX$_WS_ROWS" EntitySet="APEX$_WS_ROWS" />
-            <End Role="APEX$_WS_FILES" EntitySet="APEX$_WS_FILES" />
-          </AssociationSet>
-          <AssociationSet Name="APEX$_WS_LINKS_FK" Association="Self.APEX$_WS_LINKS_FK">
-            <End Role="APEX$_WS_ROWS" EntitySet="APEX$_WS_ROWS" />
-            <End Role="APEX$_WS_LINKS" EntitySet="APEX$_WS_LINKS" />
-          </AssociationSet>
-          <AssociationSet Name="APEX$_WS_NOTES_FK" Association="Self.APEX$_WS_NOTES_FK">
-            <End Role="APEX$_WS_ROWS" EntitySet="APEX$_WS_ROWS" />
-            <End Role="APEX$_WS_NOTES" EntitySet="APEX$_WS_NOTES" />
-          </AssociationSet>
-          <AssociationSet Name="APEX$_WS_TAGS_FK" Association="Self.APEX$_WS_TAGS_FK">
-            <End Role="APEX$_WS_ROWS" EntitySet="APEX$_WS_ROWS" />
-            <End Role="APEX$_WS_TAGS" EntitySet="APEX$_WS_TAGS" />
-          </AssociationSet>
-          <AssociationSet Name="DEMO_ORDER_ITEMS_FK" Association="Self.DEMO_ORDER_ITEMS_FK">
-            <End Role="DEMO_ORDERS" EntitySet="DEMO_ORDERS" />
-            <End Role="DEMO_ORDER_ITEMS" EntitySet="DEMO_ORDER_ITEMS" />
-          </AssociationSet>
-          <AssociationSet Name="DEMO_ORDER_ITEMS_PRODUCT_ID_FK" Association="Self.DEMO_ORDER_ITEMS_PRODUCT_ID_FK">
-            <End Role="DEMO_PRODUCT_INFO" EntitySet="DEMO_PRODUCT_INFO" />
-            <End Role="DEMO_ORDER_ITEMS" EntitySet="DEMO_ORDER_ITEMS" />
-          </AssociationSet>
-          <AssociationSet Name="DEMO_ORDERS_CUSTOMER_ID_FK" Association="Self.DEMO_ORDERS_CUSTOMER_ID_FK">
-            <End Role="DEMO_CUSTOMERS" EntitySet="DEMO_CUSTOMERS" />
-            <End Role="DEMO_ORDERS" EntitySet="DEMO_ORDERS" />
-          </AssociationSet>
-          <AssociationSet Name="DEMO_ORDERS_USER_ID_FK" Association="Self.DEMO_ORDERS_USER_ID_FK">
-            <End Role="DEMO_USERS" EntitySet="DEMO_USERS" />
-            <End Role="DEMO_ORDERS" EntitySet="DEMO_ORDERS" />
-          </AssociationSet>
           <AssociationSet Name="FK_ACTIVIDAD_CONTRATO" Association="Self.FK_ACTIVIDAD_CONTRATO">
             <End Role="CONTRATO" EntitySet="CONTRATO" />
             <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
@@ -1107,20 +479,12 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
             <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
-          <AssociationSet Name="SYS_C007000" Association="Self.SYS_C007000">
-            <End Role="EMP" EntitySet="EMP" />
-            <End Role="EMP1" EntitySet="EMP" />
-          </AssociationSet>
-          <AssociationSet Name="SYS_C007001" Association="Self.SYS_C007001">
-            <End Role="DEPT" EntitySet="DEPT" />
-            <End Role="EMP" EntitySet="EMP" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ModelOnTour" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ACTIVIDAD">
           <Key>
             <PropertyRef Name="ID_ACTIVIDAD" />
@@ -1135,306 +499,6 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
           <Property Name="ID_CONTRATO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="CONTRATO" Relationship="Self.FK_ACTIVIDAD_CONTRATO" FromRole="ACTIVIDAD" ToRole="CONTRATO" />
           <NavigationProperty Name="TIPO_ACTIVIDAD" Relationship="Self.FK_ACTIVIDAD_TIPO_ACTIVIDAD" FromRole="ACTIVIDAD" ToRole="TIPO_ACTIVIDAD" />
-        </EntityType>
-        <EntityType Name="APEX__ACL">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="USERNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PRIV" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CREATED_ON" Type="DateTime" Nullable="false" />
-          <Property Name="CREATED_BY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UPDATED_ON" Type="DateTime" />
-          <Property Name="UPDATED_BY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="APEX__WS_FILES">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="DATA_GRID_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="ROW_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="WEBPAGE_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="COMPONENT_LEVEL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IMAGE_ALIAS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="IMAGE_ATTRIBUTES" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="CONTENT" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="CONTENT_LAST_UPDATE" Type="DateTime" />
-          <Property Name="MIME_TYPE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CONTENT_CHARSET" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="CONTENT_FILENAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="DESCRIPTION" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="CREATED_ON" Type="DateTime" Nullable="false" />
-          <Property Name="CREATED_BY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UPDATED_ON" Type="DateTime" />
-          <Property Name="UPDATED_BY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="APEX__WS_ROWS" Relationship="Self.APEX__WS_FILES_FK" FromRole="APEX__WS_FILES" ToRole="APEX__WS_ROWS" />
-        </EntityType>
-        <EntityType Name="APEX__WS_LINKS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="DATA_GRID_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="ROW_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="WEBPAGE_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="COMPONENT_LEVEL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="TAGS" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="SHOW_ON_HOMEPAGE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="LINK_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="URL" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LINK_DESCRIPTION" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="DISPLAY_SEQUENCE" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="CREATED_ON" Type="DateTime" Nullable="false" />
-          <Property Name="CREATED_BY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UPDATED_ON" Type="DateTime" />
-          <Property Name="UPDATED_BY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="APEX__WS_ROWS" Relationship="Self.APEX__WS_LINKS_FK" FromRole="APEX__WS_LINKS" ToRole="APEX__WS_ROWS" />
-        </EntityType>
-        <EntityType Name="APEX__WS_NOTES">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="DATA_GRID_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="ROW_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="WEBPAGE_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="COMPONENT_LEVEL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CREATED_ON" Type="DateTime" Nullable="false" />
-          <Property Name="CREATED_BY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UPDATED_ON" Type="DateTime" />
-          <Property Name="UPDATED_BY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="APEX__WS_ROWS" Relationship="Self.APEX__WS_NOTES_FK" FromRole="APEX__WS_NOTES" ToRole="APEX__WS_ROWS" />
-        </EntityType>
-        <EntityType Name="APEX__WS_ROWS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="DATA_GRID_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="UNIQUE_VALUE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="TAGS" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="PARENT_ROW_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="OWNER" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="GEOCODE" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
-          <Property Name="LOAD_ORDER" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="CHANGE_COUNT" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="CREATED_ON" Type="DateTime" Nullable="false" />
-          <Property Name="CREATED_BY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UPDATED_ON" Type="DateTime" />
-          <Property Name="UPDATED_BY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="C001" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C002" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C003" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C004" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C005" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C006" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C007" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C008" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C009" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C010" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C011" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C012" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C013" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C014" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C015" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C016" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C017" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C018" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C019" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C020" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C021" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C022" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C023" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C024" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C025" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C026" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C027" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C028" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C029" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C030" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C031" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C032" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C033" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C034" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C035" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C036" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C037" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C038" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C039" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C040" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C041" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C042" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C043" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C044" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C045" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C046" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C047" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C048" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C049" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="C050" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="N001" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N002" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N003" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N004" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N005" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N006" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N007" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N008" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N009" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N010" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N011" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N012" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N013" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N014" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N015" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N016" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N017" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N018" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N019" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N020" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N021" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N022" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N023" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N024" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N025" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N026" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N027" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N028" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N029" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N030" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N031" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N032" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N033" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N034" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N035" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N036" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N037" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N038" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N039" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N040" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N041" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N042" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N043" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N044" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N045" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N046" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N047" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N048" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N049" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="N050" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="D001" Type="DateTime" />
-          <Property Name="D002" Type="DateTime" />
-          <Property Name="D003" Type="DateTime" />
-          <Property Name="D004" Type="DateTime" />
-          <Property Name="D005" Type="DateTime" />
-          <Property Name="D006" Type="DateTime" />
-          <Property Name="D007" Type="DateTime" />
-          <Property Name="D008" Type="DateTime" />
-          <Property Name="D009" Type="DateTime" />
-          <Property Name="D010" Type="DateTime" />
-          <Property Name="D011" Type="DateTime" />
-          <Property Name="D012" Type="DateTime" />
-          <Property Name="D013" Type="DateTime" />
-          <Property Name="D014" Type="DateTime" />
-          <Property Name="D015" Type="DateTime" />
-          <Property Name="D016" Type="DateTime" />
-          <Property Name="D017" Type="DateTime" />
-          <Property Name="D018" Type="DateTime" />
-          <Property Name="D019" Type="DateTime" />
-          <Property Name="D020" Type="DateTime" />
-          <Property Name="D021" Type="DateTime" />
-          <Property Name="D022" Type="DateTime" />
-          <Property Name="D023" Type="DateTime" />
-          <Property Name="D024" Type="DateTime" />
-          <Property Name="D025" Type="DateTime" />
-          <Property Name="D026" Type="DateTime" />
-          <Property Name="D027" Type="DateTime" />
-          <Property Name="D028" Type="DateTime" />
-          <Property Name="D029" Type="DateTime" />
-          <Property Name="D030" Type="DateTime" />
-          <Property Name="D031" Type="DateTime" />
-          <Property Name="D032" Type="DateTime" />
-          <Property Name="D033" Type="DateTime" />
-          <Property Name="D034" Type="DateTime" />
-          <Property Name="D035" Type="DateTime" />
-          <Property Name="D036" Type="DateTime" />
-          <Property Name="D037" Type="DateTime" />
-          <Property Name="D038" Type="DateTime" />
-          <Property Name="D039" Type="DateTime" />
-          <Property Name="D040" Type="DateTime" />
-          <Property Name="D041" Type="DateTime" />
-          <Property Name="D042" Type="DateTime" />
-          <Property Name="D043" Type="DateTime" />
-          <Property Name="D044" Type="DateTime" />
-          <Property Name="D045" Type="DateTime" />
-          <Property Name="D046" Type="DateTime" />
-          <Property Name="D047" Type="DateTime" />
-          <Property Name="D048" Type="DateTime" />
-          <Property Name="D049" Type="DateTime" />
-          <Property Name="D050" Type="DateTime" />
-          <Property Name="CLOB001" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SEARCH_CLOB" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="APEX__WS_FILES" Relationship="Self.APEX__WS_FILES_FK" FromRole="APEX__WS_ROWS" ToRole="APEX__WS_FILES" />
-          <NavigationProperty Name="APEX__WS_LINKS" Relationship="Self.APEX__WS_LINKS_FK" FromRole="APEX__WS_ROWS" ToRole="APEX__WS_LINKS" />
-          <NavigationProperty Name="APEX__WS_NOTES" Relationship="Self.APEX__WS_NOTES_FK" FromRole="APEX__WS_ROWS" ToRole="APEX__WS_NOTES" />
-          <NavigationProperty Name="APEX__WS_TAGS" Relationship="Self.APEX__WS_TAGS_FK" FromRole="APEX__WS_ROWS" ToRole="APEX__WS_TAGS" />
-        </EntityType>
-        <EntityType Name="APEX__WS_TAGS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="DATA_GRID_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="ROW_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="WEBPAGE_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="COMPONENT_LEVEL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="TAG" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="CREATED_ON" Type="DateTime" Nullable="false" />
-          <Property Name="CREATED_BY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UPDATED_ON" Type="DateTime" />
-          <Property Name="UPDATED_BY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="APEX__WS_ROWS" Relationship="Self.APEX__WS_TAGS_FK" FromRole="APEX__WS_TAGS" ToRole="APEX__WS_ROWS" />
-        </EntityType>
-        <EntityType Name="APEX__WS_WEBPG_SECTIONS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WEBPAGE_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="DISPLAY_SEQUENCE" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="SECTION_TYPE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TITLE" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CONTENT_UPPER" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NAV_START_WEBPAGE_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="NAV_MAX_LEVEL" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="NAV_INCLUDE_LINK" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="DATA_GRID_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="REPORT_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="DATA_SECTION_STYLE" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="CHART_TYPE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="CHART_3D" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="CHART_LABEL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="LABEL_AXIS_TITLE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="CHART_VALUE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="VALUE_AXIS_TITLE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="CHART_AGGREGATE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="CHART_SORTING" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="CREATED_ON" Type="DateTime" Nullable="false" />
-          <Property Name="CREATED_BY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UPDATED_ON" Type="DateTime" />
-          <Property Name="UPDATED_BY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="CLIENTE">
           <Key>
@@ -1452,8 +516,8 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
           <Property Name="FECHA_NACIMIENTO_CLI" Type="DateTime" />
           <Property Name="FONO_CLI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="USUARIO" Relationship="Self.FK_CLIENTE_USUARIO" FromRole="CLIENTE" ToRole="USUARIO" />
-          <NavigationProperty Name="CONTRATOes" Relationship="Self.FK_CONTRATO_CLIENTE" FromRole="CLIENTE" ToRole="CONTRATO" />
-          <NavigationProperty Name="CUENTAs" Relationship="Self.FK_CUENTA_CLIENTE" FromRole="CLIENTE" ToRole="CUENTA" />
+          <NavigationProperty Name="CONTRATO" Relationship="Self.FK_CONTRATO_CLIENTE" FromRole="CLIENTE" ToRole="CONTRATO" />
+          <NavigationProperty Name="CUENTA" Relationship="Self.FK_CUENTA_CLIENTE" FromRole="CLIENTE" ToRole="CUENTA" />
         </EntityType>
         <EntityType Name="CONTRATO">
           <Key>
@@ -1467,11 +531,11 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
           <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="NUMRUT_EMP" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NUMRUT_CLI_TITULAR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="ACTIVIDADs" Relationship="Self.FK_ACTIVIDAD_CONTRATO" FromRole="CONTRATO" ToRole="ACTIVIDAD" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.FK_ACTIVIDAD_CONTRATO" FromRole="CONTRATO" ToRole="ACTIVIDAD" />
           <NavigationProperty Name="CLIENTE" Relationship="Self.FK_CONTRATO_CLIENTE" FromRole="CONTRATO" ToRole="CLIENTE" />
           <NavigationProperty Name="EMPLEADO" Relationship="Self.FK_CONTRATO_EMPLEADO" FromRole="CONTRATO" ToRole="EMPLEADO" />
           <NavigationProperty Name="CONTRATO_PAQUETE" Relationship="Self.FK_CONTRATO_PAQUETE_CONTRATO" FromRole="CONTRATO" ToRole="CONTRATO_PAQUETE" />
-          <NavigationProperty Name="CUENTAs" Relationship="Self.FK_CUENTA_CONTRATO" FromRole="CONTRATO" ToRole="CUENTA" />
+          <NavigationProperty Name="CUENTA" Relationship="Self.FK_CUENTA_CONTRATO" FromRole="CONTRATO" ToRole="CUENTA" />
         </EntityType>
         <EntityType Name="CONTRATO_PAQUETE">
           <Key>
@@ -1483,7 +547,7 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
           <Property Name="ACTIVO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="CONTRATO" Relationship="Self.FK_CONTRATO_PAQUETE_CONTRATO" FromRole="CONTRATO_PAQUETE" ToRole="CONTRATO" />
           <NavigationProperty Name="PAQUETEVIAJE" Relationship="Self.FK_CONT_PAQ_PAQVIAJE" FromRole="CONTRATO_PAQUETE" ToRole="PAQUETEVIAJE" />
-          <NavigationProperty Name="DOCUMENTOes" Relationship="Self.FK_DOC_CONT_PAQ" FromRole="CONTRATO_PAQUETE" ToRole="DOCUMENTO" />
+          <NavigationProperty Name="DOCUMENTO" Relationship="Self.FK_DOC_CONT_PAQ" FromRole="CONTRATO_PAQUETE" ToRole="DOCUMENTO" />
         </EntityType>
         <EntityType Name="CUENTA">
           <Key>
@@ -1496,89 +560,7 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
           <Property Name="ACTIVO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="CLIENTE" Relationship="Self.FK_CUENTA_CLIENTE" FromRole="CUENTA" ToRole="CLIENTE" />
           <NavigationProperty Name="CONTRATO" Relationship="Self.FK_CUENTA_CONTRATO" FromRole="CUENTA" ToRole="CONTRATO" />
-          <NavigationProperty Name="TRANSACCIONs" Relationship="Self.FK_TRANSACCION_CUENTA" FromRole="CUENTA" ToRole="TRANSACCION" />
-        </EntityType>
-        <EntityType Name="DEMO_CUSTOMERS">
-          <Key>
-            <PropertyRef Name="CUSTOMER_ID" />
-          </Key>
-          <Property Name="CUSTOMER_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="CUST_FIRST_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CUST_LAST_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CUST_STREET_ADDRESS1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="CUST_STREET_ADDRESS2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="CUST_CITY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="CUST_STATE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="CUST_POSTAL_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="PHONE_NUMBER1" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="PHONE_NUMBER2" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="CREDIT_LIMIT" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="CUST_EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DEMO_ORDERS" Relationship="Self.DEMO_ORDERS_CUSTOMER_ID_FK" FromRole="DEMO_CUSTOMERS" ToRole="DEMO_ORDERS" />
-        </EntityType>
-        <EntityType Name="DEMO_ORDER_ITEMS">
-          <Key>
-            <PropertyRef Name="ORDER_ITEM_ID" />
-          </Key>
-          <Property Name="ORDER_ITEM_ID" Type="Int16" Nullable="false" />
-          <Property Name="ORDER_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="PRODUCT_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="UNIT_PRICE" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
-          <Property Name="QUANTITY" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DEMO_ORDERS" Relationship="Self.DEMO_ORDER_ITEMS_FK" FromRole="DEMO_ORDER_ITEMS" ToRole="DEMO_ORDERS" />
-          <NavigationProperty Name="DEMO_PRODUCT_INFO" Relationship="Self.DEMO_ORDER_ITEMS_PRODUCT_ID_FK" FromRole="DEMO_ORDER_ITEMS" ToRole="DEMO_PRODUCT_INFO" />
-        </EntityType>
-        <EntityType Name="DEMO_ORDERS">
-          <Key>
-            <PropertyRef Name="ORDER_ID" />
-          </Key>
-          <Property Name="ORDER_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="CUSTOMER_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="ORDER_TOTAL" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="ORDER_TIMESTAMP" Type="DateTime" />
-          <Property Name="USER_ID" Type="Decimal" Precision="38" Scale="0" />
-          <NavigationProperty Name="DEMO_CUSTOMERS" Relationship="Self.DEMO_ORDERS_CUSTOMER_ID_FK" FromRole="DEMO_ORDERS" ToRole="DEMO_CUSTOMERS" />
-          <NavigationProperty Name="DEMO_ORDER_ITEMS" Relationship="Self.DEMO_ORDER_ITEMS_FK" FromRole="DEMO_ORDERS" ToRole="DEMO_ORDER_ITEMS" />
-          <NavigationProperty Name="DEMO_USERS" Relationship="Self.DEMO_ORDERS_USER_ID_FK" FromRole="DEMO_ORDERS" ToRole="DEMO_USERS" />
-        </EntityType>
-        <EntityType Name="DEMO_PRODUCT_INFO">
-          <Key>
-            <PropertyRef Name="PRODUCT_ID" />
-          </Key>
-          <Property Name="PRODUCT_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="PRODUCT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PRODUCT_DESCRIPTION" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
-          <Property Name="CATEGORY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="PRODUCT_AVAIL" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="LIST_PRICE" Type="Decimal" Precision="8" Scale="2" />
-          <Property Name="PRODUCT_IMAGE" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="MIMETYPE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="FILENAME" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
-          <Property Name="IMAGE_LAST_UPDATE" Type="DateTime" />
-          <NavigationProperty Name="DEMO_ORDER_ITEMS" Relationship="Self.DEMO_ORDER_ITEMS_PRODUCT_ID_FK" FromRole="DEMO_PRODUCT_INFO" ToRole="DEMO_ORDER_ITEMS" />
-        </EntityType>
-        <EntityType Name="DEMO_USERS">
-          <Key>
-            <PropertyRef Name="USER_ID" />
-          </Key>
-          <Property Name="USER_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="USER_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="PASSWORD" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="CREATED_ON" Type="DateTime" />
-          <Property Name="QUOTA" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="PRODUCTS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="EXPIRES_ON" Type="DateTime" />
-          <Property Name="ADMIN_USER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="DEMO_ORDERS" Relationship="Self.DEMO_ORDERS_USER_ID_FK" FromRole="DEMO_USERS" ToRole="DEMO_ORDERS" />
-        </EntityType>
-        <EntityType Name="DEPT">
-          <Key>
-            <PropertyRef Name="DEPTNO" />
-          </Key>
-          <Property Name="DEPTNO" Type="Int16" Nullable="false" />
-          <Property Name="DNAME" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-          <Property Name="LOC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EMPs" Relationship="Self.SYS_C007001" FromRole="DEPT" ToRole="EMP" />
+          <NavigationProperty Name="TRANSACCION" Relationship="Self.FK_TRANSACCION_CUENTA" FromRole="CUENTA" ToRole="TRANSACCION" />
         </EntityType>
         <EntityType Name="DOCUMENTO">
           <Key>
@@ -1595,22 +577,6 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
           <NavigationProperty Name="CONTRATO_PAQUETE" Relationship="Self.FK_DOC_CONT_PAQ" FromRole="DOCUMENTO" ToRole="CONTRATO_PAQUETE" />
           <NavigationProperty Name="SERVICIO" Relationship="Self.FK_DOCUMENTO_SERVICIO" FromRole="DOCUMENTO" ToRole="SERVICIO" />
         </EntityType>
-        <EntityType Name="EMP">
-          <Key>
-            <PropertyRef Name="EMPNO" />
-          </Key>
-          <Property Name="EMPNO" Type="Int16" Nullable="false" />
-          <Property Name="ENAME" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="JOB" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
-          <Property Name="MGR" Type="Int16" />
-          <Property Name="HIREDATE" Type="DateTime" />
-          <Property Name="SAL" Type="Decimal" Precision="7" Scale="2" />
-          <Property Name="COMM" Type="Decimal" Precision="7" Scale="2" />
-          <Property Name="DEPTNO" Type="Int16" />
-          <NavigationProperty Name="DEPT" Relationship="Self.SYS_C007001" FromRole="EMP" ToRole="DEPT" />
-          <NavigationProperty Name="EMP1" Relationship="Self.SYS_C007000" FromRole="EMP" ToRole="EMP1" />
-          <NavigationProperty Name="EMP2" Relationship="Self.SYS_C007000" FromRole="EMP1" ToRole="EMP" />
-        </EntityType>
         <EntityType Name="EMPLEADO">
           <Key>
             <PropertyRef Name="NUMRUT_EMP" />
@@ -1626,7 +592,7 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
           <Property Name="ID_USR" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="FECHA_NACIMIENTO_EMP" Type="DateTime" />
           <Property Name="FONO_EMP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CONTRATOes" Relationship="Self.FK_CONTRATO_EMPLEADO" FromRole="EMPLEADO" ToRole="CONTRATO" />
+          <NavigationProperty Name="CONTRATO" Relationship="Self.FK_CONTRATO_EMPLEADO" FromRole="EMPLEADO" ToRole="CONTRATO" />
           <NavigationProperty Name="USUARIO" Relationship="Self.FK_EMPLEADO_USUARIO" FromRole="EMPLEADO" ToRole="USUARIO" />
         </EntityType>
         <EntityType Name="PAQUETEVIAJE">
@@ -1649,7 +615,7 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
           <Property Name="ID_SERVICIO_WS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ACTIVO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="ID_TIPO_SERVICIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="DOCUMENTOes" Relationship="Self.FK_DOCUMENTO_SERVICIO" FromRole="SERVICIO" ToRole="DOCUMENTO" />
+          <NavigationProperty Name="DOCUMENTO" Relationship="Self.FK_DOCUMENTO_SERVICIO" FromRole="SERVICIO" ToRole="DOCUMENTO" />
           <NavigationProperty Name="SERVICIO_PAQUETE" Relationship="Self.FK_SERV_PAQ_SERV" FromRole="SERVICIO" ToRole="SERVICIO_PAQUETE" />
           <NavigationProperty Name="TIPO_SERVICIO" Relationship="Self.FK_SERVICIO_TIPO_SERVICIO" FromRole="SERVICIO" ToRole="TIPO_SERVICIO" />
         </EntityType>
@@ -1670,7 +636,7 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
           </Key>
           <Property Name="ID_TIPO_ACTIIVIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESC_TIPO_ACT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ACTIVIDADs" Relationship="Self.FK_ACTIVIDAD_TIPO_ACTIVIDAD" FromRole="TIPO_ACTIVIDAD" ToRole="ACTIVIDAD" />
+          <NavigationProperty Name="ACTIVIDAD" Relationship="Self.FK_ACTIVIDAD_TIPO_ACTIVIDAD" FromRole="TIPO_ACTIVIDAD" ToRole="ACTIVIDAD" />
         </EntityType>
         <EntityType Name="TIPO_SERVICIO">
           <Key>
@@ -1678,7 +644,7 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
           </Key>
           <Property Name="ID_TIPO_SERVICIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESC_SERVICIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="SERVICIOs" Relationship="Self.FK_SERVICIO_TIPO_SERVICIO" FromRole="TIPO_SERVICIO" ToRole="SERVICIO" />
+          <NavigationProperty Name="SERVICIO" Relationship="Self.FK_SERVICIO_TIPO_SERVICIO" FromRole="TIPO_SERVICIO" ToRole="SERVICIO" />
         </EntityType>
         <EntityType Name="TIPO_TRANSACCION">
           <Key>
@@ -1686,7 +652,7 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
           </Key>
           <Property Name="ID_TIPO_TRANSACCION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESC_TRANSACCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="TRANSACCIONs" Relationship="Self.FK_TRANS_TIPO_TRANS" FromRole="TIPO_TRANSACCION" ToRole="TRANSACCION" />
+          <NavigationProperty Name="TRANSACCION" Relationship="Self.FK_TRANS_TIPO_TRANS" FromRole="TIPO_TRANSACCION" ToRole="TRANSACCION" />
         </EntityType>
         <EntityType Name="TIPO_USUARIO">
           <Key>
@@ -1694,7 +660,7 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
           </Key>
           <Property Name="ID_TIPO_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESC_TIPO_USUARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="USUARIOs" Relationship="Self.FK_USUARIO_TIPO_USUARIO" FromRole="TIPO_USUARIO" ToRole="USUARIO" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_TIPO_USUARIO" FromRole="TIPO_USUARIO" ToRole="USUARIO" />
         </EntityType>
         <EntityType Name="TRANSACCION">
           <Key>
@@ -1718,44 +684,9 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
           <Property Name="PASS_USR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ID_TIPO_USUARIO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ACTIVO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="CLIENTEs" Relationship="Self.FK_CLIENTE_USUARIO" FromRole="USUARIO" ToRole="CLIENTE" />
-          <NavigationProperty Name="EMPLEADOes" Relationship="Self.FK_EMPLEADO_USUARIO" FromRole="USUARIO" ToRole="EMPLEADO" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.FK_CLIENTE_USUARIO" FromRole="USUARIO" ToRole="CLIENTE" />
+          <NavigationProperty Name="EMPLEADO" Relationship="Self.FK_EMPLEADO_USUARIO" FromRole="USUARIO" ToRole="EMPLEADO" />
           <NavigationProperty Name="TIPO_USUARIO" Relationship="Self.FK_USUARIO_TIPO_USUARIO" FromRole="USUARIO" ToRole="TIPO_USUARIO" />
-        </EntityType>
-        <EntityType Name="APEX__WS_HISTORY">
-          <Key>
-            <PropertyRef Name="ROW_ID" />
-            <PropertyRef Name="WS_APP_ID" />
-            <PropertyRef Name="DATA_GRID_ID" />
-          </Key>
-          <Property Name="ROW_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="DATA_GRID_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="COLUMN_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="OLD_VALUE" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="NEW_VALUE" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="APPLICATION_USER_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="CHANGE_DATE" Type="DateTime" />
-        </EntityType>
-        <EntityType Name="APEX__WS_WEBPG_SECTION_HISTORY">
-          <Key>
-            <PropertyRef Name="SECTION_ID" />
-            <PropertyRef Name="WS_APP_ID" />
-            <PropertyRef Name="WEBPAGE_ID" />
-            <PropertyRef Name="APPLICATION_USER_ID" />
-            <PropertyRef Name="CHANGE_DATE" />
-          </Key>
-          <Property Name="SECTION_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WS_APP_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="WEBPAGE_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="OLD_DISPLAY_SEQUENCE" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="NEW_DISPLAY_SEQUENCE" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="OLD_TITLE" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="NEW_TITLE" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="OLD_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NEW_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="APPLICATION_USER_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CHANGE_DATE" Type="DateTime" Nullable="false" />
         </EntityType>
         <Association Name="FK_ACTIVIDAD_CONTRATO">
           <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="1" />
@@ -1778,62 +709,6 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
             </Principal>
             <Dependent Role="ACTIVIDAD">
               <PropertyRef Name="ID_TIPO_ACTIVIDAD" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="APEX__WS_FILES_FK">
-          <End Role="APEX__WS_ROWS" Type="Self.APEX__WS_ROWS" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="APEX__WS_FILES" Type="Self.APEX__WS_FILES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="APEX__WS_ROWS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="APEX__WS_FILES">
-              <PropertyRef Name="ROW_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="APEX__WS_LINKS_FK">
-          <End Role="APEX__WS_ROWS" Type="Self.APEX__WS_ROWS" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="APEX__WS_LINKS" Type="Self.APEX__WS_LINKS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="APEX__WS_ROWS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="APEX__WS_LINKS">
-              <PropertyRef Name="ROW_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="APEX__WS_NOTES_FK">
-          <End Role="APEX__WS_ROWS" Type="Self.APEX__WS_ROWS" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="APEX__WS_NOTES" Type="Self.APEX__WS_NOTES" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="APEX__WS_ROWS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="APEX__WS_NOTES">
-              <PropertyRef Name="ROW_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="APEX__WS_TAGS_FK">
-          <End Role="APEX__WS_ROWS" Type="Self.APEX__WS_ROWS" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="APEX__WS_TAGS" Type="Self.APEX__WS_TAGS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="APEX__WS_ROWS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="APEX__WS_TAGS">
-              <PropertyRef Name="ROW_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1947,70 +822,6 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="DEMO_ORDERS_CUSTOMER_ID_FK">
-          <End Role="DEMO_CUSTOMERS" Type="Self.DEMO_CUSTOMERS" Multiplicity="1" />
-          <End Role="DEMO_ORDERS" Type="Self.DEMO_ORDERS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DEMO_CUSTOMERS">
-              <PropertyRef Name="CUSTOMER_ID" />
-            </Principal>
-            <Dependent Role="DEMO_ORDERS">
-              <PropertyRef Name="CUSTOMER_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="DEMO_ORDER_ITEMS_FK">
-          <End Role="DEMO_ORDERS" Type="Self.DEMO_ORDERS" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="DEMO_ORDER_ITEMS" Type="Self.DEMO_ORDER_ITEMS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DEMO_ORDERS">
-              <PropertyRef Name="ORDER_ID" />
-            </Principal>
-            <Dependent Role="DEMO_ORDER_ITEMS">
-              <PropertyRef Name="ORDER_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="DEMO_ORDER_ITEMS_PRODUCT_ID_FK">
-          <End Role="DEMO_PRODUCT_INFO" Type="Self.DEMO_PRODUCT_INFO" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="DEMO_ORDER_ITEMS" Type="Self.DEMO_ORDER_ITEMS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DEMO_PRODUCT_INFO">
-              <PropertyRef Name="PRODUCT_ID" />
-            </Principal>
-            <Dependent Role="DEMO_ORDER_ITEMS">
-              <PropertyRef Name="PRODUCT_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="DEMO_ORDERS_USER_ID_FK">
-          <End Role="DEMO_USERS" Type="Self.DEMO_USERS" Multiplicity="0..1" />
-          <End Role="DEMO_ORDERS" Type="Self.DEMO_ORDERS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DEMO_USERS">
-              <PropertyRef Name="USER_ID" />
-            </Principal>
-            <Dependent Role="DEMO_ORDERS">
-              <PropertyRef Name="USER_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="SYS_C007001">
-          <End Role="DEPT" Type="Self.DEPT" Multiplicity="0..1" />
-          <End Role="EMP" Type="Self.EMP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DEPT">
-              <PropertyRef Name="DEPTNO" />
-            </Principal>
-            <Dependent Role="EMP">
-              <PropertyRef Name="DEPTNO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_DOCUMENTO_SERVICIO">
           <End Role="SERVICIO" Type="Self.SERVICIO" Multiplicity="1" />
           <End Role="DOCUMENTO" Type="Self.DOCUMENTO" Multiplicity="*" />
@@ -2020,18 +831,6 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
             </Principal>
             <Dependent Role="DOCUMENTO">
               <PropertyRef Name="ID_SERVICIO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="SYS_C007000">
-          <End Role="EMP" Type="Self.EMP" Multiplicity="0..1" />
-          <End Role="EMP1" Type="Self.EMP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EMP">
-              <PropertyRef Name="EMPNO" />
-            </Principal>
-            <Dependent Role="EMP1">
-              <PropertyRef Name="MGR" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2108,149 +907,93 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="EntitiesOnTour" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ACTIVIDADs" EntityType="Self.ACTIVIDAD" />
-          <EntitySet Name="APEX__ACL" EntityType="Self.APEX__ACL" />
-          <EntitySet Name="APEX__WS_FILES" EntityType="Self.APEX__WS_FILES" />
-          <EntitySet Name="APEX__WS_LINKS" EntityType="Self.APEX__WS_LINKS" />
-          <EntitySet Name="APEX__WS_NOTES" EntityType="Self.APEX__WS_NOTES" />
-          <EntitySet Name="APEX__WS_ROWS" EntityType="Self.APEX__WS_ROWS" />
-          <EntitySet Name="APEX__WS_TAGS" EntityType="Self.APEX__WS_TAGS" />
-          <EntitySet Name="APEX__WS_WEBPG_SECTIONS" EntityType="Self.APEX__WS_WEBPG_SECTIONS" />
-          <EntitySet Name="CLIENTEs" EntityType="Self.CLIENTE" />
-          <EntitySet Name="CONTRATOes" EntityType="Self.CONTRATO" />
+          <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+          <EntitySet Name="CONTRATO" EntityType="Self.CONTRATO" />
           <EntitySet Name="CONTRATO_PAQUETE" EntityType="Self.CONTRATO_PAQUETE" />
-          <EntitySet Name="CUENTAs" EntityType="Self.CUENTA" />
-          <EntitySet Name="DEMO_CUSTOMERS" EntityType="Self.DEMO_CUSTOMERS" />
-          <EntitySet Name="DEMO_ORDER_ITEMS" EntityType="Self.DEMO_ORDER_ITEMS" />
-          <EntitySet Name="DEMO_ORDERS" EntityType="Self.DEMO_ORDERS" />
-          <EntitySet Name="DEMO_PRODUCT_INFO" EntityType="Self.DEMO_PRODUCT_INFO" />
-          <EntitySet Name="DEMO_USERS" EntityType="Self.DEMO_USERS" />
-          <EntitySet Name="DEPTs" EntityType="Self.DEPT" />
-          <EntitySet Name="DOCUMENTOes" EntityType="Self.DOCUMENTO" />
-          <EntitySet Name="EMPs" EntityType="Self.EMP" />
-          <EntitySet Name="EMPLEADOes" EntityType="Self.EMPLEADO" />
-          <EntitySet Name="PAQUETEVIAJEs" EntityType="Self.PAQUETEVIAJE" />
-          <EntitySet Name="SERVICIOs" EntityType="Self.SERVICIO" />
+          <EntitySet Name="CUENTA" EntityType="Self.CUENTA" />
+          <EntitySet Name="DOCUMENTO" EntityType="Self.DOCUMENTO" />
+          <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" />
+          <EntitySet Name="PAQUETEVIAJE" EntityType="Self.PAQUETEVIAJE" />
+          <EntitySet Name="SERVICIO" EntityType="Self.SERVICIO" />
           <EntitySet Name="SERVICIO_PAQUETE" EntityType="Self.SERVICIO_PAQUETE" />
           <EntitySet Name="TIPO_ACTIVIDAD" EntityType="Self.TIPO_ACTIVIDAD" />
           <EntitySet Name="TIPO_SERVICIO" EntityType="Self.TIPO_SERVICIO" />
           <EntitySet Name="TIPO_TRANSACCION" EntityType="Self.TIPO_TRANSACCION" />
           <EntitySet Name="TIPO_USUARIO" EntityType="Self.TIPO_USUARIO" />
-          <EntitySet Name="TRANSACCIONs" EntityType="Self.TRANSACCION" />
-          <EntitySet Name="USUARIOs" EntityType="Self.USUARIO" />
-          <EntitySet Name="APEX__WS_HISTORY" EntityType="Self.APEX__WS_HISTORY" />
-          <EntitySet Name="APEX__WS_WEBPG_SECTION_HISTORY" EntityType="Self.APEX__WS_WEBPG_SECTION_HISTORY" />
+          <EntitySet Name="TRANSACCION" EntityType="Self.TRANSACCION" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
           <AssociationSet Name="FK_ACTIVIDAD_CONTRATO" Association="Self.FK_ACTIVIDAD_CONTRATO">
-            <End Role="CONTRATO" EntitySet="CONTRATOes" />
-            <End Role="ACTIVIDAD" EntitySet="ACTIVIDADs" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
           </AssociationSet>
           <AssociationSet Name="FK_ACTIVIDAD_TIPO_ACTIVIDAD" Association="Self.FK_ACTIVIDAD_TIPO_ACTIVIDAD">
             <End Role="TIPO_ACTIVIDAD" EntitySet="TIPO_ACTIVIDAD" />
-            <End Role="ACTIVIDAD" EntitySet="ACTIVIDADs" />
-          </AssociationSet>
-          <AssociationSet Name="APEX__WS_FILES_FK" Association="Self.APEX__WS_FILES_FK">
-            <End Role="APEX__WS_ROWS" EntitySet="APEX__WS_ROWS" />
-            <End Role="APEX__WS_FILES" EntitySet="APEX__WS_FILES" />
-          </AssociationSet>
-          <AssociationSet Name="APEX__WS_LINKS_FK" Association="Self.APEX__WS_LINKS_FK">
-            <End Role="APEX__WS_ROWS" EntitySet="APEX__WS_ROWS" />
-            <End Role="APEX__WS_LINKS" EntitySet="APEX__WS_LINKS" />
-          </AssociationSet>
-          <AssociationSet Name="APEX__WS_NOTES_FK" Association="Self.APEX__WS_NOTES_FK">
-            <End Role="APEX__WS_ROWS" EntitySet="APEX__WS_ROWS" />
-            <End Role="APEX__WS_NOTES" EntitySet="APEX__WS_NOTES" />
-          </AssociationSet>
-          <AssociationSet Name="APEX__WS_TAGS_FK" Association="Self.APEX__WS_TAGS_FK">
-            <End Role="APEX__WS_ROWS" EntitySet="APEX__WS_ROWS" />
-            <End Role="APEX__WS_TAGS" EntitySet="APEX__WS_TAGS" />
+            <End Role="ACTIVIDAD" EntitySet="ACTIVIDAD" />
           </AssociationSet>
           <AssociationSet Name="FK_CLIENTE_USUARIO" Association="Self.FK_CLIENTE_USUARIO">
-            <End Role="USUARIO" EntitySet="USUARIOs" />
-            <End Role="CLIENTE" EntitySet="CLIENTEs" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
           </AssociationSet>
           <AssociationSet Name="FK_CONTRATO_CLIENTE" Association="Self.FK_CONTRATO_CLIENTE">
-            <End Role="CLIENTE" EntitySet="CLIENTEs" />
-            <End Role="CONTRATO" EntitySet="CONTRATOes" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
           </AssociationSet>
           <AssociationSet Name="FK_CUENTA_CLIENTE" Association="Self.FK_CUENTA_CLIENTE">
-            <End Role="CLIENTE" EntitySet="CLIENTEs" />
-            <End Role="CUENTA" EntitySet="CUENTAs" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="CUENTA" EntitySet="CUENTA" />
           </AssociationSet>
           <AssociationSet Name="FK_CONTRATO_EMPLEADO" Association="Self.FK_CONTRATO_EMPLEADO">
-            <End Role="EMPLEADO" EntitySet="EMPLEADOes" />
-            <End Role="CONTRATO" EntitySet="CONTRATOes" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
           </AssociationSet>
           <AssociationSet Name="FK_CONTRATO_PAQUETE_CONTRATO" Association="Self.FK_CONTRATO_PAQUETE_CONTRATO">
-            <End Role="CONTRATO" EntitySet="CONTRATOes" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
             <End Role="CONTRATO_PAQUETE" EntitySet="CONTRATO_PAQUETE" />
           </AssociationSet>
           <AssociationSet Name="FK_CUENTA_CONTRATO" Association="Self.FK_CUENTA_CONTRATO">
-            <End Role="CONTRATO" EntitySet="CONTRATOes" />
-            <End Role="CUENTA" EntitySet="CUENTAs" />
+            <End Role="CONTRATO" EntitySet="CONTRATO" />
+            <End Role="CUENTA" EntitySet="CUENTA" />
           </AssociationSet>
           <AssociationSet Name="FK_CONT_PAQ_PAQVIAJE" Association="Self.FK_CONT_PAQ_PAQVIAJE">
-            <End Role="PAQUETEVIAJE" EntitySet="PAQUETEVIAJEs" />
+            <End Role="PAQUETEVIAJE" EntitySet="PAQUETEVIAJE" />
             <End Role="CONTRATO_PAQUETE" EntitySet="CONTRATO_PAQUETE" />
           </AssociationSet>
           <AssociationSet Name="FK_DOC_CONT_PAQ" Association="Self.FK_DOC_CONT_PAQ">
             <End Role="CONTRATO_PAQUETE" EntitySet="CONTRATO_PAQUETE" />
-            <End Role="DOCUMENTO" EntitySet="DOCUMENTOes" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
           </AssociationSet>
           <AssociationSet Name="FK_TRANSACCION_CUENTA" Association="Self.FK_TRANSACCION_CUENTA">
-            <End Role="CUENTA" EntitySet="CUENTAs" />
-            <End Role="TRANSACCION" EntitySet="TRANSACCIONs" />
-          </AssociationSet>
-          <AssociationSet Name="DEMO_ORDERS_CUSTOMER_ID_FK" Association="Self.DEMO_ORDERS_CUSTOMER_ID_FK">
-            <End Role="DEMO_CUSTOMERS" EntitySet="DEMO_CUSTOMERS" />
-            <End Role="DEMO_ORDERS" EntitySet="DEMO_ORDERS" />
-          </AssociationSet>
-          <AssociationSet Name="DEMO_ORDER_ITEMS_FK" Association="Self.DEMO_ORDER_ITEMS_FK">
-            <End Role="DEMO_ORDERS" EntitySet="DEMO_ORDERS" />
-            <End Role="DEMO_ORDER_ITEMS" EntitySet="DEMO_ORDER_ITEMS" />
-          </AssociationSet>
-          <AssociationSet Name="DEMO_ORDER_ITEMS_PRODUCT_ID_FK" Association="Self.DEMO_ORDER_ITEMS_PRODUCT_ID_FK">
-            <End Role="DEMO_PRODUCT_INFO" EntitySet="DEMO_PRODUCT_INFO" />
-            <End Role="DEMO_ORDER_ITEMS" EntitySet="DEMO_ORDER_ITEMS" />
-          </AssociationSet>
-          <AssociationSet Name="DEMO_ORDERS_USER_ID_FK" Association="Self.DEMO_ORDERS_USER_ID_FK">
-            <End Role="DEMO_USERS" EntitySet="DEMO_USERS" />
-            <End Role="DEMO_ORDERS" EntitySet="DEMO_ORDERS" />
-          </AssociationSet>
-          <AssociationSet Name="SYS_C007001" Association="Self.SYS_C007001">
-            <End Role="DEPT" EntitySet="DEPTs" />
-            <End Role="EMP" EntitySet="EMPs" />
+            <End Role="CUENTA" EntitySet="CUENTA" />
+            <End Role="TRANSACCION" EntitySet="TRANSACCION" />
           </AssociationSet>
           <AssociationSet Name="FK_DOCUMENTO_SERVICIO" Association="Self.FK_DOCUMENTO_SERVICIO">
-            <End Role="SERVICIO" EntitySet="SERVICIOs" />
-            <End Role="DOCUMENTO" EntitySet="DOCUMENTOes" />
-          </AssociationSet>
-          <AssociationSet Name="SYS_C007000" Association="Self.SYS_C007000">
-            <End Role="EMP" EntitySet="EMPs" />
-            <End Role="EMP1" EntitySet="EMPs" />
+            <End Role="SERVICIO" EntitySet="SERVICIO" />
+            <End Role="DOCUMENTO" EntitySet="DOCUMENTO" />
           </AssociationSet>
           <AssociationSet Name="FK_EMPLEADO_USUARIO" Association="Self.FK_EMPLEADO_USUARIO">
-            <End Role="USUARIO" EntitySet="USUARIOs" />
-            <End Role="EMPLEADO" EntitySet="EMPLEADOes" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
           </AssociationSet>
           <AssociationSet Name="FK_SERV_PAQ_PAQVIAJE" Association="Self.FK_SERV_PAQ_PAQVIAJE">
-            <End Role="PAQUETEVIAJE" EntitySet="PAQUETEVIAJEs" />
+            <End Role="PAQUETEVIAJE" EntitySet="PAQUETEVIAJE" />
             <End Role="SERVICIO_PAQUETE" EntitySet="SERVICIO_PAQUETE" />
           </AssociationSet>
           <AssociationSet Name="FK_SERV_PAQ_SERV" Association="Self.FK_SERV_PAQ_SERV">
-            <End Role="SERVICIO" EntitySet="SERVICIOs" />
+            <End Role="SERVICIO" EntitySet="SERVICIO" />
             <End Role="SERVICIO_PAQUETE" EntitySet="SERVICIO_PAQUETE" />
           </AssociationSet>
           <AssociationSet Name="FK_SERVICIO_TIPO_SERVICIO" Association="Self.FK_SERVICIO_TIPO_SERVICIO">
             <End Role="TIPO_SERVICIO" EntitySet="TIPO_SERVICIO" />
-            <End Role="SERVICIO" EntitySet="SERVICIOs" />
+            <End Role="SERVICIO" EntitySet="SERVICIO" />
           </AssociationSet>
           <AssociationSet Name="FK_TRANS_TIPO_TRANS" Association="Self.FK_TRANS_TIPO_TRANS">
             <End Role="TIPO_TRANSACCION" EntitySet="TIPO_TRANSACCION" />
-            <End Role="TRANSACCION" EntitySet="TRANSACCIONs" />
+            <End Role="TRANSACCION" EntitySet="TRANSACCION" />
           </AssociationSet>
           <AssociationSet Name="FK_USUARIO_TIPO_USUARIO" Association="Self.FK_USUARIO_TIPO_USUARIO">
             <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
-            <End Role="USUARIO" EntitySet="USUARIOs" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -2258,9 +1001,9 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelOnTourStoreContainer" CdmEntityContainer="EntitiesOnTour">
-          <EntitySetMapping Name="ACTIVIDADs">
-            <EntityTypeMapping TypeName="ModelOnTour.ACTIVIDAD">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="EntitiesOnTour">
+          <EntitySetMapping Name="ACTIVIDAD">
+            <EntityTypeMapping TypeName="Model.ACTIVIDAD">
               <MappingFragment StoreEntitySet="ACTIVIDAD">
                 <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
                 <ScalarProperty Name="DESC_ACTIVIDAD" ColumnName="DESC_ACTIVIDAD" />
@@ -2272,307 +1015,8 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="APEX__ACL">
-            <EntityTypeMapping TypeName="ModelOnTour.APEX__ACL">
-              <MappingFragment StoreEntitySet="APEX$_ACL">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="WS_APP_ID" ColumnName="WS_APP_ID" />
-                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
-                <ScalarProperty Name="PRIV" ColumnName="PRIV" />
-                <ScalarProperty Name="CREATED_ON" ColumnName="CREATED_ON" />
-                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
-                <ScalarProperty Name="UPDATED_ON" ColumnName="UPDATED_ON" />
-                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="APEX__WS_FILES">
-            <EntityTypeMapping TypeName="ModelOnTour.APEX__WS_FILES">
-              <MappingFragment StoreEntitySet="APEX$_WS_FILES">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="WS_APP_ID" ColumnName="WS_APP_ID" />
-                <ScalarProperty Name="DATA_GRID_ID" ColumnName="DATA_GRID_ID" />
-                <ScalarProperty Name="ROW_ID" ColumnName="ROW_ID" />
-                <ScalarProperty Name="WEBPAGE_ID" ColumnName="WEBPAGE_ID" />
-                <ScalarProperty Name="COMPONENT_LEVEL" ColumnName="COMPONENT_LEVEL" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="IMAGE_ALIAS" ColumnName="IMAGE_ALIAS" />
-                <ScalarProperty Name="IMAGE_ATTRIBUTES" ColumnName="IMAGE_ATTRIBUTES" />
-                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
-                <ScalarProperty Name="CONTENT_LAST_UPDATE" ColumnName="CONTENT_LAST_UPDATE" />
-                <ScalarProperty Name="MIME_TYPE" ColumnName="MIME_TYPE" />
-                <ScalarProperty Name="CONTENT_CHARSET" ColumnName="CONTENT_CHARSET" />
-                <ScalarProperty Name="CONTENT_FILENAME" ColumnName="CONTENT_FILENAME" />
-                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
-                <ScalarProperty Name="CREATED_ON" ColumnName="CREATED_ON" />
-                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
-                <ScalarProperty Name="UPDATED_ON" ColumnName="UPDATED_ON" />
-                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="APEX__WS_LINKS">
-            <EntityTypeMapping TypeName="ModelOnTour.APEX__WS_LINKS">
-              <MappingFragment StoreEntitySet="APEX$_WS_LINKS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="WS_APP_ID" ColumnName="WS_APP_ID" />
-                <ScalarProperty Name="DATA_GRID_ID" ColumnName="DATA_GRID_ID" />
-                <ScalarProperty Name="ROW_ID" ColumnName="ROW_ID" />
-                <ScalarProperty Name="WEBPAGE_ID" ColumnName="WEBPAGE_ID" />
-                <ScalarProperty Name="COMPONENT_LEVEL" ColumnName="COMPONENT_LEVEL" />
-                <ScalarProperty Name="TAGS" ColumnName="TAGS" />
-                <ScalarProperty Name="SHOW_ON_HOMEPAGE" ColumnName="SHOW_ON_HOMEPAGE" />
-                <ScalarProperty Name="LINK_NAME" ColumnName="LINK_NAME" />
-                <ScalarProperty Name="URL" ColumnName="URL" />
-                <ScalarProperty Name="LINK_DESCRIPTION" ColumnName="LINK_DESCRIPTION" />
-                <ScalarProperty Name="DISPLAY_SEQUENCE" ColumnName="DISPLAY_SEQUENCE" />
-                <ScalarProperty Name="CREATED_ON" ColumnName="CREATED_ON" />
-                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
-                <ScalarProperty Name="UPDATED_ON" ColumnName="UPDATED_ON" />
-                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="APEX__WS_NOTES">
-            <EntityTypeMapping TypeName="ModelOnTour.APEX__WS_NOTES">
-              <MappingFragment StoreEntitySet="APEX$_WS_NOTES">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="WS_APP_ID" ColumnName="WS_APP_ID" />
-                <ScalarProperty Name="DATA_GRID_ID" ColumnName="DATA_GRID_ID" />
-                <ScalarProperty Name="ROW_ID" ColumnName="ROW_ID" />
-                <ScalarProperty Name="WEBPAGE_ID" ColumnName="WEBPAGE_ID" />
-                <ScalarProperty Name="COMPONENT_LEVEL" ColumnName="COMPONENT_LEVEL" />
-                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
-                <ScalarProperty Name="CREATED_ON" ColumnName="CREATED_ON" />
-                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
-                <ScalarProperty Name="UPDATED_ON" ColumnName="UPDATED_ON" />
-                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="APEX__WS_ROWS">
-            <EntityTypeMapping TypeName="ModelOnTour.APEX__WS_ROWS">
-              <MappingFragment StoreEntitySet="APEX$_WS_ROWS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="WS_APP_ID" ColumnName="WS_APP_ID" />
-                <ScalarProperty Name="DATA_GRID_ID" ColumnName="DATA_GRID_ID" />
-                <ScalarProperty Name="UNIQUE_VALUE" ColumnName="UNIQUE_VALUE" />
-                <ScalarProperty Name="TAGS" ColumnName="TAGS" />
-                <ScalarProperty Name="PARENT_ROW_ID" ColumnName="PARENT_ROW_ID" />
-                <ScalarProperty Name="OWNER" ColumnName="OWNER" />
-                <ScalarProperty Name="GEOCODE" ColumnName="GEOCODE" />
-                <ScalarProperty Name="LOAD_ORDER" ColumnName="LOAD_ORDER" />
-                <ScalarProperty Name="CHANGE_COUNT" ColumnName="CHANGE_COUNT" />
-                <ScalarProperty Name="CREATED_ON" ColumnName="CREATED_ON" />
-                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
-                <ScalarProperty Name="UPDATED_ON" ColumnName="UPDATED_ON" />
-                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
-                <ScalarProperty Name="C001" ColumnName="C001" />
-                <ScalarProperty Name="C002" ColumnName="C002" />
-                <ScalarProperty Name="C003" ColumnName="C003" />
-                <ScalarProperty Name="C004" ColumnName="C004" />
-                <ScalarProperty Name="C005" ColumnName="C005" />
-                <ScalarProperty Name="C006" ColumnName="C006" />
-                <ScalarProperty Name="C007" ColumnName="C007" />
-                <ScalarProperty Name="C008" ColumnName="C008" />
-                <ScalarProperty Name="C009" ColumnName="C009" />
-                <ScalarProperty Name="C010" ColumnName="C010" />
-                <ScalarProperty Name="C011" ColumnName="C011" />
-                <ScalarProperty Name="C012" ColumnName="C012" />
-                <ScalarProperty Name="C013" ColumnName="C013" />
-                <ScalarProperty Name="C014" ColumnName="C014" />
-                <ScalarProperty Name="C015" ColumnName="C015" />
-                <ScalarProperty Name="C016" ColumnName="C016" />
-                <ScalarProperty Name="C017" ColumnName="C017" />
-                <ScalarProperty Name="C018" ColumnName="C018" />
-                <ScalarProperty Name="C019" ColumnName="C019" />
-                <ScalarProperty Name="C020" ColumnName="C020" />
-                <ScalarProperty Name="C021" ColumnName="C021" />
-                <ScalarProperty Name="C022" ColumnName="C022" />
-                <ScalarProperty Name="C023" ColumnName="C023" />
-                <ScalarProperty Name="C024" ColumnName="C024" />
-                <ScalarProperty Name="C025" ColumnName="C025" />
-                <ScalarProperty Name="C026" ColumnName="C026" />
-                <ScalarProperty Name="C027" ColumnName="C027" />
-                <ScalarProperty Name="C028" ColumnName="C028" />
-                <ScalarProperty Name="C029" ColumnName="C029" />
-                <ScalarProperty Name="C030" ColumnName="C030" />
-                <ScalarProperty Name="C031" ColumnName="C031" />
-                <ScalarProperty Name="C032" ColumnName="C032" />
-                <ScalarProperty Name="C033" ColumnName="C033" />
-                <ScalarProperty Name="C034" ColumnName="C034" />
-                <ScalarProperty Name="C035" ColumnName="C035" />
-                <ScalarProperty Name="C036" ColumnName="C036" />
-                <ScalarProperty Name="C037" ColumnName="C037" />
-                <ScalarProperty Name="C038" ColumnName="C038" />
-                <ScalarProperty Name="C039" ColumnName="C039" />
-                <ScalarProperty Name="C040" ColumnName="C040" />
-                <ScalarProperty Name="C041" ColumnName="C041" />
-                <ScalarProperty Name="C042" ColumnName="C042" />
-                <ScalarProperty Name="C043" ColumnName="C043" />
-                <ScalarProperty Name="C044" ColumnName="C044" />
-                <ScalarProperty Name="C045" ColumnName="C045" />
-                <ScalarProperty Name="C046" ColumnName="C046" />
-                <ScalarProperty Name="C047" ColumnName="C047" />
-                <ScalarProperty Name="C048" ColumnName="C048" />
-                <ScalarProperty Name="C049" ColumnName="C049" />
-                <ScalarProperty Name="C050" ColumnName="C050" />
-                <ScalarProperty Name="N001" ColumnName="N001" />
-                <ScalarProperty Name="N002" ColumnName="N002" />
-                <ScalarProperty Name="N003" ColumnName="N003" />
-                <ScalarProperty Name="N004" ColumnName="N004" />
-                <ScalarProperty Name="N005" ColumnName="N005" />
-                <ScalarProperty Name="N006" ColumnName="N006" />
-                <ScalarProperty Name="N007" ColumnName="N007" />
-                <ScalarProperty Name="N008" ColumnName="N008" />
-                <ScalarProperty Name="N009" ColumnName="N009" />
-                <ScalarProperty Name="N010" ColumnName="N010" />
-                <ScalarProperty Name="N011" ColumnName="N011" />
-                <ScalarProperty Name="N012" ColumnName="N012" />
-                <ScalarProperty Name="N013" ColumnName="N013" />
-                <ScalarProperty Name="N014" ColumnName="N014" />
-                <ScalarProperty Name="N015" ColumnName="N015" />
-                <ScalarProperty Name="N016" ColumnName="N016" />
-                <ScalarProperty Name="N017" ColumnName="N017" />
-                <ScalarProperty Name="N018" ColumnName="N018" />
-                <ScalarProperty Name="N019" ColumnName="N019" />
-                <ScalarProperty Name="N020" ColumnName="N020" />
-                <ScalarProperty Name="N021" ColumnName="N021" />
-                <ScalarProperty Name="N022" ColumnName="N022" />
-                <ScalarProperty Name="N023" ColumnName="N023" />
-                <ScalarProperty Name="N024" ColumnName="N024" />
-                <ScalarProperty Name="N025" ColumnName="N025" />
-                <ScalarProperty Name="N026" ColumnName="N026" />
-                <ScalarProperty Name="N027" ColumnName="N027" />
-                <ScalarProperty Name="N028" ColumnName="N028" />
-                <ScalarProperty Name="N029" ColumnName="N029" />
-                <ScalarProperty Name="N030" ColumnName="N030" />
-                <ScalarProperty Name="N031" ColumnName="N031" />
-                <ScalarProperty Name="N032" ColumnName="N032" />
-                <ScalarProperty Name="N033" ColumnName="N033" />
-                <ScalarProperty Name="N034" ColumnName="N034" />
-                <ScalarProperty Name="N035" ColumnName="N035" />
-                <ScalarProperty Name="N036" ColumnName="N036" />
-                <ScalarProperty Name="N037" ColumnName="N037" />
-                <ScalarProperty Name="N038" ColumnName="N038" />
-                <ScalarProperty Name="N039" ColumnName="N039" />
-                <ScalarProperty Name="N040" ColumnName="N040" />
-                <ScalarProperty Name="N041" ColumnName="N041" />
-                <ScalarProperty Name="N042" ColumnName="N042" />
-                <ScalarProperty Name="N043" ColumnName="N043" />
-                <ScalarProperty Name="N044" ColumnName="N044" />
-                <ScalarProperty Name="N045" ColumnName="N045" />
-                <ScalarProperty Name="N046" ColumnName="N046" />
-                <ScalarProperty Name="N047" ColumnName="N047" />
-                <ScalarProperty Name="N048" ColumnName="N048" />
-                <ScalarProperty Name="N049" ColumnName="N049" />
-                <ScalarProperty Name="N050" ColumnName="N050" />
-                <ScalarProperty Name="D001" ColumnName="D001" />
-                <ScalarProperty Name="D002" ColumnName="D002" />
-                <ScalarProperty Name="D003" ColumnName="D003" />
-                <ScalarProperty Name="D004" ColumnName="D004" />
-                <ScalarProperty Name="D005" ColumnName="D005" />
-                <ScalarProperty Name="D006" ColumnName="D006" />
-                <ScalarProperty Name="D007" ColumnName="D007" />
-                <ScalarProperty Name="D008" ColumnName="D008" />
-                <ScalarProperty Name="D009" ColumnName="D009" />
-                <ScalarProperty Name="D010" ColumnName="D010" />
-                <ScalarProperty Name="D011" ColumnName="D011" />
-                <ScalarProperty Name="D012" ColumnName="D012" />
-                <ScalarProperty Name="D013" ColumnName="D013" />
-                <ScalarProperty Name="D014" ColumnName="D014" />
-                <ScalarProperty Name="D015" ColumnName="D015" />
-                <ScalarProperty Name="D016" ColumnName="D016" />
-                <ScalarProperty Name="D017" ColumnName="D017" />
-                <ScalarProperty Name="D018" ColumnName="D018" />
-                <ScalarProperty Name="D019" ColumnName="D019" />
-                <ScalarProperty Name="D020" ColumnName="D020" />
-                <ScalarProperty Name="D021" ColumnName="D021" />
-                <ScalarProperty Name="D022" ColumnName="D022" />
-                <ScalarProperty Name="D023" ColumnName="D023" />
-                <ScalarProperty Name="D024" ColumnName="D024" />
-                <ScalarProperty Name="D025" ColumnName="D025" />
-                <ScalarProperty Name="D026" ColumnName="D026" />
-                <ScalarProperty Name="D027" ColumnName="D027" />
-                <ScalarProperty Name="D028" ColumnName="D028" />
-                <ScalarProperty Name="D029" ColumnName="D029" />
-                <ScalarProperty Name="D030" ColumnName="D030" />
-                <ScalarProperty Name="D031" ColumnName="D031" />
-                <ScalarProperty Name="D032" ColumnName="D032" />
-                <ScalarProperty Name="D033" ColumnName="D033" />
-                <ScalarProperty Name="D034" ColumnName="D034" />
-                <ScalarProperty Name="D035" ColumnName="D035" />
-                <ScalarProperty Name="D036" ColumnName="D036" />
-                <ScalarProperty Name="D037" ColumnName="D037" />
-                <ScalarProperty Name="D038" ColumnName="D038" />
-                <ScalarProperty Name="D039" ColumnName="D039" />
-                <ScalarProperty Name="D040" ColumnName="D040" />
-                <ScalarProperty Name="D041" ColumnName="D041" />
-                <ScalarProperty Name="D042" ColumnName="D042" />
-                <ScalarProperty Name="D043" ColumnName="D043" />
-                <ScalarProperty Name="D044" ColumnName="D044" />
-                <ScalarProperty Name="D045" ColumnName="D045" />
-                <ScalarProperty Name="D046" ColumnName="D046" />
-                <ScalarProperty Name="D047" ColumnName="D047" />
-                <ScalarProperty Name="D048" ColumnName="D048" />
-                <ScalarProperty Name="D049" ColumnName="D049" />
-                <ScalarProperty Name="D050" ColumnName="D050" />
-                <ScalarProperty Name="CLOB001" ColumnName="CLOB001" />
-                <ScalarProperty Name="SEARCH_CLOB" ColumnName="SEARCH_CLOB" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="APEX__WS_TAGS">
-            <EntityTypeMapping TypeName="ModelOnTour.APEX__WS_TAGS">
-              <MappingFragment StoreEntitySet="APEX$_WS_TAGS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="WS_APP_ID" ColumnName="WS_APP_ID" />
-                <ScalarProperty Name="DATA_GRID_ID" ColumnName="DATA_GRID_ID" />
-                <ScalarProperty Name="ROW_ID" ColumnName="ROW_ID" />
-                <ScalarProperty Name="WEBPAGE_ID" ColumnName="WEBPAGE_ID" />
-                <ScalarProperty Name="COMPONENT_LEVEL" ColumnName="COMPONENT_LEVEL" />
-                <ScalarProperty Name="TAG" ColumnName="TAG" />
-                <ScalarProperty Name="CREATED_ON" ColumnName="CREATED_ON" />
-                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
-                <ScalarProperty Name="UPDATED_ON" ColumnName="UPDATED_ON" />
-                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="APEX__WS_WEBPG_SECTIONS">
-            <EntityTypeMapping TypeName="ModelOnTour.APEX__WS_WEBPG_SECTIONS">
-              <MappingFragment StoreEntitySet="APEX$_WS_WEBPG_SECTIONS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="WS_APP_ID" ColumnName="WS_APP_ID" />
-                <ScalarProperty Name="WEBPAGE_ID" ColumnName="WEBPAGE_ID" />
-                <ScalarProperty Name="DISPLAY_SEQUENCE" ColumnName="DISPLAY_SEQUENCE" />
-                <ScalarProperty Name="SECTION_TYPE" ColumnName="SECTION_TYPE" />
-                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
-                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
-                <ScalarProperty Name="CONTENT_UPPER" ColumnName="CONTENT_UPPER" />
-                <ScalarProperty Name="NAV_START_WEBPAGE_ID" ColumnName="NAV_START_WEBPAGE_ID" />
-                <ScalarProperty Name="NAV_MAX_LEVEL" ColumnName="NAV_MAX_LEVEL" />
-                <ScalarProperty Name="NAV_INCLUDE_LINK" ColumnName="NAV_INCLUDE_LINK" />
-                <ScalarProperty Name="DATA_GRID_ID" ColumnName="DATA_GRID_ID" />
-                <ScalarProperty Name="REPORT_ID" ColumnName="REPORT_ID" />
-                <ScalarProperty Name="DATA_SECTION_STYLE" ColumnName="DATA_SECTION_STYLE" />
-                <ScalarProperty Name="CHART_TYPE" ColumnName="CHART_TYPE" />
-                <ScalarProperty Name="CHART_3D" ColumnName="CHART_3D" />
-                <ScalarProperty Name="CHART_LABEL" ColumnName="CHART_LABEL" />
-                <ScalarProperty Name="LABEL_AXIS_TITLE" ColumnName="LABEL_AXIS_TITLE" />
-                <ScalarProperty Name="CHART_VALUE" ColumnName="CHART_VALUE" />
-                <ScalarProperty Name="VALUE_AXIS_TITLE" ColumnName="VALUE_AXIS_TITLE" />
-                <ScalarProperty Name="CHART_AGGREGATE" ColumnName="CHART_AGGREGATE" />
-                <ScalarProperty Name="CHART_SORTING" ColumnName="CHART_SORTING" />
-                <ScalarProperty Name="CREATED_ON" ColumnName="CREATED_ON" />
-                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
-                <ScalarProperty Name="UPDATED_ON" ColumnName="UPDATED_ON" />
-                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CLIENTEs">
-            <EntityTypeMapping TypeName="ModelOnTour.CLIENTE">
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="Model.CLIENTE">
               <MappingFragment StoreEntitySet="CLIENTE">
                 <ScalarProperty Name="NUMRUT_CLI" ColumnName="NUMRUT_CLI" />
                 <ScalarProperty Name="DRUT_CLI" ColumnName="DRUT_CLI" />
@@ -2588,8 +1032,8 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CONTRATOes">
-            <EntityTypeMapping TypeName="ModelOnTour.CONTRATO">
+          <EntitySetMapping Name="CONTRATO">
+            <EntityTypeMapping TypeName="Model.CONTRATO">
               <MappingFragment StoreEntitySet="CONTRATO">
                 <ScalarProperty Name="ID_CONTRATO" ColumnName="ID_CONTRATO" />
                 <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
@@ -2603,7 +1047,7 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CONTRATO_PAQUETE">
-            <EntityTypeMapping TypeName="ModelOnTour.CONTRATO_PAQUETE">
+            <EntityTypeMapping TypeName="Model.CONTRATO_PAQUETE">
               <MappingFragment StoreEntitySet="CONTRATO_PAQUETE">
                 <ScalarProperty Name="ID_CONTRATO" ColumnName="ID_CONTRATO" />
                 <ScalarProperty Name="ID_PAQUETEVIAJE" ColumnName="ID_PAQUETEVIAJE" />
@@ -2611,8 +1055,8 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CUENTAs">
-            <EntityTypeMapping TypeName="ModelOnTour.CUENTA">
+          <EntitySetMapping Name="CUENTA">
+            <EntityTypeMapping TypeName="Model.CUENTA">
               <MappingFragment StoreEntitySet="CUENTA">
                 <ScalarProperty Name="ID_CUENTA" ColumnName="ID_CUENTA" />
                 <ScalarProperty Name="SALDO" ColumnName="SALDO" />
@@ -2622,87 +1066,8 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DEMO_CUSTOMERS">
-            <EntityTypeMapping TypeName="ModelOnTour.DEMO_CUSTOMERS">
-              <MappingFragment StoreEntitySet="DEMO_CUSTOMERS">
-                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
-                <ScalarProperty Name="CUST_FIRST_NAME" ColumnName="CUST_FIRST_NAME" />
-                <ScalarProperty Name="CUST_LAST_NAME" ColumnName="CUST_LAST_NAME" />
-                <ScalarProperty Name="CUST_STREET_ADDRESS1" ColumnName="CUST_STREET_ADDRESS1" />
-                <ScalarProperty Name="CUST_STREET_ADDRESS2" ColumnName="CUST_STREET_ADDRESS2" />
-                <ScalarProperty Name="CUST_CITY" ColumnName="CUST_CITY" />
-                <ScalarProperty Name="CUST_STATE" ColumnName="CUST_STATE" />
-                <ScalarProperty Name="CUST_POSTAL_CODE" ColumnName="CUST_POSTAL_CODE" />
-                <ScalarProperty Name="PHONE_NUMBER1" ColumnName="PHONE_NUMBER1" />
-                <ScalarProperty Name="PHONE_NUMBER2" ColumnName="PHONE_NUMBER2" />
-                <ScalarProperty Name="CREDIT_LIMIT" ColumnName="CREDIT_LIMIT" />
-                <ScalarProperty Name="CUST_EMAIL" ColumnName="CUST_EMAIL" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DEMO_ORDER_ITEMS">
-            <EntityTypeMapping TypeName="ModelOnTour.DEMO_ORDER_ITEMS">
-              <MappingFragment StoreEntitySet="DEMO_ORDER_ITEMS">
-                <ScalarProperty Name="ORDER_ITEM_ID" ColumnName="ORDER_ITEM_ID" />
-                <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
-                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
-                <ScalarProperty Name="UNIT_PRICE" ColumnName="UNIT_PRICE" />
-                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DEMO_ORDERS">
-            <EntityTypeMapping TypeName="ModelOnTour.DEMO_ORDERS">
-              <MappingFragment StoreEntitySet="DEMO_ORDERS">
-                <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
-                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
-                <ScalarProperty Name="ORDER_TOTAL" ColumnName="ORDER_TOTAL" />
-                <ScalarProperty Name="ORDER_TIMESTAMP" ColumnName="ORDER_TIMESTAMP" />
-                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DEMO_PRODUCT_INFO">
-            <EntityTypeMapping TypeName="ModelOnTour.DEMO_PRODUCT_INFO">
-              <MappingFragment StoreEntitySet="DEMO_PRODUCT_INFO">
-                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
-                <ScalarProperty Name="PRODUCT_NAME" ColumnName="PRODUCT_NAME" />
-                <ScalarProperty Name="PRODUCT_DESCRIPTION" ColumnName="PRODUCT_DESCRIPTION" />
-                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
-                <ScalarProperty Name="PRODUCT_AVAIL" ColumnName="PRODUCT_AVAIL" />
-                <ScalarProperty Name="LIST_PRICE" ColumnName="LIST_PRICE" />
-                <ScalarProperty Name="PRODUCT_IMAGE" ColumnName="PRODUCT_IMAGE" />
-                <ScalarProperty Name="MIMETYPE" ColumnName="MIMETYPE" />
-                <ScalarProperty Name="FILENAME" ColumnName="FILENAME" />
-                <ScalarProperty Name="IMAGE_LAST_UPDATE" ColumnName="IMAGE_LAST_UPDATE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DEMO_USERS">
-            <EntityTypeMapping TypeName="ModelOnTour.DEMO_USERS">
-              <MappingFragment StoreEntitySet="DEMO_USERS">
-                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
-                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
-                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
-                <ScalarProperty Name="CREATED_ON" ColumnName="CREATED_ON" />
-                <ScalarProperty Name="QUOTA" ColumnName="QUOTA" />
-                <ScalarProperty Name="PRODUCTS" ColumnName="PRODUCTS" />
-                <ScalarProperty Name="EXPIRES_ON" ColumnName="EXPIRES_ON" />
-                <ScalarProperty Name="ADMIN_USER" ColumnName="ADMIN_USER" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DEPTs">
-            <EntityTypeMapping TypeName="ModelOnTour.DEPT">
-              <MappingFragment StoreEntitySet="DEPT">
-                <ScalarProperty Name="DEPTNO" ColumnName="DEPTNO" />
-                <ScalarProperty Name="DNAME" ColumnName="DNAME" />
-                <ScalarProperty Name="LOC" ColumnName="LOC" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DOCUMENTOes">
-            <EntityTypeMapping TypeName="ModelOnTour.DOCUMENTO">
+          <EntitySetMapping Name="DOCUMENTO">
+            <EntityTypeMapping TypeName="Model.DOCUMENTO">
               <MappingFragment StoreEntitySet="DOCUMENTO">
                 <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
                 <ScalarProperty Name="URL_DOCUMENTO" ColumnName="URL_DOCUMENTO" />
@@ -2715,22 +1080,8 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="EMPs">
-            <EntityTypeMapping TypeName="ModelOnTour.EMP">
-              <MappingFragment StoreEntitySet="EMP">
-                <ScalarProperty Name="EMPNO" ColumnName="EMPNO" />
-                <ScalarProperty Name="ENAME" ColumnName="ENAME" />
-                <ScalarProperty Name="JOB" ColumnName="JOB" />
-                <ScalarProperty Name="MGR" ColumnName="MGR" />
-                <ScalarProperty Name="HIREDATE" ColumnName="HIREDATE" />
-                <ScalarProperty Name="SAL" ColumnName="SAL" />
-                <ScalarProperty Name="COMM" ColumnName="COMM" />
-                <ScalarProperty Name="DEPTNO" ColumnName="DEPTNO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EMPLEADOes">
-            <EntityTypeMapping TypeName="ModelOnTour.EMPLEADO">
+          <EntitySetMapping Name="EMPLEADO">
+            <EntityTypeMapping TypeName="Model.EMPLEADO">
               <MappingFragment StoreEntitySet="EMPLEADO">
                 <ScalarProperty Name="NUMRUT_EMP" ColumnName="NUMRUT_EMP" />
                 <ScalarProperty Name="DRUT_EMP" ColumnName="DRUT_EMP" />
@@ -2746,8 +1097,8 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PAQUETEVIAJEs">
-            <EntityTypeMapping TypeName="ModelOnTour.PAQUETEVIAJE">
+          <EntitySetMapping Name="PAQUETEVIAJE">
+            <EntityTypeMapping TypeName="Model.PAQUETEVIAJE">
               <MappingFragment StoreEntitySet="PAQUETEVIAJE">
                 <ScalarProperty Name="ID_PAQUETEVIAJE" ColumnName="ID_PAQUETEVIAJE" />
                 <ScalarProperty Name="DESC_PAQUETEVIAJE" ColumnName="DESC_PAQUETEVIAJE" />
@@ -2757,8 +1108,8 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SERVICIOs">
-            <EntityTypeMapping TypeName="ModelOnTour.SERVICIO">
+          <EntitySetMapping Name="SERVICIO">
+            <EntityTypeMapping TypeName="Model.SERVICIO">
               <MappingFragment StoreEntitySet="SERVICIO">
                 <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
                 <ScalarProperty Name="ID_SERVICIO_WS" ColumnName="ID_SERVICIO_WS" />
@@ -2768,7 +1119,7 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SERVICIO_PAQUETE">
-            <EntityTypeMapping TypeName="ModelOnTour.SERVICIO_PAQUETE">
+            <EntityTypeMapping TypeName="Model.SERVICIO_PAQUETE">
               <MappingFragment StoreEntitySet="SERVICIO_PAQUETE">
                 <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
                 <ScalarProperty Name="ID_PAQUETEVIAJE" ColumnName="ID_PAQUETEVIAJE" />
@@ -2777,7 +1128,7 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TIPO_ACTIVIDAD">
-            <EntityTypeMapping TypeName="ModelOnTour.TIPO_ACTIVIDAD">
+            <EntityTypeMapping TypeName="Model.TIPO_ACTIVIDAD">
               <MappingFragment StoreEntitySet="TIPO_ACTIVIDAD">
                 <ScalarProperty Name="ID_TIPO_ACTIIVIDAD" ColumnName="ID_TIPO_ACTIIVIDAD" />
                 <ScalarProperty Name="DESC_TIPO_ACT" ColumnName="DESC_TIPO_ACT" />
@@ -2785,7 +1136,7 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TIPO_SERVICIO">
-            <EntityTypeMapping TypeName="ModelOnTour.TIPO_SERVICIO">
+            <EntityTypeMapping TypeName="Model.TIPO_SERVICIO">
               <MappingFragment StoreEntitySet="TIPO_SERVICIO">
                 <ScalarProperty Name="ID_TIPO_SERVICIO" ColumnName="ID_TIPO_SERVICIO" />
                 <ScalarProperty Name="DESC_SERVICIO" ColumnName="DESC_SERVICIO" />
@@ -2793,7 +1144,7 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TIPO_TRANSACCION">
-            <EntityTypeMapping TypeName="ModelOnTour.TIPO_TRANSACCION">
+            <EntityTypeMapping TypeName="Model.TIPO_TRANSACCION">
               <MappingFragment StoreEntitySet="TIPO_TRANSACCION">
                 <ScalarProperty Name="ID_TIPO_TRANSACCION" ColumnName="ID_TIPO_TRANSACCION" />
                 <ScalarProperty Name="DESC_TRANSACCION" ColumnName="DESC_TRANSACCION" />
@@ -2801,15 +1152,15 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TIPO_USUARIO">
-            <EntityTypeMapping TypeName="ModelOnTour.TIPO_USUARIO">
+            <EntityTypeMapping TypeName="Model.TIPO_USUARIO">
               <MappingFragment StoreEntitySet="TIPO_USUARIO">
                 <ScalarProperty Name="ID_TIPO_USUARIO" ColumnName="ID_TIPO_USUARIO" />
                 <ScalarProperty Name="DESC_TIPO_USUARIO" ColumnName="DESC_TIPO_USUARIO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TRANSACCIONs">
-            <EntityTypeMapping TypeName="ModelOnTour.TRANSACCION">
+          <EntitySetMapping Name="TRANSACCION">
+            <EntityTypeMapping TypeName="Model.TRANSACCION">
               <MappingFragment StoreEntitySet="TRANSACCION">
                 <ScalarProperty Name="ID_TRANSACCION" ColumnName="ID_TRANSACCION" />
                 <ScalarProperty Name="FECHA_TRANSACCION" ColumnName="FECHA_TRANSACCION" />
@@ -2820,45 +1171,14 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="USUARIOs">
-            <EntityTypeMapping TypeName="ModelOnTour.USUARIO">
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="Model.USUARIO">
               <MappingFragment StoreEntitySet="USUARIO">
                 <ScalarProperty Name="ID_USR" ColumnName="ID_USR" />
                 <ScalarProperty Name="LOGIN_USR" ColumnName="LOGIN_USR" />
                 <ScalarProperty Name="PASS_USR" ColumnName="PASS_USR" />
                 <ScalarProperty Name="ID_TIPO_USUARIO" ColumnName="ID_TIPO_USUARIO" />
                 <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="APEX__WS_HISTORY">
-            <EntityTypeMapping TypeName="ModelOnTour.APEX__WS_HISTORY">
-              <MappingFragment StoreEntitySet="APEX$_WS_HISTORY">
-                <ScalarProperty Name="ROW_ID" ColumnName="ROW_ID" />
-                <ScalarProperty Name="WS_APP_ID" ColumnName="WS_APP_ID" />
-                <ScalarProperty Name="DATA_GRID_ID" ColumnName="DATA_GRID_ID" />
-                <ScalarProperty Name="COLUMN_NAME" ColumnName="COLUMN_NAME" />
-                <ScalarProperty Name="OLD_VALUE" ColumnName="OLD_VALUE" />
-                <ScalarProperty Name="NEW_VALUE" ColumnName="NEW_VALUE" />
-                <ScalarProperty Name="APPLICATION_USER_ID" ColumnName="APPLICATION_USER_ID" />
-                <ScalarProperty Name="CHANGE_DATE" ColumnName="CHANGE_DATE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="APEX__WS_WEBPG_SECTION_HISTORY">
-            <EntityTypeMapping TypeName="ModelOnTour.APEX__WS_WEBPG_SECTION_HISTORY">
-              <MappingFragment StoreEntitySet="APEX$_WS_WEBPG_SECTION_HISTORY">
-                <ScalarProperty Name="SECTION_ID" ColumnName="SECTION_ID" />
-                <ScalarProperty Name="WS_APP_ID" ColumnName="WS_APP_ID" />
-                <ScalarProperty Name="WEBPAGE_ID" ColumnName="WEBPAGE_ID" />
-                <ScalarProperty Name="OLD_DISPLAY_SEQUENCE" ColumnName="OLD_DISPLAY_SEQUENCE" />
-                <ScalarProperty Name="NEW_DISPLAY_SEQUENCE" ColumnName="NEW_DISPLAY_SEQUENCE" />
-                <ScalarProperty Name="OLD_TITLE" ColumnName="OLD_TITLE" />
-                <ScalarProperty Name="NEW_TITLE" ColumnName="NEW_TITLE" />
-                <ScalarProperty Name="OLD_CONTENT" ColumnName="OLD_CONTENT" />
-                <ScalarProperty Name="NEW_CONTENT" ColumnName="NEW_CONTENT" />
-                <ScalarProperty Name="APPLICATION_USER_ID" ColumnName="APPLICATION_USER_ID" />
-                <ScalarProperty Name="CHANGE_DATE" ColumnName="CHANGE_DATE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2876,10 +1196,10 @@ FROM "ONTOUR"."APEX$_WS_WEBPG_SECTION_HISTORY" "APEX$_WS_WEBPG_SECTION_HISTORY"<
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="true" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

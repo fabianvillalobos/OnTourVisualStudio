@@ -17,7 +17,6 @@ public partial class AgregarContratos : System.Web.UI.Page
         try
         {
             EntitiesOnTour bd = new EntitiesOnTour();
-            int id = int.Parse(txtId.Text);
             DateTime fechInicio = DateTime.Parse(txtInicio.Text);
             DateTime fechTermino = DateTime.Parse(txtFin.Text);
             int meta = int.Parse(txtMeta.Text);
@@ -28,7 +27,6 @@ public partial class AgregarContratos : System.Web.UI.Page
 
             CONTRATO contrato = new CONTRATO()
             {
-                ID_CONTRATO = id,
                 FECHA_INICIO = fechInicio,
                 FECHA_TERMINO = fechTermino,
                 META = meta,

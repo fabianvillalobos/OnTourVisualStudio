@@ -19,6 +19,7 @@
             <Items>
                 <asp:MenuItem Text="Contratos" Value="Contratos">
                     <asp:MenuItem NavigateUrl="~/View/ListarContratos.aspx" Text="Listar" Value="Listar"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/View/AgregarContratos.aspx" Text="Agregar" Value="Agregar"></asp:MenuItem>
                 </asp:MenuItem>
                 <asp:MenuItem Text="Paquetes" Value="Paquetes"></asp:MenuItem>
                 <asp:MenuItem Text="Transacciones" Value="Transacciones"></asp:MenuItem>

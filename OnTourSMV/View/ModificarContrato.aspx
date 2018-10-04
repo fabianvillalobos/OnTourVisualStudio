@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controller/AgregarContratos.aspx.cs" Inherits="AgregarContratos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controller/ModificarContrato.aspx.cs" Inherits="View_ModificarContrato" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <h1>Agregar Contrato</h1>
+      <h1>Modificar Contrato</h1>
     <br/>
     <br/>
     <center>
@@ -11,21 +11,17 @@
             <tr>
                 <td>Fecha Inicio</td>
                 <td><asp:TextBox ID="txtInicio" runat="server" TextMode="Date"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtInicio" ErrorMessage="Requerido" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
                 <td>Fecha Termino</td>
                 <td><asp:TextBox ID="txtFin" runat="server" TextMode="Date"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtFin" ErrorMessage="Requerido" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
                 <td>Meta</td>
                 <td><asp:TextBox ID="txtMeta" runat="server" TextMode="Number" MaxLength="9" Rows="1"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtMeta" ErrorMessage="Requerido" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
                 <td>Monto</td>
                 <td><asp:TextBox ID="txtMonto" runat="server" TextMode="Number" MaxLength="9" Rows="1"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtMonto" ErrorMessage="Requerido" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
                 <td>Estado</td>
                 <td>
@@ -46,7 +42,8 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="6"><asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrar_Click"></asp:Button></td>
+                <td colspan="3"><asp:Button ID="btnCargar" runat="server" Text="Cargar Datos" OnClick="btnCargar_Click"></asp:Button></td>
+                <td colspan="3"><asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificar_Click"></asp:Button></td>
             </tr>
             <tr>
                 <td colspan="6"><asp:Label ID="LabelAviso" runat="server" Text=""></asp:Label></td>

@@ -16,6 +16,7 @@ public partial class View_Login : System.Web.UI.Page
 
     protected void btnLogin_Click(object sender, EventArgs e)
     {
+        //Los usuarios VIENEN creados desde cuando el cliente/empleado solicita/concreta el usuario/contrato
         try
         {
             EntitiesOnTour bd = new EntitiesOnTour();

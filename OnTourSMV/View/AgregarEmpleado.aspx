@@ -58,7 +58,7 @@
                 <td class="auto-style6"><asp:TextBox ID="txtDireccion" runat="server"></asp:TextBox></td>
                 <td><asp:CheckBox ID="chkActivo" runat="server" Text="Activo"></asp:CheckBox></td>
                 <td><asp:DropDownList ID="DropDownListTipoCliente" runat="server" DataSourceID="SqlDataSource1" DataTextField="DESC_TIPO_USUARIO" DataValueField="ID_TIPO_USUARIO"></asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;DESC_TIPO_USUARIO&quot;, &quot;ID_TIPO_USUARIO&quot; FROM &quot;TIPO_USUARIO&quot; ORDER BY &quot;DESC_TIPO_USUARIO&quot;, &quot;ID_TIPO_USUARIO&quot;"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;TIPO_USUARIO&quot;"></asp:SqlDataSource>
                 </td>
                 <td><asp:Label ID="Label5" runat="server" Text="Fecha Nacimiento"></asp:Label></td>
                 <td>

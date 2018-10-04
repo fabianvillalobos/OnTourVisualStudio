@@ -9,6 +9,15 @@ public partial class PaginaPpal : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //Caso en que se esté intentando logearse sin usuarios(Forzadamente)
+        if (Session["Usuario"] != null)
+        {
+            
+        }
+        //Caso en que se ingresa mediante el login correctamente
+        else
+        {
+            Response.Redirect("~/View/Login.aspx");
+        }
     }
 }

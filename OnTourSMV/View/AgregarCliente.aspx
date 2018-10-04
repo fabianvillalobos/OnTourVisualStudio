@@ -77,9 +77,9 @@
         <tr>
             <td class="auto-style2">Tipo de Usuario:</td>
             <td class="auto-style3">
-                <asp:DropDownList ID="DropDownListTipoUsuario" runat="server" DataSourceID="SqlDataSourceTipoUsuario" DataTextField="DESC_TIPO_USUARIO" DataValueField="ID_TIPO_USUARIO">
+                <asp:DropDownList ID="DropDownListTipoUsuario" runat="server" DataSourceID="SqlDataSourceTipoUsurio" DataTextField="DESC_TIPO_USUARIO" DataValueField="ID_TIPO_USUARIO">
                 </asp:DropDownList>
-                <asp:SqlDataSource ID="SqlDataSourceTipoUsuario" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;DESC_TIPO_USUARIO&quot;, &quot;ID_TIPO_USUARIO&quot; FROM &quot;TIPO_USUARIO&quot;"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSourceTipoUsurio" runat="server" ConnectionString="DATA SOURCE=ontour;PASSWORD=ontour;USER ID=ONTOUR" ProviderName="Oracle.ManagedDataAccess.Client" SelectCommand="SELECT * FROM &quot;TIPO_USUARIO&quot;"></asp:SqlDataSource>
             </td>
            
         </tr>

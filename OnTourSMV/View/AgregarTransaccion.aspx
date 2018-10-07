@@ -28,9 +28,9 @@
             <tr>
                 <td class="auto-style1">Cuenta relacionada</td>
                 <td>
-                    <asp:DropDownList ID="DropDownListCuenta" runat="server" DataSourceID="SqlDataSourceCuenta" DataTextField="NUMRUT_CLI" DataValueField="ID_CUENTA">
+                    <asp:DropDownList ID="DropDownListCuenta" runat="server" DataSourceID="SqlDataSource1" DataTextField="NUMRUT_CLI" DataValueField="ID_CUENTA">
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSourceCuenta" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;CUENTA&quot;"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;ID_CUENTA&quot;, &quot;NUMRUT_CLI&quot; FROM &quot;CUENTA&quot;"></asp:SqlDataSource>
                 </td>
             </tr>
             <tr>

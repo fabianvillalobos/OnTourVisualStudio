@@ -9,7 +9,10 @@ public partial class AgregarContratos : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["Usuario"] == null)
+        {
+            Response.Redirect("~/View/Login.aspx");
+        }
     }
 
     protected void btnRegistrar_Click(object sender, EventArgs e)

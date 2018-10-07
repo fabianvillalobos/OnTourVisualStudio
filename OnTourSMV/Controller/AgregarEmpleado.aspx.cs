@@ -10,7 +10,10 @@ public partial class AgregarEmpleado : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["Usuario"] == null)
+        {
+            Response.Redirect("~/View/Login.aspx");
+        }
     }
 
     protected void BtnAgregarEmp_Click(object sender, EventArgs e)

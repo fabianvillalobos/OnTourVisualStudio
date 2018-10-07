@@ -9,7 +9,10 @@ public partial class View_ModificarContrato : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["Usuario"] == null)
+        {
+            Response.Redirect("~/View/Login.aspx");
+        }
     }
 
     protected void btnModificar_Click(object sender, EventArgs e)

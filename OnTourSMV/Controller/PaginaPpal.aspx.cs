@@ -11,14 +11,14 @@ public partial class PaginaPpal : System.Web.UI.Page
     {
         //Caso en que se ingresa mediante el login correctamente
         
-        if (Session["Usuario"] != null)
+        if (Session["Usuario"] == null)
         {
-            
+            Response.Redirect("~/View/Login.aspx");
         }
         //Caso en que se esté intentando logearse sin usuarios(Forzadamente)
         else
         {
-            Response.Redirect("~/View/Login.aspx");
+            
         }
     }
 }

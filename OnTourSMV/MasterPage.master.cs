@@ -13,6 +13,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if (Session["Usuario"] == null)
         {
             MenuMantenedor.Visible = false;
+       
         }
         else
         {

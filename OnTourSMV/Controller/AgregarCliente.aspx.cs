@@ -12,8 +12,6 @@ public partial class AgregarCliente : System.Web.UI.Page
 
     }
 
-
-
     protected void btnAgregar_Click(object sender, EventArgs e)
     {
 

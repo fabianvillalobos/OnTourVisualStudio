@@ -70,12 +70,11 @@
                 <td><asp:TextBox ID="txtTelefono" runat="server"></asp:TextBox></td>
             </tr>
             <td>
-                <td colspan="4"><asp:Button ID="BtnAgregarEmp" runat="server" Text="Agregar" OnClick="BtnAgregarEmp_Click"></asp:Button></td>
+                <td colspan="4"><asp:Button ID="BtnAgregarEmp" runat="server" Text="Agregar" OnClick="BtnAgregarEmp_Click"></asp:Button>
+                    <br />
+                    <asp:Label ID="LabelAviso" runat="server" Text=""></asp:Label></td>
             </tr>
-            <td>
-                <td colspan="4"><asp:Label ID="LabelAviso" runat="server" Text=""></asp:Label></td>
-            </tr>
-        </table>
+            </table>
     </center>
 </asp:Content>
 

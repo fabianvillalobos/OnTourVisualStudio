@@ -18,7 +18,12 @@ public partial class PaginaPpal : System.Web.UI.Page
         //Caso en que se esté intentando logearse sin usuarios(Forzadamente)
         else
         {
-            
+            EntitiesOnTour bd = new EntitiesOnTour();
+            String usuarioSesion = Session["Usuario"].ToString();
+            USUARIO usuario = bd.USUARIO.SingleOrDefault(t => t.LOGIN_USR == usuarioSesion);
+             //Tipos de usuario 1)Administrador 2)Ejecutivo De Venta 3)Cliente 4)Dueño Agencia
+            Session["Perfil"] = usuario.TIPO_USUARIO.DESC_TIPO_USUARIO;
+            Label1.Text = Session["Perfil"].ToString();
         }
     }
 }

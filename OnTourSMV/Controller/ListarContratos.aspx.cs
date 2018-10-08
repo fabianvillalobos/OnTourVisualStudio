@@ -18,6 +18,6 @@ public partial class ListarContratos : System.Web.UI.Page
 
     protected void btnNuevoContrato_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/Controller/AgregarContrato.aspx");
+        Response.Redirect("~/View/AgregarContratos.aspx");
     }
 }

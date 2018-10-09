@@ -24,6 +24,8 @@ public partial class View_ModificarContrato : System.Web.UI.Page
     protected void btnCargar_Click(object sender, EventArgs e)
     {
         EntitiesOnTour bd = new EntitiesOnTour();
-        //CONTRATO contrato = bd.CONTRATO.FirstOrDefault(it => it.)
+        string idCont = (string)(Session["ID_CONTRATO"]);
+        LabelAviso.Text = "Contrato "+ idCont;
+
     }
 }

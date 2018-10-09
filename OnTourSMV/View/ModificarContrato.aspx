@@ -1,12 +1,41 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controller/ModificarContrato.aspx.cs" Inherits="View_ModificarContrato" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style type="text/css">
+        .auto-style1 {
+            height: 527px;
+        }
+    </style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-      <h1>Modificar Contrato</h1>
+    <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <center class="auto-style1">
+      <h1>Modificar Contrato <%=Request.QueryString["ID_CONTRATO"] %></h1>
+    <br/>
+
+    <br/>
+    <asp:GridView ID="GridView1" runat="server" DataSourceID="LinqDataSourceListarContratos" AutoGenerateColumns="False">
+        <Columns>
+            <asp:BoundField DataField="ID_CONTRATO" HeaderText="ID_CONTRATO" SortExpression="ID_CONTRATO" />
+            <asp:BoundField DataField="FECHA_INICIO" HeaderText="FECHA_INICIO" SortExpression="FECHA_INICIO" />
+            <asp:BoundField DataField="FECHA_TERMINO" HeaderText="FECHA_TERMINO" SortExpression="FECHA_TERMINO" />
+            <asp:BoundField DataField="META" HeaderText="META" SortExpression="META" />
+            <asp:BoundField DataField="MONTO_RESERVA" HeaderText="MONTO_RESERVA" SortExpression="MONTO_RESERVA" />
+            <asp:BoundField DataField="ESTADO" HeaderText="ESTADO" SortExpression="ESTADO" />
+            <asp:BoundField DataField="NUMRUT_EMP" HeaderText="NUMRUT_EMP" SortExpression="NUMRUT_EMP" />
+            <asp:BoundField DataField="NUMRUT_CLI_TITULAR" HeaderText="NUMRUT_CLI_TITULAR" SortExpression="NUMRUT_CLI_TITULAR" />
+        </Columns>
+
+    </asp:GridView>
+
+     <asp:LinqDataSource ID="LinqDataSourceListarContratos" runat="server" ContextTypeName="EntitiesOnTour" EntityTypeName="" TableName="CONTRATO" AutoGenerateOrderByClause="True" Where="ID_CONTRATO == @ID_CONTRATO">
+         <WhereParameters>
+            <asp:QueryStringParameter Name="ID_CONTRATO" QueryStringField="ID_CONTRATO" Type="Int32" />
+        </WhereParameters>
+    </asp:LinqDataSource>
+
     <br/>
     <br/>
-    <center>
+    
         <table style="width: 75%;">
             <tr>
                 <td>Fecha Inicio</td>

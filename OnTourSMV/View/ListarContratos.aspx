@@ -18,7 +18,7 @@
             <asp:BoundField DataField="RESERVA" HeaderText="RESERVA" SortExpression="RESERVA" />
             <asp:BoundField DataField="META" HeaderText="META" SortExpression="META" />
             <asp:BoundField DataField="ID_CONTRATO" HeaderText="ID_CONTRATO" SortExpression="ID_CONTRATO" Visible="False" />
-            <asp:HyperLinkField HeaderText="Editar" NavigateUrl="~/View/ModificarContrato.aspx" Text="Editar" />
+            <asp:HyperLinkField DataNavigateUrlFields="ID_CONTRATO" DataNavigateUrlFormatString="~/View/ModificarContrato.aspx?ID_CONTRATO={0}" HeaderText="Editar" Text="Editar"/>
         </Columns>
         <FooterStyle BackColor="#CCCCCC" />
         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

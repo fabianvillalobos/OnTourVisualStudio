@@ -13,6 +13,11 @@ public partial class View_ModificarContrato : System.Web.UI.Page
         {
             Response.Redirect("~/View/Login.aspx");
         }
+        else
+        {
+            String urlStr = Request.QueryString["id_contrato"];
+            int temp2 = int.Parse(urlStr);
+        }
     }
 
     protected void btnModificar_Click(object sender, EventArgs e)

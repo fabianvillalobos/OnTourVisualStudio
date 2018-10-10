@@ -28,6 +28,7 @@ public partial class View_Login : System.Web.UI.Page
         {
 
             EntitiesOnTour bd = new EntitiesOnTour();
+            
             String usuario = txtUsuario.Text;
             String clave = txtClave.Text;
             string hashClave = Convert.ToBase64String(new System.Security.Cryptography.MD5CryptoServiceProvider().

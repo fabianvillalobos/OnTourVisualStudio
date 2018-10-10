@@ -56,7 +56,7 @@
             <tr>
                 <td class="auto-style2">Activo:</td>
                 <td class="auto-style3">
-                    <asp:CheckBox ID="chkActivo" runat="server" />
+                    <asp:CheckBox ID="chkActivo" runat="server" Checked="True" />
                 </td>
             </tr>
             <tr>
@@ -75,14 +75,6 @@
                 <td class="auto-style2">Telefono:</td>
                 <td class="auto-style3">
                     <asp:TextBox ID="txtTelefono" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style2">Tipo de Usuario:</td>
-                <td class="auto-style3">
-                    <asp:DropDownList ID="DropDownListTipoUsuario" runat="server" DataSourceID="SqlDataSourceTipoUsurio" DataTextField="DESC_TIPO_USUARIO" DataValueField="ID_TIPO_USUARIO">
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSourceTipoUsurio" runat="server" ConnectionString="DATA SOURCE=ontour;PASSWORD=ontour;USER ID=ONTOUR" ProviderName="Oracle.ManagedDataAccess.Client" SelectCommand="SELECT * FROM &quot;TIPO_USUARIO&quot;"></asp:SqlDataSource>
                 </td>
             </tr>
             <tr>

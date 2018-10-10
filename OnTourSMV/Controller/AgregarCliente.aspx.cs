@@ -37,7 +37,7 @@ public partial class AgregarCliente : System.Web.UI.Page
             {
                 activo = "F";
             }
-            int tipoUsuario = int.Parse(DropDownListTipoUsuario.SelectedValue);
+            //int tipoUsuario = int.Parse(DropDownListTipoUsuario.SelectedValue);
             string direccion = txtDireccion.Text.Trim();
             DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
             string telefono = txtTelefono.Text;
@@ -52,7 +52,7 @@ public partial class AgregarCliente : System.Web.UI.Page
                 APELLIDO_MAT_CLI = apellidoM,
                 MAIL_CLI = mail,
                 ACTIVO = activo,
-                ID_USR = tipoUsuario,
+                ID_USR = 3,
                 DIRECCION_CLI = direccion,
                 FECHA_NACIMIENTO_CLI = fechaNacimiento,
                 FONO_CLI = telefono,
@@ -60,7 +60,7 @@ public partial class AgregarCliente : System.Web.UI.Page
 
             bd.CLIENTE.Add(cliente);
             bd.SaveChanges();
-            lblAviso.Text = "Cliente Creado testing";
+            lblAviso.Text = "Cliente Creado";
 
 
         }

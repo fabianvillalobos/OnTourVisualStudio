@@ -22,7 +22,7 @@ public partial class AgregarActividad : System.Web.UI.Page
             EntitiesOnTour bd = new EntitiesOnTour();
             int Tipo = int.Parse(DropDownListTipoActividad.SelectedValue);
             string descripcion = txtDescripcion.Text.Trim();
-            DateTime fecha = CalendarFecha.SelectedDate;
+            DateTime fecha = DateTime.Parse(txtFechaActividad.Text);
             int monto = int.Parse(txtMonto.Text.Trim());
             string activo = "";
             if (chbActivo.Checked)

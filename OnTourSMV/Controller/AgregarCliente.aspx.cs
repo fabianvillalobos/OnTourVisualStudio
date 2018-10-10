@@ -39,8 +39,8 @@ public partial class AgregarCliente : System.Web.UI.Page
             }
             int tipoUsuario = int.Parse(DropDownListTipoUsuario.SelectedValue);
             string direccion = txtDireccion.Text.Trim();
-            DateTime fechaNacimiento = CalendarNacimiento.SelectedDate;
-            string telefono = txtTelefono.Text;          
+            DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
+            string telefono = txtTelefono.Text;
 
 
             CLIENTE cliente = new CLIENTE()
@@ -55,19 +55,20 @@ public partial class AgregarCliente : System.Web.UI.Page
                 ID_USR = tipoUsuario,
                 DIRECCION_CLI = direccion,
                 FECHA_NACIMIENTO_CLI = fechaNacimiento,
-                FONO_CLI = telefono,                
+                FONO_CLI = telefono,
             };
 
             bd.CLIENTE.Add(cliente);
             bd.SaveChanges();
             lblAviso.Text = "Cliente Creado testing";
 
+
         }
         catch (Exception ex)
         {
             lblAviso.Text = ex.Message;
         }
-        
+
 
     }
 }

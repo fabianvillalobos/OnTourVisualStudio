@@ -25,7 +25,7 @@
             <tr>
                 <td class="auto-style2">Rut:</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="txtRut" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtRut" runat="server" TextMode="Number"></asp:TextBox>
                     -<asp:TextBox ID="txtDv" runat="server"></asp:TextBox>
                 </td>
             </tr>
@@ -50,7 +50,7 @@
             <tr>
                 <td class="auto-style2">Mail:</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="txtMail" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtMail" runat="server" TextMode="Email"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -72,7 +72,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style2">Telefono:</td>
+                <td class="auto-style2">Teléfono:</td>
                 <td class="auto-style3">
                     <asp:TextBox ID="txtTelefono" runat="server"></asp:TextBox>
                 </td>

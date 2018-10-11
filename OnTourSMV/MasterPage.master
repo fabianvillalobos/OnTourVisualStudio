@@ -11,7 +11,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        <h1>ON TOUR</h1>
         <asp:Menu ID="MenuMantenedor" runat="server" BackColor="#F7F6F3" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#7C6F57" Orientation="Horizontal" StaticSubMenuIndent="10px">
+            
             <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
             <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
             <DynamicMenuStyle BackColor="#F7F6F3" />
@@ -29,9 +31,6 @@
                 </asp:MenuItem>
                 <asp:MenuItem NavigateUrl="~/View/AgregarCliente.aspx" Text="Clientes" Value="Clientes">
                     <asp:MenuItem NavigateUrl="~/View/ListarCliente.aspx" Text="Listar" Value="Listar"></asp:MenuItem>
-                </asp:MenuItem>
-                <asp:MenuItem Text="Empleados" Value="Empleados">
-                    <asp:MenuItem NavigateUrl="~/View/AgregarEmpleado.aspx" Text="Agregar" Value="Agregar"></asp:MenuItem>
                 </asp:MenuItem>
                 <asp:MenuItem Text="Salir" Value="Salir" NavigateUrl="~/View/Login.aspx"></asp:MenuItem>
             </Items>

@@ -16,6 +16,7 @@
             <asp:BoundField DataField="DIRECCION_CLI" HeaderText="Direccion" SortExpression="DIRECCION_CLI" />
             <asp:BoundField DataField="FECHA_NACIMIENTO_CLI" HeaderText="Fecha de nacimiento" SortExpression="FECHA_NACIMIENTO_CLI" />
             <asp:BoundField DataField="FONO_CLI" HeaderText="Telefono" SortExpression="FONO_CLI" />
+            <asp:HyperLinkField DataNavigateUrlFields="NUMRUT_CLI" DataNavigateUrlFormatString="~/View/ModificarCliente.aspx?NUMRUT_CLI={0}" HeaderText="Editar" Text="Editar" />
         </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="SqlDataSourceListarCliente" runat="server" ConnectionString="DATA SOURCE=ontour;PASSWORD=ontour;USER ID=ONTOUR" ProviderName="Oracle.ManagedDataAccess.Client" SelectCommand="SELECT * FROM &quot;CLIENTE&quot;"></asp:SqlDataSource>

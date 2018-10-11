@@ -10,18 +10,18 @@
         <!-- Descripcion, Valor, Activo, Fecha de Creacion -->
         <table style="width: 100%;">
             <tr>
-                <td>Descripción:</td>
+                <td><asp:Label ID="LabelDescripcion" runat="server" Text="Descripción:"></asp:Label></td>
                 <td><asp:TextBox ID="txtDescripcion" runat="server" TextMode="MultiLine"></asp:TextBox></td>
-                <td>Valor:</td>
+                <td><asp:Label ID="LabelValor" runat="server" Text="Valor:"></asp:Label></td>
                 <td><asp:TextBox ID="txtValor" runat="server" TextMode="Number"></asp:TextBox></td>
-                <td>Activo</td>
+                <td><asp:Label ID="LabelActivo" runat="server" Text="Activo:"></asp:Label></td>
                 <td>
                     <asp:DropDownList ID="DropDownListActivo" runat="server">
                         <asp:ListItem Value="T">Activo</asp:ListItem>
                         <asp:ListItem Value="F">No Activo</asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td>Fecha De Cracion</td>
+                <td><asp:Label ID="LabelFecCreacion" runat="server" Text="Fecha De Creacion:"></asp:Label></td>
                 <td><asp:TextBox ID="txtFecha" runat="server" TextMode="Date"></asp:TextBox></td>
             </tr>
             <tr>

@@ -33,14 +33,16 @@
     <div>
         <table style="width: 100%;">
             <tr>
-                <td class="auto-style1">Saldo</td>
+                <td class="auto-style1">
+                    <asp:Label ID="LabelSaldo" runat="server" Text="Saldo:"></asp:Label></td>
                 <td>
                     <asp:TextBox ID="txtSaldo" runat="server"></asp:TextBox>
                 </td>
 
             </tr>
             <tr>
-                <td class="auto-style1">Contrato Relacionado</td>
+                <td class="auto-style1">
+                    <asp:Label ID="LabelContRel" runat="server" Text="Contrato Relacionado:"></asp:Label></td>
                 <td>
                     <asp:DropDownList ID="DropDownListContratoRela" runat="server" DataSourceID="SqlDataSourceContrato" DataTextField="ID_CONTRATO" DataValueField="ID_CONTRATO">
                     </asp:DropDownList>
@@ -49,7 +51,8 @@
 
             </tr>
             <tr>
-                <td class="auto-style1">Cliente</td>
+                <td class="auto-style1">
+                    <asp:Label ID="LabelCliente" runat="server" Text="Cliente:"></asp:Label></td>
                 <td>
                     <asp:DropDownList ID="DropDownListRut" runat="server" DataSourceID="SqlDataSourceRutCliente" DataTextField="NOMBRE_CLIE" DataValueField="NUMRUT_CLI">
                     </asp:DropDownList>
@@ -58,7 +61,8 @@
 
             </tr>
             <tr>
-                <td class="auto-style4">Activo</td>
+                <td class="auto-style4">
+                    <asp:Label ID="LabelActivo" runat="server" Text="Activo:"></asp:Label></td>
                 <td class="auto-style5">
                     <asp:DropDownList ID="DropDownListActivo" runat="server">
                         <asp:ListItem Value="T">Activo</asp:ListItem>

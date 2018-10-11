@@ -14,19 +14,22 @@
     <div>
         <table style="width: 100%;">
             <tr>
-                <td class="auto-style1">Fecha</td>
+                <td class="auto-style1">
+                    <asp:Label ID="LabelFecha" runat="server" Text="Fecha:"></asp:Label></td>
                 <td>
                     <asp:TextBox ID="txtFecha" runat="server" TextMode="Date"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">Monto</td>
+                <td class="auto-style1">
+                    <asp:Label ID="LabelMonto" runat="server" Text="Monto:"></asp:Label></td>
                 <td>
                     <asp:TextBox ID="txtMonto" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">Cuenta relacionada</td>
+                <td class="auto-style1">
+                    <asp:Label ID="LabelCuentRel" runat="server" Text="Cuenta relacionada:"></asp:Label></td>
                 <td>
                     <asp:DropDownList ID="DropDownListCuenta" runat="server" DataSourceID="SqlDataSource1" DataTextField="NUMRUT_CLI" DataValueField="ID_CUENTA">
                     </asp:DropDownList>
@@ -34,7 +37,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">Tipo de Transaccion</td>
+                <td class="auto-style1">
+                    <asp:Label ID="LabelTipoTransaccion" runat="server" Text="Tipo de Transaccion:"></asp:Label></td>
                 <td>
                     <asp:DropDownList ID="DropDownListTipo" runat="server" DataSourceID="SqlDataSourceTipoTransaccion" DataTextField="DESC_TRANSACCION" DataValueField="ID_TIPO_TRANSACCION">
                     </asp:DropDownList>
@@ -42,7 +46,8 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">Activo</td>
+                <td class="auto-style1">
+                    <asp:Label ID="LabelActivo" runat="server" Text="Activo:"></asp:Label></td>
                 <td>
                     <asp:DropDownList ID="DropDownListActivo" runat="server">
                         <asp:ListItem Value="T">Activo</asp:ListItem>

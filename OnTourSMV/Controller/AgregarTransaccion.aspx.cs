@@ -20,19 +20,12 @@ public partial class AgregarTransaccion : System.Web.UI.Page
         try
         {
             EntitiesOnTour bd = new EntitiesOnTour();
-            DateTime fecha = CalendarFecha.SelectedDate;
+            DateTime fecha = DateTime.Parse(txtFecha.Text.Trim());
             int monto = int.Parse(txtMonto.Text.Trim());
             int cuenta = int.Parse(DropDownListCuenta.SelectedValue);
             int tipo = int.Parse(DropDownListTipo.SelectedValue);
-            string activo = "";
-            if (chbActivo.Checked)
-            {
-                activo = "T";
-            }
-            else
-            {
-                activo = "F";
-            }
+            string activo = DropDownListActivo.SelectedValue;
+            
 
             TRANSACCION transaccion = new TRANSACCION() {
                 FECHA_TRANSACCION=fecha,

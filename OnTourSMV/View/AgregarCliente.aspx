@@ -18,7 +18,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div>
-        <h2>Agregar Cliente</h2>
+        <h2>Agregar Usuario</h2>
     </div>
     <div>
         <table class="auto-style4">
@@ -56,7 +56,10 @@
             <tr>
                 <td class="auto-style2">Activo:</td>
                 <td class="auto-style3">
-                    <asp:CheckBox ID="chkActivo" runat="server" Checked="True" />
+                    <asp:DropDownList ID="DropDownListActivo" runat="server">
+                        <asp:ListItem Value="T">Activo</asp:ListItem>
+                        <asp:ListItem Value="F">No Activo</asp:ListItem>
+                    </asp:DropDownList>
                 </td>
             </tr>
             <tr>

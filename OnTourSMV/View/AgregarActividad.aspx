@@ -49,13 +49,16 @@
             <tr>
                 <td>Activo</td>
                 <td>
-                    <asp:CheckBox ID="chbActivo" runat="server" />
+                    <asp:DropDownList ID="DropDownListActivo" runat="server">
+                        <asp:ListItem Value="T">Activo</asp:ListItem>
+                        <asp:ListItem Value="F">No Activo</asp:ListItem>
+                    </asp:DropDownList>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style2">Contrato Relacionado</td>
                 <td class="auto-style2">
-                    <asp:DropDownList ID="DropDownListContratoRela" runat="server" DataSourceID="ContratoAsociado" DataTextField="ID_CONTRATO" DataValueField="ID_CONTRATO" AutoPostBack="True">
+                    <asp:DropDownList ID="DropDownListContratoRela" runat="server" DataSourceID="ContratoAsociado" DataTextField="ID_CONTRATO" DataValueField="ID_CONTRATO">
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="ContratoAsociado" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;ID_CONTRATO&quot; FROM &quot;ACTIVIDAD&quot;"></asp:SqlDataSource>
                 </td>

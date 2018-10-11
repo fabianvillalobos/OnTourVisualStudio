@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controller/AgregarPaqueteViaje.aspx.cs" Inherits="AgregarPaqueteViaje" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <center>
     <h1>Agregar Paquete De Viaje</h1>
     <br/>
@@ -15,7 +15,12 @@
                 <td>Valor:</td>
                 <td><asp:TextBox ID="txtValor" runat="server" TextMode="Number"></asp:TextBox></td>
                 <td>Activo</td>
-                <td><asp:CheckBox ID="chkActivo" runat="server"></asp:CheckBox></td>
+                <td>
+                    <asp:DropDownList ID="DropDownListActivo" runat="server">
+                        <asp:ListItem Value="T">Activo</asp:ListItem>
+                        <asp:ListItem Value="F">No Activo</asp:ListItem>
+                    </asp:DropDownList>
+                </td>
                 <td>Fecha De Cracion</td>
                 <td><asp:TextBox ID="txtFecha" runat="server" TextMode="Date"></asp:TextBox></td>
             </tr>

@@ -28,15 +28,8 @@ public partial class AgregarCliente : System.Web.UI.Page
             string apellidoP = txtApellidoP.Text.Trim();
             string apellidoM = txtApellidoM.Text.Trim();
             string mail = txtMail.Text.Trim();
-            string activo = "";
-            if (chkActivo.Checked)
-            {
-                activo = "T";
-            }
-            else
-            {
-                activo = "F";
-            }
+            string activo = DropDownListActivo.SelectedValue;
+            
             //int tipoUsuario = int.Parse(DropDownListTipoUsuario.SelectedValue);
             string direccion = txtDireccion.Text.Trim();
             DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);

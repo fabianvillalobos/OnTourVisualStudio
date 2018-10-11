@@ -32,6 +32,7 @@
                     <asp:DropDownList ID="DropDownListEstado" runat="server">
                         <asp:ListItem Value="1">Vigente</asp:ListItem>
                         <asp:ListItem Value="2">No Vigente</asp:ListItem>
+                        <asp:ListItem Value="3">Pendiente</asp:ListItem>
                     </asp:DropDownList>
                 </td>
             </tr>

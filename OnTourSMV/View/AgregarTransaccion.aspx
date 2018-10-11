@@ -16,7 +16,7 @@
             <tr>
                 <td class="auto-style1">Fecha</td>
                 <td>
-                    <asp:Calendar ID="CalendarFecha" runat="server"></asp:Calendar>
+                    <asp:TextBox ID="txtFecha" runat="server" TextMode="Date"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -44,7 +44,10 @@
             <tr>
                 <td class="auto-style1">Activo</td>
                 <td>
-                    <asp:CheckBox ID="chbActivo" runat="server" />
+                    <asp:DropDownList ID="DropDownListActivo" runat="server">
+                        <asp:ListItem Value="T">Activo</asp:ListItem>
+                        <asp:ListItem Value="F">No Activo</asp:ListItem>
+                    </asp:DropDownList>
                 </td>
             </tr>
             <tr>

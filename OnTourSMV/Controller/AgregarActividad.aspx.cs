@@ -24,15 +24,7 @@ public partial class AgregarActividad : System.Web.UI.Page
             string descripcion = txtDescripcion.Text.Trim();
             DateTime fecha = DateTime.Parse(txtFechaActividad.Text);
             int monto = int.Parse(txtMonto.Text.Trim());
-            string activo = "";
-            if (chbActivo.Checked)
-            {
-                activo = "T";
-            }
-            else
-            {
-                activo = "F";
-            }
+            string activo = DropDownListActivo.SelectedValue;
             int contrato = int.Parse(DropDownListContratoRela.SelectedValue);
 
             ACTIVIDAD actividad = new ACTIVIDAD()

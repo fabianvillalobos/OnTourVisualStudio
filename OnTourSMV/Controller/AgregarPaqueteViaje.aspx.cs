@@ -22,19 +22,20 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
             EntitiesOnTour bd = new EntitiesOnTour();
             String desc = txtDescripcion.Text;
             int valor = int.Parse(txtValor.Text);
-            string activo = DropDownListActivo.SelectedValue;
-            DateTime fecha = DateTime.Parse(txtFecha.Text);
+            DateTime fechaCreacion = DateTime.Now;
 
             PAQUETEVIAJE pkgViaje = new PAQUETEVIAJE()
             {
                 DESC_PAQUETEVIAJE = desc,
                 VALOR_PAQUETEVIAJE = valor,
-                ACTIVO = activo,
-                FECHA_CREACION_PAQVIAJE = fecha
+                ACTIVO = "T",
+                FECHA_CREACION_PAQVIAJE = fechaCreacion
             };
             bd.PAQUETEVIAJE.Add(pkgViaje);
             bd.SaveChanges();
             LabelAviso.Text = "Paquete creado.";
+            txtDescripcion.Text = "";
+            txtValor.Text = "";
         }
         catch (Exception ex)
         {

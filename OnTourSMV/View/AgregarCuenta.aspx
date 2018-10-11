@@ -37,6 +37,7 @@
                     <asp:Label ID="LabelSaldo" runat="server" Text="Saldo:"></asp:Label></td>
                 <td>
                     <asp:TextBox ID="txtSaldo" runat="server"></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtSaldo" ErrorMessage="Solo números" ForeColor="#FF3300" ValidationExpression="^[0-9]*$"></asp:RegularExpressionValidator>
                 </td>
 
             </tr>

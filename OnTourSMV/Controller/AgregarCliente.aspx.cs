@@ -21,9 +21,9 @@ public partial class AgregarCliente : System.Web.UI.Page
         try
         {
             EntitiesOnTour bd = new EntitiesOnTour();
-
+            
             int rut = int.Parse(txtRut.Text.Trim());
-            string dv = txtDv.Text.Trim();
+            string dv = txtDv.Text.Trim().ToUpper();
             string nombre = txtNombre.Text.Trim();
             string apellidoP = txtApellidoP.Text.Trim();
             string apellidoM = txtApellidoM.Text.Trim();

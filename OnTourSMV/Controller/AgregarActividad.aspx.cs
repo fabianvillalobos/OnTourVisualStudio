@@ -40,6 +40,13 @@ public partial class AgregarActividad : System.Web.UI.Page
             bd.ACTIVIDAD.Add(actividad);
             bd.SaveChanges();
             lblAviso.Text = "Actividad Creada";
+
+            txtDescripcion.Text = "";
+            txtFechaActividad.Text = "";
+            txtMonto.Text = "";
+            DropDownListTipoActividad.SelectedIndex = 0;
+            DropDownListContratoRela.SelectedIndex = 0;
+            DropDownListActivo.SelectedIndex = 0;
         }
         catch (Exception ex)
         {

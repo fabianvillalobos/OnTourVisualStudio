@@ -9,11 +9,11 @@
 </asp:Content>
     <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <center class="auto-style1">
-      <h1>Modificar Contrato <%=Request.QueryString["ID_CONTRATO"] %></h1>
+      <h1>ModiModificar Contrato <%=Request.QueryString["ID_CONTRATO"] %></h1>
     <br/>
 
     <br/>
-    <asp:GridView ID="GridView1" runat="server" DataSourceID="LinqDataSourceListarContratos" AutoGenerateColumns="False">
+    <asp:GridView ID="GridViewContratos" runat="server" DataSourceID="LinqDataSourceListarContratos" AutoGenerateColumns="False">
         <Columns>
             <asp:BoundField DataField="ID_CONTRATO" HeaderText="ID_CONTRATO" SortExpression="ID_CONTRATO" />
             <asp:BoundField DataField="FECHA_INICIO" HeaderText="FECHA_INICIO" SortExpression="FECHA_INICIO" />
@@ -39,20 +39,20 @@
         <table style="width: 75%;">
             <tr>
                 <td>Fecha Inicio</td>
-                <td><asp:TextBox ID="txtInicio" runat="server" TextMode="Date"></asp:TextBox>
+                <td><asp:TextBox ID="txtInicio" runat="server"></asp:TextBox>
                 </td>
                 <td>Fecha Termino</td>
-                <td><asp:TextBox ID="txtFin" runat="server" TextMode="Date"></asp:TextBox>
+                <td><asp:TextBox ID="txtFin" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td>Meta</td>
+                <td>Meta>
                 <td><asp:TextBox ID="txtMeta" runat="server" TextMode="Number" MaxLength="9" Rows="1"></asp:TextBox>
                 </td>
                 <td>Monto</td>
                 <td><asp:TextBox ID="txtMonto" runat="server" TextMode="Number" MaxLength="9" Rows="1"></asp:TextBox>
                 </td>
-                <td>Estado</td>
+                <td>EstaEstado</td>
                 <td>
                     <asp:DropDownList ID="DropDownListEstado" runat="server">
                         <asp:ListItem Value="1">Vigente</asp:ListItem>
@@ -61,7 +61,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="1">Empleado</td>
+                <td colspan="1">Empleado>
                 <td colspan="2"><asp:DropDownList ID="DropDownListEmpleado" runat="server" DataSourceID="SqlDataSource1" DataTextField="NOMBRE_EMP" DataValueField="NUMRUT_EMP"></asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;NUMRUT_EMP&quot;, &quot;NOMBRE_EMP&quot; FROM &quot;EMPLEADO&quot;"></asp:SqlDataSource>
                 </td>

@@ -63,4 +63,37 @@ public partial class EntitiesOnTour : DbContext
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTAUSUARIO", pARAM_LOGIN_USRParameter, pARAM_PASS_USRParameter, pARAM_ID_TIPO_USUARIOParameter, pARAM_ACTIVOParameter, pARA_ID_USR);
     }
+
+    public virtual int SP_UPDATECLIENTE(Nullable<decimal> rUT, string nOMBRE, string aPELLIDO_PAT, string aPELLIDO_MAT, string mAIL_CLI, string dIRECCION, Nullable<System.DateTime> fECHA_NACIMIENTO)
+    {
+        var rUTParameter = rUT.HasValue ?
+            new ObjectParameter("RUT", rUT) :
+            new ObjectParameter("RUT", typeof(decimal));
+
+        var nOMBREParameter = nOMBRE != null ?
+            new ObjectParameter("NOMBRE", nOMBRE) :
+            new ObjectParameter("NOMBRE", typeof(string));
+
+        var aPELLIDO_PATParameter = aPELLIDO_PAT != null ?
+            new ObjectParameter("APELLIDO_PAT", aPELLIDO_PAT) :
+            new ObjectParameter("APELLIDO_PAT", typeof(string));
+
+        var aPELLIDO_MATParameter = aPELLIDO_MAT != null ?
+            new ObjectParameter("APELLIDO_MAT", aPELLIDO_MAT) :
+            new ObjectParameter("APELLIDO_MAT", typeof(string));
+
+        var mAIL_CLIParameter = mAIL_CLI != null ?
+            new ObjectParameter("MAIL_CLI", mAIL_CLI) :
+            new ObjectParameter("MAIL_CLI", typeof(string));
+
+        var dIRECCIONParameter = dIRECCION != null ?
+            new ObjectParameter("DIRECCION", dIRECCION) :
+            new ObjectParameter("DIRECCION", typeof(string));
+
+        var fECHA_NACIMIENTOParameter = fECHA_NACIMIENTO.HasValue ?
+            new ObjectParameter("FECHA_NACIMIENTO", fECHA_NACIMIENTO) :
+            new ObjectParameter("FECHA_NACIMIENTO", typeof(System.DateTime));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPDATECLIENTE", rUTParameter, nOMBREParameter, aPELLIDO_PATParameter, aPELLIDO_MATParameter, mAIL_CLIParameter, dIRECCIONParameter, fECHA_NACIMIENTOParameter);
+    }
 }

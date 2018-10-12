@@ -401,6 +401,15 @@
           <Parameter Name="PARAM_ACTIVO" Type="char" Mode="In" />
           <Parameter Name="PARA_ID_USR" Type="number" Mode="Out" />
         </Function>
+        <Function Name="SP_UPDATECLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="RUT" Type="number" Mode="In" />
+          <Parameter Name="NOMBRE" Type="varchar2" Mode="In" />
+          <Parameter Name="APELLIDO_PAT" Type="varchar2" Mode="In" />
+          <Parameter Name="APELLIDO_MAT" Type="varchar2" Mode="In" />
+          <Parameter Name="MAIL_CLI" Type="varchar2" Mode="In" />
+          <Parameter Name="DIRECCION" Type="varchar2" Mode="In" />
+          <Parameter Name="FECHA_NACIMIENTO" Type="date" Mode="In" />
+        </Function>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="ONTOUR" store:Type="Tables" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="ONTOUR" store:Type="Tables" />
@@ -1012,6 +1021,15 @@
             <Parameter Name="PARAM_ACTIVO" Mode="In" Type="String" />
             <Parameter Name="PARA_ID_USR" Mode="Out" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="SP_UPDATECLIENTE">
+            <Parameter Name="RUT" Mode="In" Type="Decimal" />
+            <Parameter Name="NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="APELLIDO_PAT" Mode="In" Type="String" />
+            <Parameter Name="APELLIDO_MAT" Mode="In" Type="String" />
+            <Parameter Name="MAIL_CLI" Mode="In" Type="String" />
+            <Parameter Name="DIRECCION" Mode="In" Type="String" />
+            <Parameter Name="FECHA_NACIMIENTO" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1200,6 +1218,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_INSERTAUSUARIO" FunctionName="Model.Store.SP_INSERTAUSUARIO" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATECLIENTE" FunctionName="Model.Store.SP_UPDATECLIENTE" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

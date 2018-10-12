@@ -18,13 +18,15 @@
                     <asp:Label ID="LabelFecha" runat="server" Text="Fecha:"></asp:Label></td>
                 <td>
                     <asp:TextBox ID="txtFecha" runat="server" TextMode="Date"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorFecha" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Requerido" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style1">
                     <asp:Label ID="LabelMonto" runat="server" Text="Monto:"></asp:Label></td>
                 <td>
-                    <asp:TextBox ID="txtMonto" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtMonto" runat="server" TextMode="Number"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorMonto" runat="server" ControlToValidate="txtMonto" ErrorMessage="Campo Requerido" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>

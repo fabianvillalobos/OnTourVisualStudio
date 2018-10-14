@@ -9,7 +9,7 @@
     <br/>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="NUMRUT_EMP" DataSourceID="ListadoEmpleados">
         <Columns>
-            <asp:BoundField DataField="NUMRUT_EMP" HeaderText="NUMRUT_EMP" ReadOnly="True" SortExpression="NUMRUT_EMP" />
+            <asp:BoundField DataField="NUMRUT_EMP" HeaderText="Rut" ReadOnly="True" SortExpression="NUMRUT_EMP" />
             <asp:BoundField DataField="DRUT_EMP" HeaderText="DRUT_EMP" SortExpression="DRUT_EMP" />
             <asp:BoundField DataField="NOMBRE_EMP" HeaderText="NOMBRE_EMP" SortExpression="NOMBRE_EMP" />
             <asp:BoundField DataField="APELLIDO_PAT_EMP" HeaderText="APELLIDO_PAT_EMP" SortExpression="APELLIDO_PAT_EMP" />

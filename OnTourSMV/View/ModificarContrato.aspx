@@ -13,17 +13,27 @@
     <br/>
 
     <br/>
-    <asp:GridView ID="GridViewContratos" runat="server" DataSourceID="LinqDataSourceListarContratos" AutoGenerateColumns="False">
+    <asp:GridView ID="GridViewContratos" runat="server" DataSourceID="LinqDataSourceListarContratos" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
+        <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
-            <asp:BoundField DataField="ID_CONTRATO" HeaderText="ID_CONTRATO" SortExpression="ID_CONTRATO" />
-            <asp:BoundField DataField="FECHA_INICIO" HeaderText="FECHA_INICIO" SortExpression="FECHA_INICIO" />
-            <asp:BoundField DataField="FECHA_TERMINO" HeaderText="FECHA_TERMINO" SortExpression="FECHA_TERMINO" />
-            <asp:BoundField DataField="META" HeaderText="META" SortExpression="META" />
-            <asp:BoundField DataField="MONTO_RESERVA" HeaderText="MONTO_RESERVA" SortExpression="MONTO_RESERVA" />
+            <asp:BoundField DataField="ID_CONTRATO" HeaderText="ID" SortExpression="ID_CONTRATO" />
+            <asp:BoundField DataField="FECHA_INICIO" HeaderText="Fecha Inicio" SortExpression="FECHA_INICIO" DataFormatString='{0:MM-dd-yyyy}'/>
+            <asp:BoundField DataField="FECHA_TERMINO" HeaderText="Fecha Termino" SortExpression="FECHA_TERMINO" DataFormatString='{0:MM-dd-yyyy}'/>
+            <asp:BoundField DataField="META" HeaderText="Meta" SortExpression="META" DataFormatString='${0:#,0}'/>
+            <asp:BoundField DataField="MONTO_RESERVA" HeaderText="Monto Reserva" SortExpression="MONTO_RESERVA" DataFormatString='${0:#,0}'/>
             <asp:BoundField DataField="ESTADO" HeaderText="ESTADO" SortExpression="ESTADO" />
-            <asp:BoundField DataField="NUMRUT_EMP" HeaderText="NUMRUT_EMP" SortExpression="NUMRUT_EMP" />
-            <asp:BoundField DataField="NUMRUT_CLI_TITULAR" HeaderText="NUMRUT_CLI_TITULAR" SortExpression="NUMRUT_CLI_TITULAR" />
+            <asp:BoundField DataField="NUMRUT_EMP" HeaderText="Rut Empleado" SortExpression="NUMRUT_EMP" />
+            <asp:BoundField DataField="NUMRUT_CLI_TITULAR" HeaderText="Rut Titular" SortExpression="NUMRUT_CLI_TITULAR" />
         </Columns>
+
+        <FooterStyle BackColor="#CCCCCC" />
+        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle BackColor="#808080" />
+        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#383838" />
 
     </asp:GridView>
 

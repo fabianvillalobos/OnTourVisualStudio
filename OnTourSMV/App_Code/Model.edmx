@@ -394,9 +394,6 @@
           <Parameter Name="P_USERNAME" Type="varchar2" Mode="In" />
           <Parameter Name="P_PASSWORD" Type="varchar2" Mode="In" />
         </Function>
-        <Function Name="SP_ELIMINAUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
-          <Parameter Name="PARAM_ID_USR" Type="number" Mode="In" />
-        </Function>
         <Function Name="SP_INSERTAUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
           <Parameter Name="PARAM_LOGIN_USR" Type="varchar2" Mode="In" />
           <Parameter Name="PARAM_PASS_USR" Type="varchar2" Mode="In" />
@@ -1024,9 +1021,6 @@
             <Parameter Name="PARAM_ACTIVO" Mode="In" Type="String" />
             <Parameter Name="PARA_ID_USR" Mode="Out" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="SP_ELIMINAUSUARIO">
-            <Parameter Name="PARAM_ID_USR" Mode="In" Type="Decimal" />
-          </FunctionImport>
           <FunctionImport Name="SP_UPDATECLIENTE">
             <Parameter Name="RUT" Mode="In" Type="Decimal" />
             <Parameter Name="NOMBRE" Mode="In" Type="String" />
@@ -1224,7 +1218,6 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_INSERTAUSUARIO" FunctionName="Model.Store.SP_INSERTAUSUARIO" />
-          <FunctionImportMapping FunctionImportName="SP_ELIMINAUSUARIO" FunctionName="Model.Store.SP_ELIMINAUSUARIO" />
           <FunctionImportMapping FunctionImportName="SP_UPDATECLIENTE" FunctionName="Model.Store.SP_UPDATECLIENTE" />
         </EntityContainerMapping>
       </Mapping>

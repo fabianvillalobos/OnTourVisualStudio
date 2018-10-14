@@ -64,15 +64,6 @@ public partial class EntitiesOnTour : DbContext
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTAUSUARIO", pARAM_LOGIN_USRParameter, pARAM_PASS_USRParameter, pARAM_ID_TIPO_USUARIOParameter, pARAM_ACTIVOParameter, pARA_ID_USR);
     }
 
-    public virtual int SP_ELIMINAUSUARIO(Nullable<decimal> pARAM_ID_USR)
-    {
-        var pARAM_ID_USRParameter = pARAM_ID_USR.HasValue ?
-            new ObjectParameter("PARAM_ID_USR", pARAM_ID_USR) :
-            new ObjectParameter("PARAM_ID_USR", typeof(decimal));
-
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ELIMINAUSUARIO", pARAM_ID_USRParameter);
-    }
-
     public virtual int SP_UPDATECLIENTE(Nullable<decimal> rUT, string nOMBRE, string aPELLIDO_PAT, string aPELLIDO_MAT, string mAIL_CLI, string dIRECCION, Nullable<System.DateTime> fECHA_NACIMIENTO)
     {
         var rUTParameter = rUT.HasValue ?

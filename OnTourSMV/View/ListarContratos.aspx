@@ -11,12 +11,12 @@
     <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
         <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
-            <asp:BoundField DataField="NOMBRE" HeaderText="NOMBRE" SortExpression="NOMBRE" />
-            <asp:BoundField DataField="APELLIDO" HeaderText="APELLIDO" SortExpression="APELLIDO" />
-            <asp:BoundField DataField="TERMINO" HeaderText="TERMINO" SortExpression="TERMINO" />
+            <asp:BoundField DataField="NOMBRE" HeaderText="Nombre" SortExpression="NOMBRE" />
+            <asp:BoundField DataField="APELLIDO" HeaderText="Apellido" SortExpression="APELLIDO" />
+            <asp:BoundField DataField="TERMINO" HeaderText="Fecha Termino" SortExpression="TERMINO" DataFormatString='{0:MM-dd-yyyy}'/>
             <asp:BoundField DataField="ESTADO" HeaderText="ESTADO" SortExpression="ESTADO" />
-            <asp:BoundField DataField="RESERVA" HeaderText="RESERVA" SortExpression="RESERVA" />
-            <asp:BoundField DataField="META" HeaderText="META" SortExpression="META" />
+            <asp:BoundField DataField="RESERVA" HeaderText="Monto Reserva" SortExpression="RESERVA" DataFormatString='${0:#,0}'/>
+            <asp:BoundField DataField="META" HeaderText="Meta" SortExpression="META" DataFormatString='${0:#,0}'/>
             <asp:BoundField DataField="ID_CONTRATO" HeaderText="ID_CONTRATO" SortExpression="ID_CONTRATO" Visible="False" />
             <asp:HyperLinkField DataNavigateUrlFields="ID_CONTRATO" DataNavigateUrlFormatString="~/View/ModificarContrato.aspx?ID_CONTRATO={0}" HeaderText="Editar" Text="Editar"/>
         </Columns>

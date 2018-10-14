@@ -29,8 +29,58 @@ public partial class ModificarCliente : System.Web.UI.Page
             txtApellidoM.Text = cliente.APELLIDO_MAT_CLI;
             txtApellidoP.Text = cliente.APELLIDO_PAT_CLI;
             txtMail.Text = cliente.MAIL_CLI;
-           //temp
+            cliente.ACTIVO = "T"; // Por default
+            txtDireccion.Text = cliente.DIRECCION_CLI;
+            txtFecha.Text = cliente.FECHA_NACIMIENTO_CLI.ToString();
+            txtTelefono.Text = cliente.FONO_CLI;
+
         }
+       
+    }
+
+    protected void btnModificar_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            EntitiesOnTour bd = new EntitiesOnTour();
+            int rut = int.Parse(txtRut.Text.Trim());
+            string dv = txtDv.Text.Trim().ToUpper();
+            string nombre = txtNombre.Text.Trim();
+            string apellidoP = txtApellidoP.Text.Trim();
+            string apellidoM = txtApellidoM.Text.Trim();
+            string mail = txtMail.Text.Trim();
+            string activo = DropDownListActivo.SelectedValue;
+
+            //int tipoUsuario = int.Parse(DropDownListTipoUsuario.SelectedValue);
+            string direccion = txtDireccion.Text.Trim();
+            DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
+            string telefono = txtTelefono.Text;
+            bd.SP_UPDATECLIENTE(rut,nombre, apellidoP, apellidoM, mail, direccion, fechaNacimiento);
+            
+            bd.SaveChanges();
+     
+
+            lblAviso.Text = "Cliente Modificado Exitosamente";
+        }
+        catch(Exception ex)
+        {
+            lblAviso.Text = ex.Message;
+        }
+       
+        /*
+        CLIENTE cliente = bd.CLIENTE.FirstOrDefault(t => t.NUMRUT_CLI == rut);
+        cliente.NUMRUT_CLI = rut;
+        cliente.DRUT_CLI = dv;
+        cliente.NOMBRE_CLIE = nombre;
+        cliente.APELLIDO_PAT_CLI = apellidoP;
+        cliente.APELLIDO_MAT_CLI = apellidoM;
+        cliente.MAIL_CLI = mail;
+        cliente.ACTIVO = activo;
+        cliente.ID_USR = 3;
+        cliente.DIRECCION_CLI = direccion;
+        cliente.FECHA_NACIMIENTO_CLI = fechaNacimiento;
+        cliente.FONO_CLI = telefono;
+        */
        
     }
 }

@@ -58,7 +58,10 @@
                 <asp:Label ID="Label6" runat="server" Text="Activo"></asp:Label>
             </td>
             <td class="auto-style1">
-                <asp:CheckBox ID="chkActivo" runat="server" />
+                    <asp:DropDownList ID="DropDownListActivo" runat="server">
+                        <asp:ListItem Value="T">Activo</asp:ListItem>
+                        <asp:ListItem Value="F">No Activo</asp:ListItem>
+                    </asp:DropDownList>
             </td>
         </tr>
         <tr>
@@ -87,7 +90,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnModificar" runat="server" Text="Modificar" />
+                <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificar_Click" />
             </td>
             <td>
                 <asp:Label ID="lblAviso" runat="server"></asp:Label>

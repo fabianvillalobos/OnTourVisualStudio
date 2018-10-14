@@ -19,6 +19,7 @@
                 <DynamicMenuStyle BackColor="#F7F6F3" />
                 <DynamicSelectedStyle BackColor="#5D7B9D" />
                 <Items>
+                    <asp:MenuItem NavigateUrl="~/View/PaginaPpal.aspx" Text="Inicio" Value="Inicio"></asp:MenuItem>
                     <asp:MenuItem Text="Contratos" Value="Contratos">
                         <asp:MenuItem NavigateUrl="~/View/ListarContratos.aspx" Text="Listar" Value="Listar"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/View/AgregarContratos.aspx" Text="Agregar" Value="Agregar"></asp:MenuItem>

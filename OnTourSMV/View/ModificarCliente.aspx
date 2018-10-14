@@ -20,14 +20,24 @@
                 <asp:TextBox ID="txtRut" runat="server" ReadOnly="True" TextMode="Number"></asp:TextBox>
                 -<asp:TextBox ID="txtDv" runat="server" ReadOnly="True"></asp:TextBox>
             </td>
+            <td>
+
+                <asp:Label ID="Label10" runat="server" Text="Estos datos no se pueden modificar"></asp:Label>
+
+            </td>
         </tr>
         <tr>
             <td>
                 <asp:Label ID="Label2" runat="server" Text="Nombre Cliente:"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ControlToValidate="txtNombre"></asp:RequiredFieldValidator>
+                <asp:TextBox ID="txtNombre" ReadOnly="True" runat="server"></asp:TextBox>
+            </td>
+            <td>
+
+                <asp:TextBox ID="txtNombreNuevo" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidatorNombreNuevo" runat="server" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ControlToValidate="txtNombreNuevo"></asp:RequiredFieldValidator>
+
             </td>
         </tr>
         <tr>
@@ -35,8 +45,13 @@
                 <asp:Label ID="Label3" runat="server" Text="Apellido Paterno"></asp:Label>
             </td>
             <td class="auto-style1">
-                <asp:TextBox ID="txtApellidoP" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ControlToValidate="txtApellidoP"></asp:RequiredFieldValidator>
+                <asp:TextBox ID="txtApellidoP" ReadOnly="True" runat="server"></asp:TextBox>
+                
+            </td>
+            <td>
+
+                <asp:TextBox ID="txtApellidoPNuevo" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidatorAPNuevo" runat="server" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ControlToValidate="txtApellidoPNuevo"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -44,8 +59,11 @@
                 <asp:Label ID="Label4" runat="server" Text="Apellido Materno:"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="txtApellidoM" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ControlToValidate="txtApellidoM"></asp:RequiredFieldValidator>
+                <asp:TextBox ID="txtApellidoM" ReadOnly="True" runat="server"></asp:TextBox>
+            </td>
+            <td>
+                <asp:TextBox ID="txtApellidoMNuevo" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidatorAMNuevo" runat="server" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ControlToValidate="txtApellidoMNuevo"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -53,8 +71,12 @@
                 <asp:Label ID="Label5" runat="server" Text="Mail"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="txtMail" runat="server" TextMode="Email"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ControlToValidate="txtMail"></asp:RequiredFieldValidator>
+                <asp:TextBox ID="txtMail" runat="server" ReadOnly="true" TextMode="Email"></asp:TextBox>
+                
+            </td>
+            <td>
+                <asp:TextBox ID="txtMailNuevo" runat="server" TextMode="Email"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidatorMailNuevo" runat="server" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ControlToValidate="txtMailNuevo"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -62,7 +84,12 @@
                 <asp:Label ID="Label6" runat="server" Text="Activo"></asp:Label>
             </td>
             <td class="auto-style1">
-                <asp:DropDownList ID="DropDownListActivo" runat="server">
+                
+                <asp:TextBox ID="txtActivo" ReadOnly="true" runat="server"></asp:TextBox>
+                
+            </td>
+            <td class="auto-style1">
+                <asp:DropDownList ID="DropDownListActivoNuevo" runat="server">
                     <asp:ListItem Value="T">Activo</asp:ListItem>
                     <asp:ListItem Value="F">No Activo</asp:ListItem>
                 </asp:DropDownList>
@@ -72,9 +99,13 @@
             <td class="auto-style7">
                 <asp:Label ID="LabelTipo" runat="server" Text="Tipo de Usuario:"></asp:Label></td>
             <td class="auto-style3">
+                <asp:TextBox ID="txtTipoUsuario" ReadOnly="true" runat="server"></asp:TextBox>
+                NO IMPLEMENTADO AUN</td>
+            <td>
                 <asp:DropDownList ID="DropDownListUsuario" runat="server" DataSourceID="SqlDataSourceTipoUsuario" DataTextField="DESC_TIPO_USUARIO" DataValueField="ID_TIPO_USUARIO">
                 </asp:DropDownList>
                 <asp:SqlDataSource ID="SqlDataSourceTipoUsuario" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;TIPO_USUARIO&quot;"></asp:SqlDataSource>
+
             </td>
         </tr>
         <tr>
@@ -82,8 +113,12 @@
                 <asp:Label ID="Label7" runat="server" Text="Dirección"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="txtDireccion" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ControlToValidate="txtDireccion"></asp:RequiredFieldValidator>
+                <asp:TextBox ID="txtDireccion" ReadOnly="true" runat="server"></asp:TextBox>
+                
+            </td>
+            <td>
+                <asp:TextBox ID="txtDireccionNuevo" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidatorDireccionNuevo" runat="server" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ControlToValidate="txtDireccionNuevo"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -91,8 +126,14 @@
                 <asp:Label ID="Label8" runat="server" Text="Fecha nacimiento"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="txtFecha" runat="server" TextMode="Date"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ControlToValidate="txtFecha"></asp:RequiredFieldValidator>
+                <asp:TextBox ID="txtFecha" ReadOnly="true" runat="server" TextMode="Date"></asp:TextBox>
+                
+            </td>
+            <td>
+
+                <asp:TextBox ID="txtFechaNuevo" runat="server" TextMode="Date"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidatorFechaNuevo" runat="server" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ControlToValidate="txtFechaNuevo"></asp:RequiredFieldValidator>
+
             </td>
         </tr>
         <tr>
@@ -100,14 +141,20 @@
                 <asp:Label ID="Label9" runat="server" Text="Teléfono"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="txtTelefono" runat="server" TextMode="Number"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ControlToValidate="txtTelefono" Display="Dynamic"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtTelefono" ErrorMessage="Ingresar solo números" ForeColor="#FF3300" ValidationExpression="^[0-9]*$" Display="Dynamic"></asp:RegularExpressionValidator>
+                <asp:TextBox ID="txtTelefono" ReadOnly="true" runat="server" TextMode="Number"></asp:TextBox>
+            </td>
+            <td>
+                <asp:TextBox ID="txtTelefonoNuevo" TextMode="Number" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidatorTelefonoNuevoRequerido" runat="server" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ControlToValidate="txtTelefonoNuevo" Display="Dynamic"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidatorTelefonoNuevoValido" runat="server" ControlToValidate="txtTelefonoNuevo" ErrorMessage="Ingresar solo números" ForeColor="#FF3300" ValidationExpression="^[0-9]*$" Display="Dynamic"></asp:RegularExpressionValidator>
             </td>
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnModificar" runat="server" Text="Modificar" />
+                <br />
+            </td>
+            <td>
+                <asp:Button ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificar_Click" />
             </td>
             <td>
                 <asp:Label ID="lblAviso" runat="server"></asp:Label>

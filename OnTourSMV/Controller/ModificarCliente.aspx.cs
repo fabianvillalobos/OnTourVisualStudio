@@ -16,6 +16,7 @@ public partial class ModificarCliente : System.Web.UI.Page
         }
         else
         {
+            //Mostrar datos no modificables para mostrar al usuario los datos actuales
             EntitiesOnTour bd = new EntitiesOnTour();
             //Recuperar por URL el ID del cliente que se quiere modificar
             String urlStr = Request.QueryString["NUMRUT_CLI"];
@@ -29,7 +30,8 @@ public partial class ModificarCliente : System.Web.UI.Page
             txtApellidoM.Text = cliente.APELLIDO_MAT_CLI;
             txtApellidoP.Text = cliente.APELLIDO_PAT_CLI;
             txtMail.Text = cliente.MAIL_CLI;
-            cliente.ACTIVO = "T"; // Por default
+            txtActivo.Text = cliente.ACTIVO; // Por default
+            //cliente tipo usuario acá
             txtDireccion.Text = cliente.DIRECCION_CLI;
             txtFecha.Text = cliente.FECHA_NACIMIENTO_CLI.ToString();
             txtTelefono.Text = cliente.FONO_CLI;
@@ -44,43 +46,39 @@ public partial class ModificarCliente : System.Web.UI.Page
         {
             EntitiesOnTour bd = new EntitiesOnTour();
             int rut = int.Parse(txtRut.Text.Trim());
-            string dv = txtDv.Text.Trim().ToUpper();
-            string nombre = txtNombre.Text.Trim();
-            string apellidoP = txtApellidoP.Text.Trim();
-            string apellidoM = txtApellidoM.Text.Trim();
-            string mail = txtMail.Text.Trim();
-            string activo = DropDownListActivo.SelectedValue;
-
+          
+            String nombreNuevo = txtNombreNuevo.Text.Trim();
+            String apellidoP = txtApellidoPNuevo.Text.Trim();
+            String apellidoM = txtApellidoMNuevo.Text.Trim();
+            String mail = txtMailNuevo.Text.Trim();
+            String activo = DropDownListActivoNuevo.SelectedValue; // AÚN NO IMPLEMENTADO EN SP
             //int tipoUsuario = int.Parse(DropDownListTipoUsuario.SelectedValue);
-            string direccion = txtDireccion.Text.Trim();
-            DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
-            string telefono = txtTelefono.Text;
-            bd.SP_UPDATECLIENTE(rut,nombre, apellidoP, apellidoM, mail, direccion, fechaNacimiento);
+            String direccion = txtDireccionNuevo.Text.Trim();
+            DateTime fechaNacimiento = DateTime.Parse(txtFechaNuevo.Text);
+            String telefono = txtTelefonoNuevo.Text;
+
+            bd.SP_UPDATECLIENTE(rut, nombreNuevo, apellidoP, apellidoM, mail, activo ,direccion, fechaNacimiento, telefono);
             
             bd.SaveChanges();
-     
-
             lblAviso.Text = "Cliente Modificado Exitosamente";
+            Page_Load(null, EventArgs.Empty); //Se recomienda MEJORAR con ajax
+
         }
         catch(Exception ex)
         {
             lblAviso.Text = ex.Message;
         }
-       
-        /*
-        CLIENTE cliente = bd.CLIENTE.FirstOrDefault(t => t.NUMRUT_CLI == rut);
-        cliente.NUMRUT_CLI = rut;
-        cliente.DRUT_CLI = dv;
-        cliente.NOMBRE_CLIE = nombre;
-        cliente.APELLIDO_PAT_CLI = apellidoP;
-        cliente.APELLIDO_MAT_CLI = apellidoM;
-        cliente.MAIL_CLI = mail;
-        cliente.ACTIVO = activo;
-        cliente.ID_USR = 3;
-        cliente.DIRECCION_CLI = direccion;
-        cliente.FECHA_NACIMIENTO_CLI = fechaNacimiento;
-        cliente.FONO_CLI = telefono;
-        */
+    
        
     }
+
+    /*
+    protected void ButtonTest_Click(object sender, EventArgs e)
+    {
+        EntitiesOnTour bd = new EntitiesOnTour();
+        bd.SP_UPDATECLIENTE(66666666, "testesbtn", "testesbtn", "testes", "testes@testes.com", "direccionaasbtn", new DateTime(2018,01,01));
+        bd.SaveChanges();
+    }
+    */
+  
 }

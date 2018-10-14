@@ -43,6 +43,15 @@ public partial class EntitiesOnTour : DbContext
     public DbSet<TRANSACCION> TRANSACCION { get; set; }
     public DbSet<USUARIO> USUARIO { get; set; }
 
+    public virtual int SP_ELIMINAUSUARIO(Nullable<decimal> pARAM_ID_USR)
+    {
+        var pARAM_ID_USRParameter = pARAM_ID_USR.HasValue ?
+            new ObjectParameter("PARAM_ID_USR", pARAM_ID_USR) :
+            new ObjectParameter("PARAM_ID_USR", typeof(decimal));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ELIMINAUSUARIO", pARAM_ID_USRParameter);
+    }
+
     public virtual int SP_INSERTAUSUARIO(string pARAM_LOGIN_USR, string pARAM_PASS_USR, Nullable<decimal> pARAM_ID_TIPO_USUARIO, string pARAM_ACTIVO, ObjectParameter pARA_ID_USR)
     {
         var pARAM_LOGIN_USRParameter = pARAM_LOGIN_USR != null ?
@@ -64,36 +73,44 @@ public partial class EntitiesOnTour : DbContext
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTAUSUARIO", pARAM_LOGIN_USRParameter, pARAM_PASS_USRParameter, pARAM_ID_TIPO_USUARIOParameter, pARAM_ACTIVOParameter, pARA_ID_USR);
     }
 
-    public virtual int SP_UPDATECLIENTE(Nullable<decimal> rUT, string nOMBRE, string aPELLIDO_PAT, string aPELLIDO_MAT, string mAIL_CLI, string dIRECCION, Nullable<System.DateTime> fECHA_NACIMIENTO)
+    public virtual int SP_UPDATECLIENTE(Nullable<decimal> pRUT, string pNOMBRE, string pAPELLIDO_PAT, string pAPELLIDO_MAT, string pMAIL_CLI, string pACTIVO, string pDIRECCION, Nullable<System.DateTime> pFECHA_NACIMIENTO, string pTELEFONO)
     {
-        var rUTParameter = rUT.HasValue ?
-            new ObjectParameter("RUT", rUT) :
-            new ObjectParameter("RUT", typeof(decimal));
+        var pRUTParameter = pRUT.HasValue ?
+            new ObjectParameter("PRUT", pRUT) :
+            new ObjectParameter("PRUT", typeof(decimal));
 
-        var nOMBREParameter = nOMBRE != null ?
-            new ObjectParameter("NOMBRE", nOMBRE) :
-            new ObjectParameter("NOMBRE", typeof(string));
+        var pNOMBREParameter = pNOMBRE != null ?
+            new ObjectParameter("PNOMBRE", pNOMBRE) :
+            new ObjectParameter("PNOMBRE", typeof(string));
 
-        var aPELLIDO_PATParameter = aPELLIDO_PAT != null ?
-            new ObjectParameter("APELLIDO_PAT", aPELLIDO_PAT) :
-            new ObjectParameter("APELLIDO_PAT", typeof(string));
+        var pAPELLIDO_PATParameter = pAPELLIDO_PAT != null ?
+            new ObjectParameter("PAPELLIDO_PAT", pAPELLIDO_PAT) :
+            new ObjectParameter("PAPELLIDO_PAT", typeof(string));
 
-        var aPELLIDO_MATParameter = aPELLIDO_MAT != null ?
-            new ObjectParameter("APELLIDO_MAT", aPELLIDO_MAT) :
-            new ObjectParameter("APELLIDO_MAT", typeof(string));
+        var pAPELLIDO_MATParameter = pAPELLIDO_MAT != null ?
+            new ObjectParameter("PAPELLIDO_MAT", pAPELLIDO_MAT) :
+            new ObjectParameter("PAPELLIDO_MAT", typeof(string));
 
-        var mAIL_CLIParameter = mAIL_CLI != null ?
-            new ObjectParameter("MAIL_CLI", mAIL_CLI) :
-            new ObjectParameter("MAIL_CLI", typeof(string));
+        var pMAIL_CLIParameter = pMAIL_CLI != null ?
+            new ObjectParameter("PMAIL_CLI", pMAIL_CLI) :
+            new ObjectParameter("PMAIL_CLI", typeof(string));
 
-        var dIRECCIONParameter = dIRECCION != null ?
-            new ObjectParameter("DIRECCION", dIRECCION) :
-            new ObjectParameter("DIRECCION", typeof(string));
+        var pACTIVOParameter = pACTIVO != null ?
+            new ObjectParameter("PACTIVO", pACTIVO) :
+            new ObjectParameter("PACTIVO", typeof(string));
 
-        var fECHA_NACIMIENTOParameter = fECHA_NACIMIENTO.HasValue ?
-            new ObjectParameter("FECHA_NACIMIENTO", fECHA_NACIMIENTO) :
-            new ObjectParameter("FECHA_NACIMIENTO", typeof(System.DateTime));
+        var pDIRECCIONParameter = pDIRECCION != null ?
+            new ObjectParameter("PDIRECCION", pDIRECCION) :
+            new ObjectParameter("PDIRECCION", typeof(string));
 
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPDATECLIENTE", rUTParameter, nOMBREParameter, aPELLIDO_PATParameter, aPELLIDO_MATParameter, mAIL_CLIParameter, dIRECCIONParameter, fECHA_NACIMIENTOParameter);
+        var pFECHA_NACIMIENTOParameter = pFECHA_NACIMIENTO.HasValue ?
+            new ObjectParameter("PFECHA_NACIMIENTO", pFECHA_NACIMIENTO) :
+            new ObjectParameter("PFECHA_NACIMIENTO", typeof(System.DateTime));
+
+        var pTELEFONOParameter = pTELEFONO != null ?
+            new ObjectParameter("PTELEFONO", pTELEFONO) :
+            new ObjectParameter("PTELEFONO", typeof(string));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPDATECLIENTE", pRUTParameter, pNOMBREParameter, pAPELLIDO_PATParameter, pAPELLIDO_MATParameter, pMAIL_CLIParameter, pACTIVOParameter, pDIRECCIONParameter, pFECHA_NACIMIENTOParameter, pTELEFONOParameter);
     }
 }

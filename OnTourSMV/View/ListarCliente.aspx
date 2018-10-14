@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:GridView ID="GridViewListarCLiente" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceListarCliente" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
+    <asp:GridView ID="GridViewListarCLiente" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSourceListarCliente" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" Height="104px" Width="1303px">
         <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
             <asp:BoundField DataField="NUMRUT_CLI" HeaderText="NUMRUT_CLI" SortExpression="NUMRUT_CLI" />
@@ -17,6 +17,7 @@
             <asp:BoundField DataField="DIRECCION_CLI" HeaderText="DIRECCION_CLI" SortExpression="DIRECCION_CLI" />
             <asp:BoundField DataField="FECHA_NACIMIENTO_CLI" HeaderText="FECHA_NACIMIENTO_CLI" SortExpression="FECHA_NACIMIENTO_CLI"/>
             <asp:BoundField DataField="FONO_CLI" HeaderText="FONO_CLI" SortExpression="FONO_CLI" />
+            <asp:HyperLinkField DataNavigateUrlFields="NUMRUT_CLI" DataNavigateUrlFormatString="~/View/ModificarCliente.aspx?NUMRUT_CLI={0}" HeaderText="EDICIÓN" Text="Modificar" />
         </Columns>
         <FooterStyle BackColor="#CCCCCC" />
         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

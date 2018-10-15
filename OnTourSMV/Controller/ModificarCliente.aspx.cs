@@ -72,13 +72,10 @@ public partial class ModificarCliente : System.Web.UI.Page
        
     }
 
-    /*
-    protected void ButtonTest_Click(object sender, EventArgs e)
+
+
+    protected void ButtonActualizarUsuario_Click(object sender, EventArgs e)
     {
-        EntitiesOnTour bd = new EntitiesOnTour();
-        bd.SP_UPDATECLIENTE(66666666, "testesbtn", "testesbtn", "testes", "testes@testes.com", "direccionaasbtn", new DateTime(2018,01,01));
-        bd.SaveChanges();
+        Response.Redirect("~/View/ActualizarUsuario.aspx");
     }
-    */
-  
 }

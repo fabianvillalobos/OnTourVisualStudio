@@ -11,6 +11,16 @@
     <div>
         <h2>Modificar Cliente <%=Request.QueryString["NUMRUT_CLI"] %></h2>
     </div>
+    <table>
+        <tr>
+            <td>
+                <asp:Label ID="Label11" runat="server" Text="Actualizar Usuario"></asp:Label>
+            </td>
+            <td>
+                <asp:Button ID="ButtonActualizarUsuario" CausesValidation="false" runat="server"  Text="Click aquí" OnClick="ButtonActualizarUsuario_Click" />
+            </td>
+        </tr>
+    </table>
     <table style="width: 100%;">
         <tr>
             <td>

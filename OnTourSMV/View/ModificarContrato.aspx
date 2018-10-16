@@ -48,6 +48,8 @@
     
         <table style="width: 75%;">
             <tr>
+                <td><asp:Label ID="Label1" runat="server" Text="ID Contrato:"></asp:Label></td>
+                <td><asp:TextBox ID="txtIdContrato" runat="server" ReadOnly="True"></asp:TextBox></td>
                 <td><asp:Label ID="LabelFecInicio" runat="server" Text="Fecha Inicio:"></asp:Label></td>
                 <td><asp:TextBox ID="txtInicio" runat="server"></asp:TextBox>
                 </td>

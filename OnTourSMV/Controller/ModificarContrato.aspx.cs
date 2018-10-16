@@ -15,15 +15,15 @@ public partial class View_ModificarContrato : System.Web.UI.Page
         }
         else
         {
-            //String urlStr = Request.QueryString["id_contrato"];
-            //int temp2 = int.Parse(urlStr);
+          
         }
     }
 
-    EntitiesOnTour bd = new EntitiesOnTour();
+   
 
     protected void btnCargar_Click(object sender, EventArgs e)
     {
+        EntitiesOnTour bd = new EntitiesOnTour();
         String urlStr = Request.QueryString["id_contrato"];
         int temp2 = int.Parse(urlStr);
 
@@ -31,6 +31,7 @@ public partial class View_ModificarContrato : System.Web.UI.Page
         CONTRATO contrato = bd.CONTRATO.FirstOrDefault(it => it.ID_CONTRATO == temp2);
 
         //txtInicio.Text = Convert.ToString(contrato.FECHA_INICIO);
+        txtIdContrato.Text = contrato.ID_CONTRATO.ToString();
         txtInicio.Text = contrato.FECHA_INICIO.ToShortDateString();
         txtFin.Text = contrato.FECHA_TERMINO.ToShortDateString();
         txtMeta.Text = contrato.META.ToString();
@@ -42,10 +43,9 @@ public partial class View_ModificarContrato : System.Web.UI.Page
 
     protected void btnModificar_Click(object sender, EventArgs e)
     {
-        String urlStr = Request.QueryString["id_contrato"];
-        int temp2 = int.Parse(urlStr);
+        try {
         EntitiesOnTour bd = new EntitiesOnTour();
-        CONTRATO contrato = bd.CONTRATO.FirstOrDefault(it => it.ID_CONTRATO == temp2);
+        int nId = int.Parse(txtIdContrato.Text);
         DateTime nInicio = DateTime.Parse(txtInicio.Text);
         DateTime nFin = DateTime.Parse(txtFin.Text);
         int nMeta = int.Parse(txtMeta.Text);
@@ -54,22 +54,12 @@ public partial class View_ModificarContrato : System.Web.UI.Page
         int nRutTit = int.Parse(DropDownListTitular.SelectedValue);
         int nRutEmp = int.Parse(DropDownListEmpleado.SelectedValue);
 
-        //empleado.direccion = nuevoDireccion;
-        //local.SaveChanges();
-
-        try{
-            contrato.FECHA_INICIO = nInicio;
-            contrato.FECHA_TERMINO = nFin;
-            contrato.META = nMeta;
-            contrato.MONTO_RESERVA = nMonto;
-            contrato.ESTADO = nEstado;
-            contrato.NUMRUT_CLI_TITULAR = nRutTit;
-            contrato.NUMRUT_EMP = nRutEmp;
-            bd.SaveChanges();
-            LabelAviso.Text = "Contrato Modificado";
-            GridViewContratos.DataBind();
+        bd.SP_UPDATECONTRATO(nId, nInicio, nFin, nMeta,nMonto, nEstado, nRutEmp, nRutTit);
+        bd.SaveChanges();
+        LabelAviso.Text = "Contrato Modificado";
+        GridViewContratos.DataBind();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             LabelAviso.Text = "Error: "+ex.Message;
         }

@@ -400,6 +400,16 @@
           <Parameter Name="PARAM_ACTIVO" Type="char" Mode="In" />
           <Parameter Name="PARA_ID_USR" Type="number" Mode="Out" />
         </Function>
+        <Function Name="SP_INSERTCONTRATO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="PID_CONTRATO" Type="number" Mode="In" />
+          <Parameter Name="PFECHA_INICIO" Type="date" Mode="In" />
+          <Parameter Name="PFECHA_TERMINO" Type="date" Mode="In" />
+          <Parameter Name="PMETA" Type="number" Mode="In" />
+          <Parameter Name="PMONTO_RESERVA" Type="number" Mode="In" />
+          <Parameter Name="PESTADO" Type="char" Mode="In" />
+          <Parameter Name="PNUMRUT_EMP" Type="number" Mode="In" />
+          <Parameter Name="PNUMRUT_CLI_TITULAR" Type="number" Mode="In" />
+        </Function>
         <Function Name="SP_UPDATECLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
           <Parameter Name="PRUT" Type="number" Mode="In" />
           <Parameter Name="PNOMBRE" Type="varchar2" Mode="In" />
@@ -1056,6 +1066,16 @@
             <Parameter Name="PNUMRUT_EMP" Mode="In" Type="Decimal" />
             <Parameter Name="PNUMRUT_CLI_TITULAR" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="SP_INSERTCONTRATO">
+            <Parameter Name="PID_CONTRATO" Mode="In" Type="Decimal" />
+            <Parameter Name="PFECHA_INICIO" Mode="In" Type="DateTime" />
+            <Parameter Name="PFECHA_TERMINO" Mode="In" Type="DateTime" />
+            <Parameter Name="PMETA" Mode="In" Type="Decimal" />
+            <Parameter Name="PMONTO_RESERVA" Mode="In" Type="Decimal" />
+            <Parameter Name="PESTADO" Mode="In" Type="String" />
+            <Parameter Name="PNUMRUT_EMP" Mode="In" Type="Decimal" />
+            <Parameter Name="PNUMRUT_CLI_TITULAR" Mode="In" Type="Decimal" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1247,6 +1267,7 @@
           <FunctionImportMapping FunctionImportName="SP_INSERTAUSUARIO" FunctionName="ModelOnTour.Store.SP_INSERTAUSUARIO" />
           <FunctionImportMapping FunctionImportName="SP_UPDATECLIENTE" FunctionName="ModelOnTour.Store.SP_UPDATECLIENTE" />
           <FunctionImportMapping FunctionImportName="SP_UPDATECONTRATO" FunctionName="ModelOnTour.Store.SP_UPDATECONTRATO" />
+          <FunctionImportMapping FunctionImportName="SP_INSERTCONTRATO" FunctionName="ModelOnTour.Store.SP_INSERTCONTRATO" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

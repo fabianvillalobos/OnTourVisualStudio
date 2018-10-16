@@ -20,6 +20,7 @@ public partial class AgregarContratos : System.Web.UI.Page
         try
         {
             EntitiesOnTour bd = new EntitiesOnTour();
+            int rut = 0;
             DateTime fechInicio = DateTime.Parse(txtInicio.Text);
             DateTime fechTermino = DateTime.Parse(txtFin.Text);
             int meta = int.Parse(txtMeta.Text);
@@ -28,6 +29,9 @@ public partial class AgregarContratos : System.Web.UI.Page
             int rutEmp = int.Parse(DropDownListEmpleado.SelectedValue);
             int rutCli = int.Parse(DropDownListTitular.SelectedValue);
 
+            bd.SP_INSERTCONTRATO(rut, fechInicio, fechTermino, meta, monto, estado, rutEmp, rutCli);
+
+            /*
             CONTRATO contrato = new CONTRATO()
             {
                 FECHA_INICIO = fechInicio,
@@ -39,6 +43,7 @@ public partial class AgregarContratos : System.Web.UI.Page
                 NUMRUT_CLI_TITULAR = rutCli
             };
             bd.CONTRATO.Add(contrato);
+            */
             bd.SaveChanges();
             LabelAviso.Text = "Contrato Generado.";
         }

@@ -400,6 +400,19 @@
           <Parameter Name="PARAM_ACTIVO" Type="char" Mode="In" />
           <Parameter Name="PARA_ID_USR" Type="number" Mode="Out" />
         </Function>
+        <Function Name="SP_INSERTCLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="CNUMRUT_CLI" Type="number" Mode="In" />
+          <Parameter Name="CDRUT_CLI" Type="char" Mode="In" />
+          <Parameter Name="CNOMBRE_CLI" Type="varchar2" Mode="In" />
+          <Parameter Name="CAPELLIDO_PAT_CLI" Type="varchar2" Mode="In" />
+          <Parameter Name="CAPELLIDO_MAT_CLI" Type="varchar2" Mode="In" />
+          <Parameter Name="CMAIL_CLI" Type="varchar2" Mode="In" />
+          <Parameter Name="CACTIVO_CLI" Type="char" Mode="In" />
+          <Parameter Name="CID_USR" Type="number" Mode="In" />
+          <Parameter Name="CDIRECCION_CLI" Type="varchar2" Mode="In" />
+          <Parameter Name="CFECHA_NACIMIENTO_CLI" Type="date" Mode="In" />
+          <Parameter Name="CFONO_CLI" Type="varchar2" Mode="In" />
+        </Function>
         <Function Name="SP_INSERTCONTRATO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
           <Parameter Name="PID_CONTRATO" Type="number" Mode="In" />
           <Parameter Name="PFECHA_INICIO" Type="date" Mode="In" />
@@ -1076,6 +1089,19 @@
             <Parameter Name="PNUMRUT_EMP" Mode="In" Type="Decimal" />
             <Parameter Name="PNUMRUT_CLI_TITULAR" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="SP_INSERTCLIENTE">
+            <Parameter Name="CNUMRUT_CLI" Mode="In" Type="Decimal" />
+            <Parameter Name="CDRUT_CLI" Mode="In" Type="String" />
+            <Parameter Name="CNOMBRE_CLI" Mode="In" Type="String" />
+            <Parameter Name="CAPELLIDO_PAT_CLI" Mode="In" Type="String" />
+            <Parameter Name="CAPELLIDO_MAT_CLI" Mode="In" Type="String" />
+            <Parameter Name="CMAIL_CLI" Mode="In" Type="String" />
+            <Parameter Name="CACTIVO_CLI" Mode="In" Type="String" />
+            <Parameter Name="CID_USR" Mode="In" Type="Decimal" />
+            <Parameter Name="CDIRECCION_CLI" Mode="In" Type="String" />
+            <Parameter Name="CFECHA_NACIMIENTO_CLI" Mode="In" Type="DateTime" />
+            <Parameter Name="CFONO_CLI" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1268,6 +1294,7 @@
           <FunctionImportMapping FunctionImportName="SP_UPDATECLIENTE" FunctionName="ModelOnTour.Store.SP_UPDATECLIENTE" />
           <FunctionImportMapping FunctionImportName="SP_UPDATECONTRATO" FunctionName="ModelOnTour.Store.SP_UPDATECONTRATO" />
           <FunctionImportMapping FunctionImportName="SP_INSERTCONTRATO" FunctionName="ModelOnTour.Store.SP_INSERTCONTRATO" />
+          <FunctionImportMapping FunctionImportName="SP_INSERTCLIENTE" FunctionName="ModelOnTour.Store.SP_INSERTCLIENTE" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

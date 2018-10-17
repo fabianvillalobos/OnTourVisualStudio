@@ -35,23 +35,23 @@ public partial class AgregarCliente : System.Web.UI.Page
             DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
             string telefono = txtTelefono.Text;
 
+            
+            //CLIENTE cliente = new CLIENTE()
+            //{
+            //    NUMRUT_CLI = rut,
+            //    DRUT_CLI = dv,
+            //    NOMBRE_CLIE = nombre,
+            //    APELLIDO_PAT_CLI = apellidoP,
+            //    APELLIDO_MAT_CLI = apellidoM,
+            //    MAIL_CLI = mail,
+            //    ACTIVO = activo,
+            //    ID_USR = tipoUsuario,
+            //    DIRECCION_CLI = direccion,
+            //    FECHA_NACIMIENTO_CLI = fechaNacimiento,
+            //    FONO_CLI = telefono,
+            //};
 
-            CLIENTE cliente = new CLIENTE()
-            {
-                NUMRUT_CLI = rut,
-                DRUT_CLI = dv,
-                NOMBRE_CLIE = nombre,
-                APELLIDO_PAT_CLI = apellidoP,
-                APELLIDO_MAT_CLI = apellidoM,
-                MAIL_CLI = mail,
-                ACTIVO = activo,
-                ID_USR = tipoUsuario,
-                DIRECCION_CLI = direccion,
-                FECHA_NACIMIENTO_CLI = fechaNacimiento,
-                FONO_CLI = telefono,
-            };
-
-            bd.CLIENTE.Add(cliente);
+            //bd.CLIENTE.Add(cliente);
             bd.SaveChanges();
             lblAviso.Text = "Cliente Creado";
 

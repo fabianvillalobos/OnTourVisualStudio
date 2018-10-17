@@ -187,4 +187,53 @@ public partial class EntitiesOnTour : DbContext
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTCONTRATO", pID_CONTRATOParameter, pFECHA_INICIOParameter, pFECHA_TERMINOParameter, pMETAParameter, pMONTO_RESERVAParameter, pESTADOParameter, pNUMRUT_EMPParameter, pNUMRUT_CLI_TITULARParameter);
     }
+
+    public virtual int SP_INSERTCLIENTE(Nullable<decimal> cNUMRUT_CLI, string cDRUT_CLI, string cNOMBRE_CLI, string cAPELLIDO_PAT_CLI, string cAPELLIDO_MAT_CLI, string cMAIL_CLI, string cACTIVO_CLI, Nullable<decimal> cID_USR, string cDIRECCION_CLI, Nullable<System.DateTime> cFECHA_NACIMIENTO_CLI, string cFONO_CLI)
+    {
+        var cNUMRUT_CLIParameter = cNUMRUT_CLI.HasValue ?
+            new ObjectParameter("CNUMRUT_CLI", cNUMRUT_CLI) :
+            new ObjectParameter("CNUMRUT_CLI", typeof(decimal));
+
+        var cDRUT_CLIParameter = cDRUT_CLI != null ?
+            new ObjectParameter("CDRUT_CLI", cDRUT_CLI) :
+            new ObjectParameter("CDRUT_CLI", typeof(string));
+
+        var cNOMBRE_CLIParameter = cNOMBRE_CLI != null ?
+            new ObjectParameter("CNOMBRE_CLI", cNOMBRE_CLI) :
+            new ObjectParameter("CNOMBRE_CLI", typeof(string));
+
+        var cAPELLIDO_PAT_CLIParameter = cAPELLIDO_PAT_CLI != null ?
+            new ObjectParameter("CAPELLIDO_PAT_CLI", cAPELLIDO_PAT_CLI) :
+            new ObjectParameter("CAPELLIDO_PAT_CLI", typeof(string));
+
+        var cAPELLIDO_MAT_CLIParameter = cAPELLIDO_MAT_CLI != null ?
+            new ObjectParameter("CAPELLIDO_MAT_CLI", cAPELLIDO_MAT_CLI) :
+            new ObjectParameter("CAPELLIDO_MAT_CLI", typeof(string));
+
+        var cMAIL_CLIParameter = cMAIL_CLI != null ?
+            new ObjectParameter("CMAIL_CLI", cMAIL_CLI) :
+            new ObjectParameter("CMAIL_CLI", typeof(string));
+
+        var cACTIVO_CLIParameter = cACTIVO_CLI != null ?
+            new ObjectParameter("CACTIVO_CLI", cACTIVO_CLI) :
+            new ObjectParameter("CACTIVO_CLI", typeof(string));
+
+        var cID_USRParameter = cID_USR.HasValue ?
+            new ObjectParameter("CID_USR", cID_USR) :
+            new ObjectParameter("CID_USR", typeof(decimal));
+
+        var cDIRECCION_CLIParameter = cDIRECCION_CLI != null ?
+            new ObjectParameter("CDIRECCION_CLI", cDIRECCION_CLI) :
+            new ObjectParameter("CDIRECCION_CLI", typeof(string));
+
+        var cFECHA_NACIMIENTO_CLIParameter = cFECHA_NACIMIENTO_CLI.HasValue ?
+            new ObjectParameter("CFECHA_NACIMIENTO_CLI", cFECHA_NACIMIENTO_CLI) :
+            new ObjectParameter("CFECHA_NACIMIENTO_CLI", typeof(System.DateTime));
+
+        var cFONO_CLIParameter = cFONO_CLI != null ?
+            new ObjectParameter("CFONO_CLI", cFONO_CLI) :
+            new ObjectParameter("CFONO_CLI", typeof(string));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTCLIENTE", cNUMRUT_CLIParameter, cDRUT_CLIParameter, cNOMBRE_CLIParameter, cAPELLIDO_PAT_CLIParameter, cAPELLIDO_MAT_CLIParameter, cMAIL_CLIParameter, cACTIVO_CLIParameter, cID_USRParameter, cDIRECCION_CLIParameter, cFECHA_NACIMIENTO_CLIParameter, cFONO_CLIParameter);
+    }
 }

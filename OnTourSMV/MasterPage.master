@@ -7,6 +7,7 @@
     <title>OnTour</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <!-- scripy link -->
 </head>
 <body>
     <form id="form1" runat="server">

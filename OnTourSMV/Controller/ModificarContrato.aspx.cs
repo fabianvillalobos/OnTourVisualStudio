@@ -48,8 +48,10 @@ public partial class View_ModificarContrato : System.Web.UI.Page
         int nId = int.Parse(txtIdContrato.Text);
         DateTime nInicio = DateTime.Parse(txtInicio.Text);
         DateTime nFin = DateTime.Parse(txtFin.Text);
-        int nMeta = int.Parse(txtMeta.Text);
-        int nMonto = int.Parse(txtMonto.Text);
+        int nMeta = 0;
+        //int nMeta = int.Parse(txtMeta.Text);
+        //int nMonto = int.Parse(txtMonto.Text);
+        int nMonto = 0;
         String nEstado = DropDownListEstado.SelectedValue;
         int nRutTit = int.Parse(DropDownListTitular.SelectedValue);
         int nRutEmp = int.Parse(DropDownListEmpleado.SelectedValue);

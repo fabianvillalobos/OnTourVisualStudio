@@ -21,11 +21,11 @@
             </tr>
             <tr>
                 <td><asp:Label ID="LabelMeta" runat="server" Text="Meta:"></asp:Label></td>
-                <td><asp:TextBox ID="txtMeta" runat="server" TextMode="Number" MaxLength="9" Rows="1"></asp:TextBox>
+                <td><asp:TextBox ID="txtMeta" runat="server" TextMode="Number" MaxLength="9" Rows="1" ReadOnly="True">0</asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtMeta" ErrorMessage="Requerido" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
-                <td><asp:Label ID="LabelMonto" runat="server" Text="Monto:"></asp:Label></td>
-                <td><asp:TextBox ID="txtMonto" runat="server" TextMode="Number" MaxLength="9" Rows="1"></asp:TextBox>
+                <td><asp:Label ID="LabelMonto" runat="server" Text="Monto Reserva:"></asp:Label></td>
+                <td><asp:TextBox ID="txtMonto" runat="server" TextMode="Number" MaxLength="9" Rows="1" ReadOnly="True">0</asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtMonto" ErrorMessage="Requerido" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
                 <td><asp:Label ID="LabelEstado" runat="server" Text="Estado:"></asp:Label></td>

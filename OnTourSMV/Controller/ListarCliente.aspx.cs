@@ -14,5 +14,6 @@ public partial class ListarCliente : System.Web.UI.Page
             Response.Redirect("~/View/Login.aspx");
         }
 
+        
     }
 }

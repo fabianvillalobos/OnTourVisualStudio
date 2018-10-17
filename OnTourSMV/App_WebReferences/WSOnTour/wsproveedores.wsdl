@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web service de proveedores</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getVuelos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="origen" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destino" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="salida" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="pasajeros" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVuelosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getVuelosResult" type="tns:ArrayOfVuelos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVuelos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="vuelos" nillable="true" type="tns:vuelos" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="vuelos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="aerolinea" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="origen" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="destino" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="salida" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="duracion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="capacidad" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ocupados" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="activo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getVueloConID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getVueloConIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getVueloConIDResult" type="tns:ArrayOfVuelos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAlojamientos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ciudad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pais" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="habitacion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAlojamientosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAlojamientosResult" type="tns:ArrayOfAlojamiento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAlojamiento">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="alojamiento" nillable="true" type="tns:alojamiento" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="alojamiento">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="h_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="h_nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="h_direccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="h_ciudad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="h_pais" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="h_habitacion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="h_precio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="h_ocupada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="h_activa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="h_servicios" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getAlojamientoConID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAlojamientoConIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAlojamientoConIDResult" type="tns:ArrayOfAlojamiento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSeguros">
+        <s:complexType />
+      </s:element>
+      <s:element name="getSegurosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSegurosResult" type="tns:ArrayOfSeguros" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSeguros">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="seguros" nillable="true" type="tns:seguros" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="seguros">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="se_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="se_nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="se_empresa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="se_desc" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="se_vigencia" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="se_activo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="se_precio" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getSegurosConID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSegurosConIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSegurosConIDResult" type="tns:ArrayOfSeguros" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfVuelos" nillable="true" type="tns:ArrayOfVuelos" />
+      <s:element name="ArrayOfAlojamiento" nillable="true" type="tns:ArrayOfAlojamiento" />
+      <s:element name="ArrayOfSeguros" nillable="true" type="tns:ArrayOfSeguros" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getVuelosSoapIn">
+    <wsdl:part name="parameters" element="tns:getVuelos" />
+  </wsdl:message>
+  <wsdl:message name="getVuelosSoapOut">
+    <wsdl:part name="parameters" element="tns:getVuelosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getVueloConIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getVueloConID" />
+  </wsdl:message>
+  <wsdl:message name="getVueloConIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getVueloConIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAlojamientosSoapIn">
+    <wsdl:part name="parameters" element="tns:getAlojamientos" />
+  </wsdl:message>
+  <wsdl:message name="getAlojamientosSoapOut">
+    <wsdl:part name="parameters" element="tns:getAlojamientosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAlojamientoConIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getAlojamientoConID" />
+  </wsdl:message>
+  <wsdl:message name="getAlojamientoConIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getAlojamientoConIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSegurosSoapIn">
+    <wsdl:part name="parameters" element="tns:getSeguros" />
+  </wsdl:message>
+  <wsdl:message name="getSegurosSoapOut">
+    <wsdl:part name="parameters" element="tns:getSegurosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSegurosConIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getSegurosConID" />
+  </wsdl:message>
+  <wsdl:message name="getSegurosConIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getSegurosConIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getVuelosHttpGetIn">
+    <wsdl:part name="origen" type="s:string" />
+    <wsdl:part name="destino" type="s:string" />
+    <wsdl:part name="salida" type="s:string" />
+    <wsdl:part name="pasajeros" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getVuelosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVuelos" />
+  </wsdl:message>
+  <wsdl:message name="getVueloConIDHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getVueloConIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVuelos" />
+  </wsdl:message>
+  <wsdl:message name="getAlojamientosHttpGetIn">
+    <wsdl:part name="ciudad" type="s:string" />
+    <wsdl:part name="pais" type="s:string" />
+    <wsdl:part name="habitacion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAlojamientosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAlojamiento" />
+  </wsdl:message>
+  <wsdl:message name="getAlojamientoConIDHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAlojamientoConIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAlojamiento" />
+  </wsdl:message>
+  <wsdl:message name="getSegurosHttpGetIn" />
+  <wsdl:message name="getSegurosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfSeguros" />
+  </wsdl:message>
+  <wsdl:message name="getSegurosConIDHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSegurosConIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfSeguros" />
+  </wsdl:message>
+  <wsdl:message name="getVuelosHttpPostIn">
+    <wsdl:part name="origen" type="s:string" />
+    <wsdl:part name="destino" type="s:string" />
+    <wsdl:part name="salida" type="s:string" />
+    <wsdl:part name="pasajeros" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getVuelosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVuelos" />
+  </wsdl:message>
+  <wsdl:message name="getVueloConIDHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getVueloConIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVuelos" />
+  </wsdl:message>
+  <wsdl:message name="getAlojamientosHttpPostIn">
+    <wsdl:part name="ciudad" type="s:string" />
+    <wsdl:part name="pais" type="s:string" />
+    <wsdl:part name="habitacion" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAlojamientosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAlojamiento" />
+  </wsdl:message>
+  <wsdl:message name="getAlojamientoConIDHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAlojamientoConIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAlojamiento" />
+  </wsdl:message>
+  <wsdl:message name="getSegurosHttpPostIn" />
+  <wsdl:message name="getSegurosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfSeguros" />
+  </wsdl:message>
+  <wsdl:message name="getSegurosConIDHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getSegurosConIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfSeguros" />
+  </wsdl:message>
+  <wsdl:portType name="wsproveedoresSoap">
+    <wsdl:operation name="getVuelos">
+      <wsdl:input message="tns:getVuelosSoapIn" />
+      <wsdl:output message="tns:getVuelosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVueloConID">
+      <wsdl:input message="tns:getVueloConIDSoapIn" />
+      <wsdl:output message="tns:getVueloConIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAlojamientos">
+      <wsdl:input message="tns:getAlojamientosSoapIn" />
+      <wsdl:output message="tns:getAlojamientosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAlojamientoConID">
+      <wsdl:input message="tns:getAlojamientoConIDSoapIn" />
+      <wsdl:output message="tns:getAlojamientoConIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSeguros">
+      <wsdl:input message="tns:getSegurosSoapIn" />
+      <wsdl:output message="tns:getSegurosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSegurosConID">
+      <wsdl:input message="tns:getSegurosConIDSoapIn" />
+      <wsdl:output message="tns:getSegurosConIDSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsproveedoresHttpGet">
+    <wsdl:operation name="getVuelos">
+      <wsdl:input message="tns:getVuelosHttpGetIn" />
+      <wsdl:output message="tns:getVuelosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVueloConID">
+      <wsdl:input message="tns:getVueloConIDHttpGetIn" />
+      <wsdl:output message="tns:getVueloConIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAlojamientos">
+      <wsdl:input message="tns:getAlojamientosHttpGetIn" />
+      <wsdl:output message="tns:getAlojamientosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAlojamientoConID">
+      <wsdl:input message="tns:getAlojamientoConIDHttpGetIn" />
+      <wsdl:output message="tns:getAlojamientoConIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSeguros">
+      <wsdl:input message="tns:getSegurosHttpGetIn" />
+      <wsdl:output message="tns:getSegurosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSegurosConID">
+      <wsdl:input message="tns:getSegurosConIDHttpGetIn" />
+      <wsdl:output message="tns:getSegurosConIDHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="wsproveedoresHttpPost">
+    <wsdl:operation name="getVuelos">
+      <wsdl:input message="tns:getVuelosHttpPostIn" />
+      <wsdl:output message="tns:getVuelosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVueloConID">
+      <wsdl:input message="tns:getVueloConIDHttpPostIn" />
+      <wsdl:output message="tns:getVueloConIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAlojamientos">
+      <wsdl:input message="tns:getAlojamientosHttpPostIn" />
+      <wsdl:output message="tns:getAlojamientosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAlojamientoConID">
+      <wsdl:input message="tns:getAlojamientoConIDHttpPostIn" />
+      <wsdl:output message="tns:getAlojamientoConIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSeguros">
+      <wsdl:input message="tns:getSegurosHttpPostIn" />
+      <wsdl:output message="tns:getSegurosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSegurosConID">
+      <wsdl:input message="tns:getSegurosConIDHttpPostIn" />
+      <wsdl:output message="tns:getSegurosConIDHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsproveedoresSoap" type="tns:wsproveedoresSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getVuelos">
+      <soap:operation soapAction="http://tempuri.org/getVuelos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVueloConID">
+      <soap:operation soapAction="http://tempuri.org/getVueloConID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAlojamientos">
+      <soap:operation soapAction="http://tempuri.org/getAlojamientos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAlojamientoConID">
+      <soap:operation soapAction="http://tempuri.org/getAlojamientoConID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSeguros">
+      <soap:operation soapAction="http://tempuri.org/getSeguros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSegurosConID">
+      <soap:operation soapAction="http://tempuri.org/getSegurosConID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsproveedoresSoap12" type="tns:wsproveedoresSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getVuelos">
+      <soap12:operation soapAction="http://tempuri.org/getVuelos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVueloConID">
+      <soap12:operation soapAction="http://tempuri.org/getVueloConID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAlojamientos">
+      <soap12:operation soapAction="http://tempuri.org/getAlojamientos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAlojamientoConID">
+      <soap12:operation soapAction="http://tempuri.org/getAlojamientoConID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSeguros">
+      <soap12:operation soapAction="http://tempuri.org/getSeguros" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSegurosConID">
+      <soap12:operation soapAction="http://tempuri.org/getSegurosConID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsproveedoresHttpGet" type="tns:wsproveedoresHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="getVuelos">
+      <http:operation location="/getVuelos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVueloConID">
+      <http:operation location="/getVueloConID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAlojamientos">
+      <http:operation location="/getAlojamientos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAlojamientoConID">
+      <http:operation location="/getAlojamientoConID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSeguros">
+      <http:operation location="/getSeguros" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSegurosConID">
+      <http:operation location="/getSegurosConID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsproveedoresHttpPost" type="tns:wsproveedoresHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="getVuelos">
+      <http:operation location="/getVuelos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVueloConID">
+      <http:operation location="/getVueloConID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAlojamientos">
+      <http:operation location="/getAlojamientos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAlojamientoConID">
+      <http:operation location="/getAlojamientoConID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSeguros">
+      <http:operation location="/getSeguros" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSegurosConID">
+      <http:operation location="/getSegurosConID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsproveedores">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web service de proveedores</wsdl:documentation>
+    <wsdl:port name="wsproveedoresSoap" binding="tns:wsproveedoresSoap">
+      <soap:address location="http://ontour.somee.com/wsproveedores.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsproveedoresSoap12" binding="tns:wsproveedoresSoap12">
+      <soap12:address location="http://ontour.somee.com/wsproveedores.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsproveedoresHttpGet" binding="tns:wsproveedoresHttpGet">
+      <http:address location="http://ontour.somee.com/wsproveedores.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsproveedoresHttpPost" binding="tns:wsproveedoresHttpPost">
+      <http:address location="http://ontour.somee.com/wsproveedores.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

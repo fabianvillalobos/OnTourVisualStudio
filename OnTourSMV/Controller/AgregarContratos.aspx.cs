@@ -23,8 +23,8 @@ public partial class AgregarContratos : System.Web.UI.Page
             int rut = 0;
             DateTime fechInicio = DateTime.Parse(txtInicio.Text);
             DateTime fechTermino = DateTime.Parse(txtFin.Text);
-            int meta = int.Parse(txtMeta.Text);
-            int monto = int.Parse(txtMonto.Text);
+            int meta = 0;
+            int monto = 0;
             String estado = DropDownListEstado.SelectedValue;
             int rutEmp = int.Parse(DropDownListEmpleado.SelectedValue);
             int rutCli = int.Parse(DropDownListTitular.SelectedValue);

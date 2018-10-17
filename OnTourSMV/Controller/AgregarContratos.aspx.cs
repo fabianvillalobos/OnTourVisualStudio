@@ -52,7 +52,7 @@ public partial class AgregarContratos : System.Web.UI.Page
             LabelAviso.Text = ex.Message;
         }
     }
-
+    /*
     protected void btnAgregar_Click(object sender, EventArgs e)
     {
         try
@@ -106,6 +106,6 @@ public partial class AgregarContratos : System.Web.UI.Page
     {
 
     }
-
+    */
    
 }

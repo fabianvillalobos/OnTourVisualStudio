@@ -24,8 +24,6 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtFin" ErrorMessage="Requerido" ForeColor="Red"></asp:RequiredFieldValidator>
                     <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtInicio" ControlToValidate="txtFin" ErrorMessage="Rango No Valido" ForeColor="#FF3300" Operator="GreaterThan"></asp:CompareValidator>
                 </td>
-                <td class="auto-style1"><asp:Button ID="btnGuardar" runat="server" Text="Guardar" OnClick="btnGuardar_Click1" /></td>
-            </tr>
             <tr>
                 <td><asp:Label ID="LabelMeta" runat="server" Text="Meta:"></asp:Label></td>
                 <td><asp:TextBox ID="txtMeta" runat="server" TextMode="Number" MaxLength="9" Rows="1" ReadOnly="True">0</asp:TextBox>
@@ -158,12 +156,7 @@
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtTelefono" ErrorMessage="Ingresar solo números" ForeColor="#FF3300" ValidationExpression="^[0-9]*$" Display="Dynamic"></asp:RegularExpressionValidator>
                 </td>
             </tr>
-            <tr>
-                <td class="auto-style7">
-                    <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click" /></td>
-                <td class="auto-style3">
-                    <asp:Label ID="lblAviso" runat="server" Text=""></asp:Label></td>
-            </tr>
+            
         </table>
     </div>
 </asp:Content>

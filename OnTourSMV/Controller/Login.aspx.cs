@@ -37,7 +37,7 @@ public partial class View_Login : System.Web.UI.Page
             if (bd.USUARIO.Any(it=> it.LOGIN_USR == usuario && it.PASS_USR == hashClave))
             {
                 Session["Usuario"] = usuario;
-                Response.Redirect("~/View/PaginaPpal.aspx");
+                Response.Redirect("~/View/ListarContratos.aspx");
             }
             else
             {

@@ -20,4 +20,6 @@ public partial class ListarContratos : System.Web.UI.Page
     {
         Response.Redirect("~/View/AgregarContratos.aspx");
     }
+  
+
 }

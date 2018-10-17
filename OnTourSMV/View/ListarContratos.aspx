@@ -7,18 +7,19 @@
     <br>
     <asp:Button ID="btnNuevoContrato" runat="server" Text="Nuevo Contrato" OnClick="btnNuevoContrato_Click" />
     <br/>
-    <br/>
+    (LISTAR SOLOS LOS CONTRATOS DEL USUARIO ACTUAL DE LA PAGINA!)<br/>
     <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
         <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
-            <asp:BoundField DataField="NOMBRE" HeaderText="Nombre" SortExpression="NOMBRE" />
-            <asp:BoundField DataField="APELLIDO" HeaderText="Apellido" SortExpression="APELLIDO" />
+            <asp:TemplateField HeaderText="#"><ItemTemplate><%# Container.DataItemIndex + 1 %></ItemTemplate></asp:TemplateField>
+            <asp:TemplateField HeaderText="NOMBRE MANDANTE"><ItemTemplate><%# DataBinder.Eval(Container.DataItem, "NOMBRE")%> <%# DataBinder.Eval(Container.DataItem, "APELLIDO")%> </ItemTemplate></asp:TemplateField>
             <asp:BoundField DataField="TERMINO" HeaderText="Fecha Termino" SortExpression="TERMINO" DataFormatString='{0:MM-dd-yyyy}'/>
             <asp:BoundField DataField="ESTADO" HeaderText="ESTADO" SortExpression="ESTADO" />
-            <asp:BoundField DataField="RESERVA" HeaderText="Monto Reserva" SortExpression="RESERVA" DataFormatString='${0:#,0}'/>
+            <asp:BoundField HeaderText="PROGRESO"/>
             <asp:BoundField DataField="META" HeaderText="Meta" SortExpression="META" DataFormatString='${0:#,0}'/>
+            <asp:BoundField DataField="RESERVA" HeaderText="Monto Reserva" SortExpression="RESERVA" DataFormatString='${0:#,0}'/>
             <asp:BoundField DataField="ID_CONTRATO" HeaderText="ID_CONTRATO" SortExpression="ID_CONTRATO" Visible="False" />
-            <asp:HyperLinkField DataNavigateUrlFields="ID_CONTRATO" DataNavigateUrlFormatString="~/View/ModificarContrato.aspx?ID_CONTRATO={0}" HeaderText="Editar" Text="Editar"/>
+            <asp:HyperLinkField DataNavigateUrlFields="ID_CONTRATO" DataNavigateUrlFormatString="~/View/ModificarContrato.aspx?ID_CONTRATO={0}" HeaderText="Opciones" Text="Editar"/>
         </Columns>
         <FooterStyle BackColor="#CCCCCC" />
         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

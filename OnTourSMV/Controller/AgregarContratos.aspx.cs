@@ -51,23 +51,23 @@ public partial class AgregarContratos : System.Web.UI.Page
             String telefono = txtTelefono.Text;
             String direccion = txtDireccion.Text.Trim();
             //Implícitos
-            char activo = 'T'; //Por defecto
+            String activo = "T"; //Por defecto
             int? idUsuario = null;
 
             bd.SP_INSERTCLIENTE(rutMandante, dv, nombre, apellidoP, apellidoM, mail, "T", idUsuario, direccion, fechaNacimiento, telefono);
 
 
             //Agregar Contrato
+            
             DateTime fechInicio = DateTime.Parse(txtInicio.Text);
             DateTime fechTermino = DateTime.Parse(txtFin.Text);
             int meta = 0;
             int montoReserva = 0;
             String estado = "P"; //Por defecto, T Será cuando se complete y F cuando se cancele
             int numrutEmpleado = int.Parse(empleadoObj.NUMRUT_EMP.ToString()); // Sesión usuario
-            
-            
-            //bd.SP_INSERTCONTRATO(rutMandante, fechInicio, fechTermino, meta, montoReserva, estado, numrutEmpleado, numrutMandante);
 
+
+            bd.SP_INSERTCONTRATO(fechInicio, fechTermino, meta, montoReserva, estado, numrutEmpleado, rutMandante);
          
             bd.SaveChanges();
             LabelAviso.Text = "Contrato Generado.";

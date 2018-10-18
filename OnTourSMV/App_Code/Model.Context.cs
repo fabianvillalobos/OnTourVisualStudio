@@ -122,12 +122,8 @@ public partial class EntitiesOnTour : DbContext
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTCLIENTE", cNUMRUT_CLIParameter, cDRUT_CLIParameter, cNOMBRE_CLIParameter, cAPELLIDO_PAT_CLIParameter, cAPELLIDO_MAT_CLIParameter, cMAIL_CLIParameter, cACTIVO_CLIParameter, cID_USRParameter, cDIRECCION_CLIParameter, cFECHA_NACIMIENTO_CLIParameter, cFONO_CLIParameter);
     }
 
-    public virtual int SP_INSERTCONTRATO(Nullable<decimal> pID_CONTRATO, Nullable<System.DateTime> pFECHA_INICIO, Nullable<System.DateTime> pFECHA_TERMINO, Nullable<decimal> pMETA, Nullable<decimal> pMONTO_RESERVA, string pESTADO, Nullable<decimal> pNUMRUT_EMP, Nullable<decimal> pNUMRUT_CLI_TITULAR)
+    public virtual int SP_INSERTCONTRATO(Nullable<System.DateTime> pFECHA_INICIO, Nullable<System.DateTime> pFECHA_TERMINO, Nullable<decimal> pMETA, Nullable<decimal> pMONTO_RESERVA, string pESTADO, Nullable<decimal> pNUMRUT_EMP, Nullable<decimal> pNUMRUT_CLI_TITULAR)
     {
-        var pID_CONTRATOParameter = pID_CONTRATO.HasValue ?
-            new ObjectParameter("PID_CONTRATO", pID_CONTRATO) :
-            new ObjectParameter("PID_CONTRATO", typeof(decimal));
-
         var pFECHA_INICIOParameter = pFECHA_INICIO.HasValue ?
             new ObjectParameter("PFECHA_INICIO", pFECHA_INICIO) :
             new ObjectParameter("PFECHA_INICIO", typeof(System.DateTime));
@@ -156,7 +152,7 @@ public partial class EntitiesOnTour : DbContext
             new ObjectParameter("PNUMRUT_CLI_TITULAR", pNUMRUT_CLI_TITULAR) :
             new ObjectParameter("PNUMRUT_CLI_TITULAR", typeof(decimal));
 
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTCONTRATO", pID_CONTRATOParameter, pFECHA_INICIOParameter, pFECHA_TERMINOParameter, pMETAParameter, pMONTO_RESERVAParameter, pESTADOParameter, pNUMRUT_EMPParameter, pNUMRUT_CLI_TITULARParameter);
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTCONTRATO", pFECHA_INICIOParameter, pFECHA_TERMINOParameter, pMETAParameter, pMONTO_RESERVAParameter, pESTADOParameter, pNUMRUT_EMPParameter, pNUMRUT_CLI_TITULARParameter);
     }
 
     public virtual int SP_LISTAPAQUETEVIAJE()

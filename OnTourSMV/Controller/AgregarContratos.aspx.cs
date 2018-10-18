@@ -66,7 +66,7 @@ public partial class AgregarContratos : System.Web.UI.Page
             int numrutEmpleado = int.Parse(empleadoObj.NUMRUT_EMP.ToString()); // Sesión usuario
             
             
-            bd.SP_INSERTCONTRATO(rutMandante, fechInicio, fechTermino, meta, montoReserva, estado, numrutEmpleado, numrutMandante);
+            //bd.SP_INSERTCONTRATO(rutMandante, fechInicio, fechTermino, meta, montoReserva, estado, numrutEmpleado, numrutMandante);
 
          
             bd.SaveChanges();

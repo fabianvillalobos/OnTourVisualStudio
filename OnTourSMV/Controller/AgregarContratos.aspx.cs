@@ -54,7 +54,7 @@ public partial class AgregarContratos : System.Web.UI.Page
             char activo = 'T'; //Por defecto
             int? idUsuario = null;
 
-            bd.SP_INSERTCLIENTE(rutMandante, dv, nombre, apellidoP, apellidoM, mail, "T", idUsuario, direccion, fechaNacimiento, telefono);
+            //bd.SP_INSERTCLIENTE(rutMandante, dv, nombre, apellidoP, apellidoM, mail, activo, idUsuario, direccion, fechaNacimiento, telefono);
 
 
             //Agregar Contrato
@@ -66,7 +66,7 @@ public partial class AgregarContratos : System.Web.UI.Page
             int numrutEmpleado = int.Parse(empleadoObj.NUMRUT_EMP.ToString()); // Sesión usuario
             
             
-            //bd.SP_INSERTCONTRATO(rutMandante, fechInicio, fechTermino, meta, montoReserva, estado, numrutEmpleado, numrutMandante);
+           // bd.SP_INSERTCONTRATO(rutMandante, fechInicio, fechTermino, meta, montoReserva, estado, numrutEmpleado, numrutMandante);
 
          
             bd.SaveChanges();

@@ -43,6 +43,8 @@ public partial class View_Login : System.Web.UI.Page
                 Session["Usuario"] = usuario;
                 //Tipos de usuario 1)Administrador 2)Ejecutivo De Venta 3)Cliente 4)Dueño Agencia
                 Session["Perfil"] = usuarioObj.TIPO_USUARIO.DESC_TIPO_USUARIO;
+                String perfilID = usuarioObj.TIPO_USUARIO.ID_TIPO_USUARIO.ToString();
+                Session["PerfilID"] = perfilID;
 
                 Response.Redirect("~/View/ListarContratos.aspx");
             }

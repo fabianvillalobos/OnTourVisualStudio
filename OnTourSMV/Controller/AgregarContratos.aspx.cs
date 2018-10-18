@@ -13,6 +13,11 @@ public partial class AgregarContratos : System.Web.UI.Page
         {
             Response.Redirect("~/View/Login.aspx");
         }
+        int perfilId = int.Parse(Session["PerfilID"].ToString());
+        if (perfilId != 2) // Solo ejecutivos de ventas pueden agregar contratos
+        {
+            Response.Redirect("~/View/PaginaPpal.aspx");
+        }
     }
 
     protected void btnRegistrar_Click(object sender, EventArgs e)
@@ -20,12 +25,16 @@ public partial class AgregarContratos : System.Web.UI.Page
         try
         {
             EntitiesOnTour bd = new EntitiesOnTour();
+            //Usado para guardar contrato con el empleado actual
+            USUARIO usuarioObj = bd.USUARIO.FirstOrDefault(it => it.LOGIN_USR == Session["Usuario"].ToString());
+            EMPLEADO empleadoObj = bd.EMPLEADO.FirstOrDefault(it => it.ID_USR == usuarioObj.ID_USR);
+
             Librerias librerias = new Librerias();
             //Agregar Mandante
 
-            int rut = int.Parse(txtRut.Text.Trim());
+            int rutMandante = int.Parse(txtRut.Text.Trim());
             String dv = txtDv.Text.Trim().ToUpper();
-            String rutCompleto = rut + dv;
+            String rutCompleto = rutMandante + dv;
 
             bool rutValido = librerias.validarRut(rutCompleto); //Validación de Rut
             if (!rutValido)
@@ -45,38 +54,21 @@ public partial class AgregarContratos : System.Web.UI.Page
             char activo = 'T'; //Por defecto
             int? idUsuario = null;
 
-            //bd.SP_INSERTCLIENTE(rut, dv, nombre, apellidoP, apellidoM, mail, activo, idUsuario, direccion, fechaNacimiento, telefono);
-
-
-
-
-
+            bd.SP_INSERTCLIENTE(rutMandante, dv, nombre, apellidoP, apellidoM, mail, "T", idUsuario, direccion, fechaNacimiento, telefono);
 
 
             //Agregar Contrato
             DateTime fechInicio = DateTime.Parse(txtInicio.Text);
             DateTime fechTermino = DateTime.Parse(txtFin.Text);
             int meta = 0;
-            int monto = 0;
+            int montoReserva = 0;
             String estado = "P"; //Por defecto, T Será cuando se complete y F cuando se cancele
+            int numrutEmpleado = int.Parse(empleadoObj.NUMRUT_EMP.ToString()); // Sesión usuario
             
-            //int rutCli = int.Parse(DropDownListTitular.SelectedValue);
+            
+            bd.SP_INSERTCONTRATO(rutMandante, fechInicio, fechTermino, meta, montoReserva, estado, numrutEmpleado, numrutMandante);
 
-         //   bd.SP_INSERTCONTRATO(rut, fechInicio, fechTermino, meta, monto, estado, rutEmp, rutCli);
-
-            /*
-            CONTRATO contrato = new CONTRATO()
-            {
-                FECHA_INICIO = fechInicio,
-                FECHA_TERMINO = fechTermino,
-                META = meta,
-                MONTO_RESERVA = monto,
-                ESTADO = estado,
-                NUMRUT_EMP = rutEmp,
-                NUMRUT_CLI_TITULAR = rutCli
-            };
-            bd.CONTRATO.Add(contrato);
-            */
+         
             bd.SaveChanges();
             LabelAviso.Text = "Contrato Generado.";
         }

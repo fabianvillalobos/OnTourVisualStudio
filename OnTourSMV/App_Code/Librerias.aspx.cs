@@ -13,7 +13,7 @@ public partial class Librerias : System.Web.UI.Page
     }
     public bool validarRut(string rut)
     {
-
+        //
         bool validacion = false;
         try
         {

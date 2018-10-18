@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ModelOnTour.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACTIVIDAD">
           <Key>
             <PropertyRef Name="ID_ACTIVIDAD" />
@@ -423,6 +423,15 @@
           <Parameter Name="PNUMRUT_EMP" Type="number" Mode="In" />
           <Parameter Name="PNUMRUT_CLI_TITULAR" Type="number" Mode="In" />
         </Function>
+        <Function Name="SP_LISTAPAQUETEVIAJE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR" />
+        <Function Name="SP_LISTATIPOUSUARIOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR" />
+        <Function Name="SP_LISTAUSUARIOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR" />
+        <Function Name="SP_OBTENERUSUARIOPERSONAPORID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_SUMATRANSACCIONES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="MONTOSUMA" Type="number" Mode="Out" />
+        </Function>
         <Function Name="SP_UPDATECLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
           <Parameter Name="PRUT" Type="number" Mode="In" />
           <Parameter Name="PNOMBRE" Type="varchar2" Mode="In" />
@@ -444,7 +453,7 @@
           <Parameter Name="PNUMRUT_EMP" Type="number" Mode="In" />
           <Parameter Name="PNUMRUT_CLI_TITULAR" Type="number" Mode="In" />
         </Function>
-        <EntityContainer Name="ModelOnTourStoreContainer">
+        <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="ONTOUR" store:Type="Tables" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="ONTOUR" store:Type="Tables" />
           <EntitySet Name="CONTRATO" EntityType="Self.CONTRATO" Schema="ONTOUR" store:Type="Tables" />
@@ -534,10 +543,11 @@
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ModelOnTour" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ACTIVIDAD">
           <Key>
             <PropertyRef Name="ID_ACTIVIDAD" />
@@ -959,7 +969,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EntitiesOnTour" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
           <EntitySet Name="CONTRATO" EntityType="Self.CONTRATO" />
@@ -1049,7 +1059,7 @@
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
           <FunctionImport Name="SP_ELIMINAUSUARIO">
-          <Parameter Name="PARAM_ID_USR" Mode="In" Type="Decimal" />
+            <Parameter Name="PARAM_ID_USR" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SP_INSERTAUSUARIO">
             <Parameter Name="PARAM_LOGIN_USR" Mode="In" Type="String" />
@@ -1057,6 +1067,38 @@
             <Parameter Name="PARAM_ID_TIPO_USUARIO" Mode="In" Type="Decimal" />
             <Parameter Name="PARAM_ACTIVO" Mode="In" Type="String" />
             <Parameter Name="PARA_ID_USR" Mode="Out" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERTCLIENTE">
+            <Parameter Name="CNUMRUT_CLI" Mode="In" Type="Decimal" />
+            <Parameter Name="CDRUT_CLI" Mode="In" Type="String" />
+            <Parameter Name="CNOMBRE_CLI" Mode="In" Type="String" />
+            <Parameter Name="CAPELLIDO_PAT_CLI" Mode="In" Type="String" />
+            <Parameter Name="CAPELLIDO_MAT_CLI" Mode="In" Type="String" />
+            <Parameter Name="CMAIL_CLI" Mode="In" Type="String" />
+            <Parameter Name="CACTIVO_CLI" Mode="In" Type="String" />
+            <Parameter Name="CID_USR" Mode="In" Type="Decimal" />
+            <Parameter Name="CDIRECCION_CLI" Mode="In" Type="String" />
+            <Parameter Name="CFECHA_NACIMIENTO_CLI" Mode="In" Type="DateTime" />
+            <Parameter Name="CFONO_CLI" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERTCONTRATO">
+            <Parameter Name="PID_CONTRATO" Mode="In" Type="Decimal" />
+            <Parameter Name="PFECHA_INICIO" Mode="In" Type="DateTime" />
+            <Parameter Name="PFECHA_TERMINO" Mode="In" Type="DateTime" />
+            <Parameter Name="PMETA" Mode="In" Type="Decimal" />
+            <Parameter Name="PMONTO_RESERVA" Mode="In" Type="Decimal" />
+            <Parameter Name="PESTADO" Mode="In" Type="String" />
+            <Parameter Name="PNUMRUT_EMP" Mode="In" Type="Decimal" />
+            <Parameter Name="PNUMRUT_CLI_TITULAR" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_LISTAPAQUETEVIAJE" />
+          <FunctionImport Name="SP_LISTATIPOUSUARIOS" />
+          <FunctionImport Name="SP_LISTAUSUARIOS" />
+          <FunctionImport Name="SP_OBTENERUSUARIOPERSONAPORID">
+            <Parameter Name="P_ID_USR" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SUMATRANSACCIONES">
+            <Parameter Name="MONTOSUMA" Mode="Out" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SP_UPDATECLIENTE">
             <Parameter Name="PRUT" Mode="In" Type="Decimal" />
@@ -1079,38 +1121,15 @@
             <Parameter Name="PNUMRUT_EMP" Mode="In" Type="Decimal" />
             <Parameter Name="PNUMRUT_CLI_TITULAR" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="SP_INSERTCONTRATO">
-            <Parameter Name="PID_CONTRATO" Mode="In" Type="Decimal" />
-            <Parameter Name="PFECHA_INICIO" Mode="In" Type="DateTime" />
-            <Parameter Name="PFECHA_TERMINO" Mode="In" Type="DateTime" />
-            <Parameter Name="PMETA" Mode="In" Type="Decimal" />
-            <Parameter Name="PMONTO_RESERVA" Mode="In" Type="Decimal" />
-            <Parameter Name="PESTADO" Mode="In" Type="String" />
-            <Parameter Name="PNUMRUT_EMP" Mode="In" Type="Decimal" />
-            <Parameter Name="PNUMRUT_CLI_TITULAR" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="SP_INSERTCLIENTE">
-            <Parameter Name="CNUMRUT_CLI" Mode="In" Type="Decimal" />
-            <Parameter Name="CDRUT_CLI" Mode="In" Type="String" />
-            <Parameter Name="CNOMBRE_CLI" Mode="In" Type="String" />
-            <Parameter Name="CAPELLIDO_PAT_CLI" Mode="In" Type="String" />
-            <Parameter Name="CAPELLIDO_MAT_CLI" Mode="In" Type="String" />
-            <Parameter Name="CMAIL_CLI" Mode="In" Type="String" />
-            <Parameter Name="CACTIVO_CLI" Mode="In" Type="String" />
-            <Parameter Name="CID_USR" Mode="In" Type="Decimal" />
-            <Parameter Name="CDIRECCION_CLI" Mode="In" Type="String" />
-            <Parameter Name="CFECHA_NACIMIENTO_CLI" Mode="In" Type="DateTime" />
-            <Parameter Name="CFONO_CLI" Mode="In" Type="String" />
-          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelOnTourStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="EntitiesOnTour">
           <EntitySetMapping Name="ACTIVIDAD">
-            <EntityTypeMapping TypeName="ModelOnTour.ACTIVIDAD">
+            <EntityTypeMapping TypeName="Model.ACTIVIDAD">
               <MappingFragment StoreEntitySet="ACTIVIDAD">
                 <ScalarProperty Name="ID_ACTIVIDAD" ColumnName="ID_ACTIVIDAD" />
                 <ScalarProperty Name="DESC_ACTIVIDAD" ColumnName="DESC_ACTIVIDAD" />
@@ -1123,7 +1142,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CLIENTE">
-            <EntityTypeMapping TypeName="ModelOnTour.CLIENTE">
+            <EntityTypeMapping TypeName="Model.CLIENTE">
               <MappingFragment StoreEntitySet="CLIENTE">
                 <ScalarProperty Name="NUMRUT_CLI" ColumnName="NUMRUT_CLI" />
                 <ScalarProperty Name="DRUT_CLI" ColumnName="DRUT_CLI" />
@@ -1140,7 +1159,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CONTRATO">
-            <EntityTypeMapping TypeName="ModelOnTour.CONTRATO">
+            <EntityTypeMapping TypeName="Model.CONTRATO">
               <MappingFragment StoreEntitySet="CONTRATO">
                 <ScalarProperty Name="ID_CONTRATO" ColumnName="ID_CONTRATO" />
                 <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
@@ -1154,7 +1173,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CONTRATO_PAQUETE">
-            <EntityTypeMapping TypeName="ModelOnTour.CONTRATO_PAQUETE">
+            <EntityTypeMapping TypeName="Model.CONTRATO_PAQUETE">
               <MappingFragment StoreEntitySet="CONTRATO_PAQUETE">
                 <ScalarProperty Name="ID_CONTRATO" ColumnName="ID_CONTRATO" />
                 <ScalarProperty Name="ID_PAQUETEVIAJE" ColumnName="ID_PAQUETEVIAJE" />
@@ -1163,7 +1182,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CUENTA">
-            <EntityTypeMapping TypeName="ModelOnTour.CUENTA">
+            <EntityTypeMapping TypeName="Model.CUENTA">
               <MappingFragment StoreEntitySet="CUENTA">
                 <ScalarProperty Name="ID_CUENTA" ColumnName="ID_CUENTA" />
                 <ScalarProperty Name="SALDO" ColumnName="SALDO" />
@@ -1174,7 +1193,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DOCUMENTO">
-            <EntityTypeMapping TypeName="ModelOnTour.DOCUMENTO">
+            <EntityTypeMapping TypeName="Model.DOCUMENTO">
               <MappingFragment StoreEntitySet="DOCUMENTO">
                 <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
                 <ScalarProperty Name="URL_DOCUMENTO" ColumnName="URL_DOCUMENTO" />
@@ -1188,7 +1207,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EMPLEADO">
-            <EntityTypeMapping TypeName="ModelOnTour.EMPLEADO">
+            <EntityTypeMapping TypeName="Model.EMPLEADO">
               <MappingFragment StoreEntitySet="EMPLEADO">
                 <ScalarProperty Name="NUMRUT_EMP" ColumnName="NUMRUT_EMP" />
                 <ScalarProperty Name="DRUT_EMP" ColumnName="DRUT_EMP" />
@@ -1205,7 +1224,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PAQUETEVIAJE">
-            <EntityTypeMapping TypeName="ModelOnTour.PAQUETEVIAJE">
+            <EntityTypeMapping TypeName="Model.PAQUETEVIAJE">
               <MappingFragment StoreEntitySet="PAQUETEVIAJE">
                 <ScalarProperty Name="ID_PAQUETEVIAJE" ColumnName="ID_PAQUETEVIAJE" />
                 <ScalarProperty Name="DESC_PAQUETEVIAJE" ColumnName="DESC_PAQUETEVIAJE" />
@@ -1216,7 +1235,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SERVICIO">
-            <EntityTypeMapping TypeName="ModelOnTour.SERVICIO">
+            <EntityTypeMapping TypeName="Model.SERVICIO">
               <MappingFragment StoreEntitySet="SERVICIO">
                 <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
                 <ScalarProperty Name="ID_SERVICIO_WS" ColumnName="ID_SERVICIO_WS" />
@@ -1226,7 +1245,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SERVICIO_PAQUETE">
-            <EntityTypeMapping TypeName="ModelOnTour.SERVICIO_PAQUETE">
+            <EntityTypeMapping TypeName="Model.SERVICIO_PAQUETE">
               <MappingFragment StoreEntitySet="SERVICIO_PAQUETE">
                 <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
                 <ScalarProperty Name="ID_PAQUETEVIAJE" ColumnName="ID_PAQUETEVIAJE" />
@@ -1235,7 +1254,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TIPO_ACTIVIDAD">
-            <EntityTypeMapping TypeName="ModelOnTour.TIPO_ACTIVIDAD">
+            <EntityTypeMapping TypeName="Model.TIPO_ACTIVIDAD">
               <MappingFragment StoreEntitySet="TIPO_ACTIVIDAD">
                 <ScalarProperty Name="ID_TIPO_ACTIIVIDAD" ColumnName="ID_TIPO_ACTIIVIDAD" />
                 <ScalarProperty Name="DESC_TIPO_ACT" ColumnName="DESC_TIPO_ACT" />
@@ -1243,7 +1262,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TIPO_SERVICIO">
-            <EntityTypeMapping TypeName="ModelOnTour.TIPO_SERVICIO">
+            <EntityTypeMapping TypeName="Model.TIPO_SERVICIO">
               <MappingFragment StoreEntitySet="TIPO_SERVICIO">
                 <ScalarProperty Name="ID_TIPO_SERVICIO" ColumnName="ID_TIPO_SERVICIO" />
                 <ScalarProperty Name="DESC_SERVICIO" ColumnName="DESC_SERVICIO" />
@@ -1251,7 +1270,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TIPO_TRANSACCION">
-            <EntityTypeMapping TypeName="ModelOnTour.TIPO_TRANSACCION">
+            <EntityTypeMapping TypeName="Model.TIPO_TRANSACCION">
               <MappingFragment StoreEntitySet="TIPO_TRANSACCION">
                 <ScalarProperty Name="ID_TIPO_TRANSACCION" ColumnName="ID_TIPO_TRANSACCION" />
                 <ScalarProperty Name="DESC_TRANSACCION" ColumnName="DESC_TRANSACCION" />
@@ -1259,7 +1278,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TIPO_USUARIO">
-            <EntityTypeMapping TypeName="ModelOnTour.TIPO_USUARIO">
+            <EntityTypeMapping TypeName="Model.TIPO_USUARIO">
               <MappingFragment StoreEntitySet="TIPO_USUARIO">
                 <ScalarProperty Name="ID_TIPO_USUARIO" ColumnName="ID_TIPO_USUARIO" />
                 <ScalarProperty Name="DESC_TIPO_USUARIO" ColumnName="DESC_TIPO_USUARIO" />
@@ -1267,7 +1286,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TRANSACCION">
-            <EntityTypeMapping TypeName="ModelOnTour.TRANSACCION">
+            <EntityTypeMapping TypeName="Model.TRANSACCION">
               <MappingFragment StoreEntitySet="TRANSACCION">
                 <ScalarProperty Name="ID_TRANSACCION" ColumnName="ID_TRANSACCION" />
                 <ScalarProperty Name="FECHA_TRANSACCION" ColumnName="FECHA_TRANSACCION" />
@@ -1279,7 +1298,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="USUARIO">
-            <EntityTypeMapping TypeName="ModelOnTour.USUARIO">
+            <EntityTypeMapping TypeName="Model.USUARIO">
               <MappingFragment StoreEntitySet="USUARIO">
                 <ScalarProperty Name="ID_USR" ColumnName="ID_USR" />
                 <ScalarProperty Name="LOGIN_USR" ColumnName="LOGIN_USR" />
@@ -1289,12 +1308,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SP_ELIMINAUSUARIO" FunctionName="ModelOnTour.Store.SP_ELIMINAUSUARIO" />
-          <FunctionImportMapping FunctionImportName="SP_INSERTAUSUARIO" FunctionName="ModelOnTour.Store.SP_INSERTAUSUARIO" />
-          <FunctionImportMapping FunctionImportName="SP_UPDATECLIENTE" FunctionName="ModelOnTour.Store.SP_UPDATECLIENTE" />
-          <FunctionImportMapping FunctionImportName="SP_UPDATECONTRATO" FunctionName="ModelOnTour.Store.SP_UPDATECONTRATO" />
-          <FunctionImportMapping FunctionImportName="SP_INSERTCONTRATO" FunctionName="ModelOnTour.Store.SP_INSERTCONTRATO" />
-          <FunctionImportMapping FunctionImportName="SP_INSERTCLIENTE" FunctionName="ModelOnTour.Store.SP_INSERTCLIENTE" />
+          <FunctionImportMapping FunctionImportName="SP_ELIMINAUSUARIO" FunctionName="Model.Store.SP_ELIMINAUSUARIO" />
+          <FunctionImportMapping FunctionImportName="SP_INSERTAUSUARIO" FunctionName="Model.Store.SP_INSERTAUSUARIO" />
+          <FunctionImportMapping FunctionImportName="SP_INSERTCLIENTE" FunctionName="Model.Store.SP_INSERTCLIENTE" />
+          <FunctionImportMapping FunctionImportName="SP_INSERTCONTRATO" FunctionName="Model.Store.SP_INSERTCONTRATO" />
+          <FunctionImportMapping FunctionImportName="SP_LISTAPAQUETEVIAJE" FunctionName="Model.Store.SP_LISTAPAQUETEVIAJE" />
+          <FunctionImportMapping FunctionImportName="SP_LISTATIPOUSUARIOS" FunctionName="Model.Store.SP_LISTATIPOUSUARIOS" />
+          <FunctionImportMapping FunctionImportName="SP_LISTAUSUARIOS" FunctionName="Model.Store.SP_LISTAUSUARIOS" />
+          <FunctionImportMapping FunctionImportName="SP_OBTENERUSUARIOPERSONAPORID" FunctionName="Model.Store.SP_OBTENERUSUARIOPERSONAPORID" />
+          <FunctionImportMapping FunctionImportName="SP_SUMATRANSACCIONES" FunctionName="Model.Store.SP_SUMATRANSACCIONES" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATECLIENTE" FunctionName="Model.Store.SP_UPDATECLIENTE" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATECONTRATO" FunctionName="Model.Store.SP_UPDATECONTRATO" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

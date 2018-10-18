@@ -1,12 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controller/AgregarContratos.aspx.cs" Inherits="AgregarContratos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <style type="text/css">
-        .auto-style1 {
-            width: 279px;
-        }
-    </style>
-</asp:Content>
+    </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <h1>Nuevo Contrato</h1>
     <br />
@@ -29,7 +24,7 @@
                 <td><asp:TextBox ID="txtMeta" runat="server" TextMode="Number" MaxLength="9" Rows="1" ReadOnly="True">0</asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtMeta" ErrorMessage="Requerido" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
-                <td><asp:Label ID="LabelMonto" runat="server" Text="Monto:"></asp:Label></td>
+                <td><asp:Label ID="LabelReserva" runat="server" Text="Reserva:"></asp:Label></td>
                 <td><asp:TextBox ID="txtMonto" runat="server" TextMode="Number" MaxLength="9" Rows="1" ReadOnly="True">0</asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtMonto" ErrorMessage="Requerido" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
@@ -43,46 +38,28 @@
                 </td>--%>
             </tr>
             <tr>
-                <td colspan="1"><asp:Label ID="LabelEmpleado" runat="server" Text="Empleado:"></asp:Label></td>
-                <td colspan="2"><asp:DropDownList ID="DropDownListEmpleado" runat="server" DataSourceID="SqlDataSource1" DataTextField="NOMBRE_EMP" DataValueField="NUMRUT_EMP"></asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;NUMRUT_EMP&quot;, &quot;NOMBRE_EMP&quot; FROM &quot;EMPLEADO&quot;"></asp:SqlDataSource>
+                
+                <td colspan="2"><asp:Label ID="LabelTitular" runat="server" Text="Mandante:"></asp:Label></td>
+                <td colspan="2"><asp:DropDownList ID="DropDownListMandante" runat="server" DataSourceID="SqlDataSourceMandante" DataTextField="NOMBRE_CLIE" DataValueField="NUMRUT_CLI">
+                    <asp:ListItem>Sin seleccionar</asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSourceMandante" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;NUMRUT_CLI&quot;, &quot;NOMBRE_CLIE&quot; FROM &quot;CLIENTE&quot;"></asp:SqlDataSource>
                 </td>
-                <td colspan="1"><asp:Label ID="LabelTitular" runat="server" Text="Titular:"></asp:Label></td>
-                <td colspan="2"><asp:DropDownList ID="DropDownListTitular" runat="server" DataSourceID="SqlDataSource2" DataTextField="NOMBRE_CLIE" DataValueField="NUMRUT_CLI"></asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;NUMRUT_CLI&quot;, &quot;NOMBRE_CLIE&quot; FROM &quot;CLIENTE&quot;"></asp:SqlDataSource>
-                </td>
             </tr>
-            <tr>
-                <td colspan="6"><asp:Button ID="btnRegistrar" runat="server" Text="Registrar" OnClick="btnRegistrar_Click"></asp:Button></td>
-            </tr>
-            <tr>
-                <td colspan="6"><asp:Label ID="LabelAviso" runat="server" Text=""></asp:Label></td>
-            </tr>
+         
+            
         </table>
     </center>
     </div>
     <div>
-        <h2>Mandante</h2>
+        <h2>Mandante Crear</h2>
     </div>
     <div>
         <table class="auto-style4">
-            <tr>
-                <td class="auto-style8">
-                    <asp:Label ID="LabelRut" runat="server" Text="Rut:"></asp:Label></td>
-                <td class="auto-style9">
-                    <asp:TextBox ID="txtRut" runat="server" MaxLength="8"></asp:TextBox>
-                    -<asp:TextBox ID="txtDv" runat="server" MaxLength="1"></asp:TextBox>
-                    <!-- Validación rut Solo números del 0-9 -->
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorRut" runat="server" ControlToValidate="txtRut" Display="Dynamic" ErrorMessage="Campo Requerido" ForeColor="#FF3300"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtRut" ErrorMessage="Rut No Valido" ForeColor="#FF3300" ValidationExpression="^[0-9]*$" Display="Dynamic"></asp:RegularExpressionValidator>
-                    <!-- Validación DV Solo números del 0-9 y Letra K -->
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorDv" runat="server" ControlToValidate="txtDv" Display="Dynamic" ErrorMessage="Campo Requerido" ForeColor="#FF3300"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtDv" ErrorMessage="Digito No Valido" ForeColor="#FF3300" ValidationExpression="^[0-9_kK]*$" Display="Dynamic"></asp:RegularExpressionValidator>
-                </td>
-            </tr>
+            
             <tr>
                 <td class="auto-style7">
-                    <asp:Label ID="LabelNomCliente" runat="server" Text="Nombre Cliente:"></asp:Label></td>
+                    <asp:Label ID="LabelNomCliente" runat="server" Text="Nombre(s):"></asp:Label></td>
                 <td class="auto-style3">
                     <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorNombre" runat="server" ControlToValidate="txtNombre" ErrorMessage="Campo Requerido" ForeColor="#FF3300"></asp:RequiredFieldValidator>
@@ -105,38 +82,17 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style7">
-                    <asp:Label ID="LabelMail" runat="server" Text="Mail:"></asp:Label></td>
-                <td class="auto-style3">
-                    <asp:TextBox ID="txtMail" runat="server" TextMode="Email" Width="177px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorMail" runat="server" ControlToValidate="txtMail" ErrorMessage="Campo Requerido" ForeColor="#FF3300"></asp:RequiredFieldValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style7">
-                    <asp:Label ID="LabelActivo" runat="server" Text="Activo:"></asp:Label></td>
-                <<td class="auto-style3">
-                    <asp:DropDownList ID="DropDownListActivo" runat="server">
-                        <asp:ListItem Value="T">Activo</asp:ListItem>
-                        <asp:ListItem Value="F">No Activo</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style7">
-                    <asp:Label ID="LabelTipo" runat="server" Text="Tipo de Usuario:"></asp:Label></td>
-                <td class="auto-style3">
-                    <asp:DropDownList ID="DropDownListUsuario" runat="server" DataSourceID="SqlDataSourceTipoUsuario" DataTextField="DESC_TIPO_USUARIO" DataValueField="ID_TIPO_USUARIO">
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSourceTipoUsuario" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;TIPO_USUARIO&quot;"></asp:SqlDataSource>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style7">
-                    <asp:Label ID="LabelDireccion" runat="server" Text="Direccion:"></asp:Label></td>
-                <td class="auto-style3">
-                    <asp:TextBox ID="txtDireccion" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorDireccion" runat="server" ControlToValidate="txtDireccion" ErrorMessage="Campo Requerido" ForeColor="#FF3300"></asp:RequiredFieldValidator>
+                <td class="auto-style8">
+                    <asp:Label ID="LabelRut" runat="server" Text="Rut:"></asp:Label></td>
+                <td class="auto-style9">
+                    <asp:TextBox ID="txtRut" runat="server" MaxLength="8"></asp:TextBox>
+                    -<asp:TextBox ID="txtDv" runat="server" MaxLength="1"></asp:TextBox>
+                    <!-- Validación rut Solo números del 0-9 -->
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorRut" runat="server" ControlToValidate="txtRut" Display="Dynamic" ErrorMessage="Campo Rut Requerido " ForeColor="#FF3300"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtRut" ErrorMessage="Rut No Valido" ForeColor="#FF3300" ValidationExpression="^[0-9]*$" Display="Dynamic"></asp:RegularExpressionValidator>
+                    <!-- Validación DV Solo números del 0-9 y Letra K -->
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorDv" runat="server" ControlToValidate="txtDv" Display="Dynamic" ErrorMessage="Campo DV Requerido" ForeColor="#FF3300"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtDv" ErrorMessage="Digito No Valido" ForeColor="#FF3300" ValidationExpression="^[0-9_kK]*$" Display="Dynamic"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -148,6 +104,14 @@
                 </td>
             </tr>
             <tr>
+                <td class="auto-style7">
+                    <asp:Label ID="LabelMail" runat="server" Text="Mail:"></asp:Label></td>
+                <td class="auto-style3">
+                    <asp:TextBox ID="txtMail" runat="server" TextMode="Email" Width="177px"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorMail" runat="server" ControlToValidate="txtMail" ErrorMessage="Campo Requerido" ForeColor="#FF3300"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+           <tr>
                 <td class="auto-style5">
                     <asp:Label ID="LabelTelefono" runat="server" Text="Teléfono:"></asp:Label></td>
                 <td class="auto-style6">
@@ -156,6 +120,21 @@
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtTelefono" ErrorMessage="Ingresar solo números" ForeColor="#FF3300" ValidationExpression="^[0-9]*$" Display="Dynamic"></asp:RegularExpressionValidator>
                 </td>
             </tr>
+            <tr>
+                <td class="auto-style7">
+                    <asp:Label ID="LabelDireccion" runat="server" Text="Direccion:"></asp:Label></td>
+                <td class="auto-style3">
+                    <asp:TextBox ID="txtDireccion" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorDireccion" runat="server" ControlToValidate="txtDireccion" ErrorMessage="Campo Requerido" ForeColor="#FF3300"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td><asp:Button ID="btnRegistrar" runat="server" Text="Guardar" OnClick="btnRegistrar_Click"></asp:Button></td>
+            </tr>
+            <tr>
+                <td><asp:Label ID="LabelAviso" runat="server" Text=""></asp:Label></td>
+            </tr>
+            
             
         </table>
     </div>

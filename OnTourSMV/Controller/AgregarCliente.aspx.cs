@@ -21,19 +21,26 @@ public partial class AgregarCliente : System.Web.UI.Page
         try
         {
             EntitiesOnTour bd = new EntitiesOnTour();
+            Librerias librerias = new Librerias();
             
             int rut = int.Parse(txtRut.Text.Trim());
-            string dv = txtDv.Text.Trim().ToUpper();
-            string nombre = txtNombre.Text.Trim();
-            string apellidoP = txtApellidoP.Text.Trim();
-            string apellidoM = txtApellidoM.Text.Trim();
-            string mail = txtMail.Text.Trim();
-            string activo = DropDownListActivo.SelectedValue;
+            String dv = txtDv.Text.Trim().ToUpper();
+            String rutCompleto = rut + dv;
+            bool rutValido = librerias.validarRut(rutCompleto); //Validación de Rut
+            if (!rutValido)
+            {
+                throw new Exception("Rut inválido");
+            }
+            String nombre = txtNombre.Text.Trim();
+            String apellidoP = txtApellidoP.Text.Trim();
+            String apellidoM = txtApellidoM.Text.Trim();
+            String mail = txtMail.Text.Trim();
+            String activo = DropDownListActivo.SelectedValue;
             
             int tipoUsuario = int.Parse(DropDownListUsuario.SelectedValue);
-            string direccion = txtDireccion.Text.Trim();
+            String direccion = txtDireccion.Text.Trim();
             DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
-            string telefono = txtTelefono.Text;
+            String telefono = txtTelefono.Text;
 
             bd.SP_INSERTCLIENTE(rut, dv, nombre, apellidoP, apellidoM, mail, activo, tipoUsuario, direccion, fechaNacimiento, telefono);
             

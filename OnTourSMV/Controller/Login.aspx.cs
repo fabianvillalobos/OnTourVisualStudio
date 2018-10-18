@@ -33,15 +33,22 @@ public partial class View_Login : System.Web.UI.Page
             String clave = txtClave.Text;
             string hashClave = Convert.ToBase64String(new System.Security.Cryptography.MD5CryptoServiceProvider().
             ComputeHash(System.Text.Encoding.Default.GetBytes(clave)));
-            //Busca si el usuario existe en la base de datos (Hasheo no implementado aún)
-            if (bd.USUARIO.Any(it=> it.LOGIN_USR == usuario && it.PASS_USR == hashClave))
+            // Buscar User en la BD
+            USUARIO usuarioObj = bd.USUARIO.FirstOrDefault(it => it.LOGIN_USR == usuario && it.PASS_USR == hashClave);
+            //Verificar que sea un usuario activo
+            char activoLocal = char.Parse(usuarioObj.ACTIVO);
+            if (usuarioObj != null && activoLocal == 'T')
             {
+                //Nombre de usuario
                 Session["Usuario"] = usuario;
+                //Tipos de usuario 1)Administrador 2)Ejecutivo De Venta 3)Cliente 4)Dueño Agencia
+                Session["Perfil"] = usuarioObj.TIPO_USUARIO.DESC_TIPO_USUARIO;
+
                 Response.Redirect("~/View/ListarContratos.aspx");
             }
             else
             {
-                LabelAviso.Text = "Credenciales incorrectas, ingresar nuevamente";
+                LabelAviso.Text = "Credenciales incorrectas o usuario inactivo, ingresar nuevamente";
             }
         }
         catch (Exception ex)

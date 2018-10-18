@@ -20,7 +20,7 @@
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="icon-key"></i></div>
                                 <!-- reemplazar el input que genera .net o incluir las clases de este -->
-                                <asp:TextBox CssClass="pass" ID="txtClave" TextMode="Password" runat="server" ToolTip="Contraseña"></asp:TextBox>
+                                <asp:TextBox CssClass="pass" ID="txtClave" TextMode="Password" runat="server" ToolTip="Contraseña" ></asp:TextBox>
                             </div>
                             <div class="alert-danger"><asp:Label ID="LabelAviso" runat="server" Text=""></asp:Label></div>
                             <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesion" OnClick="btnLogin_Click" />

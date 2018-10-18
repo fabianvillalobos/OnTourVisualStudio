@@ -84,7 +84,7 @@
                 <td class="auto-style7">
                     <asp:Label ID="LabelMail" runat="server" Text="Mail:"></asp:Label></td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="txtMail" runat="server" TextMode="Email" Width="177px"></asp:TextBox>
+                    <asp:TextBox ID="txtMail" runat="server" TextMode="Email" Width="171px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorMail" runat="server" ControlToValidate="txtMail" ErrorMessage="Campo Requerido" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
             </tr>

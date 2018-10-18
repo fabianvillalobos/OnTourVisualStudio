@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class AgregarContratos : System.Web.UI.Page
+public partial class AgregarContratos : System.Web.UI.Page 
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -20,16 +20,49 @@ public partial class AgregarContratos : System.Web.UI.Page
         try
         {
             EntitiesOnTour bd = new EntitiesOnTour();
-            int rut = 0;
+            Librerias librerias = new Librerias();
+            //Agregar Mandante
+
+            int rut = int.Parse(txtRut.Text.Trim());
+            String dv = txtDv.Text.Trim().ToUpper();
+            String rutCompleto = rut + dv;
+
+            bool rutValido = librerias.validarRut(rutCompleto); //Validación de Rut
+            if (!rutValido)
+            {
+                throw new Exception("Rut inválido");
+            }
+            String nombre = txtNombre.Text.Trim();
+            String apellidoP = txtApellidoP.Text.Trim();
+            String apellidoM = txtApellidoM.Text.Trim();
+            
+            
+            DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
+            String mail = txtMail.Text.Trim();
+            String telefono = txtTelefono.Text;
+            String direccion = txtDireccion.Text.Trim();
+            //Implícitos
+            char activo = 'T'; //Por defecto
+            int? idUsuario = null;
+
+            //bd.SP_INSERTCLIENTE(rut, dv, nombre, apellidoP, apellidoM, mail, activo, idUsuario, direccion, fechaNacimiento, telefono);
+
+
+
+
+
+
+
+            //Agregar Contrato
             DateTime fechInicio = DateTime.Parse(txtInicio.Text);
             DateTime fechTermino = DateTime.Parse(txtFin.Text);
             int meta = 0;
             int monto = 0;
-            String estado = "1";
-            int rutEmp = int.Parse(DropDownListEmpleado.SelectedValue);
-            int rutCli = int.Parse(DropDownListTitular.SelectedValue);
+            String estado = "P"; //Por defecto, T Será cuando se complete y F cuando se cancele
+            
+            //int rutCli = int.Parse(DropDownListTitular.SelectedValue);
 
-            bd.SP_INSERTCONTRATO(rut, fechInicio, fechTermino, meta, monto, estado, rutEmp, rutCli);
+         //   bd.SP_INSERTCONTRATO(rut, fechInicio, fechTermino, meta, monto, estado, rutEmp, rutCli);
 
             /*
             CONTRATO contrato = new CONTRATO()
@@ -59,21 +92,10 @@ public partial class AgregarContratos : System.Web.UI.Page
         {
             EntitiesOnTour bd = new EntitiesOnTour();
 
-            int rut = int.Parse(txtRut.Text.Trim());
-            string dv = txtDv.Text.Trim().ToUpper();
-            string nombre = txtNombre.Text.Trim();
-            string apellidoP = txtApellidoP.Text.Trim();
-            string apellidoM = txtApellidoM.Text.Trim();
-            string mail = txtMail.Text.Trim();
-            string activo = DropDownListActivo.SelectedValue;
 
-            int tipoUsuario = int.Parse(DropDownListUsuario.SelectedValue);
-            string direccion = txtDireccion.Text.Trim();
-            DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
-            string telefono = txtTelefono.Text;
+            
 
-            //bd.SP_INSERTCLIENTE(rut, dv, nombre, apellidoP, apellidoM, mail, activo, tipoUsuario, direccion, fechaNacimiento, telefono);
-
+           
             CLIENTE cliente = new CLIENTE()
             {
                 NUMRUT_CLI = rut,

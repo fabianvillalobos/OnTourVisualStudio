@@ -129,7 +129,7 @@
                 </td>
             </tr>
             <tr>
-                <td><asp:Button ID="btnRegistrar" runat="server" Text="Guardar" OnClick="btnRegistrar_Click"></asp:Button></td>
+                <td><asp:Button ID="btnRegistrar" runat="server" Text="Guardar Contrato" OnClick="btnRegistrar_Click"></asp:Button></td>
             </tr>
             <tr>
                 <td><asp:Label ID="LabelAviso" runat="server" Text=""></asp:Label></td>

@@ -22,12 +22,15 @@ public partial class AgregarContratos : System.Web.UI.Page
 
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
-        /*try
-        {*/
+        try
+        {
             EntitiesOnTour bd = new EntitiesOnTour();
             //Usado para guardar contrato con el empleado actual
-            //USUARIO usuarioObj = bd.USUARIO.FirstOrDefault(it => it.LOGIN_USR == Session["Usuario"].ToString());
-            //EMPLEADO empleadoObj = bd.EMPLEADO.FirstOrDefault(it => it.ID_USR == usuarioObj.ID_USR);
+            String usuario = Session["Usuario"].ToString();
+            USUARIO usuarioObj = bd.USUARIO.FirstOrDefault(it => it.LOGIN_USR == usuario);
+            EMPLEADO empleadoObj = bd.EMPLEADO.FirstOrDefault(it => it.ID_USR == usuarioObj.ID_USR);
+            String numrutEmpleadoTemp = empleadoObj.NUMRUT_EMP.ToString();
+            int numrutEmpleado = int.Parse(numrutEmpleadoTemp);
 
             Librerias librerias = new Librerias();
             //Agregar Mandante
@@ -54,7 +57,7 @@ public partial class AgregarContratos : System.Web.UI.Page
             String activo = "T"; //Por defecto
             int? idUsuario = null;
 
-            bd.SP_INSERTCLIENTE(rutMandante, dv, nombre, apellidoP, apellidoM, mail, "T", idUsuario, direccion, fechaNacimiento, telefono);
+            bd.SP_INSERTCLIENTE(rutMandante, dv, nombre, apellidoP, apellidoM, mail, "T", direccion, fechaNacimiento, telefono);
 
 
             //Agregar Contrato
@@ -65,18 +68,18 @@ public partial class AgregarContratos : System.Web.UI.Page
             int montoReserva = 0;
             String estado = "P"; //Por defecto, T Será cuando se complete y F cuando se cancele
                                  //int numrutEmpleado = int.Parse(empleadoObj.NUMRUT_EMP.ToString()); // Sesión usuario
-        int numrutEmpleado = 22222222;
+      
 
             bd.SP_INSERTCONTRATO(fechInicio, fechTermino, meta, montoReserva, estado, numrutEmpleado, rutMandante);
          
             bd.SaveChanges();
             LabelAviso.Text = "Contrato Generado.";
-        }/*
+        }
         catch (Exception ex)
         {
             LabelAviso.Text = ex.Message;
         }
-    }*/
+    }
     /*
     protected void btnAgregar_Click(object sender, EventArgs e)
     {

@@ -42,7 +42,7 @@ public partial class AgregarCliente : System.Web.UI.Page
             DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
             String telefono = txtTelefono.Text;
 
-            bd.SP_INSERTCLIENTE(rut, dv, nombre, apellidoP, apellidoM, mail, activo, tipoUsuario, direccion, fechaNacimiento, telefono);
+           // bd.SP_INSERTCLIENTE(rut, dv, nombre, apellidoP, apellidoM, mail, activo, tipoUsuario, direccion, fechaNacimiento, telefono);
             
             //CLIENTE cliente = new CLIENTE()
             //{

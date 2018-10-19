@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class AgregarContratos : System.Web.UI.Page 
 {
+    public int flag = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["Usuario"] == null)
@@ -47,18 +48,20 @@ public partial class AgregarContratos : System.Web.UI.Page
             String nombre = txtNombre.Text.Trim();
             String apellidoP = txtApellidoP.Text.Trim();
             String apellidoM = txtApellidoM.Text.Trim();
-            
-            
-            DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
+
+
+            DateTime fechaNacimiento = CalendarFechaNacimiento.SelectedDate;
             String mail = txtMail.Text.Trim();
             String telefono = txtTelefono.Text;
             String direccion = txtDireccion.Text.Trim();
             //Implícitos
             String activo = "T"; //Por defecto
-            int? idUsuario = null;
 
-            bd.SP_INSERTCLIENTE(rutMandante, dv, nombre, apellidoP, apellidoM, mail, "T", direccion, fechaNacimiento, telefono);
 
+            if (txtNombre.Enabled)
+            {
+                bd.SP_INSERTCLIENTE(rutMandante, dv, nombre, apellidoP, apellidoM, mail, activo, direccion, fechaNacimiento, telefono);
+            }
 
             //Agregar Contrato
             
@@ -80,49 +83,38 @@ public partial class AgregarContratos : System.Web.UI.Page
             LabelAviso.Text = ex.Message;
         }
     }
-    /*
-    protected void btnAgregar_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            EntitiesOnTour bd = new EntitiesOnTour();
-
-
-            
-
-           
-            CLIENTE cliente = new CLIENTE()
-            {
-                NUMRUT_CLI = rut,
-                DRUT_CLI = dv,
-                NOMBRE_CLIE = nombre,
-                APELLIDO_PAT_CLI = apellidoP,
-                APELLIDO_MAT_CLI = apellidoM,
-                MAIL_CLI = mail,
-                ACTIVO = activo,
-                ID_USR = tipoUsuario,
-                DIRECCION_CLI = direccion,
-                FECHA_NACIMIENTO_CLI = fechaNacimiento,
-                FONO_CLI = telefono,
-            };
-
-            bd.CLIENTE.Add(cliente);
-            bd.SaveChanges();
-            lblAviso.Text = "Cliente Creado";
-
-
-        }
-        catch (Exception ex)
-        {
-            lblAviso.Text = ex.Message;
-        }
-
-    }
-
-    protected void btnGuardar_Click(object sender, EventArgs e)
-    {
-
-    }
-    */
    
+
+
+   
+
+    protected void ButtonCargarMandante_Click(object sender, EventArgs e)
+    {
+        
+        EntitiesOnTour bd = new EntitiesOnTour();
+        int numrutMandante = int.Parse(DropDownListMandante.SelectedValue);
+        CLIENTE cliente = bd.CLIENTE.FirstOrDefault(t => t.NUMRUT_CLI == numrutMandante);
+        //Llenado de textbox
+        txtNombre.Text = cliente.NOMBRE_CLIE;
+        txtApellidoP.Text = cliente.APELLIDO_PAT_CLI;
+        txtApellidoM.Text = cliente.APELLIDO_MAT_CLI;
+        txtRut.Text = cliente.NUMRUT_CLI.ToString();
+        txtDv.Text = cliente.DRUT_CLI;
+        CalendarFechaNacimiento.SelectedDate = cliente.FECHA_NACIMIENTO_CLI.Value;
+        txtMail.Text = cliente.MAIL_CLI;
+        txtTelefono.Text = cliente.FONO_CLI.ToString();
+        txtDireccion.Text = cliente.DIRECCION_CLI;
+        //Deshabilitar para evitar modificar datos de mandante
+        txtNombre.Enabled = false;
+        txtApellidoP.Enabled = false;
+        txtApellidoM.Enabled = false;
+        txtRut.Enabled = false;
+        txtDv.Enabled = false;
+        CalendarFechaNacimiento.Enabled = false;
+        txtMail.Enabled = false;
+        txtTelefono.Enabled = false;
+        txtDireccion.Enabled = false;
+
+
+    }
 }

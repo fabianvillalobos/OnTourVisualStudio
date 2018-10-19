@@ -40,10 +40,10 @@
             <tr>
                 
                 <td colspan="2"><asp:Label ID="LabelTitular" runat="server" Text="Mandante:"></asp:Label></td>
-                <td colspan="2"><asp:DropDownList ID="DropDownListMandante" runat="server" DataSourceID="SqlDataSourceMandante" DataTextField="NOMBRE_CLIE" DataValueField="NUMRUT_CLI">
+                <td colspan="2"><asp:DropDownList ID="DropDownListMandante" runat="server" DataSourceID="SqlDataSourceMandante" DataTextField="NOMBRE_CLIE" DataValueField="NUMRUT_CLI" AutoPostBack="True">
                     <asp:ListItem>Sin seleccionar</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:Button ID="Button1" runat="server" Text="Button" ValidationGroup="contratoGroup" />
+                    <asp:Button ID="ButtonCargarMandante" runat="server" Text="Cargar mandante" OnClick="ButtonCargarMandante_Click" ValidationGroup="contratoGroup" />
                     <asp:SqlDataSource ID="SqlDataSourceMandante" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;NUMRUT_CLI&quot;, &quot;NOMBRE_CLIE&quot; FROM &quot;CLIENTE&quot;"></asp:SqlDataSource>
                 </td>
             </tr>
@@ -100,8 +100,16 @@
                 <td class="auto-style7">
                     <asp:Label ID="LabelFecNacimiento" runat="server" Text="Fecha de Nacimiento:"></asp:Label></td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="txtFecha" runat="server" TextMode="Date"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorFecha" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ValidationGroup="mandanteGroup"></asp:RequiredFieldValidator>
+                    <asp:Calendar ID="CalendarFechaNacimiento" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="58px" Width="171px">
+                        <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
+                        <NextPrevStyle VerticalAlign="Bottom" />
+                        <OtherMonthDayStyle ForeColor="#808080" />
+                        <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
+                        <SelectorStyle BackColor="#CCCCCC" />
+                        <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
+                        <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
+                        <WeekendDayStyle BackColor="#FFFFCC" />
+                    </asp:Calendar>
                 </td>
             </tr>
             <tr>

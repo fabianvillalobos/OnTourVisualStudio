@@ -55,6 +55,7 @@ public partial class View_Login : System.Web.UI.Page
         }
         catch (Exception ex)
         {
+           
             LabelAviso.Text = ex.Message;
          
         }

@@ -73,7 +73,7 @@ public partial class EntitiesOnTour : DbContext
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTAUSUARIO", pARAM_LOGIN_USRParameter, pARAM_PASS_USRParameter, pARAM_ID_TIPO_USUARIOParameter, pARAM_ACTIVOParameter, pARA_ID_USR);
     }
 
-    public virtual int SP_INSERTCLIENTE(Nullable<decimal> cNUMRUT_CLI, string cDRUT_CLI, string cNOMBRE_CLI, string cAPELLIDO_PAT_CLI, string cAPELLIDO_MAT_CLI, string cMAIL_CLI, string cACTIVO_CLI, Nullable<decimal> cID_USR, string cDIRECCION_CLI, Nullable<System.DateTime> cFECHA_NACIMIENTO_CLI, string cFONO_CLI)
+    public virtual int SP_INSERTCLIENTE(Nullable<decimal> cNUMRUT_CLI, string cDRUT_CLI, string cNOMBRE_CLI, string cAPELLIDO_PAT_CLI, string cAPELLIDO_MAT_CLI, string cMAIL_CLI, string cACTIVO_CLI, string cDIRECCION_CLI, Nullable<System.DateTime> cFECHA_NACIMIENTO_CLI, string cFONO_CLI)
     {
         var cNUMRUT_CLIParameter = cNUMRUT_CLI.HasValue ?
             new ObjectParameter("CNUMRUT_CLI", cNUMRUT_CLI) :
@@ -103,10 +103,6 @@ public partial class EntitiesOnTour : DbContext
             new ObjectParameter("CACTIVO_CLI", cACTIVO_CLI) :
             new ObjectParameter("CACTIVO_CLI", typeof(string));
 
-        var cID_USRParameter = cID_USR.HasValue ?
-            new ObjectParameter("CID_USR", cID_USR) :
-            new ObjectParameter("CID_USR", typeof(decimal));
-
         var cDIRECCION_CLIParameter = cDIRECCION_CLI != null ?
             new ObjectParameter("CDIRECCION_CLI", cDIRECCION_CLI) :
             new ObjectParameter("CDIRECCION_CLI", typeof(string));
@@ -119,7 +115,7 @@ public partial class EntitiesOnTour : DbContext
             new ObjectParameter("CFONO_CLI", cFONO_CLI) :
             new ObjectParameter("CFONO_CLI", typeof(string));
 
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTCLIENTE", cNUMRUT_CLIParameter, cDRUT_CLIParameter, cNOMBRE_CLIParameter, cAPELLIDO_PAT_CLIParameter, cAPELLIDO_MAT_CLIParameter, cMAIL_CLIParameter, cACTIVO_CLIParameter, cID_USRParameter, cDIRECCION_CLIParameter, cFECHA_NACIMIENTO_CLIParameter, cFONO_CLIParameter);
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTCLIENTE", cNUMRUT_CLIParameter, cDRUT_CLIParameter, cNOMBRE_CLIParameter, cAPELLIDO_PAT_CLIParameter, cAPELLIDO_MAT_CLIParameter, cMAIL_CLIParameter, cACTIVO_CLIParameter, cDIRECCION_CLIParameter, cFECHA_NACIMIENTO_CLIParameter, cFONO_CLIParameter);
     }
 
     public virtual int SP_INSERTCONTRATO(Nullable<System.DateTime> pFECHA_INICIO, Nullable<System.DateTime> pFECHA_TERMINO, Nullable<decimal> pMETA, Nullable<decimal> pMONTO_RESERVA, string pESTADO, Nullable<decimal> pNUMRUT_EMP, Nullable<decimal> pNUMRUT_CLI_TITULAR)

@@ -21,7 +21,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse" runat="server" id="Mantenedor">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand active" href="PaginaPpal.aspx">OnTour</a>
@@ -44,19 +44,19 @@
                             <li><a href="AgregarCliente.aspx">Agregar</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Actividades<span class="caret"></span></a>
+                    <li class="dropdown"><a class="dropdown-toggle glyphicon glyphicon-piggy-bank" data-toggle="dropdown" href="#">Actividades<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="ListarACtividades.aspx">Listar</a></li>
                             <li><a href="AgregarActividad.aspx">Agregar</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Cuentas<span class="caret"></span></a>
+                    <li class="dropdown"><a class="dropdown-toggle glyphicon glyphicon-bitcoin" data-toggle="dropdown" href="#">Cuentas<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="ListarCuenta.aspx">Listar</a></li>
                             <li><a href="AgregarCuenta.aspx">Agregar</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Transacciones<span class="caret"></span></a>
+                    <li class="dropdown"><a class="dropdown-toggle glyphicon glyphicon-stats" data-toggle="dropdown" href="#">Transacciones<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="ListarTransaccion.aspx">Listar</a></li>
                             <li><a href="AgregarTransaccion.aspx">Agregar</a></li>

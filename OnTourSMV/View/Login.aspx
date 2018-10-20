@@ -10,11 +10,11 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <body>
+    <body class="login-bg">
         <div class="contenido">
             <div class="row">
                 <div class="col-md-12 col-center">
-                    <img class="logo-login" src="../images/airbus.jpg" width="205" alt="">
+                    <img class="login-bg" src="../images/airbus.jpg" width="205" alt="">
                     <div class="login-box">
                         <h1>Panel de administración</h1>
                         <!-- btnLogin_Click -->

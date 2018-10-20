@@ -50,7 +50,7 @@ public partial class AgregarContratos : System.Web.UI.Page
             String apellidoM = txtApellidoM.Text.Trim();
 
 
-            DateTime fechaNacimiento = CalendarFechaNacimiento.SelectedDate;
+            DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text.Trim());
             String mail = txtMail.Text.Trim();
             String telefono = txtTelefono.Text;
             String direccion = txtDireccion.Text.Trim();
@@ -100,7 +100,7 @@ public partial class AgregarContratos : System.Web.UI.Page
         txtApellidoM.Text = cliente.APELLIDO_MAT_CLI;
         txtRut.Text = cliente.NUMRUT_CLI.ToString();
         txtDv.Text = cliente.DRUT_CLI;
-        CalendarFechaNacimiento.SelectedDate = cliente.FECHA_NACIMIENTO_CLI.Value;
+        txtFecha.Text = cliente.FECHA_NACIMIENTO_CLI.Value.ToString();
         txtMail.Text = cliente.MAIL_CLI;
         txtTelefono.Text = cliente.FONO_CLI.ToString();
         txtDireccion.Text = cliente.DIRECCION_CLI;
@@ -110,7 +110,7 @@ public partial class AgregarContratos : System.Web.UI.Page
         txtApellidoM.Enabled = false;
         txtRut.Enabled = false;
         txtDv.Enabled = false;
-        CalendarFechaNacimiento.Enabled = false;
+        txtFecha.Enabled = false;
         txtMail.Enabled = false;
         txtTelefono.Enabled = false;
         txtDireccion.Enabled = false;

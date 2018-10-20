@@ -40,7 +40,7 @@
                     <td>
                         <asp:TextBox ID="txtIdContrato" runat="server" ReadOnly="True" CssClass="form-control"></asp:TextBox></td>
                     <td>
-                        <asp:Label ID="LabelFecInicio" runat="server"  Text="Fecha Inicio:"></asp:Label></td>
+                        <asp:Label ID="LabelFecInicio" runat="server" Text="Fecha Inicio:"></asp:Label></td>
                     <td>
                         <asp:TextBox ID="txtInicio" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                     </td>
@@ -64,7 +64,7 @@
                     <td>
                         <asp:Label ID="LabelEstado" runat="server" Text="Estado:"></asp:Label></td>
                     <td>
-                        <asp:DropDownList ID="DropDownListEstado" runat="server">
+                        <asp:DropDownList ID="DropDownListEstado" runat="server" CssClass="form-control">
                             <asp:ListItem Value="1">Vigente</asp:ListItem>
                             <asp:ListItem Value="2">No Vigente</asp:ListItem>
                         </asp:DropDownList>
@@ -74,13 +74,13 @@
                     <td colspan="1">
                         <asp:Label ID="LabelEmpleado" runat="server" Text="Empleado:"></asp:Label></td>
                     <td colspan="2">
-                        <asp:DropDownList ID="DropDownListEmpleado" runat="server" DataSourceID="SqlDataSource1" DataTextField="NOMBRE_EMP" DataValueField="NUMRUT_EMP"></asp:DropDownList>
+                        <asp:DropDownList ID="DropDownListEmpleado" runat="server" CssClass="form-control" DataSourceID="SqlDataSource1" DataTextField="NOMBRE_EMP" DataValueField="NUMRUT_EMP"></asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;NUMRUT_EMP&quot;, &quot;NOMBRE_EMP&quot; FROM &quot;EMPLEADO&quot;"></asp:SqlDataSource>
                     </td>
                     <td colspan="1">
                         <asp:Label ID="LabelTitular" runat="server" Text="Titular"></asp:Label></td>
                     <td colspan="2">
-                        <asp:DropDownList ID="DropDownListTitular" runat="server" DataSourceID="SqlDataSource2" DataTextField="NOMBRE_CLIE" DataValueField="NUMRUT_CLI"></asp:DropDownList>
+                        <asp:DropDownList ID="DropDownListTitular" runat="server" CssClass="form-control" DataSourceID="SqlDataSource2" DataTextField="NOMBRE_CLIE" DataValueField="NUMRUT_CLI"></asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;NUMRUT_CLI&quot;, &quot;NOMBRE_CLIE&quot; FROM &quot;CLIENTE&quot;"></asp:SqlDataSource>
                     </td>
                 </tr>

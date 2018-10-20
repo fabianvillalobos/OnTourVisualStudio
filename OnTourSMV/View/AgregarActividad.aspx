@@ -15,7 +15,7 @@
                     <td>
                         <asp:Label ID="LabelTipoActividad" runat="server" Text="Tipo de Actividad:"></asp:Label></td>
                     <td>
-                        <asp:DropDownList ID="DropDownListTipoActividad" runat="server" DataSourceID="SqlDataSourceTipoActividad" DataTextField="DESC_TIPO_ACT" DataValueField="ID_TIPO_ACTIIVIDAD">
+                        <asp:DropDownList ID="DropDownListTipoActividad" runat="server" CssClass="form-control" DataSourceID="SqlDataSourceTipoActividad" DataTextField="DESC_TIPO_ACT" DataValueField="ID_TIPO_ACTIIVIDAD">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSourceTipoActividad" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;TIPO_ACTIVIDAD&quot;"></asp:SqlDataSource>
                     </td>
@@ -49,7 +49,7 @@
                     <td>
                         <asp:Label ID="LabelActivo" runat="server" Text="Activo:"></asp:Label></td>
                     <td>
-                        <asp:DropDownList ID="DropDownListActivo" runat="server" AutoPostBack="True">
+                        <asp:DropDownList ID="DropDownListActivo" runat="server" CssClass="form-control" AutoPostBack="True">
                             <asp:ListItem Value="T">Activo</asp:ListItem>
                             <asp:ListItem Value="F">No Activo</asp:ListItem>
                         </asp:DropDownList>
@@ -59,7 +59,7 @@
                     <td>
                         <asp:Label ID="LabelContRelacionado" runat="server" Text="Contrato Relacionado:"></asp:Label></td>
                     <td>
-                        <asp:DropDownList ID="DropDownListContratoRela" runat="server" DataSourceID="ContratoRelacionado" DataTextField="ID_CONTRATO" DataValueField="ID_CONTRATO">
+                        <asp:DropDownList ID="DropDownListContratoRela" runat="server" CssClass="form-control" DataSourceID="ContratoRelacionado" DataTextField="ID_CONTRATO" DataValueField="ID_CONTRATO">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="ContratoRelacionado" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;ID_CONTRATO&quot; FROM &quot;CONTRATO&quot;"></asp:SqlDataSource>
                     </td>

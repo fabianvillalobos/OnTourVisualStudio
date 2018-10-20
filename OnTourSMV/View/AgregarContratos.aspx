@@ -43,7 +43,7 @@
             </tr>
             <tr>                
                 <td colspan="2"><asp:Label ID="LabelTitular" runat="server" Text="Mandante:"></asp:Label></td>
-                <td ><asp:DropDownList ID="DropDownListMandante" runat="server" CssClass="dropdown-menu-left" DataSourceID="SqlDataSourceMandante" DataTextField="NOMBRE_CLIE" DataValueField="NUMRUT_CLI" AutoPostBack="True">
+                <td ><asp:DropDownList ID="DropDownListMandante" runat="server" CssClass="form-control" DataSourceID="SqlDataSourceMandante" DataTextField="NOMBRE_CLIE" DataValueField="NUMRUT_CLI" AutoPostBack="True">
                     <asp:ListItem>Sin seleccionar</asp:ListItem>
                     </asp:DropDownList>
                </td>
@@ -71,31 +71,31 @@
             <center>
         <table class="auto-style4 form-group" >
             <tr>
-                <td class="auto-style7">
+                <td>
                     <asp:Label ID="LabelNomCliente" runat="server" Text="Nombre(s):"></asp:Label></td>
-                <td class="auto-style3">
+                <td>
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control col-md-6"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorNombre" runat="server" ControlToValidate="txtNombre" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ValidationGroup="mandanteGroup"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style7">
+                <td>
                     <asp:Label ID="LabelApPaterno" runat="server" Text="Apellido Paterno:"></asp:Label></td>
-                <td class="auto-style3">
+                <td>
                     <asp:TextBox ID="txtApellidoP" runat="server" CssClass="form-control col-md-6"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorApellidoP" runat="server" ControlToValidate="txtApellidoP" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ValidationGroup="mandanteGroup"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style7">
+                <td>
                     <asp:Label ID="LabelApMaterno" runat="server" Text="Apellido Materno:"></asp:Label></td>
-                <td class="auto-style3">
+                <td>
                     <asp:TextBox ID="txtApellidoM" runat="server" CssClass="form-control col-md-6"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorApellidoM" runat="server" ControlToValidate="txtApellidoM" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ValidationGroup="mandanteGroup"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style8">
+                <td>
                     <asp:Label ID="LabelRut" runat="server" Text="Rut:"></asp:Label></td>
                 <td >
                     <asp:TextBox ID="txtRut" runat="server" MaxLength="8" CssClass="form-control col-md-6" ></asp:TextBox>
@@ -112,33 +112,33 @@
                 </td>
             </tr>            
             <tr>
-                <td class="auto-style7">
+                <td>
                     <asp:Label ID="LabelFecNacimiento" runat="server" Text="Fecha de Nacimiento:"></asp:Label></td>
                 <td class="auto-style3">
                     <asp:TextBox ID="txtFecha" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                 </td>
             </tr>           
             <tr>
-                <td class="auto-style7">
+                <td>
                     <asp:Label ID="LabelMail" runat="server" Text="Mail:"></asp:Label></td>
-                <td class="auto-style3">
+                <td>
                     <asp:TextBox ID="txtMail" runat="server" CssClass="form-control col-md-6" TextMode="Email" ></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorMail" runat="server" ControlToValidate="txtMail" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ValidationGroup="mandanteGroup"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style5">
+                <td>
                     <asp:Label ID="LabelTelefono" runat="server" Text="Teléfono:"></asp:Label></td>
-                <td class="auto-style6">
+                <td>
                     <asp:TextBox ID="txtTelefono" runat="server" MaxLength="9" CssClass="form-control col-md-6"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorTelefono" runat="server" ControlToValidate="txtTelefono" Display="Dynamic" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ValidationGroup="mandanteGroup"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtTelefono" ErrorMessage="Ingresar solo números" ForeColor="#FF3300" ValidationExpression="^[0-9]*$" Display="Dynamic" ValidationGroup="mandanteGroup"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style7">
+                <td>
                     <asp:Label ID="LabelDireccion" runat="server" Text="Direccion:"></asp:Label></td>
-                <td class="auto-style3">
+                <td>
                     <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control col-md-6"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorDireccion" runat="server" ControlToValidate="txtDireccion" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ValidationGroup="mandanteGroup"></asp:RequiredFieldValidator>
                 </td>
@@ -149,7 +149,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="LabelAviso" runat="server" Text="" CssClass="label-success label"></asp:Label></td>
+                    <asp:Label ID="LabelAviso" runat="server" Text=""></asp:Label></td>
             </tr>
         </table>
         </center>

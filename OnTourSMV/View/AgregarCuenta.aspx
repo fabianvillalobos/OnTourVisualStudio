@@ -47,7 +47,7 @@
                         <td class="auto-style1">
                             <asp:Label ID="LabelContRel" runat="server" Text="Contrato Relacionado:"></asp:Label></td>
                         <td>
-                            <asp:DropDownList ID="DropDownListContratoRela" runat="server" DataSourceID="SqlDataSourceContrato" DataTextField="ID_CONTRATO" DataValueField="ID_CONTRATO">
+                            <asp:DropDownList ID="DropDownListContratoRela" runat="server" CssClass="form-control" DataSourceID="SqlDataSourceContrato" DataTextField="ID_CONTRATO" DataValueField="ID_CONTRATO">
                             </asp:DropDownList>
                             <asp:SqlDataSource ID="SqlDataSourceContrato" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;CONTRATO&quot;"></asp:SqlDataSource>
                         </td>
@@ -57,7 +57,7 @@
                         <td class="auto-style1">
                             <asp:Label ID="LabelCliente" runat="server" Text="Cliente:"></asp:Label></td>
                         <td>
-                            <asp:DropDownList ID="DropDownListRut" runat="server" DataSourceID="SqlDataSourceRutCliente" DataTextField="NOMBRE_CLIE" DataValueField="NUMRUT_CLI">
+                            <asp:DropDownList ID="DropDownListRut" runat="server" CssClass="form-control" DataSourceID="SqlDataSourceRutCliente" DataTextField="NOMBRE_CLIE" DataValueField="NUMRUT_CLI">
                             </asp:DropDownList>
                             <asp:SqlDataSource ID="SqlDataSourceRutCliente" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;CLIENTE&quot;"></asp:SqlDataSource>
                         </td>
@@ -67,7 +67,7 @@
                         <td class="auto-style4">
                             <asp:Label ID="LabelActivo" runat="server" Text="Activo:"></asp:Label></td>
                         <td class="auto-style5">
-                            <asp:DropDownList ID="DropDownListActivo" runat="server">
+                            <asp:DropDownList ID="DropDownListActivo" runat="server" CssClass="form-control">
                                 <asp:ListItem Value="T">Activo</asp:ListItem>
                                 <asp:ListItem Value="F">No Activo</asp:ListItem>
                             </asp:DropDownList>

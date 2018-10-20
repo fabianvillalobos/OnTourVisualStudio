@@ -28,7 +28,7 @@ public partial class View_Login : System.Web.UI.Page
         {
 
             EntitiesOnTour bd = new EntitiesOnTour();
-            
+
             String usuario = txtUsuario.Text;
             String clave = txtClave.Text;
             string hashClave = Convert.ToBase64String(new System.Security.Cryptography.MD5CryptoServiceProvider().
@@ -55,17 +55,17 @@ public partial class View_Login : System.Web.UI.Page
                 }
                 else
                 {
-                    LabelAviso.Text = "Usuario no habilitado, contacte al administrador";
-                }
+                LabelAviso.Text = "Usuario no habilitado, contacte al administrador";
+            }
                 
             
             
         }
         catch (Exception ex)
         {
-           
+
             LabelAviso.Text = ex.Message;
-         
+
         }
     }
 }

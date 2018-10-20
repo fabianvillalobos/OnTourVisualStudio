@@ -2,41 +2,51 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style type="text/css">
-        .login-bg {
-            background-image: url(images/bg.jpg);
-            background-size: cover;
+        .bg-img {
+            /* The image used */
+            background-image: url("images/bg.jpg");
+            min-height: 700px;
+            /* Center and scale the image nicely */
+            background-position: center;
             background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
         }
     </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <body class="login-bg">
-        <div class="contenido">
-            <div class="row">
-                <div class="col-md-12 col-center">
-                    <img class="login-bg" src="../images/airbus.jpg" width="205" alt="">
-                    <div class="login-box">
-                        <h1>Panel de administración</h1>
-                        <!-- btnLogin_Click -->
 
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="icon-user"></i></div>
-                            <!-- reemplazar el input que genera .net o incluir las clases de este -->
-                            <asp:TextBox CssClass="form-control usuario" ID="txtUsuario" runat="server" ToolTip="Usuario"></asp:TextBox>
+    <div class="login">
+        <div class="bg-img">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-center">
+                        <br />
+<%--                        <img class="img-rounded" src="../images/airbus.jpg" alt="">--%>
+                        <div class="login-box">
+                            <h1>Panel de administración</h1>
+                            <!-- btnLogin_Click -->
+
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="icon-user"></i></div>
+                                <!-- reemplazar el input que genera .net o incluir las clases de este -->
+                                <asp:TextBox CssClass="form-control usuario" ID="txtUsuario" runat="server" ToolTip="Usuario"></asp:TextBox>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="icon-key"></i></div>
+                                <!-- reemplazar el input que genera .net o incluir las clases de este -->
+                                <asp:TextBox CssClass="pass" ID="txtClave" TextMode="Password" runat="server" ToolTip="Contraseña"></asp:TextBox>
+                            </div>
+                            <div class="alert-danger">
+                                <asp:Label ID="LabelAviso" runat="server" Text=""></asp:Label>
+                            </div>
+                            <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesion" CssClass="btn btn-success" OnClick="btnLogin_Click" />
                         </div>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="icon-key"></i></div>
-                            <!-- reemplazar el input que genera .net o incluir las clases de este -->
-                            <asp:TextBox CssClass="pass" ID="txtClave" TextMode="Password" runat="server" ToolTip="Contraseña"></asp:TextBox>
-                        </div>
-                        <div class="alert-danger">
-                            <asp:Label ID="LabelAviso" runat="server" Text=""></asp:Label>
-                        </div>
-                        <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesion" CssClass="btn btn-success" OnClick="btnLogin_Click" />
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
 </asp:Content>
 

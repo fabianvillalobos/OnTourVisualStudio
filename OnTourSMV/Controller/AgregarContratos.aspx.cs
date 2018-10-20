@@ -56,11 +56,11 @@ public partial class AgregarContratos : System.Web.UI.Page
             String direccion = txtDireccion.Text.Trim();
             //Implícitos
             String activo = "T"; //Por defecto
-
+            int id_usr = 5;
 
             if (txtNombre.Enabled)
             {
-                bd.SP_INSERTCLIENTE(rutMandante, dv, nombre, apellidoP, apellidoM, mail, activo, direccion, fechaNacimiento, telefono);
+                bd.SP_INSERTCLIENTE(rutMandante, dv, nombre, apellidoP, apellidoM, mail, activo, id_usr, direccion, fechaNacimiento, telefono);
             }
 
             //Agregar Contrato

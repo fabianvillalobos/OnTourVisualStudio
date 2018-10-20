@@ -12,8 +12,7 @@ public partial class ListarContratos : System.Web.UI.Page
         if (Session["Usuario"] == null)
         {
             Response.Redirect("~/View/Login.aspx");
-        }
-
+        }        
     }
 
     protected void btnNuevoContrato_Click(object sender, EventArgs e)

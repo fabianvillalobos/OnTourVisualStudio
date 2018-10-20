@@ -35,23 +35,31 @@ public partial class View_Login : System.Web.UI.Page
             ComputeHash(System.Text.Encoding.Default.GetBytes(clave)));
             // Buscar User en la BD
             USUARIO usuarioObj = bd.USUARIO.FirstOrDefault(it => it.LOGIN_USR == usuario && it.PASS_USR == hashClave);
-            //Verificar que sea un usuario activo
-            char activoLocal = char.Parse(usuarioObj.ACTIVO);
-            if (usuarioObj != null && activoLocal == 'T')
+            if (usuarioObj == null)
             {
-                //Nombre de usuario
-                Session["Usuario"] = usuario;
-                //Tipos de usuario 1)Administrador 2)Ejecutivo De Venta 3)Cliente 4)Dueño Agencia
-                Session["Perfil"] = usuarioObj.TIPO_USUARIO.DESC_TIPO_USUARIO;
-                String perfilID = usuarioObj.TIPO_USUARIO.ID_TIPO_USUARIO.ToString();
-                Session["PerfilID"] = perfilID;
+                throw new Exception("Credenciales incorrectas, ingresar nuevamente");
+            }
+                //Verificar que sea un usuario activo
+                char activoLocal = char.Parse(usuarioObj.ACTIVO);
+            
+                if (activoLocal == 'T')
+                {
+                    //Nombre de usuario
+                    Session["Usuario"] = usuario;
+                    //Tipos de usuario 1)Administrador 2)Ejecutivo De Venta 3)Cliente 4)Dueño Agencia
+                    Session["Perfil"] = usuarioObj.TIPO_USUARIO.DESC_TIPO_USUARIO;
+                    String perfilID = usuarioObj.TIPO_USUARIO.ID_TIPO_USUARIO.ToString();
+                    Session["PerfilID"] = perfilID;
 
-                Response.Redirect("~/View/ListarContratos.aspx");
-            }
-            else
-            {
-                LabelAviso.Text = "Credenciales incorrectas o usuario inactivo, ingresar nuevamente";
-            }
+                    Response.Redirect("~/View/ListarContratos.aspx");
+                }
+                else
+                {
+                    LabelAviso.Text = "Usuario no habilitado, contacte al administrador";
+                }
+                
+            
+            
         }
         catch (Exception ex)
         {

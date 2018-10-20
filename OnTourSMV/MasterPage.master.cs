@@ -10,15 +10,15 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
         //Si no hay usuarios el menú de la página principal (MasterPage) no se mostrará
-        //if (Session["Usuario"] == null)
-        //{
-        //    form1.Visible = false;
+        if (Session["Usuario"] == null)
+        {
+            Mantenedor.Visible = false;
 
-        //}
-        //else
-        //{
-        //    form1.Visible = true;
-        //}
+        }
+        else
+        {
+            Mantenedor.Visible = true;
+        }
     }
 }
  

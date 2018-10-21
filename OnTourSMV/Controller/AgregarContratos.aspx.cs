@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class AgregarContratos : System.Web.UI.Page 
+public partial class AgregarContratos : System.Web.UI.Page
 {
     public int flag = 0;
     protected void Page_Load(object sender, EventArgs e)
@@ -50,31 +50,30 @@ public partial class AgregarContratos : System.Web.UI.Page
             String apellidoM = txtApellidoM.Text.Trim();
 
 
-            DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text.Trim());
+            DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
             String mail = txtMail.Text.Trim();
             String telefono = txtTelefono.Text;
             String direccion = txtDireccion.Text.Trim();
             //Implícitos
             String activo = "T"; //Por defecto
-            int id_usr = 5;
 
             if (txtNombre.Enabled)
             {
-                bd.SP_INSERTCLIENTE(rutMandante, dv, nombre, apellidoP, apellidoM, mail, activo, id_usr, direccion, fechaNacimiento, telefono);
+                bd.SP_INSERTCLIENTE(rutMandante, dv, nombre, apellidoP, apellidoM, mail, activo, direccion, fechaNacimiento, telefono);
             }
 
             //Agregar Contrato
-            
+
             DateTime fechInicio = DateTime.Parse(txtInicio.Text);
             DateTime fechTermino = DateTime.Parse(txtFin.Text);
             int meta = 0;
             int montoReserva = 0;
             String estado = "P"; //Por defecto, T Será cuando se complete y F cuando se cancele
                                  //int numrutEmpleado = int.Parse(empleadoObj.NUMRUT_EMP.ToString()); // Sesión usuario
-      
+
 
             bd.SP_INSERTCONTRATO(fechInicio, fechTermino, meta, montoReserva, estado, numrutEmpleado, rutMandante);
-         
+
             bd.SaveChanges();
             LabelAviso.Text = "Contrato Generado.";
         }
@@ -83,14 +82,14 @@ public partial class AgregarContratos : System.Web.UI.Page
             LabelAviso.Text = ex.Message;
         }
     }
-   
 
 
-   
+
+
 
     protected void ButtonCargarMandante_Click(object sender, EventArgs e)
     {
-        
+
         EntitiesOnTour bd = new EntitiesOnTour();
         int numrutMandante = int.Parse(DropDownListMandante.SelectedValue);
         CLIENTE cliente = bd.CLIENTE.FirstOrDefault(t => t.NUMRUT_CLI == numrutMandante);

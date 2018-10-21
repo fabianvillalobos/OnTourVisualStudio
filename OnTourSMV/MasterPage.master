@@ -14,9 +14,8 @@
     <link rel="stylesheet" type="text/css" href="css/fontello.css">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-
     <title>OnTour</title>
-    
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <!-- scripy link -->
@@ -64,7 +63,7 @@
                             <li><a href="AgregarTransaccion.aspx">Agregar</a></li>
                         </ul>
                     </li>
-                    <ul class="nav navbar-nav navbar-right">                        
+                    <ul class="nav navbar-nav navbar-right">
                         <li><a href="Login.aspx"><span class="glyphicon glyphicon-off"></span>Salir</a></li>
                     </ul>
                 </ul>

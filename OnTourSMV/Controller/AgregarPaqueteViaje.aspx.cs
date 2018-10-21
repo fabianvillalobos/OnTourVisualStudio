@@ -20,11 +20,18 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         }
 
         DropDownListViajeVuelo.Enabled = false;
+        DropDownListViajeBus.Enabled = false;
         DropDownListEstadia.Enabled = false;
         DropDownListSeguros.Enabled = false;
         DropDownListContrato.Enabled = false;
-        
-        
+        DropDownListTipoTransporte.Enabled = false;
+        //Esconder por tipo transporte
+        LabelViajeVuelo.Visible = false;
+        DropDownListViajeVuelo.Visible = false;
+        LabelViajeBus.Visible = true;
+        DropDownListViajeBus.Visible = true;
+
+
     }
 
 
@@ -40,11 +47,15 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
             //Cargar los dropdown con los parámetros (Se enlazan los objetos)
             DropDownListSeguros.DataSourceID = "ObjectDataSourceSeguros";
             DropDownListViajeVuelo.DataSourceID = "ObjectDataSourceViajeVuelo";
+            DropDownListViajeBus.DataSourceID = "ObjectDataSourceViajeBus";
 
             DropDownListViajeVuelo.Enabled = true;
+            DropDownListViajeBus.Enabled = true;
             DropDownListEstadia.Enabled = true;
             DropDownListSeguros.Enabled = true;
             DropDownListContrato.Enabled = true;
+            DropDownListTipoTransporte.Enabled = true;
+
         }
         catch (Exception ex)
         {
@@ -70,5 +81,39 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
     protected void ButtonRegistrar_Click(object sender, EventArgs e)
     {
 
+    }
+
+   
+    protected void DropDownListTipoTransporte_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if(DropDownListTipoTransporte.SelectedIndex == 0)
+        {
+            LabelViajeVuelo.Visible = false;
+            DropDownListViajeVuelo.Visible = false;
+            LabelViajeBus.Visible = true;
+            DropDownListViajeBus.Visible = true;
+
+            DropDownListViajeVuelo.Enabled = true;
+            DropDownListViajeBus.Enabled = true;
+            DropDownListEstadia.Enabled = true;
+            DropDownListSeguros.Enabled = true;
+            DropDownListContrato.Enabled = true;
+            DropDownListTipoTransporte.Enabled = true;
+
+        }
+        else
+        {
+            LabelViajeVuelo.Visible = true;
+            DropDownListViajeVuelo.Visible = true;
+            LabelViajeBus.Visible = false;
+            DropDownListViajeBus.Visible = false;
+
+            DropDownListViajeVuelo.Enabled = true;
+            DropDownListViajeBus.Enabled = true;
+            DropDownListEstadia.Enabled = true;
+            DropDownListSeguros.Enabled = true;
+            DropDownListContrato.Enabled = true;
+            DropDownListTipoTransporte.Enabled = true;
+        }
     }
 }

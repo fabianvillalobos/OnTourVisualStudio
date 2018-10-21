@@ -3,6 +3,41 @@
   <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web service de proveedores</wsdl:documentation>
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://ontour.somee.com/">
+      <s:element name="getAllVuelos">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAllVuelosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllVuelosResult" type="tns:ArrayOfVuelos" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVuelos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="vuelos" nillable="true" type="tns:vuelos" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="vuelos">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="aerolinea" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="origen" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="destino" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="salida" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="duracion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="capacidad" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ocupados" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="activo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="json_getAllVuelos">
+        <s:complexType />
+      </s:element>
+      <s:element name="json_getAllVuelosResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="getVuelos">
         <s:complexType>
           <s:sequence>
@@ -20,24 +55,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfVuelos">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="vuelos" nillable="true" type="tns:vuelos" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="vuelos">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="aerolinea" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="origen" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="destino" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="salida" type="s:dateTime" />
-          <s:element minOccurs="1" maxOccurs="1" name="duracion" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="capacidad" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="ocupados" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="activo" type="s:string" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="json_getVuelos">
         <s:complexType>
           <s:sequence>
@@ -54,7 +71,7 @@
       <s:element name="getVueloConID">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -68,26 +85,20 @@
       <s:element name="json_getVueloConID">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
       <s:element name="json_getVueloConIDResponse">
         <s:complexType />
       </s:element>
-      <s:element name="getAlojamientos">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="ciudad" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="pais" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="habitacion" type="s:int" />
-          </s:sequence>
-        </s:complexType>
+      <s:element name="getAllAlojamientos">
+        <s:complexType />
       </s:element>
-      <s:element name="getAlojamientosResponse">
+      <s:element name="getAllAlojamientosResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getAlojamientosResult" type="tns:ArrayOfAlojamiento" />
+            <s:element minOccurs="0" maxOccurs="1" name="getAllAlojamientosResult" type="tns:ArrayOfAlojamiento" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -110,6 +121,28 @@
           <s:element minOccurs="0" maxOccurs="1" name="h_servicios" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="json_getAllAlojamientos">
+        <s:complexType />
+      </s:element>
+      <s:element name="json_getAllAlojamientosResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAlojamientos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ciudad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pais" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="habitacion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAlojamientosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAlojamientosResult" type="tns:ArrayOfAlojamiento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="json_getAlojamientos">
         <s:complexType>
           <s:sequence>
@@ -202,11 +235,113 @@
       <s:element name="json_getSegurosConIDResponse">
         <s:complexType />
       </s:element>
+      <s:element name="getAllBuses">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAllBusesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllBusesResult" type="tns:ArrayOfBuses" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBuses">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="buses" nillable="true" type="tns:buses" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="buses">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="linea" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="origen" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="destino" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="salida" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="duracion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="capacidad" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ocupados" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="activo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="json_getAllBuses">
+        <s:complexType />
+      </s:element>
+      <s:element name="json_getAllBusesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getBuses">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="origen" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destino" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="salida" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="pasajeros" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBusesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBusesResult" type="tns:ArrayOfBuses" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="json_getBuses">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="origen" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destino" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="salida" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="pasajeros" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="json_getBusesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getBusesConID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBusesConIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBusesConIDResult" type="tns:ArrayOfBuses" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="json_getBusesConID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="json_getBusesConIDResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="ArrayOfVuelos" nillable="true" type="tns:ArrayOfVuelos" />
       <s:element name="ArrayOfAlojamiento" nillable="true" type="tns:ArrayOfAlojamiento" />
       <s:element name="ArrayOfSeguros" nillable="true" type="tns:ArrayOfSeguros" />
+      <s:element name="ArrayOfBuses" nillable="true" type="tns:ArrayOfBuses" />
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="getAllVuelosSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllVuelos" />
+  </wsdl:message>
+  <wsdl:message name="getAllVuelosSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllVuelosResponse" />
+  </wsdl:message>
+  <wsdl:message name="json_getAllVuelosSoapIn">
+    <wsdl:part name="parameters" element="tns:json_getAllVuelos" />
+  </wsdl:message>
+  <wsdl:message name="json_getAllVuelosSoapOut">
+    <wsdl:part name="parameters" element="tns:json_getAllVuelosResponse" />
+  </wsdl:message>
   <wsdl:message name="getVuelosSoapIn">
     <wsdl:part name="parameters" element="tns:getVuelos" />
   </wsdl:message>
@@ -230,6 +365,18 @@
   </wsdl:message>
   <wsdl:message name="json_getVueloConIDSoapOut">
     <wsdl:part name="parameters" element="tns:json_getVueloConIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllAlojamientosSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllAlojamientos" />
+  </wsdl:message>
+  <wsdl:message name="getAllAlojamientosSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllAlojamientosResponse" />
+  </wsdl:message>
+  <wsdl:message name="json_getAllAlojamientosSoapIn">
+    <wsdl:part name="parameters" element="tns:json_getAllAlojamientos" />
+  </wsdl:message>
+  <wsdl:message name="json_getAllAlojamientosSoapOut">
+    <wsdl:part name="parameters" element="tns:json_getAllAlojamientosResponse" />
   </wsdl:message>
   <wsdl:message name="getAlojamientosSoapIn">
     <wsdl:part name="parameters" element="tns:getAlojamientos" />
@@ -279,6 +426,48 @@
   <wsdl:message name="json_getSegurosConIDSoapOut">
     <wsdl:part name="parameters" element="tns:json_getSegurosConIDResponse" />
   </wsdl:message>
+  <wsdl:message name="getAllBusesSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllBuses" />
+  </wsdl:message>
+  <wsdl:message name="getAllBusesSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllBusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="json_getAllBusesSoapIn">
+    <wsdl:part name="parameters" element="tns:json_getAllBuses" />
+  </wsdl:message>
+  <wsdl:message name="json_getAllBusesSoapOut">
+    <wsdl:part name="parameters" element="tns:json_getAllBusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBusesSoapIn">
+    <wsdl:part name="parameters" element="tns:getBuses" />
+  </wsdl:message>
+  <wsdl:message name="getBusesSoapOut">
+    <wsdl:part name="parameters" element="tns:getBusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="json_getBusesSoapIn">
+    <wsdl:part name="parameters" element="tns:json_getBuses" />
+  </wsdl:message>
+  <wsdl:message name="json_getBusesSoapOut">
+    <wsdl:part name="parameters" element="tns:json_getBusesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBusesConIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getBusesConID" />
+  </wsdl:message>
+  <wsdl:message name="getBusesConIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getBusesConIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="json_getBusesConIDSoapIn">
+    <wsdl:part name="parameters" element="tns:json_getBusesConID" />
+  </wsdl:message>
+  <wsdl:message name="json_getBusesConIDSoapOut">
+    <wsdl:part name="parameters" element="tns:json_getBusesConIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllVuelosHttpGetIn" />
+  <wsdl:message name="getAllVuelosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVuelos" />
+  </wsdl:message>
+  <wsdl:message name="json_getAllVuelosHttpGetIn" />
+  <wsdl:message name="json_getAllVuelosHttpGetOut" />
   <wsdl:message name="getVuelosHttpGetIn">
     <wsdl:part name="origen" type="s:string" />
     <wsdl:part name="destino" type="s:string" />
@@ -305,6 +494,12 @@
     <wsdl:part name="id" type="s:string" />
   </wsdl:message>
   <wsdl:message name="json_getVueloConIDHttpGetOut" />
+  <wsdl:message name="getAllAlojamientosHttpGetIn" />
+  <wsdl:message name="getAllAlojamientosHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAlojamiento" />
+  </wsdl:message>
+  <wsdl:message name="json_getAllAlojamientosHttpGetIn" />
+  <wsdl:message name="json_getAllAlojamientosHttpGetOut" />
   <wsdl:message name="getAlojamientosHttpGetIn">
     <wsdl:part name="ciudad" type="s:string" />
     <wsdl:part name="pais" type="s:string" />
@@ -345,6 +540,44 @@
     <wsdl:part name="id" type="s:string" />
   </wsdl:message>
   <wsdl:message name="json_getSegurosConIDHttpGetOut" />
+  <wsdl:message name="getAllBusesHttpGetIn" />
+  <wsdl:message name="getAllBusesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBuses" />
+  </wsdl:message>
+  <wsdl:message name="json_getAllBusesHttpGetIn" />
+  <wsdl:message name="json_getAllBusesHttpGetOut" />
+  <wsdl:message name="getBusesHttpGetIn">
+    <wsdl:part name="origen" type="s:string" />
+    <wsdl:part name="destino" type="s:string" />
+    <wsdl:part name="salida" type="s:string" />
+    <wsdl:part name="pasajeros" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getBusesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBuses" />
+  </wsdl:message>
+  <wsdl:message name="json_getBusesHttpGetIn">
+    <wsdl:part name="origen" type="s:string" />
+    <wsdl:part name="destino" type="s:string" />
+    <wsdl:part name="salida" type="s:string" />
+    <wsdl:part name="pasajeros" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="json_getBusesHttpGetOut" />
+  <wsdl:message name="getBusesConIDHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getBusesConIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBuses" />
+  </wsdl:message>
+  <wsdl:message name="json_getBusesConIDHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="json_getBusesConIDHttpGetOut" />
+  <wsdl:message name="getAllVuelosHttpPostIn" />
+  <wsdl:message name="getAllVuelosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVuelos" />
+  </wsdl:message>
+  <wsdl:message name="json_getAllVuelosHttpPostIn" />
+  <wsdl:message name="json_getAllVuelosHttpPostOut" />
   <wsdl:message name="getVuelosHttpPostIn">
     <wsdl:part name="origen" type="s:string" />
     <wsdl:part name="destino" type="s:string" />
@@ -371,6 +604,12 @@
     <wsdl:part name="id" type="s:string" />
   </wsdl:message>
   <wsdl:message name="json_getVueloConIDHttpPostOut" />
+  <wsdl:message name="getAllAlojamientosHttpPostIn" />
+  <wsdl:message name="getAllAlojamientosHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAlojamiento" />
+  </wsdl:message>
+  <wsdl:message name="json_getAllAlojamientosHttpPostIn" />
+  <wsdl:message name="json_getAllAlojamientosHttpPostOut" />
   <wsdl:message name="getAlojamientosHttpPostIn">
     <wsdl:part name="ciudad" type="s:string" />
     <wsdl:part name="pais" type="s:string" />
@@ -411,7 +650,47 @@
     <wsdl:part name="id" type="s:string" />
   </wsdl:message>
   <wsdl:message name="json_getSegurosConIDHttpPostOut" />
+  <wsdl:message name="getAllBusesHttpPostIn" />
+  <wsdl:message name="getAllBusesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBuses" />
+  </wsdl:message>
+  <wsdl:message name="json_getAllBusesHttpPostIn" />
+  <wsdl:message name="json_getAllBusesHttpPostOut" />
+  <wsdl:message name="getBusesHttpPostIn">
+    <wsdl:part name="origen" type="s:string" />
+    <wsdl:part name="destino" type="s:string" />
+    <wsdl:part name="salida" type="s:string" />
+    <wsdl:part name="pasajeros" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getBusesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBuses" />
+  </wsdl:message>
+  <wsdl:message name="json_getBusesHttpPostIn">
+    <wsdl:part name="origen" type="s:string" />
+    <wsdl:part name="destino" type="s:string" />
+    <wsdl:part name="salida" type="s:string" />
+    <wsdl:part name="pasajeros" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="json_getBusesHttpPostOut" />
+  <wsdl:message name="getBusesConIDHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getBusesConIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBuses" />
+  </wsdl:message>
+  <wsdl:message name="json_getBusesConIDHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="json_getBusesConIDHttpPostOut" />
   <wsdl:portType name="wsproveedoresSoap">
+    <wsdl:operation name="getAllVuelos">
+      <wsdl:input message="tns:getAllVuelosSoapIn" />
+      <wsdl:output message="tns:getAllVuelosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllVuelos">
+      <wsdl:input message="tns:json_getAllVuelosSoapIn" />
+      <wsdl:output message="tns:json_getAllVuelosSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="getVuelos">
       <wsdl:input message="tns:getVuelosSoapIn" />
       <wsdl:output message="tns:getVuelosSoapOut" />
@@ -427,6 +706,14 @@
     <wsdl:operation name="json_getVueloConID">
       <wsdl:input message="tns:json_getVueloConIDSoapIn" />
       <wsdl:output message="tns:json_getVueloConIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllAlojamientos">
+      <wsdl:input message="tns:getAllAlojamientosSoapIn" />
+      <wsdl:output message="tns:getAllAlojamientosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllAlojamientos">
+      <wsdl:input message="tns:json_getAllAlojamientosSoapIn" />
+      <wsdl:output message="tns:json_getAllAlojamientosSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="getAlojamientos">
       <wsdl:input message="tns:getAlojamientosSoapIn" />
@@ -460,8 +747,40 @@
       <wsdl:input message="tns:json_getSegurosConIDSoapIn" />
       <wsdl:output message="tns:json_getSegurosConIDSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="getAllBuses">
+      <wsdl:input message="tns:getAllBusesSoapIn" />
+      <wsdl:output message="tns:getAllBusesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllBuses">
+      <wsdl:input message="tns:json_getAllBusesSoapIn" />
+      <wsdl:output message="tns:json_getAllBusesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBuses">
+      <wsdl:input message="tns:getBusesSoapIn" />
+      <wsdl:output message="tns:getBusesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="json_getBuses">
+      <wsdl:input message="tns:json_getBusesSoapIn" />
+      <wsdl:output message="tns:json_getBusesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBusesConID">
+      <wsdl:input message="tns:getBusesConIDSoapIn" />
+      <wsdl:output message="tns:getBusesConIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="json_getBusesConID">
+      <wsdl:input message="tns:json_getBusesConIDSoapIn" />
+      <wsdl:output message="tns:json_getBusesConIDSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="wsproveedoresHttpGet">
+    <wsdl:operation name="getAllVuelos">
+      <wsdl:input message="tns:getAllVuelosHttpGetIn" />
+      <wsdl:output message="tns:getAllVuelosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllVuelos">
+      <wsdl:input message="tns:json_getAllVuelosHttpGetIn" />
+      <wsdl:output message="tns:json_getAllVuelosHttpGetOut" />
+    </wsdl:operation>
     <wsdl:operation name="getVuelos">
       <wsdl:input message="tns:getVuelosHttpGetIn" />
       <wsdl:output message="tns:getVuelosHttpGetOut" />
@@ -477,6 +796,14 @@
     <wsdl:operation name="json_getVueloConID">
       <wsdl:input message="tns:json_getVueloConIDHttpGetIn" />
       <wsdl:output message="tns:json_getVueloConIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllAlojamientos">
+      <wsdl:input message="tns:getAllAlojamientosHttpGetIn" />
+      <wsdl:output message="tns:getAllAlojamientosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllAlojamientos">
+      <wsdl:input message="tns:json_getAllAlojamientosHttpGetIn" />
+      <wsdl:output message="tns:json_getAllAlojamientosHttpGetOut" />
     </wsdl:operation>
     <wsdl:operation name="getAlojamientos">
       <wsdl:input message="tns:getAlojamientosHttpGetIn" />
@@ -510,8 +837,40 @@
       <wsdl:input message="tns:json_getSegurosConIDHttpGetIn" />
       <wsdl:output message="tns:json_getSegurosConIDHttpGetOut" />
     </wsdl:operation>
+    <wsdl:operation name="getAllBuses">
+      <wsdl:input message="tns:getAllBusesHttpGetIn" />
+      <wsdl:output message="tns:getAllBusesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllBuses">
+      <wsdl:input message="tns:json_getAllBusesHttpGetIn" />
+      <wsdl:output message="tns:json_getAllBusesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBuses">
+      <wsdl:input message="tns:getBusesHttpGetIn" />
+      <wsdl:output message="tns:getBusesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="json_getBuses">
+      <wsdl:input message="tns:json_getBusesHttpGetIn" />
+      <wsdl:output message="tns:json_getBusesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBusesConID">
+      <wsdl:input message="tns:getBusesConIDHttpGetIn" />
+      <wsdl:output message="tns:getBusesConIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="json_getBusesConID">
+      <wsdl:input message="tns:json_getBusesConIDHttpGetIn" />
+      <wsdl:output message="tns:json_getBusesConIDHttpGetOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="wsproveedoresHttpPost">
+    <wsdl:operation name="getAllVuelos">
+      <wsdl:input message="tns:getAllVuelosHttpPostIn" />
+      <wsdl:output message="tns:getAllVuelosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllVuelos">
+      <wsdl:input message="tns:json_getAllVuelosHttpPostIn" />
+      <wsdl:output message="tns:json_getAllVuelosHttpPostOut" />
+    </wsdl:operation>
     <wsdl:operation name="getVuelos">
       <wsdl:input message="tns:getVuelosHttpPostIn" />
       <wsdl:output message="tns:getVuelosHttpPostOut" />
@@ -527,6 +886,14 @@
     <wsdl:operation name="json_getVueloConID">
       <wsdl:input message="tns:json_getVueloConIDHttpPostIn" />
       <wsdl:output message="tns:json_getVueloConIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllAlojamientos">
+      <wsdl:input message="tns:getAllAlojamientosHttpPostIn" />
+      <wsdl:output message="tns:getAllAlojamientosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllAlojamientos">
+      <wsdl:input message="tns:json_getAllAlojamientosHttpPostIn" />
+      <wsdl:output message="tns:json_getAllAlojamientosHttpPostOut" />
     </wsdl:operation>
     <wsdl:operation name="getAlojamientos">
       <wsdl:input message="tns:getAlojamientosHttpPostIn" />
@@ -560,9 +927,51 @@
       <wsdl:input message="tns:json_getSegurosConIDHttpPostIn" />
       <wsdl:output message="tns:json_getSegurosConIDHttpPostOut" />
     </wsdl:operation>
+    <wsdl:operation name="getAllBuses">
+      <wsdl:input message="tns:getAllBusesHttpPostIn" />
+      <wsdl:output message="tns:getAllBusesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllBuses">
+      <wsdl:input message="tns:json_getAllBusesHttpPostIn" />
+      <wsdl:output message="tns:json_getAllBusesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBuses">
+      <wsdl:input message="tns:getBusesHttpPostIn" />
+      <wsdl:output message="tns:getBusesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="json_getBuses">
+      <wsdl:input message="tns:json_getBusesHttpPostIn" />
+      <wsdl:output message="tns:json_getBusesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBusesConID">
+      <wsdl:input message="tns:getBusesConIDHttpPostIn" />
+      <wsdl:output message="tns:getBusesConIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="json_getBusesConID">
+      <wsdl:input message="tns:json_getBusesConIDHttpPostIn" />
+      <wsdl:output message="tns:json_getBusesConIDHttpPostOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="wsproveedoresSoap" type="tns:wsproveedoresSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAllVuelos">
+      <soap:operation soapAction="http://ontour.somee.com/getAllVuelos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllVuelos">
+      <soap:operation soapAction="http://ontour.somee.com/json_getAllVuelos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getVuelos">
       <soap:operation soapAction="http://ontour.somee.com/getVuelos" style="document" />
       <wsdl:input>
@@ -592,6 +1001,24 @@
     </wsdl:operation>
     <wsdl:operation name="json_getVueloConID">
       <soap:operation soapAction="http://ontour.somee.com/json_getVueloConID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllAlojamientos">
+      <soap:operation soapAction="http://ontour.somee.com/getAllAlojamientos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllAlojamientos">
+      <soap:operation soapAction="http://ontour.somee.com/json_getAllAlojamientos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -671,9 +1098,81 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllBuses">
+      <soap:operation soapAction="http://ontour.somee.com/getAllBuses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllBuses">
+      <soap:operation soapAction="http://ontour.somee.com/json_getAllBuses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBuses">
+      <soap:operation soapAction="http://ontour.somee.com/getBuses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getBuses">
+      <soap:operation soapAction="http://ontour.somee.com/json_getBuses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBusesConID">
+      <soap:operation soapAction="http://ontour.somee.com/getBusesConID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getBusesConID">
+      <soap:operation soapAction="http://ontour.somee.com/json_getBusesConID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="wsproveedoresSoap12" type="tns:wsproveedoresSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAllVuelos">
+      <soap12:operation soapAction="http://ontour.somee.com/getAllVuelos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllVuelos">
+      <soap12:operation soapAction="http://ontour.somee.com/json_getAllVuelos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getVuelos">
       <soap12:operation soapAction="http://ontour.somee.com/getVuelos" style="document" />
       <wsdl:input>
@@ -703,6 +1202,24 @@
     </wsdl:operation>
     <wsdl:operation name="json_getVueloConID">
       <soap12:operation soapAction="http://ontour.somee.com/json_getVueloConID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllAlojamientos">
+      <soap12:operation soapAction="http://ontour.somee.com/getAllAlojamientos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllAlojamientos">
+      <soap12:operation soapAction="http://ontour.somee.com/json_getAllAlojamientos" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -782,9 +1299,79 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllBuses">
+      <soap12:operation soapAction="http://ontour.somee.com/getAllBuses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllBuses">
+      <soap12:operation soapAction="http://ontour.somee.com/json_getAllBuses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBuses">
+      <soap12:operation soapAction="http://ontour.somee.com/getBuses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getBuses">
+      <soap12:operation soapAction="http://ontour.somee.com/json_getBuses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBusesConID">
+      <soap12:operation soapAction="http://ontour.somee.com/getBusesConID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getBusesConID">
+      <soap12:operation soapAction="http://ontour.somee.com/json_getBusesConID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="wsproveedoresHttpGet" type="tns:wsproveedoresHttpGet">
     <http:binding verb="GET" />
+    <wsdl:operation name="getAllVuelos">
+      <http:operation location="/getAllVuelos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllVuelos">
+      <http:operation location="/json_getAllVuelos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
     <wsdl:operation name="getVuelos">
       <http:operation location="/getVuelos" />
       <wsdl:input>
@@ -812,6 +1399,22 @@
     </wsdl:operation>
     <wsdl:operation name="json_getVueloConID">
       <http:operation location="/json_getVueloConID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getAllAlojamientos">
+      <http:operation location="/getAllAlojamientos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllAlojamientos">
+      <http:operation location="/json_getAllAlojamientos" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -876,6 +1479,54 @@
     </wsdl:operation>
     <wsdl:operation name="json_getSegurosConID">
       <http:operation location="/json_getSegurosConID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getAllBuses">
+      <http:operation location="/getAllBuses" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllBuses">
+      <http:operation location="/json_getAllBuses" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getBuses">
+      <http:operation location="/getBuses" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getBuses">
+      <http:operation location="/json_getBuses" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getBusesConID">
+      <http:operation location="/getBusesConID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getBusesConID">
+      <http:operation location="/json_getBusesConID" />
       <wsdl:input>
         <http:urlEncoded />
       </wsdl:input>
@@ -884,6 +1535,22 @@
   </wsdl:binding>
   <wsdl:binding name="wsproveedoresHttpPost" type="tns:wsproveedoresHttpPost">
     <http:binding verb="POST" />
+    <wsdl:operation name="getAllVuelos">
+      <http:operation location="/getAllVuelos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllVuelos">
+      <http:operation location="/json_getAllVuelos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
     <wsdl:operation name="getVuelos">
       <http:operation location="/getVuelos" />
       <wsdl:input>
@@ -911,6 +1578,22 @@
     </wsdl:operation>
     <wsdl:operation name="json_getVueloConID">
       <http:operation location="/json_getVueloConID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getAllAlojamientos">
+      <http:operation location="/getAllAlojamientos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllAlojamientos">
+      <http:operation location="/json_getAllAlojamientos" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>
@@ -975,6 +1658,54 @@
     </wsdl:operation>
     <wsdl:operation name="json_getSegurosConID">
       <http:operation location="/json_getSegurosConID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getAllBuses">
+      <http:operation location="/getAllBuses" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getAllBuses">
+      <http:operation location="/json_getAllBuses" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getBuses">
+      <http:operation location="/getBuses" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getBuses">
+      <http:operation location="/json_getBuses" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="getBusesConID">
+      <http:operation location="/getBusesConID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="json_getBusesConID">
+      <http:operation location="/json_getBusesConID" />
       <wsdl:input>
         <mime:content type="application/x-www-form-urlencoded" />
       </wsdl:input>

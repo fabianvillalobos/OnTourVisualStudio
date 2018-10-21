@@ -51,7 +51,17 @@
                         <asp:Button ID="ButtonCargar" runat="server" OnClick="ButtonCargar_Click" Text="Cargar" />
                     </td>
                 </tr>
-
+                <tr>
+                    <td>
+                        <asp:Label ID="LabelTipoTransporte" runat="server" Text="Tipo de transporte"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="DropDownListTipoTransporte" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListTipoTransporte_SelectedIndexChanged">
+                            <asp:ListItem Value="1">Bus</asp:ListItem>
+                            <asp:ListItem Value="2">Vuelo</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <asp:Label ID="LabelViajeVuelo" runat="server" Text="Viaje por vuelo"></asp:Label>
@@ -72,8 +82,17 @@
                 </tr>
                 <tr>
                     <td><asp:Label ID="LabelViajeBus" runat="server" Text="Viaje por bus"></asp:Label></td>
-                    <td><asp:DropDownList ID="DropDownListViajeBus" runat="server" AutoPostBack="True">
-                        </asp:DropDownList></td>
+                    <td><asp:DropDownList ID="DropDownListViajeBus" runat="server" AutoPostBack="True" DataTextField="origen" DataValueField="id">
+                        </asp:DropDownList>
+                        <asp:ObjectDataSource ID="ObjectDataSourceViajeBus" runat="server" SelectMethod="getBuses" TypeName="localhost.wsproveedores">
+                            <SelectParameters>
+                                <asp:ControlParameter ControlID="txtOrigen" Name="origen" PropertyName="Text" Type="String" />
+                                <asp:ControlParameter ControlID="txtDestino" Name="destino" PropertyName="Text" Type="String" />
+                                <asp:ControlParameter ControlID="CalendarSalida" Name="salida" PropertyName="SelectedDate" Type="DateTime" />
+                                <asp:ControlParameter ControlID="txtPasajeros" Name="pasajeros" PropertyName="Text" Type="Int32" />
+                            </SelectParameters>
+                        </asp:ObjectDataSource>
+                    </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>

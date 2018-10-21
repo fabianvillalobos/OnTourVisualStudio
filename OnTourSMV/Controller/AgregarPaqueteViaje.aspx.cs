@@ -13,10 +13,16 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         {
             Response.Redirect("~/View/Login.aspx");
         }
+        int perfilId = int.Parse(Session["PerfilID"].ToString());
+        if (perfilId != 2) // Solo ejecutivos de ventas pueden agregar paquetes de viaje
+        {
+            Response.Redirect("~/View/PaginaPpal.aspx");
+        }
     }
 
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
+        /*
         try
         {
             EntitiesOnTour bd = new EntitiesOnTour();
@@ -41,5 +47,6 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         {
             LabelAviso.Text = ex.Message;
         }
+        */
     }
 }

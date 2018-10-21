@@ -408,7 +408,6 @@
           <Parameter Name="CAPELLIDO_MAT_CLI" Type="varchar2" Mode="In" />
           <Parameter Name="CMAIL_CLI" Type="varchar2" Mode="In" />
           <Parameter Name="CACTIVO_CLI" Type="char" Mode="In" />
-          <Parameter Name="CID_USR_CLI" Type="number" Mode="In" />
           <Parameter Name="CDIRECCION_CLI" Type="varchar2" Mode="In" />
           <Parameter Name="CFECHA_NACIMIENTO_CLI" Type="date" Mode="In" />
           <Parameter Name="CFONO_CLI" Type="varchar2" Mode="In" />
@@ -1074,7 +1073,6 @@
             <Parameter Name="CAPELLIDO_MAT_CLI" Mode="In" Type="String" />
             <Parameter Name="CMAIL_CLI" Mode="In" Type="String" />
             <Parameter Name="CACTIVO_CLI" Mode="In" Type="String" />
-            <Parameter Name="CID_USR_CLI" Mode="In" Type="Decimal" />
             <Parameter Name="CDIRECCION_CLI" Mode="In" Type="String" />
             <Parameter Name="CFECHA_NACIMIENTO_CLI" Mode="In" Type="DateTime" />
             <Parameter Name="CFONO_CLI" Mode="In" Type="String" />

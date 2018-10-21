@@ -18,35 +18,57 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         {
             Response.Redirect("~/View/PaginaPpal.aspx");
         }
+
+        DropDownListViajeVuelo.Enabled = false;
+        DropDownListEstadia.Enabled = false;
+        DropDownListSeguros.Enabled = false;
+        DropDownListContrato.Enabled = false;
+        
+        
     }
 
-    protected void btnRegistrar_Click(object sender, EventArgs e)
+
+  
+    protected void ButtonCargar_Click(object sender, EventArgs e)
     {
-        /*
         try
         {
-            EntitiesOnTour bd = new EntitiesOnTour();
-            String desc = txtDescripcion.Text;
-            int valor = int.Parse(txtValor.Text);
-            DateTime fechaCreacion = DateTime.Now;
+            String origen = txtOrigen.Text, destino = txtDestino.Text;
+            DateTime fecha = CalendarSalida.SelectedDate;
+            int pasajeros = int.Parse(txtPasajeros.Text);
+            
+            //Cargar los dropdown con los parámetros (Se enlazan los objetos)
+            DropDownListSeguros.DataSourceID = "ObjectDataSourceSeguros";
+            DropDownListViajeVuelo.DataSourceID = "ObjectDataSourceViajeVuelo";
 
-            PAQUETEVIAJE pkgViaje = new PAQUETEVIAJE()
-            {
-                DESC_PAQUETEVIAJE = desc,
-                VALOR_PAQUETEVIAJE = valor,
-                ACTIVO = "T",
-                FECHA_CREACION_PAQVIAJE = fechaCreacion
-            };
-            bd.PAQUETEVIAJE.Add(pkgViaje);
-            bd.SaveChanges();
-            LabelAviso.Text = "Paquete creado.";
-            txtDescripcion.Text = "";
-            txtValor.Text = "";
+            DropDownListViajeVuelo.Enabled = true;
+            DropDownListEstadia.Enabled = true;
+            DropDownListSeguros.Enabled = true;
+            DropDownListContrato.Enabled = true;
         }
         catch (Exception ex)
         {
+
             LabelAviso.Text = ex.Message;
         }
+        
+        
+        /*
+        ObjectDataSource objSeguros = new ObjectDataSource();
+        objSeguros.TypeName = "localhost.wsproveedores";
+        objSeguros.SelectMethod = "getSeguros";
+        objSeguros.ID = "ObjectDataSourceSeguros";
+        DropDownListSeguros.DataSource = objSeguros;
+       // DropDownListSeguros.DataSourceID = "ObjectDataSourceSeguros";
+        DropDownListSeguros.DataTextField = "se_nombre";
+        DropDownListSeguros.DataValueField = "se_id";
         */
+    }
+
+
+
+    protected void ButtonRegistrar_Click(object sender, EventArgs e)
+    {
+
     }
 }

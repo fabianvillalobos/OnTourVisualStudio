@@ -110,7 +110,14 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorDv" runat="server" ControlToValidate="txtDv" Display="Dynamic" ErrorMessage="Campo DV Requerido" ForeColor="#FF3300" ValidationGroup="mandanteGroup"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtDv" ErrorMessage="Digito No Valido" ForeColor="#FF3300" ValidationExpression="^[0-9_kK]*$" Display="Dynamic" ValidationGroup="mandanteGroup"></asp:RegularExpressionValidator>
                 </td>
-            </tr>            
+            </tr>  
+            <tr>
+                <td>
+                    <asp:Label ID="lblA" runat="server" Text="Fecha de Nacimiento:"></asp:Label></td>
+                <td class="auto-style3">
+                    <asp:TextBox ID="txtA" runat="server" TextMode="SingleLine" CssClass="form-control"></asp:TextBox>
+                </td>
+            </tr>       
             <tr>
                 <td>
                     <asp:Label ID="LabelFecNacimiento" runat="server" Text="Fecha de Nacimiento:"></asp:Label></td>

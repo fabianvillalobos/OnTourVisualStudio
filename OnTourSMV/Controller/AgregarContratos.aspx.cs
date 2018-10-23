@@ -14,6 +14,8 @@ public partial class AgregarContratos : System.Web.UI.Page
         {
             Response.Redirect("~/View/Login.aspx");
         }
+        lblA.Visible = false;
+        txtA.Visible = false;
         int perfilId = int.Parse(Session["PerfilID"].ToString());
         if (perfilId != 2) // Solo ejecutivos de ventas pueden agregar contratos
         {
@@ -41,6 +43,13 @@ public partial class AgregarContratos : System.Web.UI.Page
             String rutCompleto = rutMandante + dv;
 
             bool rutValido = librerias.validarRut(rutCompleto); //Validación de Rut
+           if(acc==1)
+            {
+                if (bd.CLIENTE.Any(it => it.NUMRUT_CLI == rutMandante))
+                {
+                    throw new Exception("Cliente ya existe");
+                }
+            }
             if (!rutValido)
             {
                 throw new Exception("Rut inválido");
@@ -88,11 +97,17 @@ public partial class AgregarContratos : System.Web.UI.Page
 
 
 
-
+    int acc = 0;
 
     protected void ButtonCargarMandante_Click(object sender, EventArgs e)
     {
-
+        acc = 1;
+        lblA.Visible = true;
+        txtA.Visible = true;
+        txtA.Enabled = false;
+        txtFecha.Visible = false;
+        LabelFecNacimiento.Visible = false;
+        LabelFecNacimiento.Visible = false;
         EntitiesOnTour bd = new EntitiesOnTour();
         int numrutMandante = int.Parse(DropDownListMandante.SelectedValue);
         CLIENTE cliente = bd.CLIENTE.FirstOrDefault(t => t.NUMRUT_CLI == numrutMandante);
@@ -103,6 +118,10 @@ public partial class AgregarContratos : System.Web.UI.Page
         txtRut.Text = cliente.NUMRUT_CLI.ToString();
         txtDv.Text = cliente.DRUT_CLI;
         txtFecha.Text = cliente.FECHA_NACIMIENTO_CLI.Value.ToString();
+
+        DateTime fec = DateTime.Parse(cliente.FECHA_NACIMIENTO_CLI.ToString());
+        txtA.Text = fec.ToShortDateString();
+
         txtMail.Text = cliente.MAIL_CLI;
         txtTelefono.Text = cliente.FONO_CLI.ToString();
         txtDireccion.Text = cliente.DIRECCION_CLI;

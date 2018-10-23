@@ -13,6 +13,11 @@ public partial class AgregarCliente : System.Web.UI.Page
         {
             Response.Redirect("~/View/Login.aspx");
         }
+        int perfilId = int.Parse(Session["PerfilID"].ToString());
+        if (perfilId != 2) // Solo ejecutivos de ventas pueden agregar pasajeros (Clientes con cuentas asociarlos a contratos)
+        {
+            Response.Redirect("~/View/PaginaPpal.aspx");
+        }
     }
 
     protected void btnAgregar_Click(object sender, EventArgs e)
@@ -35,33 +40,14 @@ public partial class AgregarCliente : System.Web.UI.Page
             String apellidoP = txtApellidoP.Text.Trim();
             String apellidoM = txtApellidoM.Text.Trim();
             String mail = txtMail.Text.Trim();
-            String activo = DropDownListActivo.SelectedValue;
             
-            int tipoUsuario = int.Parse(DropDownListUsuario.SelectedValue);
             String direccion = txtDireccion.Text.Trim();
             DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
             String telefono = txtTelefono.Text;
-
-           // bd.SP_INSERTCLIENTE(rut, dv, nombre, apellidoP, apellidoM, mail, activo, tipoUsuario, direccion, fechaNacimiento, telefono);
             
-            //CLIENTE cliente = new CLIENTE()
-            //{
-            //    NUMRUT_CLI = rut,
-            //    DRUT_CLI = dv,
-            //    NOMBRE_CLIE = nombre,
-            //    APELLIDO_PAT_CLI = apellidoP,
-            //    APELLIDO_MAT_CLI = apellidoM,
-            //    MAIL_CLI = mail,
-            //    ACTIVO = activo,
-            //    ID_USR = tipoUsuario,
-            //    DIRECCION_CLI = direccion,
-            //    FECHA_NACIMIENTO_CLI = fechaNacimiento,
-            //    FONO_CLI = telefono,
-            //};
-
-            //bd.CLIENTE.Add(cliente);
+          
             bd.SaveChanges();
-            lblAviso.Text = "Cliente Creado";
+            lblAviso.Text = "Cliente creado y asignado al contrato";
 
 
         }

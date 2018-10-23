@@ -7,10 +7,35 @@
 
     <div class="container">
         <div class="row">
-            <h2>Agregar Usuario</h2>
+            <h2>Agregar Cliente(Pasajero)</h2>
             <br />
 
             <table>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label1" runat="server" Text="Contrato a asociar"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="DropDownListContratoAsociar" runat="server" DataSourceID="SqlDataSourceContratoAsociar" DataTextField="NUMRUT_CLI_TITULAR" DataValueField="ID_CONTRATO">
+                        </asp:DropDownList>
+                        <asp:SqlDataSource ID="SqlDataSourceContratoAsociar" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;CONTRATO&quot;"></asp:SqlDataSource>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label2" runat="server" Text="Cargar cliente por rut"></asp:Label></td>
+                    <td>
+                        <asp:TextBox ID="txtBuscarRut" runat="server" CssClass="form-control col-md-6" TextMode="Number"></asp:TextBox>
+                        </td>
+                    <td>-</td>
+                    <td>
+                        <asp:TextBox ID="txtDvBuscar" runat="server" MaxLength="1" CssClass="form-control" Width="50px"></asp:TextBox>
+                     </td>
+                    <td>
+                        <asp:Button ID="btnCargarCliente" runat="server" CssClass="btn btn-primary" Text="Cargar" OnClick="btnAgregar_Click" />
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <asp:Label ID="LabelRut" runat="server" Text="Rut:"></asp:Label></td>
@@ -58,25 +83,6 @@
                     <td>
                         <asp:TextBox ID="txtMail" runat="server" TextMode="Email" CssClass="form-control col-md-6"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidatorMail" runat="server" ControlToValidate="txtMail" ErrorMessage="Campo Requerido" ForeColor="#FF3300"></asp:RequiredFieldValidator>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Label ID="LabelActivo" runat="server" Text="Activo:"></asp:Label></td>
-                    <td>
-                        <asp:DropDownList ID="DropDownListActivo" runat="server" CssClass="form-control">
-                            <asp:ListItem Value="T">Activo</asp:ListItem>
-                            <asp:ListItem Value="F">No Activo</asp:ListItem>
-                        </asp:DropDownList>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Label ID="LabelTipo" runat="server" Text="Tipo de Usuario:"></asp:Label></td>
-                    <td>
-                        <asp:DropDownList ID="DropDownListUsuario" runat="server" CssClass="form-control" DataSourceID="SqlDataSourceTipoUsuario" DataTextField="DESC_TIPO_USUARIO" DataValueField="ID_TIPO_USUARIO">
-                        </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSourceTipoUsuario" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;TIPO_USUARIO&quot;"></asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>

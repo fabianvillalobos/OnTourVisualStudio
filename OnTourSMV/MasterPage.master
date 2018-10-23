@@ -31,7 +31,8 @@
                     <li class="dropdown"><a class="dropdown-toggle glyphicon glyphicon-folder-close" data-toggle="dropdown" href="#">Contratos<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="ListarContratos.aspx">Listar</a></li>
-                            <li><a href="AgregarContratos.aspx">Agregar</a></li>
+                            <li><a href="AgregarContratos.aspx">Agregar contrato</a></li>
+                            <li><a href="AgregarCliente.aspx">Agregar pasajero</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle glyphicon glyphicon-star-empty" data-toggle="dropdown" href="#">Paquetes<span class="caret"></span></a>
@@ -42,7 +43,7 @@
                     <li class="dropdown"><a class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" href="#">Usuario<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="ListarCliente.aspx">Listar</a></li>
-                            <li><a href="AgregarCliente.aspx">Agregar</a></li>
+                            
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle glyphicon glyphicon-piggy-bank" data-toggle="dropdown" href="#">Actividades<span class="caret"></span></a>

@@ -19,17 +19,7 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
             Response.Redirect("~/View/PaginaPpal.aspx");
         }
 
-        DropDownListViajeVuelo.Enabled = false;
-        DropDownListViajeBus.Enabled = false;
-        DropDownListEstadia.Enabled = false;
-        DropDownListSeguros.Enabled = false;
-        DropDownListContrato.Enabled = false;
-        DropDownListTipoTransporte.Enabled = false;
-        //Esconder por tipo transporte
-        LabelViajeVuelo.Visible = false;
-        DropDownListViajeVuelo.Visible = false;
-        LabelViajeBus.Visible = true;
-        DropDownListViajeBus.Visible = true;
+   
 
 
     }
@@ -56,6 +46,8 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
             DropDownListContrato.Enabled = true;
             DropDownListTipoTransporte.Enabled = true;
 
+
+            DropDownListViajeVuelo.DataTextField = "salida" ;
         }
         catch (Exception ex)
         {
@@ -64,16 +56,7 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         }
         
         
-        /*
-        ObjectDataSource objSeguros = new ObjectDataSource();
-        objSeguros.TypeName = "localhost.wsproveedores";
-        objSeguros.SelectMethod = "getSeguros";
-        objSeguros.ID = "ObjectDataSourceSeguros";
-        DropDownListSeguros.DataSource = objSeguros;
-       // DropDownListSeguros.DataSourceID = "ObjectDataSourceSeguros";
-        DropDownListSeguros.DataTextField = "se_nombre";
-        DropDownListSeguros.DataValueField = "se_id";
-        */
+      
     }
 
 
@@ -115,5 +98,15 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
             DropDownListContrato.Enabled = true;
             DropDownListTipoTransporte.Enabled = true;
         }
+    }
+
+    protected void DropDownListViajeVuelo_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void DropDownListViajeBus_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
     }
 }

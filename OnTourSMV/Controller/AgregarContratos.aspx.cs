@@ -28,7 +28,7 @@ public partial class AgregarContratos : System.Web.UI.Page
             EntitiesOnTour bd = new EntitiesOnTour();
             //Usado para guardar contrato con el empleado actual
             String usuario = Session["Usuario"].ToString();
-            USUARIO usuarioObj = bd.USUARIO.FirstOrDefault(it => it.LOGIN_USR == usuario);
+            USUARIO usuarioObj = bd.USUARIO.FirstOrDefault(it => it.LOGIN_USR == usuario); //User del empleado
             EMPLEADO empleadoObj = bd.EMPLEADO.FirstOrDefault(it => it.ID_USR == usuarioObj.ID_USR);
             String numrutEmpleadoTemp = empleadoObj.NUMRUT_EMP.ToString();
             int numrutEmpleado = int.Parse(numrutEmpleadoTemp);
@@ -71,11 +71,13 @@ public partial class AgregarContratos : System.Web.UI.Page
             String estado = "P"; //Por defecto, T Será cuando se complete y F cuando se cancele
                                  //int numrutEmpleado = int.Parse(empleadoObj.NUMRUT_EMP.ToString()); // Sesión usuario
 
-
+            //Al crear un contrato se crea una cuenta inmediatamente, esta cuenta se debe asignar a los nuevos clientes (Pasajeros no mandantes)
             bd.SP_INSERTCONTRATO(fechInicio, fechTermino, meta, montoReserva, estado, numrutEmpleado, rutMandante);
-
             bd.SaveChanges();
-            LabelAviso.Text = "Contrato Generado.";
+            CONTRATO contrato = bd.CONTRATO.FirstOrDefault(t => t.FECHA_INICIO == fechInicio && t.NUMRUT_CLI_TITULAR == rutMandante);
+            bd.SP_INSERTARCUENTA(0, contrato.ID_CONTRATO, rutMandante, estado); //Sigue el estandar P del contrato
+            bd.SaveChanges();
+            LabelAviso.Text = "Contrato y cuenta Generado.";
         }
         catch (Exception ex)
         {

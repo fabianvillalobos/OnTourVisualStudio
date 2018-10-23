@@ -257,4 +257,25 @@ public partial class EntitiesOnTour : DbContext
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPDATECONTRATO", pID_CONTRATOParameter, pFECHA_INICIOParameter, pFECHA_TERMINOParameter, pMETAParameter, pMONTO_RESERVAParameter, pESTADOParameter, pNUMRUT_EMPParameter, pNUMRUT_CLI_TITULARParameter);
     }
+
+    public virtual int SP_INSERTARCUENTA(Nullable<decimal> pARAM_SALDO, Nullable<decimal> pARAM_ID_CONTRATO, Nullable<decimal> pARAM_NUMRUT_CLIE, string pARAM_ACTIVO)
+    {
+        var pARAM_SALDOParameter = pARAM_SALDO.HasValue ?
+            new ObjectParameter("PARAM_SALDO", pARAM_SALDO) :
+            new ObjectParameter("PARAM_SALDO", typeof(decimal));
+
+        var pARAM_ID_CONTRATOParameter = pARAM_ID_CONTRATO.HasValue ?
+            new ObjectParameter("PARAM_ID_CONTRATO", pARAM_ID_CONTRATO) :
+            new ObjectParameter("PARAM_ID_CONTRATO", typeof(decimal));
+
+        var pARAM_NUMRUT_CLIEParameter = pARAM_NUMRUT_CLIE.HasValue ?
+            new ObjectParameter("PARAM_NUMRUT_CLIE", pARAM_NUMRUT_CLIE) :
+            new ObjectParameter("PARAM_NUMRUT_CLIE", typeof(decimal));
+
+        var pARAM_ACTIVOParameter = pARAM_ACTIVO != null ?
+            new ObjectParameter("PARAM_ACTIVO", pARAM_ACTIVO) :
+            new ObjectParameter("PARAM_ACTIVO", typeof(string));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTARCUENTA", pARAM_SALDOParameter, pARAM_ID_CONTRATOParameter, pARAM_NUMRUT_CLIEParameter, pARAM_ACTIVOParameter);
+    }
 }

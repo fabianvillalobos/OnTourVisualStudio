@@ -47,6 +47,7 @@ public partial class AgregarContratos : System.Web.UI.Page
             }
             String nombre = txtNombre.Text.Trim();
             String apellidoP = txtApellidoP.Text.Trim();
+
             String apellidoM = txtApellidoM.Text.Trim();
 
 

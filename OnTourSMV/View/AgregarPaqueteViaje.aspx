@@ -5,6 +5,7 @@
         .auto-style1 {
             height: 21px;
         }
+
         .auto-style2 {
             height: 22px;
         }
@@ -15,24 +16,26 @@
     <div class="container">
         <div class="row">
             <h2>Paquete De Viaje</h2>
-            <table style="width:100%;">
+            <table>
                 <tr>
                     <td>
                         <asp:Label ID="Label6" runat="server" Text="Origen"></asp:Label>
 
                     </td>
-                     <td>
-                         <asp:TextBox ID="txtOrigen" runat="server"></asp:TextBox>
-                     </td> 
-                </tr>
-                <tr>
-                    <td><asp:Label ID="Label5" runat="server" Text="Destino"></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="txtDestino" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtOrigen" runat="server" CssClass="form-control"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td><asp:Label ID="Label7" runat="server" Text="Salida"></asp:Label></td>
+                    <td>
+                        <asp:Label ID="Label5" runat="server" Text="Destino"></asp:Label></td>
+                    <td>
+                        <asp:TextBox ID="txtDestino" runat="server" CssClass="form-control"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label7" runat="server" Text="Salida"></asp:Label></td>
                     <td>
                         <asp:Calendar ID="CalendarSalida" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="127px" Width="176px">
                             <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
@@ -47,16 +50,17 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><asp:Label ID="Label8" runat="server" Text="Pasajeros"></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="txtPasajeros" runat="server" TextMode="Number"></asp:TextBox>
+                        <asp:Label ID="Label8" runat="server" Text="Pasajeros"></asp:Label></td>
+                    <td>
+                        <asp:TextBox ID="txtPasajeros" runat="server" TextMode="Number" CssClass="form-control"></asp:TextBox>
                     </td>
                 </tr>
 
                 <tr>
                     <td></td>
                     <td>
-                        <asp:Button ID="ButtonCargar" runat="server" OnClick="ButtonCargar_Click" Text="Cargar" Height="26px" Width="65px" />
+                        <asp:Button ID="ButtonCargar" runat="server" CssClass="btn btn-primary" OnClick="ButtonCargar_Click" Text="Cargar" Height="26px" Width="65px" />
                     </td>
                 </tr>
                 <tr>
@@ -64,7 +68,7 @@
                         <asp:Label ID="LabelTipoTransporte" runat="server" Text="Tipo de transporte"></asp:Label>
                     </td>
                     <td class="auto-style1">
-                        <asp:DropDownList ID="DropDownListTipoTransporte" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownListTipoTransporte_SelectedIndexChanged" Enabled="False">
+                        <asp:DropDownList ID="DropDownListTipoTransporte" runat="server" CssClass="form-control" AutoPostBack="True" OnSelectedIndexChanged="DropDownListTipoTransporte_SelectedIndexChanged" Enabled="False">
                             <asp:ListItem Value="1">Bus</asp:ListItem>
                             <asp:ListItem Value="2">Vuelo</asp:ListItem>
                         </asp:DropDownList>
@@ -75,7 +79,7 @@
                         <asp:Label ID="LabelViajeVuelo" runat="server" Text="Viaje por vuelo (Fecha)" Visible="False"></asp:Label>
                     </td>
                     <td>
-                        <asp:DropDownList ID="DropDownListViajeVuelo" runat="server" AutoPostBack="True"  DataValueField="id" Enabled="False" OnSelectedIndexChanged="DropDownListViajeVuelo_SelectedIndexChanged" Visible="False">
+                        <asp:DropDownList ID="DropDownListViajeVuelo" runat="server" CssClass="form-control" AutoPostBack="True" DataValueField="id" Enabled="False" OnSelectedIndexChanged="DropDownListViajeVuelo_SelectedIndexChanged" Visible="False">
                         </asp:DropDownList>
                         <asp:Label ID="lblDetalleViajeVuelo" runat="server"></asp:Label>
                         <asp:ObjectDataSource ID="ObjectDataSourceViajeVuelo" runat="server" SelectMethod="getVuelos" TypeName="localhost.wsproveedores">
@@ -90,8 +94,10 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td><asp:Label ID="LabelViajeBus" runat="server" Text="Viaje por bus (Fecha)"></asp:Label></td>
-                    <td><asp:DropDownList ID="DropDownListViajeBus" runat="server" AutoPostBack="True" DataTextField="salida" DataValueField="id" Enabled="False" OnSelectedIndexChanged="DropDownListViajeBus_SelectedIndexChanged">
+                    <td>
+                        <asp:Label ID="LabelViajeBus" runat="server" Text="Viaje por bus (Fecha)"></asp:Label></td>
+                    <td>
+                        <asp:DropDownList ID="DropDownListViajeBus" runat="server" CssClass="form-control" AutoPostBack="True" DataTextField="salida" DataValueField="id" Enabled="False" OnSelectedIndexChanged="DropDownListViajeBus_SelectedIndexChanged">
                         </asp:DropDownList>
                         <asp:Label ID="lblDetalleViajeBus" runat="server"></asp:Label>
                         <asp:ObjectDataSource ID="ObjectDataSourceViajeBus" runat="server" SelectMethod="getBuses" TypeName="localhost.wsproveedores">
@@ -110,7 +116,7 @@
                         <asp:Label ID="Label2" runat="server" Text="Estadía"></asp:Label>
                     </td>
                     <td class="auto-style2">
-                        <asp:DropDownList ID="DropDownListEstadia" runat="server" AutoPostBack="True" Enabled="False">
+                        <asp:DropDownList ID="DropDownListEstadia" runat="server" CssClass="form-control" AutoPostBack="True" Enabled="False">
                         </asp:DropDownList>
                     </td>
                     <td class="auto-style2"></td>
@@ -120,30 +126,28 @@
                         <asp:Label ID="Label3" runat="server" Text="Seguros"></asp:Label>
                     </td>
                     <td>
-                        <asp:DropDownList ID="DropDownListSeguros" runat="server" AutoPostBack="True"  DataTextField="se_nombre" DataValueField="se_id" Enabled="False">
+                        <asp:DropDownList ID="DropDownListSeguros" runat="server" CssClass="form-control" AutoPostBack="True" DataTextField="se_nombre" DataValueField="se_id" Enabled="False">
                         </asp:DropDownList>
-                        
+
                         <asp:ObjectDataSource ID="ObjectDataSourceSeguros" runat="server" SelectMethod="getSeguros" TypeName="localhost.wsproveedores"></asp:ObjectDataSource>
-                        
+
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td>
-                       <asp:Label ID="Label4" runat="server" Text="Contrato"></asp:Label>
+                        <asp:Label ID="Label4" runat="server" Text="Contrato"></asp:Label>
                     </td>
                     <td>
-                        <asp:DropDownList ID="DropDownListContrato" runat="server" DataSourceID="SqlDataSourceContrato" DataTextField="NUMRUT_CLI_TITULAR" DataValueField="ID_CONTRATO" Enabled="False"></asp:DropDownList>
+                        <asp:DropDownList ID="DropDownListContrato" runat="server" CssClass="form-control" DataSourceID="SqlDataSourceContrato" DataTextField="NUMRUT_CLI_TITULAR" DataValueField="ID_CONTRATO" Enabled="False"></asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSourceContrato" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;CONTRATO&quot;"></asp:SqlDataSource>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
+                    <td></td>
                     <td>
-                      
-                    </td>
-                    <td>
-                        <asp:Button ID="ButtonRegistrar" runat="server" Text="Registrar" OnClick="ButtonRegistrar_Click" />
+                        <asp:Button ID="ButtonRegistrar" runat="server" CssClass="btn btn-success" Text="Registrar" OnClick="ButtonRegistrar_Click" />
                         <br />
                         <asp:Label ID="LabelAviso" runat="server"></asp:Label>
                     </td>

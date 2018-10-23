@@ -43,13 +43,12 @@ public partial class AgregarContratos : System.Web.UI.Page
             String rutCompleto = rutMandante + dv;
 
             bool rutValido = librerias.validarRut(rutCompleto); //Validación de Rut
-           if(acc==1)
+           
+            if (bd.CLIENTE.Any(it => it.NUMRUT_CLI == rutMandante) && txtNombre.Enabled)
             {
-                if (bd.CLIENTE.Any(it => it.NUMRUT_CLI == rutMandante))
-                {
-                    throw new Exception("Cliente ya existe");
-                }
+                throw new Exception("Cliente ya existe"); //txtNombre es desactivado siempre que se cargue del botón
             }
+            
             if (!rutValido)
             {
                 throw new Exception("Rut inválido");
@@ -97,11 +96,11 @@ public partial class AgregarContratos : System.Web.UI.Page
 
 
 
-    int acc = 0;
+   
 
     protected void ButtonCargarMandante_Click(object sender, EventArgs e)
     {
-        acc = 1;
+        
         lblA.Visible = true;
         txtA.Visible = true;
         txtA.Enabled = false;

@@ -116,6 +116,4 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
             DropDownListTipoTransporte.Enabled = true;
         }
     }
-
-   
 }

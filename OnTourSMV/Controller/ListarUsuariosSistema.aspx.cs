@@ -14,7 +14,7 @@ public partial class ListarUsuariosSistema : System.Web.UI.Page
             Response.Redirect("~/View/Login.aspx");
         }
         int perfilId = int.Parse(Session["PerfilID"].ToString());
-        if (perfilId != 2 && perfilId != 1) // Solo ejecutivos de ventas y admin pueden acceder
+        if (perfilId != 1) // Solo admin puede acceder
         {
             Response.Redirect("~/View/PaginaPpal.aspx");
         }

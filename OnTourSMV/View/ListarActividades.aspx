@@ -7,7 +7,7 @@
         <div class="row">
             <h2>Actividades</h2>
             <br />
-            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" DataSourceID="SqlDataSourceActividades">
+            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay Actividades asociadas" AutoGenerateColumns="False" DataSourceID="SqlDataSourceActividades">
                 <Columns>
                     <asp:BoundField DataField="ID_ACTIVIDAD" HeaderText="ID" SortExpression="ID_ACTIVIDAD" />
                     <asp:BoundField DataField="DESC_ACTIVIDAD" HeaderText="Descripcion" SortExpression="DESC_ACTIVIDAD" />

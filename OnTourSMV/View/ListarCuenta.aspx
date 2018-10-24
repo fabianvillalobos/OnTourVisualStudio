@@ -9,7 +9,7 @@
             <h2>Cuenta</h2>
             <br />
 
-            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" DataKeyNames="ID_CUENTA" DataSourceID="SqlDataSourceCuenta">
+            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay cuentas asociadas" AutoGenerateColumns="False" DataKeyNames="ID_CUENTA" DataSourceID="SqlDataSourceCuenta">
                 <Columns>
                     <asp:BoundField DataField="ID_CUENTA" HeaderText="ID" ReadOnly="True" SortExpression="ID_CUENTA" />
                     <asp:BoundField DataField="SALDO" HeaderText="Saldo de la Cuenta" SortExpression="SALDO" DataFormatString='${0:#,0}' />

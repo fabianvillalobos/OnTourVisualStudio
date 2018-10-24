@@ -44,10 +44,23 @@ public partial class AgregarCliente : System.Web.UI.Page
             String direccion = txtDireccion.Text.Trim();
             DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
             String telefono = txtTelefono.Text;
+
+            String activo = "P";
+            int numrutCliente = int.Parse(txtRut.Text);
+            if (txtNombre.Enabled)
+            {
+                bd.SP_INSERTCLIENTE(rut, dv, nombre, apellidoP, apellidoM,
+                mail, activo, direccion, fechaNacimiento, telefono);
+                lblAviso.Text = " Cliente agregado a la BD. ";
+            }
             
+            //Buscar contrato para obtener id
+            int idContrato = int.Parse(DropDownListContratoAsociar.SelectedValue);
           
+            bd.SP_INSERTARCUENTA(0, idContrato, numrutCliente, activo);
+            lblAviso.Text += "Cuenta asignada y cliente asignado al contrato";
             bd.SaveChanges();
-            lblAviso.Text = "Cliente creado y asignado al contrato";
+         
 
 
         }
@@ -95,6 +108,7 @@ public partial class AgregarCliente : System.Web.UI.Page
             }
             else //Existen coincidencias, se cargan los textbox
             {
+                DropDownListContratoAsociar.Enabled = true;
                 txtRut.Text = cliente.NUMRUT_CLI.ToString();
                 txtDv.Text = cliente.DRUT_CLI.ToString();
                 txtNombre.Text = cliente.NOMBRE_CLIE;
@@ -102,10 +116,19 @@ public partial class AgregarCliente : System.Web.UI.Page
                 txtApellidoP.Text = cliente.APELLIDO_PAT_CLI;
                 txtMail.Text = cliente.MAIL_CLI;
                 txtDireccion.Text = cliente.DIRECCION_CLI;
+                txtFecha.Text = cliente.FECHA_NACIMIENTO_CLI.ToString();
                 txtFecha.Visible = false;
+                LabelFecNacimiento.Visible = false;
+                DateTime fechaNacimiento = DateTime.Parse(cliente.FECHA_NACIMIENTO_CLI.ToString());
+
+                
+                //Los str son netamente para que el usuario vea su fecha en el sistema, pero se usa
+                //el normal sin str
                 txtFechaStr.Visible = true;
-                txtFecha.Text = cliente.FECHA_NACIMIENTO_CLI.Value.ToString();
+                lblFechaStr.Visible = true;
+                txtFechaStr.Text = fechaNacimiento.ToShortDateString();
                 txtTelefono.Text = cliente.FONO_CLI;
+               
             }
         }
         catch (Exception ex)

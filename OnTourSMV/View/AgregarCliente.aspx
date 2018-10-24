@@ -110,10 +110,10 @@
                 </tr>
                 <tr>
                     <td>
-                    <asp:Label ID="lblFechaStr" runat="server" Text="Fecha de Nacimiento:"></asp:Label>
+                    <asp:Label ID="lblFechaStr" runat="server" Text="Fecha de Nacimiento:" Visible="False"></asp:Label>
                     </td>
                     <td class="auto-style3">
-                        <asp:TextBox ID="txtFechaStr" runat="server" TextMode="SingleLine" CssClass="form-control" Enabled="False"></asp:TextBox>
+                        <asp:TextBox ID="txtFechaStr" runat="server" TextMode="SingleLine" CssClass="form-control" Enabled="False" Visible="False"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

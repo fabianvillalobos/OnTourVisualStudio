@@ -20,8 +20,8 @@ public partial class MasterPage : System.Web.UI.MasterPage
             EntitiesOnTour bd = new EntitiesOnTour();
 
             //Buscar cliente para poner nombre 
-            lblUsuario.Text = Session["Usuario"].ToString().ToUpper() + "\n";
-            lblUsuario.Text += Session["Perfil"].ToString();
+            lblUsuario.Text = Session["Usuario"].ToString().ToUpper();
+            lblUsuario.Text += "<br>" + Session["Perfil"].ToString();
 
 
             Mantenedor.Visible = true;

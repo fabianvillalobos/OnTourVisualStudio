@@ -13,12 +13,6 @@ public partial class View_Login : System.Web.UI.Page
         //Se hace esto para que cuando se ingrese acá se borren las sesiones
         Session["Usuario"] = null;
        
-        // Hasheo de claves para ponerlas en la BD
-        /*
-        string hashClave = Convert.ToBase64String(new System.Security.Cryptography.MD5CryptoServiceProvider().
-            ComputeHash(System.Text.Encoding.Default.GetBytes("luis")));
-        LabelAviso.Text += hashClave;
-        */
     }
 
     protected void btnLogin_Click(object sender, EventArgs e)

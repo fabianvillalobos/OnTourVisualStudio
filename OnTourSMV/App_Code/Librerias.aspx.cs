@@ -10,6 +10,12 @@ public partial class Librerias : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
+        // Hasheo de claves para ponerlas en la BD
+        /*
+        string hashClave = Convert.ToBase64String(new System.Security.Cryptography.MD5CryptoServiceProvider().
+            ComputeHash(System.Text.Encoding.Default.GetBytes("luis")));
+        LabelAviso.Text += hashClave;
+        */
     }
     public bool validarRut(string rut)
     {

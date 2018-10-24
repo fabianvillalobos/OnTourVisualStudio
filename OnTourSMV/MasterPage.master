@@ -47,7 +47,8 @@
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" href="#">Usuario<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="ListarCliente.aspx">Listar</a></li>
+                            <li><a href="ListarCliente.aspx">Listar Clientes</a></li>
+                            <li><a href="ListarUsuariosSistema.aspx">Listar Usuarios Sistema</a></li>
 
                         </ul>
                     </li>

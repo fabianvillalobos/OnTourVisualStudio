@@ -19,7 +19,7 @@
                     <asp:BoundField DataField="DIRECCION_EMP" HeaderText="DIRECCION_EMP" SortExpression="DIRECCION_EMP" />
                     <asp:BoundField DataField="ACTIVO" HeaderText="ACTIVO" SortExpression="ACTIVO" />
                     <asp:BoundField DataField="ID_USR" HeaderText="ID_USR" SortExpression="ID_USR" />
-                    <asp:BoundField DataField="FECHA_NACIMIENTO_EMP" HeaderText="FECHA_NACIMIENTO_EMP" SortExpression="FECHA_NACIMIENTO_EMP" />
+                    <asp:BoundField DataField="FECHA_NACIMIENTO_EMP" HeaderText="FECHA_NACIMIENTO_EMP" SortExpression="FECHA_NACIMIENTO_EMP" DataFormatString='{0:MM-dd-yyyy}' />
                     <asp:BoundField DataField="FONO_EMP" HeaderText="FONO_EMP" SortExpression="FONO_EMP" />
                 </Columns>
             </asp:GridView>

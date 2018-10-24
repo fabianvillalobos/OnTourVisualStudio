@@ -18,7 +18,7 @@
                     <asp:BoundField DataField="MAIL_CLI" HeaderText="Mail" SortExpression="MAIL_CLI" />
                     <asp:BoundField DataField="ACTIVO" HeaderText="Activo" SortExpression="ACTIVO" />
                     <asp:BoundField DataField="DIRECCION_CLI" HeaderText="Dirección" SortExpression="DIRECCION_CLI" />
-                    <asp:BoundField DataField="FECHA_NACIMIENTO_CLI" HeaderText="Fecha Nacimiento" SortExpression="FECHA_NACIMIENTO_CLI" />
+                    <asp:BoundField DataField="FECHA_NACIMIENTO_CLI" HeaderText="Fecha Nacimiento" SortExpression="FECHA_NACIMIENTO_CLI" DataFormatString='{0:MM-dd-yyyy}' />
                     <asp:BoundField DataField="FONO_CLI" HeaderText="Fono" SortExpression="FONO_CLI" />
                 </Columns>
             </asp:GridView>

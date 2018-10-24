@@ -12,8 +12,8 @@
             <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay transacciones asociadas" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
                 <Columns>
                     <asp:BoundField DataField="ID_TRANSACCION" HeaderText="ID Transacción" SortExpression="ID_TRANSACCION" />
-                    <asp:BoundField DataField="FECHA_TRANSACCION" HeaderText="Fecha Transacción" SortExpression="FECHA_TRANSACCION" />
-                    <asp:BoundField DataField="MONTO_TRANSACCION" HeaderText="Monto Transacción" SortExpression="MONTO_TRANSACCION" />
+                    <asp:BoundField DataField="FECHA_TRANSACCION" HeaderText="Fecha Transacción" SortExpression="FECHA_TRANSACCION" DataFormatString='{0:MM-dd-yyyy}' />
+                    <asp:BoundField DataField="MONTO_TRANSACCION" HeaderText="Monto Transacción" SortExpression="MONTO_TRANSACCION" DataFormatString='${0:#,0}' />
                     <asp:BoundField DataField="ID_CUENTA" HeaderText="ID Cuenta" SortExpression="ID_CUENTA" />
                     <asp:BoundField DataField="ACTIVO" HeaderText="Activo" SortExpression="ACTIVO" />
                     <asp:BoundField DataField="DESC_TRANSACCION" HeaderText="Descripción Transacción" SortExpression="DESC_TRANSACCION" />

@@ -16,12 +16,12 @@
                     <asp:BoundField DataField="ID_CONTRATO" HeaderText="ID Contrato" SortExpression="ID_CONTRATO" />
                     <asp:BoundField DataField="NOMBRE" HeaderText="Nombre Mandante" SortExpression="NOMBRE" />
                     <asp:BoundField DataField="APELLIDO" HeaderText="Apellido" SortExpression="APELLIDO" />
-                    <asp:BoundField DataField="FECHA_INICIO" HeaderText="Fecha Inicio" SortExpression="FECHA_INICIO" />
-                    <asp:BoundField DataField="TERMINO" HeaderText="Fecha Término" SortExpression="TERMINO" />
+                    <asp:BoundField DataField="FECHA_INICIO" HeaderText="Fecha Inicio" SortExpression="FECHA_INICIO" DataFormatString='{0:MM-dd-yyyy}'/>
+                    <asp:BoundField DataField="TERMINO" HeaderText="Fecha Término" SortExpression="TERMINO" DataFormatString='{0:MM-dd-yyyy}' />
                     <asp:BoundField HeaderText="Progreso" />
                     <asp:BoundField DataField="ESTADO" HeaderText="Estado contrato" SortExpression="ESTADO" />
-                    <asp:BoundField DataField="RESERVA" HeaderText="Monto Reserva" SortExpression="RESERVA" />
-                    <asp:BoundField DataField="META" HeaderText="Monto Meta" SortExpression="META" />
+                    <asp:BoundField DataField="RESERVA" HeaderText="Monto Reserva" SortExpression="RESERVA" DataFormatString='${0:#,0}' />
+                    <asp:BoundField DataField="META" HeaderText="Monto Meta" SortExpression="META" DataFormatString='${0:#,0}' />
                 </Columns>
             </asp:GridView>
 

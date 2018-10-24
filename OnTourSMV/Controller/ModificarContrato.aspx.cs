@@ -59,12 +59,14 @@ public partial class View_ModificarContrato : System.Web.UI.Page
 
             bd.SP_UPDATECONTRATO(nId, nInicio, nFin, nMeta, nMonto, nEstado, nRutEmp, nRutTit);
             bd.SaveChanges();
-            LabelAviso.Text = "Contrato Modificado";
+            System.Windows.Forms.MessageBox.Show("Contrato Modificado");
+           // LabelAviso.Text = "Contrato Modificado";
             GridViewContratos.DataBind();
         }
         catch (Exception ex)
         {
-            LabelAviso.Text = "Error: " + ex.Message;
+            System.Windows.Forms.MessageBox.Show(ex.Message);
+            //LabelAviso.Text = "Error: " + ex.Message;
         }
     }
 }

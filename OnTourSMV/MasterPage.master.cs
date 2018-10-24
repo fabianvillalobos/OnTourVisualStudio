@@ -17,7 +17,15 @@ public partial class MasterPage : System.Web.UI.MasterPage
         }
         else
         {
+            EntitiesOnTour bd = new EntitiesOnTour();
+
+            //Buscar cliente para poner nombre 
+            lblUsuario.Text = Session["Usuario"].ToString().ToUpper() + "\n";
+            lblUsuario.Text += Session["Perfil"].ToString();
+
+
             Mantenedor.Visible = true;
+
         }
     }
 }

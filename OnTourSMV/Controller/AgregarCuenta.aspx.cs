@@ -36,11 +36,13 @@ public partial class AgregarCuenta : System.Web.UI.Page
 
             bd.CUENTA.Add(cuenta);
             bd.SaveChanges();
-            lblAviso.Text = "Cuenta Creada";
+            System.Windows.Forms.MessageBox.Show("Cuenta Creada");
+            //lblAviso.Text = "Cuenta Creada";
         }
         catch (Exception ex)
         {
-            lblAviso.Text = ex.Message;
+            System.Windows.Forms.MessageBox.Show(ex.Message);
+            //lblAviso.Text = ex.Message;
         }
 
 

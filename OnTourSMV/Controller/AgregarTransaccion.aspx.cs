@@ -37,11 +37,14 @@ public partial class AgregarTransaccion : System.Web.UI.Page
 
             bd.TRANSACCION.Add(transaccion);
             bd.SaveChanges();
-            lblAviso.Text = "Transaccion Creada";
+
+            System.Windows.Forms.MessageBox.Show("Transaccion Creada");
+            //lblAviso.Text = "Transaccion Creada";
         }
         catch (Exception ex)
         {
-            lblAviso.Text = ex.Message;
+            System.Windows.Forms.MessageBox.Show(ex.Message);
+            //lblAviso.Text = ex.Message;
         }
     }
 }

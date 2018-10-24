@@ -51,8 +51,8 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-
-            LabelAviso.Text = ex.Message;
+            System.Windows.Forms.MessageBox.Show(ex.Message);
+            //LabelAviso.Text = ex.Message;
         }
         
         

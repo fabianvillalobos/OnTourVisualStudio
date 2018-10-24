@@ -70,6 +70,9 @@
                         </ul>
                     </li>
                     <ul class="nav navbar-nav navbar-right">
+                        <asp:Label ID="lblUsuario" runat="server" ForeColor="White" Text=""></asp:Label>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
                         <li><a href="Login.aspx"><span class="glyphicon glyphicon-off"></span>Salir</a></li>
                     </ul>
                 </ul>

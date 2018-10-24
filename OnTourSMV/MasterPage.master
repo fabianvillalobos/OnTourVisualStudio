@@ -29,7 +29,7 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand active" href="PaginaPpal.aspx">
-                        <img src="../images/ontour-logo.svg" height="35" />
+                        <img src="../images/ontour-logo.svg" height="30" />
                     </a>
                 </div>
                 <ul class="nav navbar-nav">

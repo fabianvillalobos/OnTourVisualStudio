@@ -13,6 +13,11 @@ public partial class AgregarActividad : System.Web.UI.Page
         {
             Response.Redirect("~/View/Login.aspx");
         }
+        int perfilId = int.Parse(Session["PerfilID"].ToString());
+        if (perfilId != 2) // Solo ejec ventas puede acceder
+        {
+            Response.Redirect("~/View/PaginaPpal.aspx");
+        }
     }
 
     protected void btnAgregar_Click(object sender, EventArgs e)

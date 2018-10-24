@@ -12,7 +12,12 @@ public partial class ListarContratos : System.Web.UI.Page
         if (Session["Usuario"] == null)
         {
             Response.Redirect("~/View/Login.aspx");
-        }        
+        }
+        int perfilId = int.Parse(Session["PerfilID"].ToString());
+        if (perfilId != 2) // Solo ejec ventas puede acceder
+        {
+            Response.Redirect("~/View/PaginaPpal.aspx");
+        }
     }
 
     protected void btnNuevoContrato_Click(object sender, EventArgs e)

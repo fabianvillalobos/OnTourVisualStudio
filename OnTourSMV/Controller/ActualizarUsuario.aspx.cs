@@ -13,5 +13,6 @@ public partial class ActualizarUsuario : System.Web.UI.Page
         {
             Response.Redirect("~/View/Login.aspx");
         }
+        //Esto se encargará la aplicación usuario
     }
 }

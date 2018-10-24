@@ -64,9 +64,10 @@
                     <td>
                         <asp:Label ID="LabelEstado" runat="server" Text="Estado:"></asp:Label></td>
                     <td>
-                        <asp:DropDownList ID="DropDownListEstado" runat="server" CssClass="form-control">
-                            <asp:ListItem Value="1">Vigente</asp:ListItem>
-                            <asp:ListItem Value="2">No Vigente</asp:ListItem>
+                        <asp:DropDownList ID="DropDownListEstado" runat="server" CssClass="form-control" AutoPostBack="True">
+                            <asp:ListItem Value="P">En Progreso</asp:ListItem>
+                            <asp:ListItem Value="F">Cancelado</asp:ListItem>
+                            <asp:ListItem Value="T">Completado</asp:ListItem>
                         </asp:DropDownList>
                     </td>
                 </tr>

@@ -15,11 +15,11 @@ public partial class View_ModificarContrato : System.Web.UI.Page
         }
         else
         {
-          
+            
         }
     }
 
-   
+
 
     protected void btnCargar_Click(object sender, EventArgs e)
     {
@@ -43,27 +43,28 @@ public partial class View_ModificarContrato : System.Web.UI.Page
 
     protected void btnModificar_Click(object sender, EventArgs e)
     {
-        try {
-        EntitiesOnTour bd = new EntitiesOnTour();
-        int nId = int.Parse(txtIdContrato.Text);
-        DateTime nInicio = DateTime.Parse(txtInicio.Text);
-        DateTime nFin = DateTime.Parse(txtFin.Text);
-        int nMeta = 0;
-        //int nMeta = int.Parse(txtMeta.Text);
-        //int nMonto = int.Parse(txtMonto.Text);
-        int nMonto = 0;
-        String nEstado = DropDownListEstado.SelectedValue;
-        int nRutTit = int.Parse(DropDownListTitular.SelectedValue);
-        int nRutEmp = int.Parse(DropDownListEmpleado.SelectedValue);
+        try
+        {
+            EntitiesOnTour bd = new EntitiesOnTour();
+            int nId = int.Parse(txtIdContrato.Text);
+            DateTime nInicio = DateTime.Parse(txtInicio.Text);
+            DateTime nFin = DateTime.Parse(txtFin.Text);
+            int nMeta = 0;
+            //int nMeta = int.Parse(txtMeta.Text);
+            //int nMonto = int.Parse(txtMonto.Text);
+            int nMonto = 0;
+            String nEstado = DropDownListEstado.SelectedValue.ToString();
+            int nRutTit = int.Parse(DropDownListTitular.SelectedValue);
+            int nRutEmp = int.Parse(DropDownListEmpleado.SelectedValue);
 
-        bd.SP_UPDATECONTRATO(nId, nInicio, nFin, nMeta,nMonto, nEstado, nRutEmp, nRutTit);
-        bd.SaveChanges();
-        LabelAviso.Text = "Contrato Modificado";
-        GridViewContratos.DataBind();
+            bd.SP_UPDATECONTRATO(nId, nInicio, nFin, nMeta, nMonto, nEstado, nRutEmp, nRutTit);
+            bd.SaveChanges();
+            LabelAviso.Text = "Contrato Modificado";
+            GridViewContratos.DataBind();
         }
         catch (Exception ex)
         {
-            LabelAviso.Text = "Error: "+ex.Message;
+            LabelAviso.Text = "Error: " + ex.Message;
         }
     }
 }

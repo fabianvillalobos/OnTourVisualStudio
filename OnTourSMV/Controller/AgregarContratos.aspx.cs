@@ -14,8 +14,8 @@ public partial class AgregarContratos : System.Web.UI.Page
         {
             Response.Redirect("~/View/Login.aspx");
         }
-        lblA.Visible = false;
-        txtA.Visible = false;
+        lblFechaStr.Visible = false;
+        txtFechaStr.Visible = false;
         int perfilId = int.Parse(Session["PerfilID"].ToString());
         if (perfilId != 2) // Solo ejecutivos de ventas pueden agregar contratos
         {
@@ -43,16 +43,16 @@ public partial class AgregarContratos : System.Web.UI.Page
             String rutCompleto = rutMandante + dv;
 
             bool rutValido = librerias.validarRut(rutCompleto); //Validación de Rut
-           
+            if (!rutValido)
+            {
+                throw new Exception("Rut inválido");
+            }
             if (bd.CLIENTE.Any(it => it.NUMRUT_CLI == rutMandante) && txtNombre.Enabled)
             {
                 throw new Exception("Cliente ya existe"); //txtNombre es desactivado siempre que se cargue del botón
             }
             
-            if (!rutValido)
-            {
-                throw new Exception("Rut inválido");
-            }
+            
             String nombre = txtNombre.Text.Trim();
             String apellidoP = txtApellidoP.Text.Trim();
 
@@ -87,6 +87,7 @@ public partial class AgregarContratos : System.Web.UI.Page
             bd.SP_INSERTARCUENTA(0, contrato.ID_CONTRATO, rutMandante, estado); //Sigue el estandar P del contrato
             bd.SaveChanges();
             LabelAviso.Text = "Contrato y cuenta Generado.";
+            DropDownListMandante.DataBind();//Actualizar dropdown
         }
         catch (Exception ex)
         {
@@ -100,40 +101,53 @@ public partial class AgregarContratos : System.Web.UI.Page
 
     protected void ButtonCargarMandante_Click(object sender, EventArgs e)
     {
+        try
+        {
+            LabelAviso.Text = "";
+            EntitiesOnTour bd = new EntitiesOnTour();
+            if(DropDownListMandante.SelectedValue == "")
+            {
+                throw new Exception("No existen valores en el listado, se deben ingresar mandantes");
+            }
+            lblFechaStr.Visible = true;
+            txtFechaStr.Visible = true;
+            txtFechaStr.Enabled = false;
+            txtFecha.Visible = false;
+            LabelFecNacimiento.Visible = false;
+            LabelFecNacimiento.Visible = false;
+            int numrutMandante = int.Parse(DropDownListMandante.SelectedValue);
+            CLIENTE cliente = bd.CLIENTE.FirstOrDefault(t => t.NUMRUT_CLI == numrutMandante);
+            //Llenado de textbox
+            txtNombre.Text = cliente.NOMBRE_CLIE;
+            txtApellidoP.Text = cliente.APELLIDO_PAT_CLI;
+            txtApellidoM.Text = cliente.APELLIDO_MAT_CLI;
+            txtRut.Text = cliente.NUMRUT_CLI.ToString();
+            txtDv.Text = cliente.DRUT_CLI;
+            txtFecha.Text = cliente.FECHA_NACIMIENTO_CLI.Value.ToString();
+
+            DateTime fec = DateTime.Parse(cliente.FECHA_NACIMIENTO_CLI.ToString());
+            txtFechaStr.Text = fec.ToShortDateString();
+
+            txtMail.Text = cliente.MAIL_CLI;
+            txtTelefono.Text = cliente.FONO_CLI.ToString();
+            txtDireccion.Text = cliente.DIRECCION_CLI;
+            //Deshabilitar para evitar modificar datos de mandante
+            txtNombre.Enabled = false;
+            txtApellidoP.Enabled = false;
+            txtApellidoM.Enabled = false;
+            txtRut.Enabled = false;
+            txtDv.Enabled = false;
+            txtFecha.Enabled = false;
+            txtMail.Enabled = false;
+            txtTelefono.Enabled = false;
+            txtDireccion.Enabled = false;
+        }
+        catch (Exception ex)
+        {
+
+            LabelAviso.Text = ex.Message;
+        }
         
-        lblA.Visible = true;
-        txtA.Visible = true;
-        txtA.Enabled = false;
-        txtFecha.Visible = false;
-        LabelFecNacimiento.Visible = false;
-        LabelFecNacimiento.Visible = false;
-        EntitiesOnTour bd = new EntitiesOnTour();
-        int numrutMandante = int.Parse(DropDownListMandante.SelectedValue);
-        CLIENTE cliente = bd.CLIENTE.FirstOrDefault(t => t.NUMRUT_CLI == numrutMandante);
-        //Llenado de textbox
-        txtNombre.Text = cliente.NOMBRE_CLIE;
-        txtApellidoP.Text = cliente.APELLIDO_PAT_CLI;
-        txtApellidoM.Text = cliente.APELLIDO_MAT_CLI;
-        txtRut.Text = cliente.NUMRUT_CLI.ToString();
-        txtDv.Text = cliente.DRUT_CLI;
-        txtFecha.Text = cliente.FECHA_NACIMIENTO_CLI.Value.ToString();
-
-        DateTime fec = DateTime.Parse(cliente.FECHA_NACIMIENTO_CLI.ToString());
-        txtA.Text = fec.ToShortDateString();
-
-        txtMail.Text = cliente.MAIL_CLI;
-        txtTelefono.Text = cliente.FONO_CLI.ToString();
-        txtDireccion.Text = cliente.DIRECCION_CLI;
-        //Deshabilitar para evitar modificar datos de mandante
-        txtNombre.Enabled = false;
-        txtApellidoP.Enabled = false;
-        txtApellidoM.Enabled = false;
-        txtRut.Enabled = false;
-        txtDv.Enabled = false;
-        txtFecha.Enabled = false;
-        txtMail.Enabled = false;
-        txtTelefono.Enabled = false;
-        txtDireccion.Enabled = false;
 
 
     }

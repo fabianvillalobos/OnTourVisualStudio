@@ -113,9 +113,9 @@
             </tr>  
             <tr>
                 <td>
-                    <asp:Label ID="lblA" runat="server" Text="Fecha de Nacimiento:"></asp:Label></td>
+                    <asp:Label ID="lblFechaStr" runat="server" Text="Fecha de Nacimiento:" Visible="False"></asp:Label></td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="txtA" runat="server" TextMode="SingleLine" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtFechaStr" runat="server" TextMode="SingleLine" CssClass="form-control" Visible="False"></asp:TextBox>
                 </td>
             </tr>       
             <tr>
@@ -123,6 +123,7 @@
                     <asp:Label ID="LabelFecNacimiento" runat="server" Text="Fecha de Nacimiento:"></asp:Label></td>
                 <td class="auto-style3">
                     <asp:TextBox ID="txtFecha" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorFecha" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Requerido" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
             </tr>           
             <tr>
@@ -155,7 +156,7 @@
                     <asp:Button ID="btnRegistrar" runat="server" CssClass="btn btn-primary" Text="Guardar Contrato" OnClick="btnRegistrar_Click" ValidationGroup="mandanteGroup"></asp:Button></td>
             </tr>
             <tr>
-                <td>
+                <td colspan="5">
                     <asp:Label ID="LabelAviso" runat="server" Text=""></asp:Label></td>
             </tr>
         </table>

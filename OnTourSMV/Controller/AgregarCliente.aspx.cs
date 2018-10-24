@@ -28,6 +28,7 @@ public partial class AgregarCliente : System.Web.UI.Page
             EntitiesOnTour bd = new EntitiesOnTour();
             Librerias librerias = new Librerias();
             
+
             int rut = int.Parse(txtRut.Text.Trim());
             String dv = txtDv.Text.Trim().ToUpper();
             String rutCompleto = rut + dv;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 public partial class AgregarContratos : System.Web.UI.Page
 {
@@ -86,12 +87,15 @@ public partial class AgregarContratos : System.Web.UI.Page
             CONTRATO contrato = bd.CONTRATO.FirstOrDefault(t => t.FECHA_INICIO == fechInicio && t.NUMRUT_CLI_TITULAR == rutMandante);
             bd.SP_INSERTARCUENTA(0, contrato.ID_CONTRATO, rutMandante, estado); //Sigue el estandar P del contrato
             bd.SaveChanges();
-            LabelAviso.Text = "Contrato y cuenta Generado.";
+            System.Windows.Forms.MessageBox.Show("Contrato y cuenta Generado.");
+            //LabelAviso.Text = "Contrato y cuenta Generado.";
             DropDownListMandante.DataBind();//Actualizar dropdown
         }
         catch (Exception ex)
         {
-            LabelAviso.Text = ex.Message;
+           
+            System.Windows.Forms.MessageBox.Show(ex.Message);
+            //LabelAviso.Text = ex.Message;
         }
     }
 
@@ -144,8 +148,8 @@ public partial class AgregarContratos : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-
-            LabelAviso.Text = ex.Message;
+            System.Windows.Forms.MessageBox.Show(ex.Message);
+            //LabelAviso.Text = ex.Message;
         }
         
 

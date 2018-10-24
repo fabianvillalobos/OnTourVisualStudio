@@ -39,7 +39,8 @@ public partial class AgregarActividad : System.Web.UI.Page
 
             bd.ACTIVIDAD.Add(actividad);
             bd.SaveChanges();
-            lblAviso.Text = "Actividad Creada";
+            System.Windows.Forms.MessageBox.Show("Actividad Creada");
+            //lblAviso.Text = "Actividad Creada";
 
             txtDescripcion.Text = "";
             txtFechaActividad.Text = "";
@@ -50,7 +51,8 @@ public partial class AgregarActividad : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            lblAviso.Text = ex.Message;
+            System.Windows.Forms.MessageBox.Show(ex.Message);
+          //  lblAviso.Text = ex.Message;
         }
         
 

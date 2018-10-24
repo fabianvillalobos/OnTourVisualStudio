@@ -105,7 +105,8 @@ public partial class AgregarCliente : System.Web.UI.Page
                 txtTelefono.Enabled = true;
                 txtFechaStr.Visible = false;
                 lblFechaStr.Visible = false;
-                lblAviso.Text = "No existe el pasajero, por favor rellene los campos";
+                System.Windows.Forms.MessageBox.Show("No existe el pasajero, por favor rellene los campos");
+               // lblAviso.Text = "No existe el pasajero, por favor rellene los campos";
             }
             else //Existen coincidencias, se cargan los textbox
             {
@@ -134,8 +135,8 @@ public partial class AgregarCliente : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-
-            lblAviso.Text = ex.Message;
+            System.Windows.Forms.MessageBox.Show(ex.Message);
+           // lblAviso.Text = ex.Message;
         }
         
     }

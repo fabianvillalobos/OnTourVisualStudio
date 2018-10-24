@@ -9,7 +9,7 @@
             <h2>Transacciones</h2>
             <br />
             <br />
-            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay transacciones asociadas" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
                 <Columns>
                     <asp:BoundField DataField="ID_TRANSACCION" HeaderText="ID" SortExpression="ID_TRANSACCION" />
                     <asp:BoundField DataField="FECHA_TRANSACCION" HeaderText="Fecha de Transaccion" SortExpression="FECHA_TRANSACCION" DataFormatString='{0:MM-dd-yyyy}' />

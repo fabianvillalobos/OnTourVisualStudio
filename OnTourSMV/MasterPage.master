@@ -14,6 +14,27 @@
     <link rel="stylesheet" type="text/css" href="css/fontello.css">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+    <style type="text/css">
+        /*Responsive Styles*/
+        @media screen and (max-width : 760px) {
+            /*Make dropdown links appear inline*/
+            ul {
+                position: static;
+                display: none;
+            }
+            /*Create vertical spacing*/
+            li {
+                margin-bottom: 1px;
+            }
+                /*Make all menu links full width*/
+                ul li, li a {
+                    width: 100%;
+                }
+            
+        }
+    </style>
+
     <title>OnTour</title>
 
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -43,7 +64,7 @@
                     <li class="dropdown"><a class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" href="#">Usuario<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="ListarCliente.aspx">Listar</a></li>
-                            
+
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle glyphicon glyphicon-piggy-bank" data-toggle="dropdown" href="#">Actividades<span class="caret"></span></a>

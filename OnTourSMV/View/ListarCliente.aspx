@@ -7,7 +7,7 @@
         <div class="row">
             <h2>Clientes</h2>
             <br />
-            <asp:GridView ID="GridViewListarCLiente" runat="server" CssClass="table table-bordered" AutoGenerateColumns="False" DataSourceID="SqlDataSourceListarCliente" Height="104px" Width="1303px" DataKeyNames="NUMRUT_CLI">
+            <asp:GridView ID="GridViewListarCLiente" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay Clientes asociados" AutoGenerateColumns="False" DataSourceID="SqlDataSourceListarCliente" Height="104px" Width="1303px" DataKeyNames="NUMRUT_CLI">
                 <Columns>
                     <asp:BoundField DataField="NUMRUT_CLI" HeaderText="Rut" SortExpression="NUMRUT_CLI" ReadOnly="True" />
                     <asp:BoundField DataField="DRUT_CLI" HeaderText="DV" SortExpression="DRUT_CLI" />

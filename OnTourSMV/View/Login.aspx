@@ -5,12 +5,11 @@
         .bg-img {
             /* The image used */
             background-image: url("images/bg.jpg");
-            min-height: 700px;
+            min-height: 100vh;
             /* Center and scale the image nicely */
-            background-position: center;
+            background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
-            position: relative;
         }
     </style>
 

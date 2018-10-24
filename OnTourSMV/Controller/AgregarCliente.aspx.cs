@@ -46,7 +46,7 @@ public partial class AgregarCliente : System.Web.UI.Page
             DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
             String telefono = txtTelefono.Text;
 
-            String activo = "P";
+            String activo = "T"; //Un cliente es solo T o F
             int numrutCliente = int.Parse(txtRut.Text);
             if (txtNombre.Enabled)
             {

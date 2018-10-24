@@ -71,7 +71,7 @@
                         </ul>
                     </li>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><asp:Label ID="lblUsuario" runat="server" ForeColor="White" Text=""></asp:Label></li>
+                        <li class="nombre-usuario"><asp:Label ID="lblUsuario" runat="server" ForeColor="White" Text=""></asp:Label></li>
                         <li><a href="Login.aspx"><span class="glyphicon glyphicon-off"></span>Salir</a></li>
                     </ul>
                 </ul>

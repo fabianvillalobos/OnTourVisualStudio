@@ -85,7 +85,7 @@ Estilos aplicados para la barra superior.
     width: auto;
     padding-left:0px;
 }
-    .navbar-right li span {
+    .navbar-right .nombre-usuario span{
         color: White;
         font-size: 12px;
         padding-right: 10px;
@@ -155,7 +155,42 @@ body{
 */
     @media (min-width: 768px) {
     }
-@media (max-width: 1200px){}
-@media (max-width: 992px){}
-@media only screen and (max-width:768px){}
-@media only screen and (max-width:480px){}
+@media (max-width: 1140px){
+    .navbar-header{position:inherit; display:block; text-align:center;float:inherit;}
+    .navbar-header .navbar-brand{float:inherit; background-color:inherit;}
+    .navbar-brand > img{margin:auto;}
+    .navbar-nav {
+        float: inherit;
+        margin: 0;
+        width: 100%;
+        padding-left: inherit;
+        height: 65px;
+        text-align: center;
+    }
+    .navbar-right{width:auto !important;margin-right:-15px;}
+}
+@media (max-width: 992px){
+    .nav > li > a {
+        font-size: 12px;
+        padding-left: 0px !important;
+        padding-top:20px !important;
+    }
+    .navbar-nav,
+    .navbar-nav > li > a {
+        height: 55px;
+    }
+    .navbar-right li a {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+@media (max-width: 870px) {
+    .navbar-nav > li a::before, .glypicon::before{
+        display:none;
+    }
+}
+    @media only screen and (max-width:768px) {
+    }
+
+    @media only screen and (max-width:480px) {
+    }

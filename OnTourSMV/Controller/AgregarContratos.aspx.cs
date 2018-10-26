@@ -42,6 +42,7 @@ public partial class AgregarContratos : System.Web.UI.Page
             int rutMandante = int.Parse(txtRut.Text.Trim());
             String dv = txtDv.Text.Trim().ToUpper();
             String rutCompleto = rutMandante + dv;
+           
 
             bool rutValido = librerias.validarRut(rutCompleto); //Validación de Rut
             if (!rutValido)
@@ -61,7 +62,16 @@ public partial class AgregarContratos : System.Web.UI.Page
 
 
             DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
-            String mail = txtMail.Text.Trim();
+
+
+            DateTime hoy = DateTime.Now;
+            txtHoy.Text = hoy.ToShortDateString();
+            if (fechaNacimiento > hoy)
+            {
+                ValidadorFecNac.Text = "Fecha Invalida";
+                throw new Exception("Fecha Invalida");
+            }
+                String mail = txtMail.Text.Trim();
             String telefono = txtTelefono.Text;
             String direccion = txtDireccion.Text.Trim();
             //Implícitos
@@ -90,6 +100,15 @@ public partial class AgregarContratos : System.Web.UI.Page
             System.Windows.Forms.MessageBox.Show("Contrato y cuenta Generado.");
             //LabelAviso.Text = "Contrato y cuenta Generado.";
             DropDownListMandante.DataBind();//Actualizar dropdown
+            txtNombre.Text = "";
+            txtApellidoP.Text = "";
+            txtApellidoM.Text = "";
+            txtRut.Text = "";
+            txtDv.Text = "";
+            txtFecha.Text = "";
+            txtMail.Text = "";
+            txtTelefono.Text = "";
+            txtDireccion.Text = "";
         }
         catch (Exception ex)
         {

@@ -79,35 +79,7 @@
             </div>
         </nav>
 
-        <%--<asp:Menu ID="MenuMantenedor" runat="server" Orientation="Horizontal" StaticSubMenuIndent="16px">
-
-                <Items>
-                    <asp:MenuItem NavigateUrl="~/View/PaginaPpal.aspx" Text="Inicio" Value="Inicio"></asp:MenuItem>
-                    <asp:MenuItem Text="Contratos" Value="Contratos">
-                        <asp:MenuItem NavigateUrl="~/View/ListarContratos.aspx" Text="Listar" Value="Listar"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/View/AgregarContratos.aspx" Text="Agregar" Value="Agregar"></asp:MenuItem>
-                    </asp:MenuItem>
-                    <asp:MenuItem Text="Paquetes" Value="Paquetes">
-                        <asp:MenuItem NavigateUrl="~/View/AgregarPaqueteViaje.aspx" Text="Agregar" Value="Agregar"></asp:MenuItem>
-                    </asp:MenuItem>
-                    <asp:MenuItem Text="Actividades" Value="Actividades">
-                        <asp:MenuItem NavigateUrl="~/View/AgregarActividad.aspx" Text="Agregar" Value="Agregar"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/View/ListarActividades.aspx" Text="Listar" Value="Listar"></asp:MenuItem>
-                    </asp:MenuItem>
-                    <asp:MenuItem Text="Cuenta" Value="Cuenta">
-                        <asp:MenuItem NavigateUrl="~/View/AgregarCuenta.aspx" Text="Agregar" Value="Agregar"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/View/ListarCuenta.aspx" Text="Listar" Value="Listar"></asp:MenuItem>
-                    </asp:MenuItem>
-                    <asp:MenuItem Text="Transacciones" Value="Transacciones">
-                        <asp:MenuItem NavigateUrl="~/View/AgregarTransaccion.aspx" Text="Agregar" Value="Agregar"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/View/ListarTransaccion.aspx" Text="Listar" Value="Listar"></asp:MenuItem>
-                    </asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/View/AgregarCliente.aspx" Text="Clientes" Value="Clientes">
-                        <asp:MenuItem NavigateUrl="~/View/ListarCliente.aspx" Text="Listar" Value="Listar"></asp:MenuItem>
-                    </asp:MenuItem>
-                    <asp:MenuItem Text="Salir" Value="Salir" NavigateUrl="~/View/Login.aspx"></asp:MenuItem>
-                </Items>
-            </asp:Menu>--%>
+     
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         </asp:ContentPlaceHolder>
 

@@ -37,11 +37,12 @@
                         <asp:Label ID="Label1" runat="server" Text="Contrato a asociar"></asp:Label>
                     </td>
                     <td>
-                        <asp:DropDownList ID="DropDownListContratoAsociar" runat="server" DataSourceID="SqlDataSourceContratoAsociar" DataTextField="NUMRUT_CLI_TITULAR" DataValueField="ID_CONTRATO" Enabled="False">
+                        <asp:DropDownList ID="DropDownListContratoAsociar" runat="server" DataSourceID="SqlDataSourceContratoAsociar" DataTextField="NUMRUT_CLI_TITULAR" DataValueField="ID_CONTRATO" Enabled="False" AutoPostBack="True">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSourceContratoAsociar" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;CONTRATO&quot;"></asp:SqlDataSource>
                     </td>
-                    <td></td>
+                    <td>
+                        <asp:TextBox ID="txtMostrarNombre" runat="server"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>
@@ -121,7 +122,6 @@
                         <asp:Label ID="LabelTelefono" runat="server" Text="Teléfono:"></asp:Label></td>
                     <td>
                         <asp:TextBox ID="txtTelefono" runat="server" MaxLength="9" CssClass="form-control col-md-6" Enabled="False"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorTelefono" runat="server" ControlToValidate="txtTelefono" Display="Dynamic" ErrorMessage="Campo Requerido" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtTelefono" ErrorMessage="Ingresar solo números" ForeColor="#FF3300" ValidationExpression="^[0-9]*$" Display="Dynamic"></asp:RegularExpressionValidator>
                     </td>
                 </tr>

@@ -94,8 +94,23 @@ public partial class AgregarCliente : System.Web.UI.Page
             if (cliente == null) //No existen coincidencias -> Crear nuevo cliente
             {
                 DropDownListContratoAsociar.Enabled = true;
+                // RECUPERANDO EL NOMBRE DEL CLIENTE ASOCIADO AL RUT DEL DROPDOWNLIST
+                int intA = int.Parse(DropDownListContratoAsociar.SelectedValue);
+                CONTRATO contrato = bd.CONTRATO.FirstOrDefault(it => it.ID_CONTRATO == intA);
+                String rutX = contrato.NUMRUT_CLI_TITULAR.ToString();
+                int rutY = int.Parse(rutX);
+                CLIENTE clienteA = bd.CLIENTE.FirstOrDefault(it => it.NUMRUT_CLI == rutY);
+                String mostrarNombre = clienteA.NOMBRE_CLIE + " " + clienteA.APELLIDO_PAT_CLI+" "+clienteA.APELLIDO_MAT_CLI; // Se muestra el nombre del cliente concatenado
+                txtMostrarNombre.Text = mostrarNombre;
+                txtMostrarNombre.DataBind();
+                txtMostrarNombre.Enabled = false;
+
+                //
                 txtRut.Enabled = true;
-                txtDv.Enabled = true;
+                txtRut.Text = txtBuscarRut.Text;
+                txtRut.Enabled = false;
+                txtDv.Text = txtDvBuscar.Text;
+                txtDv.Enabled = false;
                 txtNombre.Enabled = true;
                 txtApellidoM.Enabled = true;
                 txtApellidoP.Enabled = true;
@@ -111,7 +126,6 @@ public partial class AgregarCliente : System.Web.UI.Page
             else //Existen coincidencias, se cargan los textbox
             {
                 DropDownListContratoAsociar.Enabled = true;
-                txtRut.Text = cliente.NUMRUT_CLI.ToString();
                 txtDv.Text = cliente.DRUT_CLI.ToString();
                 txtNombre.Text = cliente.NOMBRE_CLIE;
                 txtApellidoM.Text = cliente.APELLIDO_MAT_CLI;

@@ -124,6 +124,8 @@
                 <td class="auto-style3">
                     <asp:TextBox ID="txtFecha" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorFecha" runat="server" ControlToValidate="txtFecha" ErrorMessage="Campo Requerido" ForeColor="#FF3300"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="txtHoy" runat="server" TextMode="Date" Visible="False"></asp:TextBox>
+                    <asp:CustomValidator ID="ValidadorFecNac" runat="server" ControlToValidate="txtFecha" ForeColor="#FF3300"></asp:CustomValidator>
                 </td>
             </tr>           
             <tr>
@@ -138,8 +140,7 @@
                 <td>
                     <asp:Label ID="LabelTelefono" runat="server" Text="Teléfono:"></asp:Label></td>
                 <td>
-                    <asp:TextBox ID="txtTelefono" runat="server" MaxLength="9" CssClass="form-control col-md-6"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorTelefono" runat="server" ControlToValidate="txtTelefono" Display="Dynamic" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ValidationGroup="mandanteGroup"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="txtTelefono" runat="server" MaxLength="9" CssClass="form-control col-md-6" ForeColor="Black" style="left: 0px; top: 0px"></asp:TextBox>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtTelefono" ErrorMessage="Ingresar solo números" ForeColor="#FF3300" ValidationExpression="^[0-9]*$" Display="Dynamic" ValidationGroup="mandanteGroup"></asp:RegularExpressionValidator>
                 </td>
             </tr>

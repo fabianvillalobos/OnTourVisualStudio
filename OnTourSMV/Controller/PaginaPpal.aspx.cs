@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
+
 public partial class PaginaPpal : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -19,9 +21,9 @@ public partial class PaginaPpal : System.Web.UI.Page
         else
         {
             EntitiesOnTour bd = new EntitiesOnTour();
-            String usuarioSesion = Session["Usuario"].ToString();
-            
+            String usuarioSesion = Session["Usuario"].ToString();            
             Label1.Text = Session["Perfil"].ToString();
+           
         }
     }
 }

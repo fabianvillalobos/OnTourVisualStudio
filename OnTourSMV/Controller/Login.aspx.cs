@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Security.Cryptography;
-
+using System.Text;
 public partial class View_Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -14,6 +14,8 @@ public partial class View_Login : System.Web.UI.Page
         Session["Usuario"] = null;
        
     }
+
+   
 
     protected void btnLogin_Click(object sender, EventArgs e)
     {
@@ -25,8 +27,18 @@ public partial class View_Login : System.Web.UI.Page
 
             String usuario = txtUsuario.Text;
             String clave = txtClave.Text;
-            string hashClave = Convert.ToBase64String(new System.Security.Cryptography.MD5CryptoServiceProvider().
-            ComputeHash(System.Text.Encoding.Default.GetBytes(clave)));
+
+            //Hasheo
+            byte[] bytes = { 0x35, 0x24, 0, 76, 0x12 };
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] result = md5.ComputeHash(Encoding.ASCII.GetBytes(clave));
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < result.Length; i++)
+            {
+                sb.Append(result[i].ToString("x2"));
+            }
+            String hashClave = sb.ToString();
+            
             // Buscar User en la BD
             USUARIO usuarioObj = bd.USUARIO.FirstOrDefault(it => it.LOGIN_USR == usuario && it.PASS_USR == hashClave);
             if (usuarioObj == null)

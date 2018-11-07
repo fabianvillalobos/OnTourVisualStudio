@@ -160,7 +160,8 @@ public partial class AgregarCliente : System.Web.UI.Page
         int rutY = int.Parse(rutX);
         CLIENTE clienteA = bd.CLIENTE.FirstOrDefault(it => it.NUMRUT_CLI == rutY);
         String mostrarNombre = clienteA.NOMBRE_CLIE + " " + clienteA.APELLIDO_PAT_CLI + " " + clienteA.APELLIDO_MAT_CLI; // Se muestra el nombre del cliente concatenado
-        txtMostrarNombre.Text = mostrarNombre;
+      
+        txtMostrarNombre.Text = "Mandante: " + mostrarNombre + "\nID Contrato: " + contrato.ID_CONTRATO + "\nFecha Inicio: " + contrato.FECHA_INICIO;
         txtMostrarNombre.DataBind();
         txtMostrarNombre.Enabled = false;
 

@@ -7,9 +7,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using iTextSharp.text;
-using iTextSharp.text.html.simpleparser;
-using iTextSharp.text.pdf;
+//using iTextSharp.text;
+//using iTextSharp.text.html.simpleparser;
+//using iTextSharp.text.pdf;
 using System.IO;
 
 public partial class ListarContratos : System.Web.UI.Page

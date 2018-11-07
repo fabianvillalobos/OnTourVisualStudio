@@ -47,8 +47,9 @@
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <asp:Label ID="Label3" runat="server" Text="Contrato Mandante"></asp:Label>
-                        <asp:TextBox ID="txtMostrarNombre" runat="server"  Wrap="true" Width="273px" Height="52px" TextMode="MultiLine"></asp:TextBox>
+                        <asp:Label ID="Label3"   runat="server" Text="Contrato Mandante"></asp:Label>
+                        &nbsp;&nbsp;
+                        <asp:TextBox ID="txtMostrarNombre" runat="server"  Wrap="true" Width="257px" Height="54px" TextMode="MultiLine"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

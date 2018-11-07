@@ -37,12 +37,16 @@
                         <asp:Label ID="Label1" runat="server" Text="Contrato a asociar"></asp:Label>
                     </td>
                     <td>
-                        <asp:DropDownList ID="DropDownListContratoAsociar" runat="server" DataSourceID="SqlDataSourceContratoAsociar" DataTextField="NUMRUT_CLI_TITULAR" DataValueField="ID_CONTRATO" Enabled="False" AutoPostBack="True">
+                        <asp:DropDownList ID="DropDownListContratoAsociar" runat="server" DataSourceID="SqlDataSourceContratoAsociar" DataTextField="NUMRUT_CLI_TITULAR" DataValueField="ID_CONTRATO" Enabled="False" AutoPostBack="True" OnDataBound="DropDownListContratoAsociar_DataBound" OnSelectedIndexChanged="DropDownListContratoAsociar_SelectedIndexChanged">
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSourceContratoAsociar" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;CONTRATO&quot;"></asp:SqlDataSource>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtMostrarNombre" runat="server"></asp:TextBox></td>
+                    </td>
+                    <td colspan="2">
+                        <asp:Label ID="Label3" runat="server" Text="Contrato Mandante"></asp:Label>
+                        <asp:TextBox ID="txtMostrarNombre" runat="server" Width="188px"></asp:TextBox>
+                    </td>
                 </tr>
                 <tr>
                     <td>

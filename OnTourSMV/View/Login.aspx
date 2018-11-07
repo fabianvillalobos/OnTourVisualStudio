@@ -30,7 +30,7 @@
                             <div class="alert-danger">
                                 <asp:Label ID="LabelAviso" runat="server" Text=""></asp:Label>
                             </div>
-                            <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesion" CssClass="btn btn-success" OnClick="btnLogin_Click" />
+                            <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesión" CssClass="btn btn-success" OnClick="btnLogin_Click" />
                         </div>
                     </div>
                 </div>

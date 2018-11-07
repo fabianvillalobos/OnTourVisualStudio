@@ -43,7 +43,7 @@
             </tr>
             <tr>                
                 <td colspan="2"><asp:Label ID="LabelTitular" runat="server" Text="Mandante:"></asp:Label></td>
-                <td ><asp:DropDownList ID="DropDownListMandante" runat="server" CssClass="form-control" DataSourceID="SqlDataSourceMandante" DataTextField="NOMBRE_CLIE" DataValueField="NUMRUT_CLI" AutoPostBack="True">
+                <td ><asp:DropDownList ID="DropDownListMandante" runat="server" CssClass="form-control" DataSourceID="SqlDataSourceMandante" DataTextField="NOMBRE_CLIE" DataValueField="NUMRUT_CLI" AutoPostBack="True" OnSelectedIndexChanged="DropDownListMandante_SelectedIndexChanged">
                     <asp:ListItem>Sin seleccionar</asp:ListItem>
                     </asp:DropDownList>
                </td>

@@ -137,7 +137,7 @@ public partial class AgregarContratos : System.Web.UI.Page
             txtFechaStr.Enabled = false;
             txtFecha.Visible = false;
             LabelFecNacimiento.Visible = false;
-            LabelFecNacimiento.Visible = false;
+            
             int numrutMandante = int.Parse(DropDownListMandante.SelectedValue);
             CLIENTE cliente = bd.CLIENTE.FirstOrDefault(t => t.NUMRUT_CLI == numrutMandante);
             //Llenado de textbox
@@ -173,5 +173,29 @@ public partial class AgregarContratos : System.Web.UI.Page
         
 
 
+    }
+
+    protected void DropDownListMandante_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        txtNombre.Text = "";
+        txtApellidoP.Text = "";
+        txtApellidoM.Text = "";
+        txtRut.Text = "";
+        txtDv.Text = "";
+        txtFecha.Text = "";
+        txtMail.Text = "";
+        txtTelefono.Text = "";
+        txtDireccion.Text = "";
+        txtNombre.Enabled = true;
+        txtApellidoP.Enabled = true;
+        txtApellidoM.Enabled = true;
+        txtRut.Enabled = true;
+        txtDv.Enabled = true;
+        txtFecha.Enabled = true;
+        txtMail.Enabled = true;
+        txtTelefono.Enabled = true;
+        txtDireccion.Enabled = true;
+        txtFecha.Visible = true;
+        LabelFecNacimiento.Visible = true;
     }
 }

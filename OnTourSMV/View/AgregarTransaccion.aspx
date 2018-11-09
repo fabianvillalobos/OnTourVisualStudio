@@ -34,33 +34,25 @@
                     <td class="auto-style1">
                         <asp:Label ID="LabelCuentRel" runat="server" Text="Cuenta relacionada:"></asp:Label></td>
                     <td>
-                        <asp:DropDownList ID="DropDownListCuenta" runat="server" CssClass="form-control" DataSourceID="SqlDataSource1" DataTextField="NUMRUT_CLI" DataValueField="ID_CUENTA">
+                        <asp:DropDownList ID="DropDownListCuenta" runat="server" CssClass="form-control" DataSourceID="SqlDataSource1" DataTextField="ID_CUENTA" DataValueField="ID_CUENTA" AutoPostBack="True" OnSelectedIndexChanged="DropDownListCuenta_SelectedIndexChanged">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;ID_CUENTA&quot;, &quot;NUMRUT_CLI&quot; FROM &quot;CUENTA&quot;"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;ID_CUENTA&quot; FROM &quot;CUENTA&quot; ORDER BY &quot;ID_CUENTA&quot;"></asp:SqlDataSource>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>&nbsp</td>
+                    <td>
+                        <asp:TextBox ID="txtInfoCta" ReadOnly="true" runat="server" CssClass="form-control" TextMode="MultiLine" Width="168px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td class="auto-style1">
                         <asp:Label ID="LabelTipoTransaccion" runat="server" Text="Tipo de Transaccion:"></asp:Label></td>
                     <td>
-                        <asp:DropDownList ID="DropDownListTipo" runat="server" CssClass="form-control" DataSourceID="SqlDataSourceTipoTransaccion" DataTextField="DESC_TRANSACCION" DataValueField="ID_TIPO_TRANSACCION">
+                        <asp:DropDownList ID="DropDownListTipo" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="DESC_TRANSACCION" DataValueField="ID_TIPO_TRANSACCION">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSourceTipoTransaccion" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;TIPO_TRANSACCION&quot;"></asp:SqlDataSource>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style1">
-                        <asp:Label ID="LabelActivo" runat="server" Text="Activo:"></asp:Label></td>
-                    <td>
-                        <asp:DropDownList ID="DropDownListActivo" runat="server" CssClass="form-control">
-                            <asp:ListItem Value="T">Activo</asp:ListItem>
-                            <asp:ListItem Value="F">No Activo</asp:ListItem>
-                        </asp:DropDownList>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;ID_TIPO_TRANSACCION&quot;, &quot;DESC_TRANSACCION&quot; FROM &quot;TIPO_TRANSACCION&quot;"></asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>

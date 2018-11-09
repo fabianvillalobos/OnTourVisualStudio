@@ -457,6 +457,10 @@
           <Parameter Name="PNUMRUT_EMP" Type="number" Mode="In" />
           <Parameter Name="PNUMRUT_CLI_TITULAR" Type="number" Mode="In" />
         </Function>
+        <Function Name="SP_UPDATESALDOCUENTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="PID_CUENTA" Type="number" Mode="In" />
+          <Parameter Name="PSALDO" Type="number" Mode="In" />
+        </Function>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="ONTOUR" store:Type="Tables" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="ONTOUR" store:Type="Tables" />
@@ -1128,6 +1132,10 @@
             <Parameter Name="PARAM_NUMRUT_CLIE" Mode="In" Type="Decimal" />
             <Parameter Name="PARAM_ACTIVO" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SP_UPDATESALDOCUENTA">
+            <Parameter Name="PID_CUENTA" Mode="In" Type="Decimal" />
+            <Parameter Name="PSALDO" Mode="In" Type="Decimal" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1327,6 +1335,7 @@
           <FunctionImportMapping FunctionImportName="SP_UPDATECLIENTE" FunctionName="Model.Store.SP_UPDATECLIENTE" />
           <FunctionImportMapping FunctionImportName="SP_UPDATECONTRATO" FunctionName="Model.Store.SP_UPDATECONTRATO" />
           <FunctionImportMapping FunctionImportName="SP_INSERTARCUENTA" FunctionName="Model.Store.SP_INSERTARCUENTA" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATESALDOCUENTA" FunctionName="Model.Store.SP_UPDATESALDOCUENTA" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

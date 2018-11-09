@@ -278,4 +278,17 @@ public partial class EntitiesOnTour : DbContext
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTARCUENTA", pARAM_SALDOParameter, pARAM_ID_CONTRATOParameter, pARAM_NUMRUT_CLIEParameter, pARAM_ACTIVOParameter);
     }
+
+    public virtual int SP_UPDATESALDOCUENTA(Nullable<decimal> pID_CUENTA, Nullable<decimal> pSALDO)
+    {
+        var pID_CUENTAParameter = pID_CUENTA.HasValue ?
+            new ObjectParameter("PID_CUENTA", pID_CUENTA) :
+            new ObjectParameter("PID_CUENTA", typeof(decimal));
+
+        var pSALDOParameter = pSALDO.HasValue ?
+            new ObjectParameter("PSALDO", pSALDO) :
+            new ObjectParameter("PSALDO", typeof(decimal));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPDATESALDOCUENTA", pID_CUENTAParameter, pSALDOParameter);
+    }
 }

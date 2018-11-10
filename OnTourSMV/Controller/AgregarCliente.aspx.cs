@@ -52,21 +52,22 @@ public partial class AgregarCliente : System.Web.UI.Page
                 throw new Exception("Fecha de nacimiento no puede ser mayor a la fecha actual");
             }
             String telefono = txtTelefono.Text;
-
+            String mensajeFinal = "";
             String activo = "T"; //Un cliente es solo T o F
             int numrutCliente = int.Parse(txtRut.Text);
             if (txtNombre.Enabled)
             {
                 bd.SP_INSERTCLIENTE(rut, dv, nombre, apellidoP, apellidoM,
                 mail, activo, direccion, fechaNacimiento, telefono);
-                lblAviso.Text = " Cliente agregado a la BD. ";
+                mensajeFinal += " Cliente agregado a la BD. ";
             }
 
             //Buscar contrato para obtener id
             int idContrato = int.Parse(DropDownListContratoAsociar.SelectedValue);
 
             bd.SP_INSERTARCUENTA(0, idContrato, numrutCliente, activo);
-            lblAviso.Text += "Cuenta asignada y cliente asignado al contrato";
+            mensajeFinal += "Cuenta asignada y cliente asignado al contrato";
+            System.Windows.Forms.MessageBox.Show(mensajeFinal);
             bd.SaveChanges();
 
 

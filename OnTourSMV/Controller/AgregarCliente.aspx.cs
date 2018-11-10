@@ -18,6 +18,8 @@ public partial class AgregarCliente : System.Web.UI.Page
         {
             Response.Redirect("~/View/PaginaPpal.aspx");
         }
+        
+        
     }
 
     protected void btnAgregar_Click(object sender, EventArgs e)
@@ -43,7 +45,12 @@ public partial class AgregarCliente : System.Web.UI.Page
             String mail = txtMail.Text.Trim();
 
             String direccion = txtDireccion.Text.Trim();
+            DateTime today = DateTime.Today;
             DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
+            if(fechaNacimiento > today)
+            {
+                throw new Exception("Fecha de nacimiento no puede ser mayor a la fecha actual");
+            }
             String telefono = txtTelefono.Text;
 
             String activo = "T"; //Un cliente es solo T o F
@@ -67,7 +74,9 @@ public partial class AgregarCliente : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            lblAviso.Text = ex.Message;
+
+            System.Windows.Forms.MessageBox.Show(ex.Message);
+            
         }
 
 
@@ -172,7 +181,7 @@ public partial class AgregarCliente : System.Web.UI.Page
         catch (Exception ex)
         {
             System.Windows.Forms.MessageBox.Show(ex.Message);
-            // lblAviso.Text = ex.Message;
+            
         }
 
     }
@@ -198,4 +207,8 @@ public partial class AgregarCliente : System.Web.UI.Page
     {
         DropDownListContratoAsociar_DataBound(sender, e);
     }
+
+
+
+    
 }

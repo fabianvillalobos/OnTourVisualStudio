@@ -24,6 +24,7 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtFin" ErrorMessage="Requerido" ForeColor="Red" ValidationGroup="contratoGroup"></asp:RequiredFieldValidator>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtFin" ErrorMessage="Requerido" ForeColor="Red" ValidationGroup="mandanteGroup"></asp:RequiredFieldValidator>
                     <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtInicio" ControlToValidate="txtFin" ErrorMessage="Rango No Valido" ForeColor="#FF3300" Operator="GreaterThan" ValidationGroup="contratoGroup"></asp:CompareValidator>
+                    
                 </td>
             <tr>
                 <td><asp:Label ID="LabelMeta" runat="server" Text="Meta:"></asp:Label></td>

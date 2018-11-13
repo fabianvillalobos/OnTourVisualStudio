@@ -33,11 +33,16 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
             String origen = txtOrigen.Text, destino = txtDestino.Text;
             DateTime fecha = CalendarSalida.SelectedDate;
             int pasajeros = int.Parse(txtPasajeros.Text);
-            
+            int indiceComa = 0; //Usado para extraer la ciudad y país diferentes
+            indiceComa = txtDestino.Text.IndexOf(",");
+            txtCiudadOculto.Text = txtDestino.Text.Substring(0, indiceComa);
+            txtPaisOculto.Text = txtDestino.Text.Substring(indiceComa + 2);
+
             //Cargar los dropdown con los parámetros (Se enlazan los objetos)
             DropDownListSeguros.DataSourceID = "ObjectDataSourceSeguros";
             DropDownListViajeVuelo.DataSourceID = "ObjectDataSourceViajeVuelo";
             DropDownListViajeBus.DataSourceID = "ObjectDataSourceViajeBus";
+            DropDownListEstadia.DataSourceID = "ObjectDataSourceEstadia";
 
             DropDownListViajeVuelo.Enabled = true;
             DropDownListViajeBus.Enabled = true;
@@ -63,6 +68,8 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
 
     protected void ButtonRegistrar_Click(object sender, EventArgs e)
     {
+        
+       
 
     }
 
@@ -100,13 +107,18 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         }
     }
 
-    protected void DropDownListViajeVuelo_SelectedIndexChanged(object sender, EventArgs e)
-    {
 
-    }
+
 
     protected void DropDownListViajeBus_SelectedIndexChanged(object sender, EventArgs e)
     {
 
     }
+
+    protected void DropDownListViajeVuelo_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+   
 }

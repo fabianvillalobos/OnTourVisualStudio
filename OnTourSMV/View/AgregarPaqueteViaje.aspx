@@ -116,10 +116,18 @@
                         <asp:Label ID="Label2" runat="server" Text="Estadía"></asp:Label>
                     </td>
                     <td class="auto-style2">
-                        <asp:DropDownList ID="DropDownListEstadia" runat="server" CssClass="form-control" AutoPostBack="True" Enabled="False">
+                        
+                        <asp:DropDownList ID="DropDownListEstadia" runat="server" CssClass="form-control" AutoPostBack="True" Enabled="False" DataTextField="h_nombre" DataValueField="h_id">
                         </asp:DropDownList>
+                        <asp:ObjectDataSource ID="ObjectDataSourceEstadia" runat="server" SelectMethod="getAlojamientos" TypeName="localhost.wsproveedores">
+                            <SelectParameters>
+                                <asp:ControlParameter ControlID="txtCiudadOculto" Name="ciudad" PropertyName="Text" Type="String" />
+                                <asp:ControlParameter ControlID="txtPaisOculto" Name="pais" PropertyName="Text" Type="String" />
+                                <asp:ControlParameter ControlID="txtPasajeros" Name="habitacion" PropertyName="Text" Type="Int32" />
+                            </SelectParameters>
+                        </asp:ObjectDataSource>
                     </td>
-                    <td class="auto-style2"></td>
+                    <td class="auto-style2">&nbsp;</td>
                 </tr>
                 <tr>
                     <td>
@@ -150,6 +158,8 @@
                         <asp:Button ID="ButtonRegistrar" runat="server" CssClass="btn btn-success" Text="Registrar" OnClick="ButtonRegistrar_Click" />
                         <br />
                         <asp:Label ID="LabelAviso" runat="server"></asp:Label>
+                        <asp:TextBox ID="txtPaisOculto" runat="server" Visible="False" Width="60px"></asp:TextBox>
+                        <asp:TextBox ID="txtCiudadOculto" runat="server" Visible="False" Width="44px"></asp:TextBox>
                     </td>
                     <td>&nbsp;</td>
                 </tr>

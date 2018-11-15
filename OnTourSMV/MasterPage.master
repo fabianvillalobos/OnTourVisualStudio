@@ -33,41 +33,41 @@
                     </a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="dropdown"><a class="dropdown-toggle glyphicon glyphicon-folder-close" data-toggle="dropdown" href="#">Contratos<span class="caret"></span></a>
+                    <li class="dropdown" runat="server" id="contratos"><a class="dropdown-toggle glyphicon glyphicon-folder-close" data-toggle="dropdown" href="#">Contratos<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="ListarContratos.aspx">Listar</a></li>
-                            <li><a href="AgregarContratos.aspx">Agregar contrato</a></li>
-                            <li><a href="AgregarCliente.aspx">Agregar pasajero</a></li>
+                            <li runat="server" id="contraAgregaCon"><a href="AgregarContratos.aspx">Agregar contrato</a></li>
+                            <li runat="server" id="contraAgregaCli"><a href="AgregarCliente.aspx">Agregar pasajero</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a class="dropdown-toggle glyphicon glyphicon-star-empty" data-toggle="dropdown" href="#">Paquetes<span class="caret"></span></a>
+                    <li class="dropdown" runat="server" id="paquetes"><a class="dropdown-toggle glyphicon glyphicon-star-empty" data-toggle="dropdown" href="#">Paquetes<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="AgregarPaqueteViaje.aspx">Agregar</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" href="#">Usuario<span class="caret"></span></a>
+                    <li class="dropdown" runat="server" id="usuarios"><a class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" href="#">Usuario<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="ListarCliente.aspx">Listar Clientes</a></li>
-                            <li><a href="ListarUsuariosSistema.aspx">Listar Usuarios Sistema</a></li>
+                            <li runat="server" id="usuariosSis"><a href="ListarUsuariosSistema.aspx">Listar Usuarios Sistema</a></li>
 
                         </ul>
                     </li>
-                    <li class="dropdown"><a class="dropdown-toggle glyphicon glyphicon-piggy-bank" data-toggle="dropdown" href="#">Actividades<span class="caret"></span></a>
+                    <li class="dropdown" runat="server" id="actividades"><a class="dropdown-toggle glyphicon glyphicon-piggy-bank" data-toggle="dropdown" href="#">Actividades<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="ListarACtividades.aspx">Listar</a></li>
-                            <li><a href="AgregarActividad.aspx">Agregar</a></li>
+                            <li runat="server" id="actAgrega"><a href="AgregarActividad.aspx">Agregar</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a class="dropdown-toggle glyphicon glyphicon-bitcoin" data-toggle="dropdown" href="#">Cuentas<span class="caret"></span></a>
+                    <li class="dropdown" runat="server" id="cuentas"><a class="dropdown-toggle glyphicon glyphicon-bitcoin" data-toggle="dropdown" href="#">Cuentas<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="ListarCuenta.aspx">Listar</a></li>
-                            <li><a href="AgregarCuenta.aspx">Agregar</a></li>
+                            <%--<li><a href="AgregarCuenta.aspx">Agregar</a></li>--%>
                         </ul>
                     </li>
-                    <li class="dropdown"><a class="dropdown-toggle glyphicon glyphicon-stats" data-toggle="dropdown" href="#">Transacciones<span class="caret"></span></a>
+                    <li class="dropdown" runat="server" id="transacciones"><a class="dropdown-toggle glyphicon glyphicon-stats" data-toggle="dropdown" href="#">Transacciones<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="ListarTransaccion.aspx">Listar</a></li>
-                            <li><a href="AgregarTransaccion.aspx">Agregar</a></li>
+                            <li runat="server" id="transAgre"><a href="AgregarTransaccion.aspx">Agregar</a></li>
                         </ul>
                     </li>
                     <ul class="nav navbar-nav navbar-right">

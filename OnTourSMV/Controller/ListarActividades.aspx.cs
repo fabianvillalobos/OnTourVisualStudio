@@ -13,10 +13,6 @@ public partial class ListarActividades : System.Web.UI.Page
         {
             Response.Redirect("~/View/Login.aspx");
         }
-        int perfilId = int.Parse(Session["PerfilID"].ToString());
-        if (perfilId != 2) // Solo ejec ventas puede acceder
-        {
-            Response.Redirect("~/View/PaginaPpal.aspx");
-        }
+       
     }
 }

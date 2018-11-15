@@ -25,6 +25,31 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
 
             Mantenedor.Visible = true;
+            int perfilId = int.Parse(Session["PerfilID"].ToString());
+            if (perfilId == 1)
+            {
+                contratos.Visible = false;
+                paquetes.Visible = false;
+                actividades.Visible = false;
+
+            }
+            if (perfilId == 2)
+            {
+                usuariosSis.Visible = false;
+            }
+            if (perfilId == 3)
+            {
+                contraAgregaCon.Visible = false;
+                contraAgregaCli.Visible = false;
+                paquetes.Visible = false;
+                usuarios.Visible = false;
+                actAgrega.Visible = false;
+                transAgre.Visible = false;
+            }
+            //if (perfilId == 4)
+            //{
+                
+            //}
 
         }
     }

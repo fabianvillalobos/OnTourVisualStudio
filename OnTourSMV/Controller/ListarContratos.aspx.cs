@@ -21,14 +21,16 @@ public partial class ListarContratos : System.Web.UI.Page
             Response.Redirect("~/View/Login.aspx");
         }
         int perfilId = int.Parse(Session["PerfilID"].ToString());
-        if (perfilId != 2) // Solo ejec ventas puede acceder
+        if (perfilId == 3)
         {
-            Response.Redirect("~/View/PaginaPpal.aspx");
+            btnNuevoContrato.Visible = false;
         }
+
     }
 
     protected void btnNuevoContrato_Click(object sender, EventArgs e)
     {
+        
         Response.Redirect("~/View/AgregarContratos.aspx");
     }
 

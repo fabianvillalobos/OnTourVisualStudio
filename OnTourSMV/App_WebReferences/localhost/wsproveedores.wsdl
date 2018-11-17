@@ -22,8 +22,12 @@
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="aerolinea" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="origen" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="destino" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="o_terminal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="o_ciudad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="o_pais" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="d_terminal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="d_ciudad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="d_pais" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="salida" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="duracion" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="capacidad" type="s:int" />
@@ -41,8 +45,12 @@
       <s:element name="getVuelos">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="origen" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="destino" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="origen_terminal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="origen_ciudad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="origen_pais" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destino_terminal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destino_ciudad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destino_pais" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="salida" type="s:dateTime" />
             <s:element minOccurs="1" maxOccurs="1" name="pasajeros" type="s:int" />
           </s:sequence>
@@ -58,8 +66,12 @@
       <s:element name="json_getVuelos">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="origen" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="destino" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="origen_terminal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="origen_ciudad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="origen_pais" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destino_terminal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destino_ciudad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destino_pais" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="salida" type="s:dateTime" />
             <s:element minOccurs="1" maxOccurs="1" name="pasajeros" type="s:int" />
           </s:sequence>
@@ -254,14 +266,18 @@
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="linea" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="origen" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="destino" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="salida" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="duracion" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="capacidad" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="ocupados" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="activo" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="precio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="o_terminal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="o_ciudad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="o_pais" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="d_terminal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="d_ciudad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="d_pais" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="json_getAllBuses">
@@ -273,8 +289,12 @@
       <s:element name="getBuses">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="origen" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="destino" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="origen_terminal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="origen_ciudad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="origen_pais" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destino_terminal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destino_ciudad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destino_pais" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="salida" type="s:dateTime" />
             <s:element minOccurs="1" maxOccurs="1" name="pasajeros" type="s:int" />
           </s:sequence>
@@ -290,8 +310,12 @@
       <s:element name="json_getBuses">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="origen" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="destino" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="origen_terminal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="origen_ciudad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="origen_pais" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destino_terminal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destino_ciudad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="destino_pais" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="salida" type="s:dateTime" />
             <s:element minOccurs="1" maxOccurs="1" name="pasajeros" type="s:int" />
           </s:sequence>
@@ -469,8 +493,12 @@
   <wsdl:message name="json_getAllVuelosHttpGetIn" />
   <wsdl:message name="json_getAllVuelosHttpGetOut" />
   <wsdl:message name="getVuelosHttpGetIn">
-    <wsdl:part name="origen" type="s:string" />
-    <wsdl:part name="destino" type="s:string" />
+    <wsdl:part name="origen_terminal" type="s:string" />
+    <wsdl:part name="origen_ciudad" type="s:string" />
+    <wsdl:part name="origen_pais" type="s:string" />
+    <wsdl:part name="destino_terminal" type="s:string" />
+    <wsdl:part name="destino_ciudad" type="s:string" />
+    <wsdl:part name="destino_pais" type="s:string" />
     <wsdl:part name="salida" type="s:string" />
     <wsdl:part name="pasajeros" type="s:string" />
   </wsdl:message>
@@ -478,8 +506,12 @@
     <wsdl:part name="Body" element="tns:ArrayOfVuelos" />
   </wsdl:message>
   <wsdl:message name="json_getVuelosHttpGetIn">
-    <wsdl:part name="origen" type="s:string" />
-    <wsdl:part name="destino" type="s:string" />
+    <wsdl:part name="origen_terminal" type="s:string" />
+    <wsdl:part name="origen_ciudad" type="s:string" />
+    <wsdl:part name="origen_pais" type="s:string" />
+    <wsdl:part name="destino_terminal" type="s:string" />
+    <wsdl:part name="destino_ciudad" type="s:string" />
+    <wsdl:part name="destino_pais" type="s:string" />
     <wsdl:part name="salida" type="s:string" />
     <wsdl:part name="pasajeros" type="s:string" />
   </wsdl:message>
@@ -547,8 +579,12 @@
   <wsdl:message name="json_getAllBusesHttpGetIn" />
   <wsdl:message name="json_getAllBusesHttpGetOut" />
   <wsdl:message name="getBusesHttpGetIn">
-    <wsdl:part name="origen" type="s:string" />
-    <wsdl:part name="destino" type="s:string" />
+    <wsdl:part name="origen_terminal" type="s:string" />
+    <wsdl:part name="origen_ciudad" type="s:string" />
+    <wsdl:part name="origen_pais" type="s:string" />
+    <wsdl:part name="destino_terminal" type="s:string" />
+    <wsdl:part name="destino_ciudad" type="s:string" />
+    <wsdl:part name="destino_pais" type="s:string" />
     <wsdl:part name="salida" type="s:string" />
     <wsdl:part name="pasajeros" type="s:string" />
   </wsdl:message>
@@ -556,8 +592,12 @@
     <wsdl:part name="Body" element="tns:ArrayOfBuses" />
   </wsdl:message>
   <wsdl:message name="json_getBusesHttpGetIn">
-    <wsdl:part name="origen" type="s:string" />
-    <wsdl:part name="destino" type="s:string" />
+    <wsdl:part name="origen_terminal" type="s:string" />
+    <wsdl:part name="origen_ciudad" type="s:string" />
+    <wsdl:part name="origen_pais" type="s:string" />
+    <wsdl:part name="destino_terminal" type="s:string" />
+    <wsdl:part name="destino_ciudad" type="s:string" />
+    <wsdl:part name="destino_pais" type="s:string" />
     <wsdl:part name="salida" type="s:string" />
     <wsdl:part name="pasajeros" type="s:string" />
   </wsdl:message>
@@ -579,8 +619,12 @@
   <wsdl:message name="json_getAllVuelosHttpPostIn" />
   <wsdl:message name="json_getAllVuelosHttpPostOut" />
   <wsdl:message name="getVuelosHttpPostIn">
-    <wsdl:part name="origen" type="s:string" />
-    <wsdl:part name="destino" type="s:string" />
+    <wsdl:part name="origen_terminal" type="s:string" />
+    <wsdl:part name="origen_ciudad" type="s:string" />
+    <wsdl:part name="origen_pais" type="s:string" />
+    <wsdl:part name="destino_terminal" type="s:string" />
+    <wsdl:part name="destino_ciudad" type="s:string" />
+    <wsdl:part name="destino_pais" type="s:string" />
     <wsdl:part name="salida" type="s:string" />
     <wsdl:part name="pasajeros" type="s:string" />
   </wsdl:message>
@@ -588,8 +632,12 @@
     <wsdl:part name="Body" element="tns:ArrayOfVuelos" />
   </wsdl:message>
   <wsdl:message name="json_getVuelosHttpPostIn">
-    <wsdl:part name="origen" type="s:string" />
-    <wsdl:part name="destino" type="s:string" />
+    <wsdl:part name="origen_terminal" type="s:string" />
+    <wsdl:part name="origen_ciudad" type="s:string" />
+    <wsdl:part name="origen_pais" type="s:string" />
+    <wsdl:part name="destino_terminal" type="s:string" />
+    <wsdl:part name="destino_ciudad" type="s:string" />
+    <wsdl:part name="destino_pais" type="s:string" />
     <wsdl:part name="salida" type="s:string" />
     <wsdl:part name="pasajeros" type="s:string" />
   </wsdl:message>
@@ -657,8 +705,12 @@
   <wsdl:message name="json_getAllBusesHttpPostIn" />
   <wsdl:message name="json_getAllBusesHttpPostOut" />
   <wsdl:message name="getBusesHttpPostIn">
-    <wsdl:part name="origen" type="s:string" />
-    <wsdl:part name="destino" type="s:string" />
+    <wsdl:part name="origen_terminal" type="s:string" />
+    <wsdl:part name="origen_ciudad" type="s:string" />
+    <wsdl:part name="origen_pais" type="s:string" />
+    <wsdl:part name="destino_terminal" type="s:string" />
+    <wsdl:part name="destino_ciudad" type="s:string" />
+    <wsdl:part name="destino_pais" type="s:string" />
     <wsdl:part name="salida" type="s:string" />
     <wsdl:part name="pasajeros" type="s:string" />
   </wsdl:message>
@@ -666,8 +718,12 @@
     <wsdl:part name="Body" element="tns:ArrayOfBuses" />
   </wsdl:message>
   <wsdl:message name="json_getBusesHttpPostIn">
-    <wsdl:part name="origen" type="s:string" />
-    <wsdl:part name="destino" type="s:string" />
+    <wsdl:part name="origen_terminal" type="s:string" />
+    <wsdl:part name="origen_ciudad" type="s:string" />
+    <wsdl:part name="origen_pais" type="s:string" />
+    <wsdl:part name="destino_terminal" type="s:string" />
+    <wsdl:part name="destino_ciudad" type="s:string" />
+    <wsdl:part name="destino_pais" type="s:string" />
     <wsdl:part name="salida" type="s:string" />
     <wsdl:part name="pasajeros" type="s:string" />
   </wsdl:message>

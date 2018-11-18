@@ -23,7 +23,7 @@ public partial class PaginaPpal : System.Web.UI.Page
             EntitiesOnTour bd = new EntitiesOnTour();
             String usuarioSesion = Session["Usuario"].ToString();            
             Label1.Text = Session["Perfil"].ToString();
-            
+           
         }
     }
 }

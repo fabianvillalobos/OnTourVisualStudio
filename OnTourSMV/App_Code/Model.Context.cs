@@ -52,7 +52,7 @@ public partial class EntitiesOnTour : DbContext
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ELIMINAUSUARIO", pARAM_ID_USRParameter);
     }
 
-    public virtual int SP_INSERTAUSUARIO(string pARAM_LOGIN_USR, string pARAM_PASS_USR, Nullable<decimal> pARAM_ID_TIPO_USUARIO, string pARAM_ACTIVO)
+    public virtual int SP_INSERTAUSUARIO(string pARAM_LOGIN_USR, string pARAM_PASS_USR, Nullable<decimal> pARAM_ID_TIPO_USUARIO, string pARAM_ACTIVO, ObjectParameter pARA_ID_USR)
     {
         var pARAM_LOGIN_USRParameter = pARAM_LOGIN_USR != null ?
             new ObjectParameter("PARAM_LOGIN_USR", pARAM_LOGIN_USR) :
@@ -70,7 +70,7 @@ public partial class EntitiesOnTour : DbContext
             new ObjectParameter("PARAM_ACTIVO", pARAM_ACTIVO) :
             new ObjectParameter("PARAM_ACTIVO", typeof(string));
 
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTAUSUARIO", pARAM_LOGIN_USRParameter, pARAM_PASS_USRParameter, pARAM_ID_TIPO_USUARIOParameter, pARAM_ACTIVOParameter);
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTAUSUARIO", pARAM_LOGIN_USRParameter, pARAM_PASS_USRParameter, pARAM_ID_TIPO_USUARIOParameter, pARAM_ACTIVOParameter, pARA_ID_USR);
     }
 
     public virtual int SP_INSERTCLIENTE(Nullable<decimal> cNUMRUT_CLI, string cDRUT_CLI, string cNOMBRE_CLI, string cAPELLIDO_PAT_CLI, string cAPELLIDO_MAT_CLI, string cMAIL_CLI, string cACTIVO_CLI, string cDIRECCION_CLI, Nullable<System.DateTime> cFECHA_NACIMIENTO_CLI, string cFONO_CLI)

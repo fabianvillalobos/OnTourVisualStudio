@@ -404,6 +404,7 @@
           <Parameter Name="PARAM_PASS_USR" Type="varchar2" Mode="In" />
           <Parameter Name="PARAM_ID_TIPO_USUARIO" Type="number" Mode="In" />
           <Parameter Name="PARAM_ACTIVO" Type="char" Mode="In" />
+          <Parameter Name="PARA_ID_USR" Type="number" Mode="Out" />
         </Function>
         <Function Name="SP_INSERTCLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
           <Parameter Name="CNUMRUT_CLI" Type="number" Mode="In" />
@@ -1072,6 +1073,7 @@
             <Parameter Name="PARAM_PASS_USR" Mode="In" Type="String" />
             <Parameter Name="PARAM_ID_TIPO_USUARIO" Mode="In" Type="Decimal" />
             <Parameter Name="PARAM_ACTIVO" Mode="In" Type="String" />
+            <Parameter Name="PARA_ID_USR" Mode="Out" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SP_INSERTCLIENTE">
             <Parameter Name="CNUMRUT_CLI" Mode="In" Type="Decimal" />

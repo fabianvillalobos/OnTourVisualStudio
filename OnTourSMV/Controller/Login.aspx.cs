@@ -25,8 +25,8 @@ public partial class View_Login : System.Web.UI.Page
 
             EntitiesOnTour bd = new EntitiesOnTour();
 
-            String usuario = txtUsuario.Text.Trim();
-            String clave = txtClave.Text.Trim();
+            String usuario = txtUsuario.Text;
+            String clave = txtClave.Text;
 
             //Hasheo
             byte[] bytes = { 0x35, 0x24, 0, 76, 0x12 };

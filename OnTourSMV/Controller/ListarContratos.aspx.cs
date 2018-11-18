@@ -24,6 +24,10 @@ public partial class ListarContratos : System.Web.UI.Page
         if (perfilId == 3)
         {
             btnNuevoContrato.Visible = false;
+        }        
+        if (perfilId == 4)
+        {
+            Response.Redirect("~/View/PaginaPpal.aspx");
         }
 
     }

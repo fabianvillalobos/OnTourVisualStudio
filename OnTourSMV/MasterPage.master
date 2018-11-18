@@ -70,6 +70,12 @@
                             <li runat="server" id="transAgre"><a href="AgregarTransaccion.aspx">Agregar</a></li>
                         </ul>
                     </li>
+                    <li class="dropdown" runat="server" id="Credenciales"><a class="dropdown-toggle glyphicon glyphicon-stats" data-toggle="dropdown" href="#">Credenciales<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="ListarTransaccion.aspx">Listar</a></li>
+                            <li runat="server" id="agreCredenciales"><a href="CrearCredenciales.aspx">Agregar</a></li>
+                        </ul>
+                    </li>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="nombre-usuario"><asp:Label ID="lblUsuario" runat="server" ForeColor="White" Text=""></asp:Label></li>
                         <li><a href="Login.aspx"><span class="glyphicon glyphicon-off"></span>Salir</a></li>

@@ -36,6 +36,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             if (perfilId == 2)
             {
                 usuariosSis.Visible = false;
+                
             }
             if (perfilId == 3)
             {
@@ -45,11 +46,19 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 usuarios.Visible = false;
                 actAgrega.Visible = false;
                 transAgre.Visible = false;
+                Credenciales.Visible = false;
             }
-            //if (perfilId == 4)
-            //{
-                
-            //}
+            if (perfilId == 4)
+            {
+                contratos.Visible = false;
+                paquetes.Visible = false;
+                usuarios.Visible = false;
+                actividades.Visible = false;
+                cuentas.Visible = false;
+                transacciones.Visible = false;
+                Credenciales.Visible = false;
+                    
+            }
 
         }
     }

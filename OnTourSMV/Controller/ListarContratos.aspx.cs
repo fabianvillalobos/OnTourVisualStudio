@@ -13,6 +13,7 @@ using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
 using System.IO;
 using System.Windows.Forms;
+using Image = iTextSharp.text.Image;
 
 public partial class ListarContratos : System.Web.UI.Page
 {
@@ -36,6 +37,7 @@ public partial class ListarContratos : System.Web.UI.Page
         Response.Redirect("~/View/AgregarContratos.aspx");
     }
 
+    //public static iTextSharp.text.Image img = Image.GetInstance("airbus.jpg");
     protected void btnExportar_Click(object sender, EventArgs e)
     {
         Response.ContentType = "application/pdf";
@@ -49,6 +51,10 @@ public partial class ListarContratos : System.Web.UI.Page
         HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
         PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
         pdfDoc.Open();
+        pdfDoc.AddTitle("Ontour");
+        //img.SetAbsolutePosition(0, 750);
+        //pdfDoc.Add(img);
+        pdfDoc.AddCreator("Ontour");
         htmlparser.Parse(sr);
         pdfDoc.Close();
         Response.Write(pdfDoc);

@@ -11,9 +11,10 @@ using iTextSharp.text;
 using iTextSharp.text.html;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.fonts;
 using System.IO;
 using System.Windows.Forms;
-using Image = iTextSharp.text.Image;
+
 
 public partial class ListarContratos : System.Web.UI.Page
 {
@@ -41,7 +42,7 @@ public partial class ListarContratos : System.Web.UI.Page
     protected void btnExportar_Click(object sender, EventArgs e)
     {
         Response.ContentType = "application/pdf";
-        Response.AddHeader("content-disposition", "attachment;filename=TestPage.pdf");
+        Response.AddHeader("content-disposition", "attachment;filename=Ontour.pdf");
         Response.Cache.SetCacheability(HttpCacheability.NoCache);
         StringWriter sw = new StringWriter();
         HtmlTextWriter hw = new HtmlTextWriter(sw);
@@ -54,7 +55,27 @@ public partial class ListarContratos : System.Web.UI.Page
         pdfDoc.AddTitle("Ontour");
         //img.SetAbsolutePosition(0, 750);
         //pdfDoc.Add(img);
-        pdfDoc.AddCreator("Ontour");
+
+        Font fuente = new Font();
+        fuente.Size = 28;
+        //Header
+        Paragraph header = new Paragraph("Agencia de viajes Ontour", fuente);
+        header.SpacingBefore = 200;
+        header.SpacingAfter = 0;
+        header.Alignment = 1; //0-Left, 1 middle,2 Right
+        //salto de linea
+        //Paragraph para = new Paragraph("\n");
+        //fecha
+        var fecha = new Paragraph(DateTime.Today.ToString());
+        fecha.Alignment = 2;
+        fecha.Font.Size = 12;
+
+                           
+
+        pdfDoc.Add(header);
+        //pdfDoc.Add(para);
+        pdfDoc.Add(fecha);
+
         htmlparser.Parse(sr);
         pdfDoc.Close();
         Response.Write(pdfDoc);

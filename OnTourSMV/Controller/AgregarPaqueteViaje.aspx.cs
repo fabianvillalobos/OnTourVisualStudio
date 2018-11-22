@@ -219,11 +219,12 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
 
                 var jsonVuelos = getJSONVuelos(txtTerminalOrigen.Text, txtCiudadOrigen.Text, txtPaisOrigen.Text, txtTerminalDestino.Text,
                     txtCiudadDestino.Text, txtPaisDestino.Text, fecha, pasajeros);
-                if (jsonVuelos == null)
+                
+                dynamic dynJsonVuelos = JsonConvert.DeserializeObject(jsonVuelos);
+                if (dynJsonVuelos.First == null)
                 {
                     throw new Exception("No hay fechas disponibles, por favor seleccione otro destino");
                 }
-                dynamic dynJsonVuelos = JsonConvert.DeserializeObject(jsonVuelos);
                 foreach (var item in dynJsonVuelos)
                 {
                     String idVuelo = item.salida; //Valor a utilizar para llenar los demás dropdownlist

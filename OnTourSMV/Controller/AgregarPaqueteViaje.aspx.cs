@@ -281,7 +281,8 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
 
     protected void DDLHoraSalida_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if(DDLHoraSalida.SelectedValue == "0000")
+        DDLHoraSalida.Enabled = false;
+        if (DDLHoraSalida.SelectedValue == "0000")
         {
             deshabilitarDropDowns();
             ButtonEliminar_Click(sender,e);
@@ -289,6 +290,7 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         else
         {
             DropDownListEstadia.Enabled = true;
+           
             String horaSalidaSeleccionada = DDLHoraSalida.SelectedItem.ToString();
             int indicePrecioSalida = horaSalidaSeleccionada.IndexOf("$");
             indicePrecioSalida++;
@@ -302,6 +304,7 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
     protected void DropDownListEstadia_SelectedIndexChanged(object sender, EventArgs e)
     {
         DropDownListSeguros.Enabled = true;
+        DropDownListEstadia.Enabled = false;
         if(DropDownListEstadia.SelectedValue != "0000")
         {
             String estadiaSeleccionada = DropDownListEstadia.SelectedItem.ToString();
@@ -319,6 +322,7 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
     protected void DropDownListSeguros_SelectedIndexChanged(object sender, EventArgs e)
     {
         DropDownListContrato.Enabled = true;
+        DropDownListSeguros.Enabled = false;
         String seguroSeleccionado = DropDownListSeguros.SelectedItem.ToString();
         int indicePrecioSeguro = seguroSeleccionado.IndexOf("$");
         indicePrecioSeguro++;

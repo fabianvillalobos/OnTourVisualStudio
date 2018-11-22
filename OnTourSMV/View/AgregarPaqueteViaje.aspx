@@ -183,7 +183,7 @@
                     <td>
                         <asp:Label ID="Label11" runat="server" Text="Precio total"></asp:Label></td>
                     <td>
-                        <asp:Label ID="lblPrecio" runat="server" Text=""></asp:Label></td>
+                        <asp:Label ID="lblPrecio" runat="server" Text="$0"></asp:Label></td>
                 </tr>
                 <tr>
                     <td>

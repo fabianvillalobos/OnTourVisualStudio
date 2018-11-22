@@ -14,15 +14,15 @@
             <br />
             <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay contratos asociados" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True">
                 <Columns>
-                    <asp:BoundField DataField="ID_CONTRATO" HeaderText="ID_CONTRATO" SortExpression="ID_CONTRATO" />
-                    <asp:BoundField DataField="NOMBRE" HeaderText="NOMBRE" SortExpression="NOMBRE" />
-                    <asp:BoundField DataField="APELLIDO" HeaderText="APELLIDO" SortExpression="APELLIDO" />
-                    <asp:BoundField DataField="FECHA_INICIO" HeaderText="FECHA_INICIO" SortExpression="FECHA_INICIO"/>
-                    <asp:BoundField DataField="TERMINO" HeaderText="TERMINO" SortExpression="TERMINO" />
-                    <asp:BoundField HeaderText="ESTADO" DataField="ESTADO" SortExpression="ESTADO" />
-                    <asp:BoundField DataField="RESERVA" HeaderText="RESERVA" SortExpression="RESERVA" />
-                    <asp:BoundField DataField="META" HeaderText="META" SortExpression="META" />
-                    <asp:BoundField DataField="SALDO" HeaderText="SALDO" SortExpression="SALDO" />
+                    <asp:BoundField DataField="ID_CONTRATO" HeaderText="ID" SortExpression="ID_CONTRATO" />
+                    <asp:BoundField DataField="NOMBRE" HeaderText="Nombre" SortExpression="NOMBRE" />
+                    <asp:BoundField DataField="APELLIDO" HeaderText="Apellido" SortExpression="APELLIDO" />
+                    <asp:BoundField DataField="FECHA_INICIO" HeaderText="Inicio" SortExpression="FECHA_INICIO"/>
+                    <asp:BoundField DataField="TERMINO" HeaderText="Termino" SortExpression="TERMINO" />
+                    <asp:BoundField HeaderText="ESTADO" DataField="Estado" SortExpression="ESTADO" />
+                    <asp:BoundField DataField="RESERVA" HeaderText="Reserva" SortExpression="RESERVA" />
+                    <asp:BoundField DataField="META" HeaderText="Meta" SortExpression="META" />
+                    <asp:BoundField DataField="SALDO" HeaderText="Saldo" SortExpression="SALDO" />
                 </Columns>
             </asp:GridView>
 

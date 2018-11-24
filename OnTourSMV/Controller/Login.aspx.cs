@@ -15,8 +15,6 @@ public partial class View_Login : System.Web.UI.Page
        
     }
 
-   
-
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         //Los usuarios VIENEN creados desde cuando el cliente/empleado solicita/concreta el usuario/contrato
@@ -52,6 +50,7 @@ public partial class View_Login : System.Web.UI.Page
                 {
                     //Nombre de usuario
                     Session["Usuario"] = usuario;
+                    Session["UsuarioID"] = usuarioObj.ID_USR;
                     //Tipos de usuario 1)Administrador 2)Ejecutivo De Venta 3)Cliente 4)Dueño Agencia
                     Session["Perfil"] = usuarioObj.TIPO_USUARIO.DESC_TIPO_USUARIO;
                     String perfilID = usuarioObj.TIPO_USUARIO.ID_TIPO_USUARIO.ToString();

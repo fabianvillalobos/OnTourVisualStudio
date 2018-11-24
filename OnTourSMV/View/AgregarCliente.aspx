@@ -101,9 +101,9 @@
                 </div>
                 <div class="col-xs-12">
                     <asp:Label ID="Label1" runat="server" Text="Contratos"></asp:Label>
-                    <asp:DropDownList ID="DropDownListContratoAsociar" CssClass="form-control" runat="server" DataSourceID="SqlDataSourceContratoAsociar" DataTextField="NUMRUT_CLI_TITULAR" DataValueField="ID_CONTRATO" Enabled="False" AutoPostBack="True" OnDataBound="DropDownListContratoAsociar_DataBound" OnSelectedIndexChanged="DropDownListContratoAsociar_SelectedIndexChanged">
+                    <asp:DropDownList ID="DropDownListContratoAsociar" CssClass="form-control" runat="server" DataSourceID="SqlDataSourceContratoAsociar" DataTextField="Titular" DataValueField="ID_CONTRATO" Enabled="False" AutoPostBack="True" OnDataBound="DropDownListContratoAsociar_DataBound" OnSelectedIndexChanged="DropDownListContratoAsociar_SelectedIndexChanged">
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSourceContratoAsociar" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM &quot;CONTRATO&quot;"></asp:SqlDataSource><br />
+                    <asp:SqlDataSource ID="SqlDataSourceContratoAsociar" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="select 'Contrato N°: '||id_contrato || ' -  Mandante: ' || numrut_cli_titular Titular, id_contrato, fecha_inicio, fecha_termino, meta, monto_reserva, estado, numrut_emp, numrut_cli_titular from contrato ORDER BY id_contrato"></asp:SqlDataSource><br />
                 </div>
                 <div class="col-xs-12">
                     <asp:Label ID="Label3"   runat="server" Text="Mandante"></asp:Label>

@@ -39,13 +39,14 @@
         </div>
         <div class="col-xs-3">
             <asp:Label ID="LabelTitular" runat="server" Text="Mandante:"></asp:Label>
-            <asp:DropDownList ID="DropDownListMandante" runat="server" CssClass="form-control" DataSourceID="SqlDataSourceMandante" DataTextField="NOMBRE_CLIE" DataValueField="NUMRUT_CLI" AutoPostBack="True" OnSelectedIndexChanged="DropDownListMandante_SelectedIndexChanged">
+            <asp:DropDownList ID="DropDownListMandante" runat="server" CssClass="form-control" DataSourceID="SqlDataSourceMandante" DataTextField="Cliente" DataValueField="NUMRUT_CLI" AutoPostBack="True" OnSelectedIndexChanged="DropDownListMandante_SelectedIndexChanged">
                     <asp:ListItem>Sin seleccionar</asp:ListItem>
             </asp:DropDownList>
         </div>
         <div class="col-xs-3">
             <asp:Button ID="ButtonCargarMandante" runat="server" CssClass="btn btn-primary" Text="Cargar mandante" OnClick="ButtonCargarMandante_Click" ValidationGroup="contratoGroup" />
-            <asp:SqlDataSource ID="SqlDataSourceMandante" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT NUMRUT_CLI, NOMBRE_CLIE, APELLIDO_PAT_CLI, APELLIDO_MAT_CLI FROM ONTOUR.CLIENTE"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSourceMandante" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="select NUMRUT_CLI || '-' || DRUT_CLI || '   ' || APELLIDO_PAT_CLI || ' ' || APELLIDO_MAT_CLI Cliente,
+NUMRUT_CLI, DRUT_CLI, NOMBRE_CLIE, APELLIDO_PAT_CLI, APELLIDO_MAT_CLI, MAIL_CLI, ACTIVO, ID_USR, DIRECCION_CLI, FECHA_NACIMIENTO_CLI, FONO_CLI from cliente ORDER BY NUMRUT_CLI"></asp:SqlDataSource>
         </div>
     </div>
     <div class="row">

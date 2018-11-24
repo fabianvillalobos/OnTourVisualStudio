@@ -63,18 +63,17 @@ public partial class ListarContratos : System.Web.UI.Page
         header.SpacingBefore = 200;
         header.SpacingAfter = 0;
         header.Alignment = 1; //0-Left, 1 middle,2 Right
-        //salto de linea
-        //Paragraph para = new Paragraph("\n");
+        //salto de linea        
+        Paragraph saltoDeLinea1 = new Paragraph("                                                                                                                                                                                                                                                                                                                                                                                   ");
         //fecha
-        var fecha = new Paragraph(DateTime.Today.ToString());
-        fecha.Alignment = 2;
-        fecha.Font.Size = 12;
+        var fecha = new Paragraph(DateTime.Today.ToString("dd/MM/yyyy"));
 
-                           
+        fecha.Alignment = 2;
+        fecha.Font.Size = 12;                           
 
         pdfDoc.Add(header);
-        //pdfDoc.Add(para);
         pdfDoc.Add(fecha);
+        pdfDoc.Add(saltoDeLinea1);
 
         htmlparser.Parse(sr);
         pdfDoc.Close();

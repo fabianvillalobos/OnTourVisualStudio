@@ -15,14 +15,24 @@
             <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay contratos asociados" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True">
                 <Columns>
                     <asp:BoundField DataField="ID_CONTRATO" HeaderText="ID" SortExpression="ID_CONTRATO" />
-                    <asp:BoundField DataField="NOMBRE" HeaderText="Nombre" SortExpression="NOMBRE" />
-                    <asp:BoundField DataField="APELLIDO" HeaderText="Apellido" SortExpression="APELLIDO" />
-                    <asp:BoundField DataField="FECHA_INICIO" HeaderText="Inicio" SortExpression="FECHA_INICIO"/>
-                    <asp:BoundField DataField="TERMINO" HeaderText="Termino" SortExpression="TERMINO" />
+                    <asp:TemplateField HeaderText="Nombre Mandante" SortExpression="Nombre">
+                        <ItemTemplate>
+                            <asp:Label ID="Rut" runat="server" Text='<%#Eval("NOMBRE")+ " " + Eval("APELLIDO")%>' ></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="FECHA_INICIO" HeaderText="Inicio" SortExpression="FECHA_INICIO" DataFormatString='{0:MM-dd-yyyy}'/>
+                    <asp:BoundField DataField="TERMINO" HeaderText="Termino" SortExpression="TERMINO" DataFormatString='{0:MM-dd-yyyy}'/>
+                    <asp:TemplateField HeaderText="Estado" SortExpression="Estado">
+                        <ItemTemplate>
+                            <asp:Label Text='<%# Eval("Estado").ToString() == "P" ? "Progreso" : "Terminado" %>' runat="server" />
+
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
                     <asp:BoundField HeaderText="ESTADO" DataField="Estado" SortExpression="ESTADO" />
-                    <asp:BoundField DataField="RESERVA" HeaderText="Reserva" SortExpression="RESERVA" />
-                    <asp:BoundField DataField="META" HeaderText="Meta" SortExpression="META" />
-                    <asp:BoundField DataField="SALDO" HeaderText="Saldo" SortExpression="SALDO" />
+                    <asp:BoundField DataField="RESERVA" HeaderText="Reserva" SortExpression="RESERVA" DataFormatString='${0:#,0}' />
+                    <asp:BoundField DataField="META" HeaderText="Meta" SortExpression="META" DataFormatString='${0:#,0}' />
+                    <asp:BoundField DataField="SALDO" HeaderText="Saldo" SortExpression="SALDO" DataFormatString='${0:#,0}' />
                 </Columns>
             </asp:GridView>
 

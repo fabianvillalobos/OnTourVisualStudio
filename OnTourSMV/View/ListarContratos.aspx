@@ -6,12 +6,14 @@
 
     <div class="container">
         <div class="row">
-            <h2>Contratos</h2>
-            <br />
-            <asp:Button ID="btnNuevoContrato" runat="server" CssClass="btn btn-primary" Text="Nuevo Contrato" OnClick="btnNuevoContrato_Click" />
-            <br />
-            <asp:Button ID="btnExportar" runat="server" CssClass="btn btn-success" Text="Exportar PDF" OnClick="btnExportar_Click" />
-            <br />
+            <div class="col-xs-6">
+                <h2>Contratos</h2>
+                <br />
+            </div>
+            <div class="col-xs-6 text-right padding-top-20">
+                <asp:Button ID="btnNuevoContrato" runat="server" CssClass="btn btn-primary" Text="Nuevo Contrato" OnClick="btnNuevoContrato_Click" />
+                <asp:Button ID="btnExportar" runat="server" CssClass="btn btn-success" Text="Exportar PDF" OnClick="btnExportar_Click" />
+            </div>
             <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay contratos asociados" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True">
                 <Columns>
                     <asp:BoundField DataField="ID_CONTRATO" HeaderText="ID" SortExpression="ID_CONTRATO" />
@@ -24,15 +26,15 @@
                     <asp:BoundField DataField="TERMINO" HeaderText="Termino" SortExpression="TERMINO" DataFormatString='{0:MM-dd-yyyy}'/>
                     <asp:TemplateField HeaderText="Estado" SortExpression="Estado">
                         <ItemTemplate>
-                            <asp:Label Text='<%# Eval("Estado").ToString() == "P" ? "Progreso" : "Terminado" %>' runat="server" />
-
+                            <asp:Label Visible='<%# Eval("Estado").ToString().Equals("P") %>' Text="<div class='progreso btn-primary'>En Progreso</div>" runat="server" />
+                            <asp:Label Visible='<%# Eval("Estado").ToString().Equals("T") %>' Text="<div class='progreso btn-success'>Terminado</div>" runat="server" />
+                            <asp:Label Visible='<%# Eval("Estado").ToString().Equals("F") %>' Text="<div class='progreso btn-danger'>Cancelado</div>" runat="server" />
                         </ItemTemplate>
                     </asp:TemplateField>
 
-                    <asp:BoundField HeaderText="ESTADO" DataField="Estado" SortExpression="ESTADO" />
                     <asp:BoundField DataField="RESERVA" HeaderText="Reserva" SortExpression="RESERVA" DataFormatString='${0:#,0}' />
                     <asp:BoundField DataField="META" HeaderText="Meta" SortExpression="META" DataFormatString='${0:#,0}' />
-                    <asp:BoundField DataField="SALDO" HeaderText="Saldo" SortExpression="SALDO" DataFormatString='${0:#,0}' />
+                    <asp:BoundField DataField="SALDO" HeaderText="Saldo Pendiente" SortExpression="SALDO" DataFormatString='${0:#,0}' />
                 </Columns>
             </asp:GridView>
 

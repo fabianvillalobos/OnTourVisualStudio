@@ -1,11 +1,12 @@
 /*
 ======================
-Abetal.cl
+Ontour.cl
 
 @author: Luis Ponce
 @website: luisponce.cl
 03/10/2018
 24/10/2018
+24/11/2018
 
 
 Order & contents
@@ -130,6 +131,16 @@ body{
 }
 .navbar-brand > img{margin-top:4px;}
 .navbar-inverse .navbar-nav > li > a{padding-left:10px;padding-right:10px;}
+.progreso{padding:4px 8px; display:inline-block;font-size:12px;border-radius:3px;  letter-spacing:0.5px;}
+
+.padding-top-10{padding-top:10px;}
+.padding-top-20{padding-top:20px;}
+.padding-left-20{padding-left:20px;}
+.padding-left-30{padding-left:30px;}
+.border-left-separador{border-left:1px solid #f2f2f2;}
+
+.margin-top-20{margin-top:20px;}
+.separador{height:1px; background-color:#f2f2f2;margin-top:30px;margin-bottom:30px;}
 
 
 
@@ -143,11 +154,6 @@ body{
 
 
 
-
-
-
-.hola {
-}
     /*
 ==================================
 3. RESPONSIVE

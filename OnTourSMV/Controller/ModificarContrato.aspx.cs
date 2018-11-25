@@ -18,8 +18,7 @@ public partial class View_ModificarContrato : System.Web.UI.Page
             
         }
     }
-
-
+    
 
     protected void btnCargar_Click(object sender, EventArgs e)
     {

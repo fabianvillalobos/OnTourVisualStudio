@@ -33,10 +33,8 @@ public partial class ListarContratos : System.Web.UI.Page
         }
     }
     
-
     protected void btnNuevoContrato_Click(object sender, EventArgs e)
     {
-
         Response.Redirect("~/View/AgregarContratos.aspx");
     }
 
@@ -103,5 +101,16 @@ public partial class ListarContratos : System.Web.UI.Page
                 SqlDataSource1.SelectCommand = "SELECT ONTOUR.CONTRATO.ID_CONTRATO, ONTOUR.CLIENTE.NOMBRE_CLIE AS Nombre, ONTOUR.CLIENTE.APELLIDO_PAT_CLI AS Apellido, ONTOUR.CONTRATO.FECHA_INICIO, ONTOUR.CONTRATO.FECHA_TERMINO AS Termino, ONTOUR.CONTRATO.ESTADO AS Estado, ONTOUR.CONTRATO.MONTO_RESERVA AS Reserva, ONTOUR.CONTRATO.META AS Meta, ONTOUR.CUENTA.SALDO AS Saldo FROM ONTOUR.CONTRATO INNER JOIN ONTOUR.CLIENTE ON ONTOUR.CONTRATO.NUMRUT_CLI_TITULAR = ONTOUR.CLIENTE.NUMRUT_CLI INNER JOIN ONTOUR.EMPLEADO ON ONTOUR.CONTRATO.NUMRUT_EMP = ONTOUR.EMPLEADO.NUMRUT_EMP INNER JOIN ONTOUR.CUENTA ON ONTOUR.CONTRATO.ID_CONTRATO = ONTOUR.CUENTA.ID_CONTRATO AND ONTOUR.CLIENTE.NUMRUT_CLI = ONTOUR.CUENTA.NUMRUT_CLI";
             }
         }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        numeroContratoAEliminar.Text = (sender as System.Web.UI.WebControls.Button).CommandArgument;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalBorrarContrato').modal('show');</script>", false);
+    }
+
+    protected void BorrarContratoAceptado(object sender, EventArgs e)
+    {
+
     }
 }

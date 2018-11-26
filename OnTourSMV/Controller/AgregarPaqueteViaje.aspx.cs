@@ -25,23 +25,15 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         {
             Response.Redirect("~/View/PaginaPpal.aspx");
         }
-
-   
-
-
     }
 
-    
     protected string getJSONVuelos(string origen_terminal, string origen_ciudad, string origen_pais, string destino_terminal,
         string destino_ciudad, string destino_pais, DateTime salida, int pasajeros)
     {
-
-
         HttpWebRequest request =
         (HttpWebRequest)WebRequest.Create("http://ontour.somee.com/wsproveedores.asmx/json_getVuelos?origen_terminal=" + origen_terminal +
         "&origen_ciudad=" + origen_ciudad + "&origen_pais=" + origen_pais + "&destino_terminal=" + destino_terminal + "&destino_ciudad=" + destino_ciudad +
         "&destino_pais=" + destino_pais + "&salida=" + salida + "&pasajeros=" + pasajeros);
-
 
         try
         {
@@ -70,8 +62,6 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
     protected string getJSONBuses(string origen_terminal, string origen_ciudad, string origen_pais, string destino_terminal,
         string destino_ciudad, string destino_pais, DateTime salida, int pasajeros)
     {
-        
-
             HttpWebRequest request = 
             (HttpWebRequest)WebRequest.Create("http://ontour.somee.com/wsproveedores.asmx/json_getBuses?origen_terminal="+origen_terminal+
             "&origen_ciudad="+origen_ciudad+"&origen_pais="+origen_pais+"&destino_terminal="+destino_terminal+"&destino_ciudad="+destino_ciudad+
@@ -107,7 +97,6 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         HttpWebRequest request =
             (HttpWebRequest)WebRequest.Create("http://ontour.somee.com/wsproveedores.asmx/json_getAlojamientos?ciudad=" + ciudad +
             "&pais=" + pais + "&habitacion=" + habitacion);
-
 
         try
         {
@@ -208,7 +197,7 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
                 }
                 foreach (var item in dynJsonBuses)
                 {
-                    String idBus = item.salida; //Valor a utilizar para llenar los demás dropdownlist
+                    String idBus = item.id; //Valor a utilizar para llenar los demás dropdownlist
                     String linea = item.linea + " " + item.salida + " $" + item.precio;
                     DDLHoraSalida.Items.Add(new ListItem(linea, idBus));
 
@@ -227,7 +216,7 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
                 }
                 foreach (var item in dynJsonVuelos)
                 {
-                    String idVuelo = item.salida; //Valor a utilizar para llenar los demás dropdownlist
+                    String idVuelo = item.id; //Valor a utilizar para llenar los demás dropdownlist
                     String aerolinea = item.aerolinea + " " + item.salida + " $" + item.precio;
                     DDLHoraSalida.Items.Add(new ListItem(aerolinea, idVuelo));
 
@@ -263,18 +252,73 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
             System.Windows.Forms.MessageBox.Show(ex.Message);
             Page_Load(sender, e);
         }
-        
-        
-      
     }
 
 
 
     protected void ButtonRegistrar_Click(object sender, EventArgs e)
     {
+        int id_tipo_servicio;
+        int id_ws;
 
-        Response.Redirect("AgregarPaqueteViaje.aspx");
+        EntitiesOnTour db = new EntitiesOnTour();
+        int idContrato = int.Parse(DropDownListContrato.SelectedValue);
+        string descripcionPaquete = "Paquete nuevo";
+        int precioPaquete = int.Parse(txtPrecioTemp.Text);
+        string activo = "T";
+        DateTime fechaCreacion = DateTime.Now;
 
+        db.SP_V_INSERTAPAQUETE(descripcionPaquete, precioPaquete, activo, fechaCreacion);
+        db.SaveChanges();
+        PAQUETEVIAJE paquete = db.PAQUETEVIAJE.OrderByDescending(x => x.ID_PAQUETEVIAJE).First();
+
+
+        db.SP_INSERTAPAQUETECONTRATO(idContrato, paquete.ID_PAQUETEVIAJE, activo);
+        db.SaveChanges();
+
+        if (DDLHoraSalida.SelectedValue != null)
+        {
+            int tipoTransporte = int.Parse(DropDownListTipoTransporte.SelectedValue);
+            if (tipoTransporte == 1) 
+            {
+                id_tipo_servicio = 2;//bus
+            }
+            else 
+            {
+                id_tipo_servicio = 1;//vuelo
+            }
+            int id_ws_viaje = int.Parse(DDLHoraSalida.SelectedValue);
+            db.SP_V_INSERTASERVICIO(id_ws_viaje, activo, id_tipo_servicio);
+            db.SaveChanges();
+            SERVICIO servicio = db.SERVICIO.OrderByDescending(x => x.ID_SERVICIO).First();
+            db.SP_INSERTASERVICIOPAQUETE(servicio.ID_SERVICIO, paquete.ID_PAQUETEVIAJE, activo);
+            db.SaveChanges();
+        }
+        
+        if(DropDownListEstadia.SelectedValue != null)
+        {
+            id_tipo_servicio = 3; //Estadia
+            id_ws = int.Parse(DropDownListEstadia.SelectedValue);
+            db.SP_V_INSERTASERVICIO(id_ws, activo, id_tipo_servicio);
+            db.SaveChanges();
+            SERVICIO servicio = db.SERVICIO.OrderByDescending(x => x.ID_SERVICIO).First();
+            db.SP_INSERTASERVICIOPAQUETE(servicio.ID_SERVICIO, paquete.ID_PAQUETEVIAJE, activo);
+            db.SaveChanges();
+        }
+
+        if(DropDownListSeguros.SelectedValue != null)
+        {
+            id_tipo_servicio = 4; //Seguros
+            id_ws = int.Parse(DropDownListSeguros.SelectedValue);
+            db.SP_V_INSERTASERVICIO(id_ws, activo, id_tipo_servicio);
+            db.SaveChanges();
+            SERVICIO servicio = db.SERVICIO.OrderByDescending(x => x.ID_SERVICIO).First();
+            db.SP_INSERTASERVICIOPAQUETE(servicio.ID_SERVICIO, paquete.ID_PAQUETEVIAJE, activo);
+            db.SaveChanges();
+        }
+        System.Windows.Forms.MessageBox.Show("Se ha agregado el paquete de viaje");
+        deshabilitarFormulario();
+        deshabilitarDropDowns();
     }
 
   

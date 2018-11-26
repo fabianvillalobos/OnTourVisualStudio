@@ -291,4 +291,189 @@ public partial class EntitiesOnTour : DbContext
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPDATESALDOCUENTA", pID_CUENTAParameter, pSALDOParameter);
     }
+
+    public virtual int SP_ACTUALIZAUSUARIO(Nullable<decimal> pARAM_ID_USR, string pARAM_LOGIN_USR, string pARAM_PASS_USR, Nullable<decimal> pARAM_ID_TIPO_USUARIO)
+    {
+        var pARAM_ID_USRParameter = pARAM_ID_USR.HasValue ?
+            new ObjectParameter("PARAM_ID_USR", pARAM_ID_USR) :
+            new ObjectParameter("PARAM_ID_USR", typeof(decimal));
+
+        var pARAM_LOGIN_USRParameter = pARAM_LOGIN_USR != null ?
+            new ObjectParameter("PARAM_LOGIN_USR", pARAM_LOGIN_USR) :
+            new ObjectParameter("PARAM_LOGIN_USR", typeof(string));
+
+        var pARAM_PASS_USRParameter = pARAM_PASS_USR != null ?
+            new ObjectParameter("PARAM_PASS_USR", pARAM_PASS_USR) :
+            new ObjectParameter("PARAM_PASS_USR", typeof(string));
+
+        var pARAM_ID_TIPO_USUARIOParameter = pARAM_ID_TIPO_USUARIO.HasValue ?
+            new ObjectParameter("PARAM_ID_TIPO_USUARIO", pARAM_ID_TIPO_USUARIO) :
+            new ObjectParameter("PARAM_ID_TIPO_USUARIO", typeof(decimal));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ACTUALIZAUSUARIO", pARAM_ID_USRParameter, pARAM_LOGIN_USRParameter, pARAM_PASS_USRParameter, pARAM_ID_TIPO_USUARIOParameter);
+    }
+
+    public virtual int SP_ELIMINACLIENTE(Nullable<decimal> pARAM_NUMRUT_CLI)
+    {
+        var pARAM_NUMRUT_CLIParameter = pARAM_NUMRUT_CLI.HasValue ?
+            new ObjectParameter("PARAM_NUMRUT_CLI", pARAM_NUMRUT_CLI) :
+            new ObjectParameter("PARAM_NUMRUT_CLI", typeof(decimal));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ELIMINACLIENTE", pARAM_NUMRUT_CLIParameter);
+    }
+
+    public virtual int SP_ELIMINAEMPLEADO(Nullable<decimal> pARAM_NUMRUT_EMP)
+    {
+        var pARAM_NUMRUT_EMPParameter = pARAM_NUMRUT_EMP.HasValue ?
+            new ObjectParameter("PARAM_NUMRUT_EMP", pARAM_NUMRUT_EMP) :
+            new ObjectParameter("PARAM_NUMRUT_EMP", typeof(decimal));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ELIMINAEMPLEADO", pARAM_NUMRUT_EMPParameter);
+    }
+
+    public virtual int SP_ELIMINAPAQUETEVIAJE(Nullable<decimal> iD_PAQUETE)
+    {
+        var iD_PAQUETEParameter = iD_PAQUETE.HasValue ?
+            new ObjectParameter("ID_PAQUETE", iD_PAQUETE) :
+            new ObjectParameter("ID_PAQUETE", typeof(decimal));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ELIMINAPAQUETEVIAJE", iD_PAQUETEParameter);
+    }
+
+    public virtual int SP_INSERTAPAQUETE(string pARAM_DESC_PAQVIAJE, Nullable<decimal> pARAM_VALOR_PAQVIAJE, string pARAM_ACTIVO, Nullable<System.DateTime> pARAM_FECHA_CREACION_PAQVIAJE, ObjectParameter pARA_ID_PAQUETEVIAJE)
+    {
+        var pARAM_DESC_PAQVIAJEParameter = pARAM_DESC_PAQVIAJE != null ?
+            new ObjectParameter("PARAM_DESC_PAQVIAJE", pARAM_DESC_PAQVIAJE) :
+            new ObjectParameter("PARAM_DESC_PAQVIAJE", typeof(string));
+
+        var pARAM_VALOR_PAQVIAJEParameter = pARAM_VALOR_PAQVIAJE.HasValue ?
+            new ObjectParameter("PARAM_VALOR_PAQVIAJE", pARAM_VALOR_PAQVIAJE) :
+            new ObjectParameter("PARAM_VALOR_PAQVIAJE", typeof(decimal));
+
+        var pARAM_ACTIVOParameter = pARAM_ACTIVO != null ?
+            new ObjectParameter("PARAM_ACTIVO", pARAM_ACTIVO) :
+            new ObjectParameter("PARAM_ACTIVO", typeof(string));
+
+        var pARAM_FECHA_CREACION_PAQVIAJEParameter = pARAM_FECHA_CREACION_PAQVIAJE.HasValue ?
+            new ObjectParameter("PARAM_FECHA_CREACION_PAQVIAJE", pARAM_FECHA_CREACION_PAQVIAJE) :
+            new ObjectParameter("PARAM_FECHA_CREACION_PAQVIAJE", typeof(System.DateTime));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTAPAQUETE", pARAM_DESC_PAQVIAJEParameter, pARAM_VALOR_PAQVIAJEParameter, pARAM_ACTIVOParameter, pARAM_FECHA_CREACION_PAQVIAJEParameter, pARA_ID_PAQUETEVIAJE);
+    }
+
+    public virtual int SP_INSERTASERVICIO(Nullable<decimal> pARAM_ID_SERVICIO_WS, string pARAM_ACTIVO, Nullable<decimal> pARAM_ID_TIPO_SERVICIO, ObjectParameter pARA_ID_SERVICIO)
+    {
+        var pARAM_ID_SERVICIO_WSParameter = pARAM_ID_SERVICIO_WS.HasValue ?
+            new ObjectParameter("PARAM_ID_SERVICIO_WS", pARAM_ID_SERVICIO_WS) :
+            new ObjectParameter("PARAM_ID_SERVICIO_WS", typeof(decimal));
+
+        var pARAM_ACTIVOParameter = pARAM_ACTIVO != null ?
+            new ObjectParameter("PARAM_ACTIVO", pARAM_ACTIVO) :
+            new ObjectParameter("PARAM_ACTIVO", typeof(string));
+
+        var pARAM_ID_TIPO_SERVICIOParameter = pARAM_ID_TIPO_SERVICIO.HasValue ?
+            new ObjectParameter("PARAM_ID_TIPO_SERVICIO", pARAM_ID_TIPO_SERVICIO) :
+            new ObjectParameter("PARAM_ID_TIPO_SERVICIO", typeof(decimal));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTASERVICIO", pARAM_ID_SERVICIO_WSParameter, pARAM_ACTIVOParameter, pARAM_ID_TIPO_SERVICIOParameter, pARA_ID_SERVICIO);
+    }
+
+    public virtual int SP_INSERTASERVICIOPAQUETE(Nullable<decimal> pARAM_ID_SERVICIO, Nullable<decimal> pARAM_ID_PAQUETEVIAJE, string pARAM_ACTIVO)
+    {
+        var pARAM_ID_SERVICIOParameter = pARAM_ID_SERVICIO.HasValue ?
+            new ObjectParameter("PARAM_ID_SERVICIO", pARAM_ID_SERVICIO) :
+            new ObjectParameter("PARAM_ID_SERVICIO", typeof(decimal));
+
+        var pARAM_ID_PAQUETEVIAJEParameter = pARAM_ID_PAQUETEVIAJE.HasValue ?
+            new ObjectParameter("PARAM_ID_PAQUETEVIAJE", pARAM_ID_PAQUETEVIAJE) :
+            new ObjectParameter("PARAM_ID_PAQUETEVIAJE", typeof(decimal));
+
+        var pARAM_ACTIVOParameter = pARAM_ACTIVO != null ?
+            new ObjectParameter("PARAM_ACTIVO", pARAM_ACTIVO) :
+            new ObjectParameter("PARAM_ACTIVO", typeof(string));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTASERVICIOPAQUETE", pARAM_ID_SERVICIOParameter, pARAM_ID_PAQUETEVIAJEParameter, pARAM_ACTIVOParameter);
+    }
+
+    public virtual int SP_LISTAPAQUETEVIAJEFORMATEADO()
+    {
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_LISTAPAQUETEVIAJEFORMATEADO");
+    }
+
+    public virtual int SP_LISTARSERVICIOSPORPAQUETE(Nullable<decimal> iD_PAQUETE)
+    {
+        var iD_PAQUETEParameter = iD_PAQUETE.HasValue ?
+            new ObjectParameter("ID_PAQUETE", iD_PAQUETE) :
+            new ObjectParameter("ID_PAQUETE", typeof(decimal));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_LISTARSERVICIOSPORPAQUETE", iD_PAQUETEParameter);
+    }
+
+    public virtual int SP_VALIDAUSUARIO(string pARAM_LOGIN_USR, string pARAM_PASS_USR, ObjectParameter pARA_ACTIVO)
+    {
+        var pARAM_LOGIN_USRParameter = pARAM_LOGIN_USR != null ?
+            new ObjectParameter("PARAM_LOGIN_USR", pARAM_LOGIN_USR) :
+            new ObjectParameter("PARAM_LOGIN_USR", typeof(string));
+
+        var pARAM_PASS_USRParameter = pARAM_PASS_USR != null ?
+            new ObjectParameter("PARAM_PASS_USR", pARAM_PASS_USR) :
+            new ObjectParameter("PARAM_PASS_USR", typeof(string));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_VALIDAUSUARIO", pARAM_LOGIN_USRParameter, pARAM_PASS_USRParameter, pARA_ACTIVO);
+    }
+
+    public virtual int SP_V_INSERTAPAQUETE(string pARAM_DESC_PAQVIAJE, Nullable<decimal> pARAM_VALOR_PAQVIAJE, string pARAM_ACTIVO, Nullable<System.DateTime> pARAM_FECHA_CREACION_PAQVIAJE)
+    {
+        var pARAM_DESC_PAQVIAJEParameter = pARAM_DESC_PAQVIAJE != null ?
+            new ObjectParameter("PARAM_DESC_PAQVIAJE", pARAM_DESC_PAQVIAJE) :
+            new ObjectParameter("PARAM_DESC_PAQVIAJE", typeof(string));
+
+        var pARAM_VALOR_PAQVIAJEParameter = pARAM_VALOR_PAQVIAJE.HasValue ?
+            new ObjectParameter("PARAM_VALOR_PAQVIAJE", pARAM_VALOR_PAQVIAJE) :
+            new ObjectParameter("PARAM_VALOR_PAQVIAJE", typeof(decimal));
+
+        var pARAM_ACTIVOParameter = pARAM_ACTIVO != null ?
+            new ObjectParameter("PARAM_ACTIVO", pARAM_ACTIVO) :
+            new ObjectParameter("PARAM_ACTIVO", typeof(string));
+
+        var pARAM_FECHA_CREACION_PAQVIAJEParameter = pARAM_FECHA_CREACION_PAQVIAJE.HasValue ?
+            new ObjectParameter("PARAM_FECHA_CREACION_PAQVIAJE", pARAM_FECHA_CREACION_PAQVIAJE) :
+            new ObjectParameter("PARAM_FECHA_CREACION_PAQVIAJE", typeof(System.DateTime));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_V_INSERTAPAQUETE", pARAM_DESC_PAQVIAJEParameter, pARAM_VALOR_PAQVIAJEParameter, pARAM_ACTIVOParameter, pARAM_FECHA_CREACION_PAQVIAJEParameter);
+    }
+
+    public virtual int SP_INSERTAPAQUETECONTRATO(Nullable<decimal> pARAM_ID_CONTRATO, Nullable<decimal> pARAM_ID_PAQUETE, string pARAM_ACTIVO)
+    {
+        var pARAM_ID_CONTRATOParameter = pARAM_ID_CONTRATO.HasValue ?
+            new ObjectParameter("PARAM_ID_CONTRATO", pARAM_ID_CONTRATO) :
+            new ObjectParameter("PARAM_ID_CONTRATO", typeof(decimal));
+
+        var pARAM_ID_PAQUETEParameter = pARAM_ID_PAQUETE.HasValue ?
+            new ObjectParameter("PARAM_ID_PAQUETE", pARAM_ID_PAQUETE) :
+            new ObjectParameter("PARAM_ID_PAQUETE", typeof(decimal));
+
+        var pARAM_ACTIVOParameter = pARAM_ACTIVO != null ?
+            new ObjectParameter("PARAM_ACTIVO", pARAM_ACTIVO) :
+            new ObjectParameter("PARAM_ACTIVO", typeof(string));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTAPAQUETECONTRATO", pARAM_ID_CONTRATOParameter, pARAM_ID_PAQUETEParameter, pARAM_ACTIVOParameter);
+    }
+
+    public virtual int SP_V_INSERTASERVICIO(Nullable<decimal> pARAM_ID_SERVICIO_WS, string pARAM_ACTIVO, Nullable<decimal> pARAM_ID_TIPO_SERVICIO)
+    {
+        var pARAM_ID_SERVICIO_WSParameter = pARAM_ID_SERVICIO_WS.HasValue ?
+            new ObjectParameter("PARAM_ID_SERVICIO_WS", pARAM_ID_SERVICIO_WS) :
+            new ObjectParameter("PARAM_ID_SERVICIO_WS", typeof(decimal));
+
+        var pARAM_ACTIVOParameter = pARAM_ACTIVO != null ?
+            new ObjectParameter("PARAM_ACTIVO", pARAM_ACTIVO) :
+            new ObjectParameter("PARAM_ACTIVO", typeof(string));
+
+        var pARAM_ID_TIPO_SERVICIOParameter = pARAM_ID_TIPO_SERVICIO.HasValue ?
+            new ObjectParameter("PARAM_ID_TIPO_SERVICIO", pARAM_ID_TIPO_SERVICIO) :
+            new ObjectParameter("PARAM_ID_TIPO_SERVICIO", typeof(decimal));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_V_INSERTASERVICIO", pARAM_ID_SERVICIO_WSParameter, pARAM_ACTIVOParameter, pARAM_ID_TIPO_SERVICIOParameter);
+    }
 }

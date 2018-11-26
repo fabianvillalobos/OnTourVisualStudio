@@ -390,13 +390,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="SP_ACTUALIZAUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="PARAM_ID_USR" Type="number" Mode="In" />
+          <Parameter Name="PARAM_LOGIN_USR" Type="varchar2" Mode="In" />
+          <Parameter Name="PARAM_PASS_USR" Type="varchar2" Mode="In" />
+          <Parameter Name="PARAM_ID_TIPO_USUARIO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_ELIMINACLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="PARAM_NUMRUT_CLI" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_ELIMINAEMPLEADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="PARAM_NUMRUT_EMP" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_ELIMINAPAQUETEVIAJE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="ID_PAQUETE" Type="number" Mode="In" />
+        </Function>
         <Function Name="SP_ELIMINAUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
           <Parameter Name="PARAM_ID_USR" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_INSERTAPAQUETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="PARAM_DESC_PAQVIAJE" Type="varchar2" Mode="In" />
+          <Parameter Name="PARAM_VALOR_PAQVIAJE" Type="number" Mode="In" />
+          <Parameter Name="PARAM_ACTIVO" Type="char" Mode="In" />
+          <Parameter Name="PARAM_FECHA_CREACION_PAQVIAJE" Type="date" Mode="In" />
+          <Parameter Name="PARA_ID_PAQUETEVIAJE" Type="number" Mode="Out" />
+        </Function>
+        <Function Name="SP_INSERTAPAQUETECONTRATO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="PARAM_ID_CONTRATO" Type="number" Mode="In" />
+          <Parameter Name="PARAM_ID_PAQUETE" Type="number" Mode="In" />
+          <Parameter Name="PARAM_ACTIVO" Type="char" Mode="In" />
         </Function>
         <Function Name="SP_INSERTARCUENTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
           <Parameter Name="PARAM_SALDO" Type="number" Mode="In" />
           <Parameter Name="PARAM_ID_CONTRATO" Type="number" Mode="In" />
           <Parameter Name="PARAM_NUMRUT_CLIE" Type="number" Mode="In" />
+          <Parameter Name="PARAM_ACTIVO" Type="char" Mode="In" />
+        </Function>
+        <Function Name="SP_INSERTASERVICIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="PARAM_ID_SERVICIO_WS" Type="number" Mode="In" />
+          <Parameter Name="PARAM_ACTIVO" Type="char" Mode="In" />
+          <Parameter Name="PARAM_ID_TIPO_SERVICIO" Type="number" Mode="In" />
+          <Parameter Name="PARA_ID_SERVICIO" Type="number" Mode="Out" />
+        </Function>
+        <Function Name="SP_INSERTASERVICIOPAQUETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="PARAM_ID_SERVICIO" Type="number" Mode="In" />
+          <Parameter Name="PARAM_ID_PAQUETEVIAJE" Type="number" Mode="In" />
           <Parameter Name="PARAM_ACTIVO" Type="char" Mode="In" />
         </Function>
         <Function Name="SP_INSERTAUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
@@ -427,6 +465,10 @@
           <Parameter Name="PNUMRUT_CLI_TITULAR" Type="number" Mode="In" />
         </Function>
         <Function Name="SP_LISTAPAQUETEVIAJE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR" />
+        <Function Name="SP_LISTAPAQUETEVIAJEFORMATEADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR" />
+        <Function Name="SP_LISTARSERVICIOSPORPAQUETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="ID_PAQUETE" Type="number" Mode="In" />
+        </Function>
         <Function Name="SP_LISTATIPOUSUARIOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR" />
         <Function Name="SP_LISTAUSUARIOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR" />
         <Function Name="SP_OBTENERUSUARIOPERSONAPORID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
@@ -459,6 +501,22 @@
         <Function Name="SP_UPDATESALDOCUENTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
           <Parameter Name="PID_CUENTA" Type="number" Mode="In" />
           <Parameter Name="PSALDO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_VALIDAUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="PARAM_LOGIN_USR" Type="varchar2" Mode="In" />
+          <Parameter Name="PARAM_PASS_USR" Type="varchar2" Mode="In" />
+          <Parameter Name="PARA_ACTIVO" Type="char" Mode="Out" />
+        </Function>
+        <Function Name="SP_V_INSERTAPAQUETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="PARAM_DESC_PAQVIAJE" Type="varchar2" Mode="In" />
+          <Parameter Name="PARAM_VALOR_PAQVIAJE" Type="number" Mode="In" />
+          <Parameter Name="PARAM_ACTIVO" Type="char" Mode="In" />
+          <Parameter Name="PARAM_FECHA_CREACION_PAQVIAJE" Type="date" Mode="In" />
+        </Function>
+        <Function Name="SP_V_INSERTASERVICIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="PARAM_ID_SERVICIO_WS" Type="number" Mode="In" />
+          <Parameter Name="PARAM_ACTIVO" Type="char" Mode="In" />
+          <Parameter Name="PARAM_ID_TIPO_SERVICIO" Type="number" Mode="In" />
         </Function>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="ONTOUR" store:Type="Tables" />
@@ -1134,6 +1192,64 @@
             <Parameter Name="PID_CUENTA" Mode="In" Type="Decimal" />
             <Parameter Name="PSALDO" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="SP_ACTUALIZAUSUARIO">
+            <Parameter Name="PARAM_ID_USR" Mode="In" Type="Decimal" />
+            <Parameter Name="PARAM_LOGIN_USR" Mode="In" Type="String" />
+            <Parameter Name="PARAM_PASS_USR" Mode="In" Type="String" />
+            <Parameter Name="PARAM_ID_TIPO_USUARIO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ELIMINACLIENTE">
+          <Parameter Name="PARAM_NUMRUT_CLI" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ELIMINAEMPLEADO">
+          <Parameter Name="PARAM_NUMRUT_EMP" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ELIMINAPAQUETEVIAJE">
+          <Parameter Name="ID_PAQUETE" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERTAPAQUETE">
+            <Parameter Name="PARAM_DESC_PAQVIAJE" Mode="In" Type="String" />
+            <Parameter Name="PARAM_VALOR_PAQVIAJE" Mode="In" Type="Decimal" />
+            <Parameter Name="PARAM_ACTIVO" Mode="In" Type="String" />
+            <Parameter Name="PARAM_FECHA_CREACION_PAQVIAJE" Mode="In" Type="DateTime" />
+            <Parameter Name="PARA_ID_PAQUETEVIAJE" Mode="Out" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERTASERVICIO">
+            <Parameter Name="PARAM_ID_SERVICIO_WS" Mode="In" Type="Decimal" />
+            <Parameter Name="PARAM_ACTIVO" Mode="In" Type="String" />
+            <Parameter Name="PARAM_ID_TIPO_SERVICIO" Mode="In" Type="Decimal" />
+            <Parameter Name="PARA_ID_SERVICIO" Mode="Out" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERTASERVICIOPAQUETE">
+            <Parameter Name="PARAM_ID_SERVICIO" Mode="In" Type="Decimal" />
+            <Parameter Name="PARAM_ID_PAQUETEVIAJE" Mode="In" Type="Decimal" />
+            <Parameter Name="PARAM_ACTIVO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_LISTAPAQUETEVIAJEFORMATEADO" />
+          <FunctionImport Name="SP_LISTARSERVICIOSPORPAQUETE">
+          <Parameter Name="ID_PAQUETE" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_VALIDAUSUARIO">
+            <Parameter Name="PARAM_LOGIN_USR" Mode="In" Type="String" />
+            <Parameter Name="PARAM_PASS_USR" Mode="In" Type="String" />
+            <Parameter Name="PARA_ACTIVO" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_V_INSERTAPAQUETE">
+            <Parameter Name="PARAM_DESC_PAQVIAJE" Mode="In" Type="String" />
+            <Parameter Name="PARAM_VALOR_PAQVIAJE" Mode="In" Type="Decimal" />
+            <Parameter Name="PARAM_ACTIVO" Mode="In" Type="String" />
+            <Parameter Name="PARAM_FECHA_CREACION_PAQVIAJE" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERTAPAQUETECONTRATO">
+            <Parameter Name="PARAM_ID_CONTRATO" Mode="In" Type="Decimal" />
+            <Parameter Name="PARAM_ID_PAQUETE" Mode="In" Type="Decimal" />
+            <Parameter Name="PARAM_ACTIVO" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_V_INSERTASERVICIO">
+            <Parameter Name="PARAM_ID_SERVICIO_WS" Mode="In" Type="Decimal" />
+            <Parameter Name="PARAM_ACTIVO" Mode="In" Type="String" />
+            <Parameter Name="PARAM_ID_TIPO_SERVICIO" Mode="In" Type="Decimal" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1334,6 +1450,19 @@
           <FunctionImportMapping FunctionImportName="SP_UPDATECONTRATO" FunctionName="Model.Store.SP_UPDATECONTRATO" />
           <FunctionImportMapping FunctionImportName="SP_INSERTARCUENTA" FunctionName="Model.Store.SP_INSERTARCUENTA" />
           <FunctionImportMapping FunctionImportName="SP_UPDATESALDOCUENTA" FunctionName="Model.Store.SP_UPDATESALDOCUENTA" />
+          <FunctionImportMapping FunctionImportName="SP_ACTUALIZAUSUARIO" FunctionName="Model.Store.SP_ACTUALIZAUSUARIO" />
+          <FunctionImportMapping FunctionImportName="SP_ELIMINACLIENTE" FunctionName="Model.Store.SP_ELIMINACLIENTE" />
+          <FunctionImportMapping FunctionImportName="SP_ELIMINAEMPLEADO" FunctionName="Model.Store.SP_ELIMINAEMPLEADO" />
+          <FunctionImportMapping FunctionImportName="SP_ELIMINAPAQUETEVIAJE" FunctionName="Model.Store.SP_ELIMINAPAQUETEVIAJE" />
+          <FunctionImportMapping FunctionImportName="SP_INSERTAPAQUETE" FunctionName="Model.Store.SP_INSERTAPAQUETE" />
+          <FunctionImportMapping FunctionImportName="SP_INSERTASERVICIO" FunctionName="Model.Store.SP_INSERTASERVICIO" />
+          <FunctionImportMapping FunctionImportName="SP_INSERTASERVICIOPAQUETE" FunctionName="Model.Store.SP_INSERTASERVICIOPAQUETE" />
+          <FunctionImportMapping FunctionImportName="SP_LISTAPAQUETEVIAJEFORMATEADO" FunctionName="Model.Store.SP_LISTAPAQUETEVIAJEFORMATEADO" />
+          <FunctionImportMapping FunctionImportName="SP_LISTARSERVICIOSPORPAQUETE" FunctionName="Model.Store.SP_LISTARSERVICIOSPORPAQUETE" />
+          <FunctionImportMapping FunctionImportName="SP_VALIDAUSUARIO" FunctionName="Model.Store.SP_VALIDAUSUARIO" />
+          <FunctionImportMapping FunctionImportName="SP_V_INSERTAPAQUETE" FunctionName="Model.Store.SP_V_INSERTAPAQUETE" />
+          <FunctionImportMapping FunctionImportName="SP_INSERTAPAQUETECONTRATO" FunctionName="Model.Store.SP_INSERTAPAQUETECONTRATO" />
+          <FunctionImportMapping FunctionImportName="SP_V_INSERTASERVICIO" FunctionName="Model.Store.SP_V_INSERTASERVICIO" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

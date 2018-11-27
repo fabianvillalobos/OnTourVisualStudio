@@ -518,6 +518,9 @@
           <Parameter Name="PARAM_ACTIVO" Type="char" Mode="In" />
           <Parameter Name="PARAM_ID_TIPO_SERVICIO" Type="number" Mode="In" />
         </Function>
+        <Function Name="SP_V_LISTARSERVICIOSPORPAQUETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="ID_PAQUETE" Type="number" Mode="In" />
+        </Function>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="ACTIVIDAD" EntityType="Self.ACTIVIDAD" Schema="ONTOUR" store:Type="Tables" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="ONTOUR" store:Type="Tables" />
@@ -1226,7 +1229,7 @@
             <Parameter Name="PARAM_ACTIVO" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_LISTAPAQUETEVIAJEFORMATEADO" />
-          <FunctionImport Name="SP_LISTARSERVICIOSPORPAQUETE">
+          <FunctionImport Name="SP_LISTARSERVICIOSPORPAQUETE" EntitySet="SERVICIO" ReturnType="Collection(Model.SERVICIO)">
           <Parameter Name="ID_PAQUETE" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SP_VALIDAUSUARIO">
@@ -1249,6 +1252,9 @@
             <Parameter Name="PARAM_ID_SERVICIO_WS" Mode="In" Type="Decimal" />
             <Parameter Name="PARAM_ACTIVO" Mode="In" Type="String" />
             <Parameter Name="PARAM_ID_TIPO_SERVICIO" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_V_LISTARSERVICIOSPORPAQUETE" EntitySet="SERVICIO" ReturnType="Collection(Model.SERVICIO)">
+            <Parameter Name="ID_PAQUETE" Mode="In" Type="Decimal" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -1463,6 +1469,7 @@
           <FunctionImportMapping FunctionImportName="SP_V_INSERTAPAQUETE" FunctionName="Model.Store.SP_V_INSERTAPAQUETE" />
           <FunctionImportMapping FunctionImportName="SP_INSERTAPAQUETECONTRATO" FunctionName="Model.Store.SP_INSERTAPAQUETECONTRATO" />
           <FunctionImportMapping FunctionImportName="SP_V_INSERTASERVICIO" FunctionName="Model.Store.SP_V_INSERTASERVICIO" />
+          <FunctionImportMapping FunctionImportName="SP_V_LISTARSERVICIOSPORPAQUETE" FunctionName="Model.Store.SP_V_LISTARSERVICIOSPORPAQUETE" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -400,13 +400,22 @@ public partial class EntitiesOnTour : DbContext
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_LISTAPAQUETEVIAJEFORMATEADO");
     }
 
-    public virtual int SP_LISTARSERVICIOSPORPAQUETE(Nullable<decimal> iD_PAQUETE)
+    public virtual ObjectResult<SERVICIO> SP_LISTARSERVICIOSPORPAQUETE(Nullable<decimal> iD_PAQUETE)
     {
         var iD_PAQUETEParameter = iD_PAQUETE.HasValue ?
             new ObjectParameter("ID_PAQUETE", iD_PAQUETE) :
             new ObjectParameter("ID_PAQUETE", typeof(decimal));
 
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_LISTARSERVICIOSPORPAQUETE", iD_PAQUETEParameter);
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SERVICIO>("SP_LISTARSERVICIOSPORPAQUETE", iD_PAQUETEParameter);
+    }
+
+    public virtual ObjectResult<SERVICIO> SP_LISTARSERVICIOSPORPAQUETE(Nullable<decimal> iD_PAQUETE, MergeOption mergeOption)
+    {
+        var iD_PAQUETEParameter = iD_PAQUETE.HasValue ?
+            new ObjectParameter("ID_PAQUETE", iD_PAQUETE) :
+            new ObjectParameter("ID_PAQUETE", typeof(decimal));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SERVICIO>("SP_LISTARSERVICIOSPORPAQUETE", mergeOption, iD_PAQUETEParameter);
     }
 
     public virtual int SP_VALIDAUSUARIO(string pARAM_LOGIN_USR, string pARAM_PASS_USR, ObjectParameter pARA_ACTIVO)
@@ -475,5 +484,23 @@ public partial class EntitiesOnTour : DbContext
             new ObjectParameter("PARAM_ID_TIPO_SERVICIO", typeof(decimal));
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_V_INSERTASERVICIO", pARAM_ID_SERVICIO_WSParameter, pARAM_ACTIVOParameter, pARAM_ID_TIPO_SERVICIOParameter);
+    }
+
+    public virtual ObjectResult<SERVICIO> SP_V_LISTARSERVICIOSPORPAQUETE(Nullable<decimal> iD_PAQUETE)
+    {
+        var iD_PAQUETEParameter = iD_PAQUETE.HasValue ?
+            new ObjectParameter("ID_PAQUETE", iD_PAQUETE) :
+            new ObjectParameter("ID_PAQUETE", typeof(decimal));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SERVICIO>("SP_V_LISTARSERVICIOSPORPAQUETE", iD_PAQUETEParameter);
+    }
+
+    public virtual ObjectResult<SERVICIO> SP_V_LISTARSERVICIOSPORPAQUETE(Nullable<decimal> iD_PAQUETE, MergeOption mergeOption)
+    {
+        var iD_PAQUETEParameter = iD_PAQUETE.HasValue ?
+            new ObjectParameter("ID_PAQUETE", iD_PAQUETE) :
+            new ObjectParameter("ID_PAQUETE", typeof(decimal));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SERVICIO>("SP_V_LISTARSERVICIOSPORPAQUETE", mergeOption, iD_PAQUETEParameter);
     }
 }

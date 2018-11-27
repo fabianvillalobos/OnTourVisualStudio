@@ -15,10 +15,40 @@ public partial class View_ModificarContrato : System.Web.UI.Page
         }
         else
         {
+            string idContratoActual = Request.QueryString["id_contrato"];
+            decimal idContrato = int.Parse(idContratoActual);
             
+            EntitiesOnTour bd = new EntitiesOnTour();
+            var listadoContratos = bd.CONTRATO_PAQUETE.Where( w => w.ID_CONTRATO == idContrato).ToList();
+            foreach (var contrato in listadoContratos)
+            {
+                string yourHTMLstring = "<div class='col-xs-12'>Paquete turístico: " + contrato.ID_PAQUETEVIAJE + "</div>";
+                PaquetesContratados.Controls.Add(new LiteralControl(yourHTMLstring));
+
+                //var balance = (from a in bd.SERVICIO
+                //               join c in bd.SERVICIO_PAQUETE on a.ID_SERVICIO equals c.ID_SERVICIO
+                //               where c.ID_PAQUETEVIAJE == contrato.ID_PAQUETEVIAJE
+                //               select new
+                //               {
+                //                   a.ID_SERVICIO_WS,
+                //                   a.ID_TIPO_SERVICIO
+                //               }).ToList();
+
+
+                var listadoServicios = from servicio in bd.SERVICIO
+                            join servicio_paquete in bd.SERVICIO_PAQUETE on servicio.ID_SERVICIO equals servicio_paquete.ID_SERVICIO
+                            where servicio_paquete.ID_PAQUETEVIAJE == contrato.ID_PAQUETEVIAJE
+                            select new { Servicio = servicio, Servicio_Paquete = servicio_paquete };
+                foreach (var servicio in listadoServicios)
+                {
+                    yourHTMLstring = "<div class='col-xs-12'>Servicios del paquete: WS-" + servicio.Servicio.ID_SERVICIO_WS + "<br>Tipo Servicio: "+ servicio.Servicio.ID_TIPO_SERVICIO+"</div>";
+                    PaquetesContratados.Controls.Add(new LiteralControl(yourHTMLstring));
+                }
+                //var listadoServicios = bd.SP_V_LISTARSERVICIOSPORPAQUETE(contrato.ID_PAQUETEVIAJE);
+
+            }
         }
     }
-    
 
     protected void btnCargar_Click(object sender, EventArgs e)
     {

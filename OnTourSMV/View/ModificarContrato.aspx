@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-<div class="container">
+    <div class="container">
     <div class="row">
         <div class="col-xs-12">
             <h2>Contrato N°<%=Request.QueryString["ID_CONTRATO"] %></h2>
@@ -97,6 +97,37 @@
         <div class="col-xs-12">
             <h3>Paquetes turísticos</h3>
             <p>Listado de paquetes turísticos asignados al contrato</p>
+        </div>
+    </div>
+    <div class="row bg-paquete">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-encabezado">
+                    <h3>Viaje a Pucón</h3>
+                </div>
+                <div class="box-cuerpo">
+                    <div class="col-xs-2"><span class="aerolinea">LA</span><br /><span>Vuelo: N20</span></div>
+                    <div class="col-xs-3">
+                        <span class="terminal">AEROPUERTO INTERNACIONAL COMODORO ARTURO MERINO BENITEZ</span>
+                        <span class="ciudad">Santiago, Chile</span>
+                        <span class="hora">18:00:00</span>
+                        <span class="salida">28/06/2018</span>
+                    </div>
+                    <div class="col-xs-1">></div>
+                    <div class="col-xs-3">
+                        <span class="terminal">AERODROMO DE PUCON</span>
+                        <span class="ciudad">Pucón, Chile</span>
+                        <span class="hora">18:00:00</span>
+                        <span class="salida">28/06/2018</span>
+                    </div>
+                </div>
+            </div>
+            
+             
+            <asp:Label ID="idcontrato" runat="server" Text="" Visible="false"></asp:Label>
+            
+            <asp:Panel ID="PaquetesContratados" runat="server"></asp:Panel>
+
         </div>
     </div>
 </div>

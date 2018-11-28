@@ -37,7 +37,6 @@ public partial class View_ModificarContrato : System.Web.UI.Page
                     switch (servicio.Servicio.ID_TIPO_SERVICIO){
                         case 1://vuelo
                             var jsonVuelos = getJSONVuelosConID(id_ws);
-
                             dynamic dynJsonVuelos = JsonConvert.DeserializeObject(jsonVuelos);
                             if (dynJsonVuelos.First == null)
                             {
@@ -45,10 +44,10 @@ public partial class View_ModificarContrato : System.Web.UI.Page
                             }
                             foreach (var item in dynJsonVuelos)
                             {
-                                yourHTMLstring += "<div class='box'><div class='box-encabezado'><h3><i class='glyphicon glyphicon-plane'></i> Viaje a "+item.d_ciudad+"</h3></div><div class='box-cuerpo'><div class='col-xs-2'><span class='aerolinea'>"+item.aerolinea+"</span><br /><span>Vuelo: "+item.id+"</span></div><div class='col-xs-3'><span class='terminal'>"+item.o_terminal+"</span><span class='ciudad'>"+item.o_ciudad+", "+item.o_pais+"</span><span class='hora'>"+item.salida+"</span><span class='salida'>28/06/2018</span></div><div class='col-xs-1'>></div><div class='col-xs-3'><span class='terminal'>"+item.d_terminal+"</span><span class='ciudad'>"+item.d_ciudad+", "+item.d_pais+"Pucón, Chile</span><span class='hora'>18:00:00</span><span class='salida'>28/06/2018</span></div></div></div>";
-
+                                yourHTMLstring += "<div class='box'><div class='box-encabezado'><h3><i class='glyphicon glyphicon-plane'></i> Viaje a "+item.d_ciudad+"</h3></div><div class='box-cuerpo'><div class='col-xs-2'><span class='aerolinea'>"+item.aerolinea+"</span><br /><span>Vuelo: "+item.id+"</span></div><div class='col-xs-3'><span class='terminal'>"+item.o_terminal+"</span><span class='ciudad'>"+item.o_ciudad+", "+item.o_pais+"</span><span class='hora'>"+item.salida+"</span><span class='salida'>28/06/2018</span></div><div class='col-xs-1'>></div><div class='col-xs-3'><span class='terminal'>"+item.d_terminal+"</span><span class='ciudad'>"+item.d_ciudad+", "+item.d_pais+"</span><span class='hora'>18:00:00</span><span class='salida'>28/06/2018</span></div></div></div>";
                             }
                             break;
+
                         case 2://bus
                             var jsonBuses = getJSONBusesConID(id_ws);
                             dynamic dynJsonBuses = JsonConvert.DeserializeObject(jsonBuses);
@@ -59,19 +58,34 @@ public partial class View_ModificarContrato : System.Web.UI.Page
                             }
                             foreach (var item in dynJsonBuses)
                             {
-
+                                yourHTMLstring += "<div class='box'><div class='box-encabezado'><h3><i class='glyphicon glyphicon-plane'></i> Viaje a " + item.o_ciudad + "</h3></div><div class='box-cuerpo'><div class='col-xs-2'><span class='aerolinea'>" + item.linea + "</span><br /><span>Vuelo: " + item.id + "</span></div><div class='col-xs-3'><span class='terminal'>" + item.o_terminal + "</span><span class='ciudad'>" + item.o_ciudad + ", " + item.o_pais + "</span><span class='hora'>" + item.salida + "</span><span class='salida'>28/06/2018</span></div><div class='col-xs-1'>></div><div class='col-xs-3'><span class='terminal'>" + item.d_terminal + "</span><span class='ciudad'>" + item.d_ciudad + ", " + item.d_pais + "Pucón, Chile</span><span class='hora'>18:00:00</span><span class='salida'>28/06/2018</span></div></div></div>";
                             }
+                            break;
 
-                            break;
                         case 3://estadia
+                            var jsonAlojamientos = getJSONAlojamientoConID(id_ws);
+                            dynamic dynJsonAlojamientos = JsonConvert.DeserializeObject(jsonAlojamientos);
+                            foreach (var itemAloj in dynJsonAlojamientos)
+                            {
+                                yourHTMLstring += "<div class='box'><div class='box-encabezado'><h3><i class='glyphicon glyphicon-bed'></i> Estadía en "+itemAloj.h_ciudad+"</h3></div><div class='box-cuerpo'><div class='col-xs-2'><span class='aerolinea'>PU</span><br /><span>Vuelo: "+itemAloj.h_id+"</span></div><div class='col-xs-3'><span class='terminal'>"+itemAloj.h_nombre+"</span><span class='ciudad'>"+itemAloj.h_direccion+"</span></div><div class='col-xs-7'><h5>Servicios disponibles</h5><span class='descripcion_estadia'>"+itemAloj.h_servicios+"</span></div></div></div>";
+                            }
                             break;
+
                         case 4://seguro
+                            var jsonSeguros = getJSONSegurosConId(id_ws);
+                            dynamic dynJsonSeguros = JsonConvert.DeserializeObject(jsonSeguros);
+                            foreach (var itemSeg in dynJsonSeguros)
+                            {
+                                yourHTMLstring += "<div class='box'><div class='box-encabezado'><h3><i class='glyphicon glyphicon-lock'> </i>Seguros</h3></div><div class='box-cuerpo'><div class='col-xs-2'><span class='aerolinea'>PU</span><br /><span>"+itemSeg.se_id+"</span></div><div class='col-xs-3'><span class='terminal'>"+itemSeg.se_nombre+"</span><span class='ciudad'>"+itemSeg.se_empresa+"</span><span>Vigencia: "+itemSeg.se_vigencia+"/span></div><div class='col-xs-7'><h5>Descripción</h5> <span class='descripcion_estadia'>"+itemSeg.se_desc+"</span></div></div></div>";
+                            }
                             break;
+
                         case 5://actividades
                             break;
                         
                     }
                 }
+                yourHTMLstring += "</div></div>";
                 PaquetesContratados.Controls.Add(new LiteralControl(yourHTMLstring));
             }
         }
@@ -156,7 +170,7 @@ public partial class View_ModificarContrato : System.Web.UI.Page
     protected string getJSONSegurosConId(decimal id_ws)
     {
         HttpWebRequest request =
-            (HttpWebRequest)WebRequest.Create("http://ontour.somee.com/wsproveedores.asmx/json_getSegurosConID"+id_ws);
+            (HttpWebRequest)WebRequest.Create("http://ontour.somee.com/wsproveedores.asmx/json_getSegurosConID?id="+id_ws);
         try
         {
             WebResponse response = request.GetResponse();

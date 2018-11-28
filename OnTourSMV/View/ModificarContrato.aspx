@@ -93,77 +93,42 @@
             <div class="separador"></div>
         </div>
     </div>
+    <div class='row'>
+        <div class='col-xs-12'>
+            <h3>Pasajeros</h3>
+            <p>Listado de pasajeros inscritos en el viaje</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="pasajero">
+                <span class="rut">16.222.462-2</span>
+                <h5>Ariel Rojas Escuadero</h5>
+                <div class="opciones">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="pasajero">
+                <span class="rut">17.120.464-K</span>
+                <h5>Luis alejandro Ponce Sánchez</h5>
+                <div class="opciones">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-xs-12">
-            <h3>Paquetes turísticos</h3>
-            <p>Listado de paquetes turísticos asignados al contrato</p>
+            <div class="separador"></div>
         </div>
     </div>
-    <div class="row bg-paquete">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-encabezado">
-                    <h3><i class="glyphicon glyphicon-plane"> </i>Viaje a Pucón</h3>
-                </div>
-                <div class="box-cuerpo">
-                    <div class="col-xs-2"><span class="aerolinea">LA</span><br /><span>Vuelo: N20</span></div>
-                    <div class="col-xs-3">
-                        <span class="terminal">AEROPUERTO INTERNACIONAL COMODORO ARTURO MERINO BENITEZ</span>
-                        <span class="ciudad">Santiago, Chile</span>
-                        <span class="hora">18:00:00</span>
-                        <span class="salida">28/06/2018</span>
-                    </div>
-                    <div class="col-xs-1">></div>
-                    <div class="col-xs-3">
-                        <span class="terminal">AERODROMO DE PUCON</span>
-                        <span class="ciudad">Pucón, Chile</span>
-                        <span class="hora">18:00:00</span>
-                        <span class="salida">28/06/2018</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="box-encabezado">
-                    <h3><i class="glyphicon glyphicon-bed"> </i>Estadía en Pucón</h3>
-                </div>
-                <div class="box-cuerpo">
-                    <div class="col-xs-2"><span class="aerolinea">PU</span><br /><span>Vuelo: N20</span></div>
-                    <div class="col-xs-3">
-                        <span class="terminal">Hotel Gala</span>
-                        <span class="ciudad">Valle nevado #7252, Bombai</span>
-                    </div>
-                    <div class="col-xs-7">
-                        <h5>Servicios disponibles</h5>
-                        <span class="descripcion_estadia">Wifi, Aire acondicionado, Piscina, Estacionamiento</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="box-encabezado">
-                    <h3><i class="glyphicon glyphicon-lock"> </i>Seguros</h3>
-                </div>
-                <div class="box-cuerpo">
-                    <div class="col-xs-2"><span class="aerolinea">PU</span><br /><span>Vuelo: N20</span></div>
-                    <div class="col-xs-3">
-                        <span class="terminal">Asistencia Estándar Internacional</span>
-                        <span class="ciudad">Assist Card</span>
-                        <span>Vigencia: 2019-11-10T00:00:00</span>
-                    </div>
-                    <div class="col-xs-7">
-                        <h5>Descripción</h5>
-                        <span class="descripcion_estadia">Asistencia médica hasta Europa: €30.000 | LATAM: U$S10.000 | Resto: U$S30.000. Indemnización por pérdida del equipaje. Reembolso de gastos extras por cancelación o demora involuntaria del vuelo</span>
-                    </div>
-                </div>
-            </div>
-
-            <asp:Label ID="idcontrato" runat="server" Text="" Visible="false"></asp:Label>
-            
-            <asp:Panel ID="PaquetesContratados" runat="server"></asp:Panel>
-        </div>
-    </div>
+    <asp:Label ID="idcontrato" runat="server" Text="" Visible="false"></asp:Label>
+    <asp:Panel ID="PaquetesContratados" runat="server"></asp:Panel>
 </div>
-
-
 </asp:Content>

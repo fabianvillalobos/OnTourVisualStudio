@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -22,33 +25,161 @@ public partial class View_ModificarContrato : System.Web.UI.Page
             var listadoContratos = bd.CONTRATO_PAQUETE.Where( w => w.ID_CONTRATO == idContrato).ToList();
             foreach (var contrato in listadoContratos)
             {
-                string yourHTMLstring = "<div class='col-xs-12'>Paquete turístico: " + contrato.ID_PAQUETEVIAJE + "</div>";
-                PaquetesContratados.Controls.Add(new LiteralControl(yourHTMLstring));
-
-                //var balance = (from a in bd.SERVICIO
-                //               join c in bd.SERVICIO_PAQUETE on a.ID_SERVICIO equals c.ID_SERVICIO
-                //               where c.ID_PAQUETEVIAJE == contrato.ID_PAQUETEVIAJE
-                //               select new
-                //               {
-                //                   a.ID_SERVICIO_WS,
-                //                   a.ID_TIPO_SERVICIO
-                //               }).ToList();
-
-
+                string yourHTMLstring = "<div class='row'><div class='col-xs-12'><h3>Paquetes turísticos</h3><p>Listado de paquetes turísticos asignados al contrato</p></div></div><div class='row bg-paquete'><div class='col-xs-12'>";
+                          
                 var listadoServicios = from servicio in bd.SERVICIO
-                            join servicio_paquete in bd.SERVICIO_PAQUETE on servicio.ID_SERVICIO equals servicio_paquete.ID_SERVICIO
-                            where servicio_paquete.ID_PAQUETEVIAJE == contrato.ID_PAQUETEVIAJE
-                            select new { Servicio = servicio, Servicio_Paquete = servicio_paquete };
+                    join servicio_paquete in bd.SERVICIO_PAQUETE on servicio.ID_SERVICIO equals servicio_paquete.ID_SERVICIO
+                    where servicio_paquete.ID_PAQUETEVIAJE == contrato.ID_PAQUETEVIAJE
+                    select new { Servicio = servicio, Servicio_Paquete = servicio_paquete };
                 foreach (var servicio in listadoServicios)
                 {
-                    yourHTMLstring = "<div class='col-xs-12'>Servicios del paquete: WS-" + servicio.Servicio.ID_SERVICIO_WS + "<br>Tipo Servicio: "+ servicio.Servicio.ID_TIPO_SERVICIO+"</div>";
-                    PaquetesContratados.Controls.Add(new LiteralControl(yourHTMLstring));
-                }
-                //var listadoServicios = bd.SP_V_LISTARSERVICIOSPORPAQUETE(contrato.ID_PAQUETEVIAJE);
+                    decimal id_ws = servicio.Servicio.ID_TIPO_SERVICIO;
+                    switch (servicio.Servicio.ID_TIPO_SERVICIO){
+                        case 1://vuelo
+                            var jsonVuelos = getJSONVuelosConID(id_ws);
 
+                            dynamic dynJsonVuelos = JsonConvert.DeserializeObject(jsonVuelos);
+                            if (dynJsonVuelos.First == null)
+                            {
+                                throw new Exception("No hay fechas disponibles, por favor seleccione otro destino");
+                            }
+                            foreach (var item in dynJsonVuelos)
+                            {
+                                yourHTMLstring += "<div class='box'><div class='box-encabezado'><h3><i class='glyphicon glyphicon-plane'></i> Viaje a "+item.d_ciudad+"</h3></div><div class='box-cuerpo'><div class='col-xs-2'><span class='aerolinea'>"+item.aerolinea+"</span><br /><span>Vuelo: "+item.id+"</span></div><div class='col-xs-3'><span class='terminal'>"+item.o_terminal+"</span><span class='ciudad'>"+item.o_ciudad+", "+item.o_pais+"</span><span class='hora'>"+item.salida+"</span><span class='salida'>28/06/2018</span></div><div class='col-xs-1'>></div><div class='col-xs-3'><span class='terminal'>"+item.d_terminal+"</span><span class='ciudad'>"+item.d_ciudad+", "+item.d_pais+"Pucón, Chile</span><span class='hora'>18:00:00</span><span class='salida'>28/06/2018</span></div></div></div>";
+
+                            }
+                            break;
+                        case 2://bus
+                            var jsonBuses = getJSONBusesConID(id_ws);
+                            dynamic dynJsonBuses = JsonConvert.DeserializeObject(jsonBuses);
+
+                            if (dynJsonBuses.First == null)
+                            {
+                                throw new Exception("No hay fechas disponibles, por favor seleccione otro destino");
+                            }
+                            foreach (var item in dynJsonBuses)
+                            {
+
+                            }
+
+                            break;
+                        case 3://estadia
+                            break;
+                        case 4://seguro
+                            break;
+                        case 5://actividades
+                            break;
+                        
+                    }
+                }
+                PaquetesContratados.Controls.Add(new LiteralControl(yourHTMLstring));
             }
         }
     }
+
+
+    protected string getJSONVuelosConID(decimal id_ws)
+    {
+        HttpWebRequest request =
+        (HttpWebRequest)WebRequest.Create("http://ontour.somee.com/wsproveedores.asmx/json_getVueloConID?id="+id_ws);
+        try
+        {
+            WebResponse response = request.GetResponse();
+            using (Stream responseStream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(responseStream, System.Text.Encoding.UTF8);
+                return reader.ReadToEnd();
+            }
+        }
+        catch (WebException ex)
+        {
+            WebResponse errorResponse = ex.Response;
+            using (Stream responseStream = errorResponse.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(responseStream, System.Text.Encoding.GetEncoding("utf-8"));
+                String errorText = reader.ReadToEnd();
+
+            }
+            throw;
+        }
+    }
+
+    protected string getJSONBusesConID(decimal ID_WS)
+    {
+        HttpWebRequest request =
+        (HttpWebRequest)WebRequest.Create("http://ontour.somee.com/wsproveedores.asmx/json_getBusesConID?id="+ID_WS);
+        try
+        {
+            WebResponse response = request.GetResponse();
+            using (Stream responseStream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(responseStream, System.Text.Encoding.UTF8);
+                return reader.ReadToEnd();
+            }
+        }
+        catch (WebException ex)
+        {
+            WebResponse errorResponse = ex.Response;
+            using (Stream responseStream = errorResponse.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(responseStream, System.Text.Encoding.GetEncoding("utf-8"));
+                String errorText = reader.ReadToEnd();
+            }
+            throw;
+        }
+    }
+
+    protected string getJSONAlojamientoConID(decimal id_ws)
+    {
+        HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://ontour.somee.com/wsproveedores.asmx/json_getAlojamientoConID?id=" + id_ws);
+        try
+        {
+            WebResponse response = request.GetResponse();
+            using (Stream responseStream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(responseStream, System.Text.Encoding.UTF8);
+                return reader.ReadToEnd();
+            }
+        }
+        catch (WebException ex)
+        {
+            WebResponse errorResponse = ex.Response;
+            using (Stream responseStream = errorResponse.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(responseStream, System.Text.Encoding.GetEncoding("utf-8"));
+                String errorText = reader.ReadToEnd();
+            }
+            throw;
+        }
+    }
+
+    protected string getJSONSegurosConId(decimal id_ws)
+    {
+        HttpWebRequest request =
+            (HttpWebRequest)WebRequest.Create("http://ontour.somee.com/wsproveedores.asmx/json_getSegurosConID"+id_ws);
+        try
+        {
+            WebResponse response = request.GetResponse();
+            using (Stream responseStream = response.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(responseStream, System.Text.Encoding.UTF8);
+                return reader.ReadToEnd();
+            }
+        }
+        catch (WebException ex)
+        {
+            WebResponse errorResponse = ex.Response;
+            using (Stream responseStream = errorResponse.GetResponseStream())
+            {
+                StreamReader reader = new StreamReader(responseStream, System.Text.Encoding.GetEncoding("utf-8"));
+                String errorText = reader.ReadToEnd();
+
+            }
+            throw;
+        }
+    }
+
+
 
     protected void btnCargar_Click(object sender, EventArgs e)
     {

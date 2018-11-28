@@ -66,8 +66,6 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
             (HttpWebRequest)WebRequest.Create("http://ontour.somee.com/wsproveedores.asmx/json_getBuses?origen_terminal="+origen_terminal+
             "&origen_ciudad="+origen_ciudad+"&origen_pais="+origen_pais+"&destino_terminal="+destino_terminal+"&destino_ciudad="+destino_ciudad+
             "&destino_pais="+destino_pais+"&salida="+salida+"&pasajeros="+pasajeros);
-
-
             try
             {
                 WebResponse response = request.GetResponse();
@@ -125,7 +123,6 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         HttpWebRequest request =
             (HttpWebRequest)WebRequest.Create("http://ontour.somee.com/wsproveedores.asmx/json_getSeguros");
 
- 
         try
         {
             WebResponse response = request.GetResponse();
@@ -219,7 +216,6 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
                     String idVuelo = item.id; //Valor a utilizar para llenar los demás dropdownlist
                     String aerolinea = item.aerolinea + " " + item.salida + " $" + item.precio;
                     DDLHoraSalida.Items.Add(new ListItem(aerolinea, idVuelo));
-
                 }
             }
 

@@ -33,6 +33,7 @@
                     <asp:BoundField DataField="RESERVA" HeaderText="Reserva" SortExpression="RESERVA" DataFormatString='${0:#,0}' />
                     <asp:BoundField DataField="META" HeaderText="Meta" SortExpression="META" DataFormatString='${0:#,0}' />
                     <asp:BoundField DataField="SALDO" HeaderText="Saldo Pendiente" SortExpression="SALDO" DataFormatString='${0:#,0}' />
+                    <asp:HyperLinkField HeaderText="Actividades" ControlStyle-CssClass="btn btn-success progreso btn-editar" DataNavigateUrlFields="ID_CONTRATO" DataNavigateUrlFormatString="ListarActividadesContrato.aspx?ID_CONTRATO={0}" Text="<i class='glyphicon glyphicon-pencil'></i> <span>Ver</span>" />
                     <asp:HyperLinkField HeaderText="Editar" ControlStyle-CssClass="btn btn-success progreso btn-editar" DataNavigateUrlFields="ID_CONTRATO" DataNavigateUrlFormatString="ModificarContrato.aspx?ID_CONTRATO={0}" Text="<i class='glyphicon glyphicon-pencil'></i> <span>Editar</span>" />
                     <asp:TemplateField HeaderText="">
                         <ItemTemplate>
@@ -46,7 +47,7 @@
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT ONTOUR.CONTRATO.ID_CONTRATO, ONTOUR.CLIENTE.NOMBRE_CLIE AS Nombre, ONTOUR.CLIENTE.APELLIDO_PAT_CLI AS Apellido, ONTOUR.CONTRATO.FECHA_INICIO, ONTOUR.CONTRATO.FECHA_TERMINO AS Termino, ONTOUR.CONTRATO.ESTADO AS Estado, ONTOUR.CONTRATO.MONTO_RESERVA AS Reserva, ONTOUR.CONTRATO.META AS Meta, ONTOUR.CUENTA.SALDO AS Saldo FROM ONTOUR.CONTRATO INNER JOIN ONTOUR.CLIENTE ON ONTOUR.CONTRATO.NUMRUT_CLI_TITULAR = ONTOUR.CLIENTE.NUMRUT_CLI INNER JOIN ONTOUR.EMPLEADO ON ONTOUR.CONTRATO.NUMRUT_EMP = ONTOUR.EMPLEADO.NUMRUT_EMP INNER JOIN ONTOUR.CUENTA ON ONTOUR.CONTRATO.ID_CONTRATO = ONTOUR.CUENTA.ID_CONTRATO AND ONTOUR.CLIENTE.NUMRUT_CLI = ONTOUR.CUENTA.NUMRUT_CLI" OnInit="cargarContratosPorCliente"></asp:SqlDataSource>
         </div>
     </div>
-    <div class="modal fade" id="modalBorrarContrato" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" Style="display: none;">
+     <div class="modal fade" id="modalBorrarContrato" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" Style="display: none;">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -63,6 +64,6 @@
           </div>
         </div>
       </div>
-    </div>   
+    </div><!-- modal -->   
 </asp:Content>
 

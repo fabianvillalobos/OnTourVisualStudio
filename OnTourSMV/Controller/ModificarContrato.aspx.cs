@@ -18,14 +18,38 @@ public partial class View_ModificarContrato : System.Web.UI.Page
         }
         else
         {
+            
             string idContratoActual = Request.QueryString["id_contrato"];
             decimal idContrato = int.Parse(idContratoActual);
             
             EntitiesOnTour bd = new EntitiesOnTour();
+            decimal id = int.Parse(Request.QueryString["ID_CONTRATO"]);
+            var clientes = (from contrato in bd.CONTRATO
+                            join cue in bd.CUENTA on contrato.ID_CONTRATO equals cue.ID_CONTRATO
+                            join clie in bd.CLIENTE on cue.NUMRUT_CLI equals clie.NUMRUT_CLI
+                            where contrato.ID_CONTRATO == id
+                            select new { Cliente = clie }).ToList();
+            repeaterPasajeros.DataSource = clientes;
+            repeaterPasajeros.DataBind();
+            //Cargar pasajeros
+            //var listadoPasajeros = from contrato in bd.CONTRATO
+            //                     join cue in bd.CUENTA on contrato.ID_CONTRATO equals cue.ID_CONTRATO
+            //                   join clie in bd.CLIENTE on cue.NUMRUT_CLI equals clie.NUMRUT_CLI
+            //                 where contrato.ID_CONTRATO == idContrato
+            //               select new { Cliente = clie };
+            //string pasajeroHTML = "";
+            //foreach (var pasajero in listadoPasajeros)
+            //{
+            //pasajeroHTML += "<div class='col-xs-4'><div class='pasajero'><span class='rut'>"+pasajero.Cliente.NUMRUT_CLI+"-"+pasajero.Cliente.DRUT_CLI+"</span><h5>"+pasajero.Cliente.NOMBRE_CLIE+" "+pasajero.Cliente.APELLIDO_PAT_CLI+" "+pasajero.Cliente.APELLIDO_MAT_CLI+ "</h5><div class='opciones'><button OnClick='btnDelete_Click' Text='Quitar' class='btn btn-danger progreso btn-borrar' runat='server'>Borrar</button></div></div></div>";
+            //}
+            //PanelPasajeros.Controls.Add(new LiteralControl(pasajeroHTML));
+
+            //Cargar paquete turisticos
             var listadoContratos = bd.CONTRATO_PAQUETE.Where( w => w.ID_CONTRATO == idContrato).ToList();
             foreach (var contrato in listadoContratos)
             {
-                string yourHTMLstring = "<div class='row'><div class='col-xs-12'><h3>Paquetes turísticos</h3><p>Listado de paquetes turísticos asignados al contrato</p></div></div><div class='row bg-paquete'><div class='col-xs-12'>";
+                //ver alguna forma de pasar estos datos al aspx
+                string yourHTMLstring = "<div class='row bg-paquete'><div class='col-xs-12'>";
                           
                 var listadoServicios = from servicio in bd.SERVICIO
                     join servicio_paquete in bd.SERVICIO_PAQUETE on servicio.ID_SERVICIO equals servicio_paquete.ID_SERVICIO
@@ -193,8 +217,6 @@ public partial class View_ModificarContrato : System.Web.UI.Page
         }
     }
 
-
-
     protected void btnCargar_Click(object sender, EventArgs e)
     {
         EntitiesOnTour bd = new EntitiesOnTour();
@@ -243,4 +265,16 @@ public partial class View_ModificarContrato : System.Web.UI.Page
             //LabelAviso.Text = "Error: " + ex.Message;
         }
     }
+
+    protected void QuitarPasajero(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnDelete_Command(object sender, EventArgs e)
+    {
+        datosPasajero.Text = (sender as System.Web.UI.WebControls.Button).CommandArgument;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalQuitarPasajero').modal('show');</script>", false);
+    }
 }
+

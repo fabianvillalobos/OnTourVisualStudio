@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controller/ModificarContrato.aspx.cs" Inherits="View_ModificarContrato" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="~/Controller/ModificarContrato.aspx.cs" Inherits="View_ModificarContrato" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -95,32 +94,26 @@
     </div>
     <div class='row'>
         <div class='col-xs-12'>
-            <h3>Pasajeros</h3>
+            <h3>Pasajeros <a href="AgregarCliente.aspx?ID_CONTRATO=<%=Request.QueryString["ID_CONTRATO"] %>" class="btn btn-success progreso btn-editar"><i class='glyphicon glyphicon-plus'></i> <span>Añadir pasajero</span></a></h3>
             <p>Listado de pasajeros inscritos en el viaje</p>
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-4">
-            <div class="pasajero">
-                <span class="rut">16.222.462-2</span>
-                <h5>Ariel Rojas Escuadero</h5>
-                <div class="opciones">
-
+        
+    <asp:Repeater runat="server" ID="repeaterPasajeros">
+        <ItemTemplate>
+            <div class="col-xs-4">
+                <div class="pasajero">
+                    <span class="rut"><%#Eval("Cliente.NUMRUT_CLI") %>-<%#Eval("Cliente.DRUT_CLI") %></span>
+                    <h5><%#Eval("Cliente.NOMBRE_CLIE") %> <%#Eval("Cliente.APELLIDO_PAT_CLI") %> <%#Eval("Cliente.APELLIDO_MAT_CLI") %></h5>
+                    <div class="opciones">
+                        <asp:Button runat="server" ID="btnDeleteEmployee" CommandArgument='<%#Eval("Cliente.NUMRUT_CLI") %>' Text="Borrar" OnCommand="btnDelete_Command" class="btn btn-danger progreso btn-borrar"  />
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xs-4">
-            <div class="pasajero">
-                <span class="rut">17.120.464-K</span>
-                <h5>Luis alejandro Ponce Sánchez</h5>
-                <div class="opciones">
-
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-4">
-
-        </div>
+        </ItemTemplate>
+    </asp:Repeater>
+        <asp:Panel ID="PanelPasajeros" runat="server"></asp:Panel>
     </div>
 
     <div class="row">
@@ -128,7 +121,33 @@
             <div class="separador"></div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Paquetes turísticos <a href="AgregarPaqueteViaje.aspx?ID_CONTRATO=<%=Request.QueryString["ID_CONTRATO"] %>" class="btn btn-success progreso btn-editar"><i class='glyphicon glyphicon-plus'></i> <span>Añadir paquete turístico</span></a></h3>
+            <p>Listado de paquetes turísticos asignados al contrato</p>
+        </div>
+    </div>
+   
     <asp:Label ID="idcontrato" runat="server" Text="" Visible="false"></asp:Label>
     <asp:Panel ID="PaquetesContratados" runat="server"></asp:Panel>
 </div>
+
+    <div class="modal fade" id="modalQuitarPasajero" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" Style="display: none;">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title" id="myModalLabel">¡Atención!</h3>
+          </div>
+          <div class="modal-body">
+            Estás apunto de quitar de este contrato al pasajero: <asp:Label ID="datosPasajero" Text="" runat="server" />, ¿Deseas continuar?
+          </div>
+          <div class="modal-footer">
+            <asp:HiddenField ID="idPasajero" runat="server" Value="0" />
+            <asp:Button ID="btnYes" runat="server" Text="Eliminar" OnClick="QuitarPasajero" class="btn btn-danger"></asp:Button>
+            <button id="btnNo" runat="server" class="btn btn-default">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- modal --> 
 </asp:Content>

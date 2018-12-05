@@ -17,7 +17,7 @@ public partial class ListarActividadesContrato : System.Web.UI.Page
             string idContratoActual = Request.QueryString["id_contrato"];
             //decimal idContrato = int.Parse(idContratoActual);
             SqlDataSourceActividades.SelectParameters["id"].DefaultValue = idContratoActual;
-            GridView1.DataBind();
+           // GridView1.DataBind();
         }
        
     }

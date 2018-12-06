@@ -18,6 +18,10 @@ public partial class AgregarActividad : System.Web.UI.Page
         {
             Response.Redirect("~/View/PaginaPpal.aspx");
         }
+
+        string idContratoActual = Request.QueryString["id_contrato"];
+        DropDownListContratoRela.SelectedValue = idContratoActual;
+        DropDownListContratoRela.Enabled = false;
     }
 
     protected void btnAgregar_Click(object sender, EventArgs e)

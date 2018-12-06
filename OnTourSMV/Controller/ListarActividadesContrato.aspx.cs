@@ -15,10 +15,15 @@ public partial class ListarActividadesContrato : System.Web.UI.Page
         }
         else {
             string idContratoActual = Request.QueryString["id_contrato"];
-            //decimal idContrato = int.Parse(idContratoActual);
             SqlDataSourceActividades.SelectParameters["id"].DefaultValue = idContratoActual;
            // GridView1.DataBind();
         }
        
     }
+
+    protected void btnNuevaActividad_Click(object sender, EventArgs e)
+    {
+        string idContratoActual = Request.QueryString["id_contrato"];
+        Response.Redirect("~/View/AgregarActividad.aspx?id_contrato="+idContratoActual);
+    }   
 }

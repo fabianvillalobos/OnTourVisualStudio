@@ -5,8 +5,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container">
         <div class="row">
-            <h2>Actividades</h2>
-            <br />
+            <div class="col-xs-6">
+                <h2>Actividades</h2>
+                <br />
+            </div>
+            <div class="col-xs-6 text-right padding-top-20">
+                <asp:Button ID="btnNuevaActividad" runat="server" CssClass="btn btn-primary" Text="Nueva Actividad" OnClick="btnNuevaActividad_Click" />
+            </div>
             <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay Actividades asociadas" AutoGenerateColumns="False" DataSourceID="SqlDataSourceActividades">
                 <Columns>
                     <asp:BoundField DataField="ID_ACTIVIDAD" HeaderText="ID" SortExpression="ID_ACTIVIDAD" />

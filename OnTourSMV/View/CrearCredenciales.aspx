@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <center>
+   
     <h1>Creación De Credenciales</h1>
     <br />
     <asp:DropDownList ID="DropDownListContratos" runat="server" AutoPostBack="True" DataSourceID="SqlDataSourceContratos" DataTextField="ID_CONTRATO" DataValueField="ID_CONTRATO" OnSelectedIndexChanged="DropDownListContratos_SelectedIndexChanged"></asp:DropDownList>
@@ -30,5 +30,4 @@
             <td colspan="2"><asp:Button ID="btnCrearCredencial" runat="server" Text="Generar Credencial" OnClick="btnCrearCredencial_Click" /></td>
         </tr>        
     </table>
-    </center>
 </asp:Content>

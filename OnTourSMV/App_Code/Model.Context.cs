@@ -503,4 +503,43 @@ public partial class EntitiesOnTour : DbContext
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SERVICIO>("SP_V_LISTARSERVICIOSPORPAQUETE", mergeOption, iD_PAQUETEParameter);
     }
+
+    public virtual int SP_INSERTAUSUARIOJV(string pARAM_LOGIN_USR, string pARAM_PASS_USR, Nullable<decimal> pARAM_ID_TIPO_USUARIO, string pARAM_ACTIVO, ObjectParameter pARAM_ID_USER)
+    {
+        var pARAM_LOGIN_USRParameter = pARAM_LOGIN_USR != null ?
+            new ObjectParameter("PARAM_LOGIN_USR", pARAM_LOGIN_USR) :
+            new ObjectParameter("PARAM_LOGIN_USR", typeof(string));
+
+        var pARAM_PASS_USRParameter = pARAM_PASS_USR != null ?
+            new ObjectParameter("PARAM_PASS_USR", pARAM_PASS_USR) :
+            new ObjectParameter("PARAM_PASS_USR", typeof(string));
+
+        var pARAM_ID_TIPO_USUARIOParameter = pARAM_ID_TIPO_USUARIO.HasValue ?
+            new ObjectParameter("PARAM_ID_TIPO_USUARIO", pARAM_ID_TIPO_USUARIO) :
+            new ObjectParameter("PARAM_ID_TIPO_USUARIO", typeof(decimal));
+
+        var pARAM_ACTIVOParameter = pARAM_ACTIVO != null ?
+            new ObjectParameter("PARAM_ACTIVO", pARAM_ACTIVO) :
+            new ObjectParameter("PARAM_ACTIVO", typeof(string));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTAUSUARIOJV", pARAM_LOGIN_USRParameter, pARAM_PASS_USRParameter, pARAM_ID_TIPO_USUARIOParameter, pARAM_ACTIVOParameter, pARAM_ID_USER);
+    }
+
+    public virtual int SP_LISTACLIENTESSINUSUARIO()
+    {
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_LISTACLIENTESSINUSUARIO");
+    }
+
+    public virtual int SP_UPDATEUSERCLI(Nullable<decimal> nUMRUT_PARAM, Nullable<decimal> uSR_PARAM)
+    {
+        var nUMRUT_PARAMParameter = nUMRUT_PARAM.HasValue ?
+            new ObjectParameter("NUMRUT_PARAM", nUMRUT_PARAM) :
+            new ObjectParameter("NUMRUT_PARAM", typeof(decimal));
+
+        var uSR_PARAMParameter = uSR_PARAM.HasValue ?
+            new ObjectParameter("USR_PARAM", uSR_PARAM) :
+            new ObjectParameter("USR_PARAM", typeof(decimal));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPDATEUSERCLI", nUMRUT_PARAMParameter, uSR_PARAMParameter);
+    }
 }

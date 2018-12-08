@@ -443,6 +443,13 @@
           <Parameter Name="PARAM_ID_TIPO_USUARIO" Type="number" Mode="In" />
           <Parameter Name="PARAM_ACTIVO" Type="char" Mode="In" />
         </Function>
+        <Function Name="SP_INSERTAUSUARIOJV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="PARAM_LOGIN_USR" Type="varchar2" Mode="In" />
+          <Parameter Name="PARAM_PASS_USR" Type="varchar2" Mode="In" />
+          <Parameter Name="PARAM_ID_TIPO_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="PARAM_ACTIVO" Type="char" Mode="In" />
+          <Parameter Name="PARAM_ID_USER" Type="number" Mode="Out" />
+        </Function>
         <Function Name="SP_INSERTCLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
           <Parameter Name="CNUMRUT_CLI" Type="number" Mode="In" />
           <Parameter Name="CDRUT_CLI" Type="char" Mode="In" />
@@ -464,6 +471,7 @@
           <Parameter Name="PNUMRUT_EMP" Type="number" Mode="In" />
           <Parameter Name="PNUMRUT_CLI_TITULAR" Type="number" Mode="In" />
         </Function>
+        <Function Name="SP_LISTACLIENTESSINUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR" />
         <Function Name="SP_LISTAPAQUETEVIAJE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR" />
         <Function Name="SP_LISTAPAQUETEVIAJEFORMATEADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR" />
         <Function Name="SP_LISTARSERVICIOSPORPAQUETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
@@ -501,6 +509,10 @@
         <Function Name="SP_UPDATESALDOCUENTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
           <Parameter Name="PID_CUENTA" Type="number" Mode="In" />
           <Parameter Name="PSALDO" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_UPDATEUSERCLI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="NUMRUT_PARAM" Type="number" Mode="In" />
+          <Parameter Name="USR_PARAM" Type="number" Mode="In" />
         </Function>
         <Function Name="SP_VALIDAUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
           <Parameter Name="PARAM_LOGIN_USR" Type="varchar2" Mode="In" />
@@ -1254,7 +1266,19 @@
             <Parameter Name="PARAM_ID_TIPO_SERVICIO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SP_V_LISTARSERVICIOSPORPAQUETE" EntitySet="SERVICIO" ReturnType="Collection(Model.SERVICIO)">
-            <Parameter Name="ID_PAQUETE" Mode="In" Type="Decimal" />
+          <Parameter Name="ID_PAQUETE" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERTAUSUARIOJV">
+            <Parameter Name="PARAM_LOGIN_USR" Mode="In" Type="String" />
+            <Parameter Name="PARAM_PASS_USR" Mode="In" Type="String" />
+            <Parameter Name="PARAM_ID_TIPO_USUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="PARAM_ACTIVO" Mode="In" Type="String" />
+            <Parameter Name="PARAM_ID_USER" Mode="Out" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_LISTACLIENTESSINUSUARIO" />
+          <FunctionImport Name="SP_UPDATEUSERCLI">
+            <Parameter Name="NUMRUT_PARAM" Mode="In" Type="Decimal" />
+            <Parameter Name="USR_PARAM" Mode="In" Type="Decimal" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -1470,6 +1494,9 @@
           <FunctionImportMapping FunctionImportName="SP_INSERTAPAQUETECONTRATO" FunctionName="Model.Store.SP_INSERTAPAQUETECONTRATO" />
           <FunctionImportMapping FunctionImportName="SP_V_INSERTASERVICIO" FunctionName="Model.Store.SP_V_INSERTASERVICIO" />
           <FunctionImportMapping FunctionImportName="SP_V_LISTARSERVICIOSPORPAQUETE" FunctionName="Model.Store.SP_V_LISTARSERVICIOSPORPAQUETE" />
+          <FunctionImportMapping FunctionImportName="SP_INSERTAUSUARIOJV" FunctionName="Model.Store.SP_INSERTAUSUARIOJV" />
+          <FunctionImportMapping FunctionImportName="SP_LISTACLIENTESSINUSUARIO" FunctionName="Model.Store.SP_LISTACLIENTESSINUSUARIO" />
+          <FunctionImportMapping FunctionImportName="SP_UPDATEUSERCLI" FunctionName="Model.Store.SP_UPDATEUSERCLI" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

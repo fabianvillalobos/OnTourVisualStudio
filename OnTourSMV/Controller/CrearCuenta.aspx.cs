@@ -79,11 +79,20 @@ public partial class CrearCuenta : System.Web.UI.Page
 
                     USUARIO ultimoUsuario = bd.USUARIO.OrderByDescending(x => x.ID_USR).First();
                     decimal idUsr = ultimoUsuario.ID_USR;
-
-                    bd.SP_UPDATEUSERCLI(clienteObjeto.NUMRUT_CLI, idUsr);
+                    int numeroRut = int.Parse(txtBuscarRut.Text);
+                    
+                    bd.SP_UPDATEUSERCLI(numeroRut, idUsr);
                     bd.SaveChanges();
                     System.Windows.Forms.MessageBox.Show("Credencial Generada.");
-                    Response.Redirect("LoginClientes.aspx");
+
+                    txtBuscarRut.Enabled = true;
+                    txtDvBuscar.Enabled = true;
+                    panelCrearCuenta.Visible = false;
+                    txtBuscarRut.Text="";
+                    txtConfPass.Text="";
+                    txtDvBuscar.Text="";
+                    txtNombre.Text="";
+                    txtPass.Text="";
 
                 } else
                 {

@@ -58,22 +58,10 @@
                             <li runat="server" id="actAgrega"><a href="AgregarActividad.aspx">Nuevo actividad</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown" runat="server" id="cuentas"><a class="dropdown-toggle glyphicon glyphicon-bitcoin" data-toggle="dropdown" href="#">Cuentas<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="ListarCuenta.aspx">Ver cuentas</a></li>
-                            <%--<li><a href="AgregarCuenta.aspx">Agregar</a></li>--%>
-                        </ul>
-                    </li>
                     <li class="dropdown" runat="server" id="transacciones"><a class="dropdown-toggle glyphicon glyphicon-stats" data-toggle="dropdown" href="#">Transacciones<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="ListarTransaccion.aspx">Ver transacciones</a></li>
                             <li runat="server" id="transAgre"><a href="AgregarTransaccion.aspx">Nueva transacción</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown" runat="server" id="Credenciales"><a class="dropdown-toggle glyphicon glyphicon-stats" data-toggle="dropdown" href="#">Credenciales<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="ListarTransaccion.aspx">Listar</a></li>
-                            <li runat="server" id="agreCredenciales"><a href="CrearCredenciales.aspx">Agregar</a></li>
                         </ul>
                     </li>
                     <ul class="nav navbar-nav navbar-right">

@@ -25,6 +25,7 @@
                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDvBuscar" Display="Dynamic" ErrorMessage="Campo DV Requerido" ForeColor="#FF3300" ValidationGroup="groupCargar"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtDvBuscar" ErrorMessage="Digito No Valido" ForeColor="#FF3300" ValidationExpression="^[0-9_kK]*$" Display="Dynamic" ValidationGroup="groupCargar"></asp:RegularExpressionValidator>
                                 </div>
+                                <div class="col-xs-1"></div>
                                 <div class="col-xs-3">
                                     <asp:Button ID="buscarRut" OnClick="buscarRut_Click" runat="server" CssClass="btn btn-primary" Text="Cargar rut" ValidationGroup="groupCargar" />
                                 </div>
@@ -60,8 +61,16 @@
                                         </div>
                                     </div>
                             </asp:Panel>
-                            
+                            <div class="row">
+                                <div class="col-md-12 separador"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <a href="LoginClientes.aspx" class="btn btn-danger"><i class="glyphicon glyphicon-chevron-left"></i> Volver al menu </a>
+                                </div>
+                            </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>

@@ -14,6 +14,19 @@ public partial class ListarActividadesContrato : System.Web.UI.Page
             Response.Redirect("~/View/Login.aspx");
         }
         else {
+            int perfilId = int.Parse(Session["PerfilID"].ToString());
+            if (perfilId == 3)
+            {
+                btnNuevaActividad.Enabled = false;
+                btnNuevaActividad.Visible = false;
+            }
+            else {
+                btnNuevaActividad.Enabled = true;
+                btnNuevaActividad.Visible = true;
+            }
+            
+
+
             string idContratoActual = Request.QueryString["id_contrato"];
             SqlDataSourceActividades.SelectParameters["id"].DefaultValue = idContratoActual;
            // GridView1.DataBind();

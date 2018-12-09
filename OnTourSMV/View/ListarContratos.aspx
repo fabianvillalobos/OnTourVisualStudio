@@ -34,6 +34,7 @@
                     <asp:BoundField DataField="META" HeaderText="Meta" SortExpression="META" DataFormatString='${0:#,0}' />
                     <asp:BoundField DataField="SALDO" HeaderText="Saldo Pendiente" SortExpression="SALDO" DataFormatString='${0:#,0}' />
                     <asp:HyperLinkField HeaderText="Actividades" ControlStyle-CssClass="btn btn-success progreso btn-editar" DataNavigateUrlFields="ID_CONTRATO" DataNavigateUrlFormatString="ListarActividadesContrato.aspx?ID_CONTRATO={0}" Text="<i class='glyphicon glyphicon-pencil'></i> <span>Ver</span>" />
+                    <asp:HyperLinkField HeaderText="Transacciones" ControlStyle-CssClass="btn btn-success progreso btn-editar" DataNavigateUrlFields="ID_CONTRATO" DataNavigateUrlFormatString="ListarTransaccion.aspx?ID_CONTRATO={0}" Text="<i class='glyphicon glyphicon-pencil'></i> <span>Ver</span>" />
                     <asp:HyperLinkField HeaderText="Editar" ControlStyle-CssClass="btn btn-success progreso btn-editar" DataNavigateUrlFields="ID_CONTRATO" DataNavigateUrlFormatString="ModificarContrato.aspx?ID_CONTRATO={0}" Text="<i class='glyphicon glyphicon-pencil'></i> <span>Editar</span>" />
                     <asp:TemplateField HeaderText="">
                         <ItemTemplate>

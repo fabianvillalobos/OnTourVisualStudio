@@ -38,5 +38,10 @@ public partial class ListarActividadesContrato : System.Web.UI.Page
     {
         string idContratoActual = Request.QueryString["id_contrato"];
         Response.Redirect("~/View/AgregarActividad.aspx?id_contrato="+idContratoActual);
-    }   
+    }
+
+    protected void btnVolverAContratos_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/View/ListarCrontratos.aspx");
+    }
 }

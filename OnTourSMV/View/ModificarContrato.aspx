@@ -130,6 +130,9 @@
    
     <asp:Label ID="idcontrato" runat="server" Text="" Visible="false"></asp:Label>
     <asp:Panel ID="PaquetesContratados" runat="server"></asp:Panel>
+
+    <asp:Label ID="saldoPasajero" runat="server" Text="" ></asp:Label>
+    <asp:Label ID="cantidadPasajeros" runat="server" Text="" ></asp:Label>
 </div>
 
     <div class="modal fade" id="modalQuitarPasajero" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" Style="display: none;">

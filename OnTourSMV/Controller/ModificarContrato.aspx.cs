@@ -18,7 +18,6 @@ public partial class View_ModificarContrato : System.Web.UI.Page
         }
         else
         {
-            
             string idContratoActual = Request.QueryString["id_contrato"];
             decimal idContrato = int.Parse(idContratoActual);
             
@@ -28,21 +27,12 @@ public partial class View_ModificarContrato : System.Web.UI.Page
                             join cue in bd.CUENTA on contrato.ID_CONTRATO equals cue.ID_CONTRATO
                             join clie in bd.CLIENTE on cue.NUMRUT_CLI equals clie.NUMRUT_CLI
                             where contrato.ID_CONTRATO == id
+                            where cue.ACTIVO == "T"
                             select new { Cliente = clie }).ToList();
             repeaterPasajeros.DataSource = clientes;
             repeaterPasajeros.DataBind();
-            //Cargar pasajeros
-            //var listadoPasajeros = from contrato in bd.CONTRATO
-            //                     join cue in bd.CUENTA on contrato.ID_CONTRATO equals cue.ID_CONTRATO
-            //                   join clie in bd.CLIENTE on cue.NUMRUT_CLI equals clie.NUMRUT_CLI
-            //                 where contrato.ID_CONTRATO == idContrato
-            //               select new { Cliente = clie };
-            //string pasajeroHTML = "";
-            //foreach (var pasajero in listadoPasajeros)
-            //{
-            //pasajeroHTML += "<div class='col-xs-4'><div class='pasajero'><span class='rut'>"+pasajero.Cliente.NUMRUT_CLI+"-"+pasajero.Cliente.DRUT_CLI+"</span><h5>"+pasajero.Cliente.NOMBRE_CLIE+" "+pasajero.Cliente.APELLIDO_PAT_CLI+" "+pasajero.Cliente.APELLIDO_MAT_CLI+ "</h5><div class='opciones'><button OnClick='btnDelete_Click' Text='Quitar' class='btn btn-danger progreso btn-borrar' runat='server'>Borrar</button></div></div></div>";
-            //}
-            //PanelPasajeros.Controls.Add(new LiteralControl(pasajeroHTML));
+
+            
 
             //Cargar paquete turisticos
             var listadoContratos = bd.CONTRATO_PAQUETE.Where( w => w.ID_CONTRATO == idContrato).ToList();
@@ -268,7 +258,24 @@ public partial class View_ModificarContrato : System.Web.UI.Page
 
     protected void QuitarPasajero(object sender, EventArgs e)
     {
-
+        string idContratoActual = Request.QueryString["id_contrato"];
+        decimal idContrato = int.Parse(idContratoActual);
+        decimal clienteRut = decimal.Parse(datosPasajero.Text);
+        EntitiesOnTour bd = new EntitiesOnTour();
+        var v_saldo = bd.CUENTA.FirstOrDefault(x => x.NUMRUT_CLI == clienteRut);
+        decimal saldo_pasajero = v_saldo.SALDO;
+        v_saldo.ACTIVO = "F";
+        v_saldo.SALDO = 0;
+        bd.SaveChanges();
+        var v_cantidad = bd.CUENTA.Count(x => x.ID_CONTRATO == idContrato && x.ACTIVO.Equals("T"));
+        decimal saldo_prorrateado = saldo_pasajero / v_cantidad;
+        var cuentas = bd.CUENTA.Where(x => x.ID_CONTRATO == idContrato && x.ACTIVO.Equals("T")).ToList();
+        foreach (var cuenta in cuentas)
+        {
+            cuenta.SALDO = cuenta.SALDO + saldo_prorrateado;
+        }
+        bd.SaveChanges();
+        Page.Response.Redirect(Page.Request.Url.ToString(), true);
     }
 
     protected void btnDelete_Command(object sender, EventArgs e)

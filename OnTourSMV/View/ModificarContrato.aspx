@@ -83,7 +83,7 @@
     <div class="row margin-top-20">
         <div class="col-xs-12">
             <asp:Button ID="btnCargar" CssClass="btn btn-primary" runat="server" Text="Cargar Datos" OnClick="btnCargar_Click"></asp:Button>
-            <asp:Button ID="btnModificar" CssClass="btn btn-success" runat="server" Text="Modificar" OnClick="btnModificar_Click"></asp:Button>
+            <asp:LinkButton ID="btnModificar" CssClass="btn btn-success" runat="server" OnClick="btnModificar_Click"><i class="glyphicon glyphicon-floppy-disk"></i> Modificar</asp:LinkButton>
             <asp:Label ID="LabelAviso" runat="server" Text=""></asp:Label>
         </div>
     </div>
@@ -130,9 +130,6 @@
    
     <asp:Label ID="idcontrato" runat="server" Text="" Visible="false"></asp:Label>
     <asp:Panel ID="PaquetesContratados" runat="server"></asp:Panel>
-
-    <asp:Label ID="saldoPasajero" runat="server" Text="" ></asp:Label>
-    <asp:Label ID="cantidadPasajeros" runat="server" Text="" ></asp:Label>
 </div>
 
     <div class="modal fade" id="modalQuitarPasajero" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" Style="display: none;">

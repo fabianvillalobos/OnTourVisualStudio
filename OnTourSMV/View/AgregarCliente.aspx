@@ -5,13 +5,14 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <h2>Agregar pasajero</h2>
+            <h3>Agregar pasajero al contrato nº: <%= Request.QueryString["ID_CONTRATO"] %></h3>
             <p>Busca un pasajero con el rut para luego asignarlo a un contrato<p>
             <br />
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-8">
+        <asp:Panel ID="agregarClienteFormulario" runat="server" Visible="true">
+            <div class="col-xs-12">
             <div class="row">
                 <div class="col-xs-12">
                     <asp:Label ID="Label2" runat="server" Text="Buscar cliente por rut:"></asp:Label>
@@ -92,30 +93,25 @@
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtTelefono" ErrorMessage="Ingresar solo números" ForeColor="#FF3300" ValidationExpression="^[0-9]*$" Display="Dynamic"></asp:RegularExpressionValidator>
                 </div>
             </div>
-        </div>
-        <div class="col-xs-4 padding-left-30 border-left-separador">
             <div class="row">
                 <div class="col-xs-12">
-                    <h3>Asignar contrato</h3>
-                    <p>Asigna el pasajero a un contrato</p>
-                </div>
-                <div class="col-xs-12">
-                    <asp:Label ID="Label1" runat="server" Text="Contratos"></asp:Label>
-                    <asp:DropDownList ID="DropDownListContratoAsociar" CssClass="form-control" runat="server" DataSourceID="SqlDataSourceContratoAsociar" DataTextField="Titular" DataValueField="ID_CONTRATO" Enabled="False" AutoPostBack="True" OnDataBound="DropDownListContratoAsociar_DataBound" OnSelectedIndexChanged="DropDownListContratoAsociar_SelectedIndexChanged">
-                    </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSourceContratoAsociar" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="select 'Contrato N°: '||id_contrato || ' -  Mandante: ' || numrut_cli_titular Titular, id_contrato, fecha_inicio, fecha_termino, meta, monto_reserva, estado, numrut_emp, numrut_cli_titular from contrato ORDER BY id_contrato"></asp:SqlDataSource><br />
-                </div>
-                <div class="col-xs-12">
-                    <asp:Label ID="Label3"   runat="server" Text="Mandante"></asp:Label>
-                    <asp:TextBox ID="txtMostrarNombre" runat="server" CssClass="form-control"  Wrap="true" Width="257px" Height="100px" TextMode="MultiLine"></asp:TextBox>
+                    <div class="separador"></div>
                 </div>
             </div>
-            <div class="row margin-top-20">
+            <div class="row">
                 <div class="col-xs-12">
-                    <asp:Button ID="btnAgregar" runat="server" CssClass="btn btn-primary" Text="Agregar" OnClick="btnAgregar_Click" /><asp:Label ID="lblAviso" runat="server" Text=""></asp:Label>
+                    <a id="backContrato_link" runat="server" class="btn btn-default"><i class='glyphicon glyphicon-chevron-left'></i> Volver al contrato</a>
+                    <asp:Button ID="btnAgregar" runat="server" CssClass="btn btn-primary" Text="Agregar" OnClick="btnAgregar_Click" />
+                    <asp:Label ID="lblAviso" runat="server" Text=""></asp:Label>
                 </div>
             </div>
         </div>
+        </asp:Panel>
+        <asp:Panel ID="idNoValido" runat="server" Visible="false">
+            <div class="col-xs-6">
+                <div class="alert alert-danger">El número de contrato no existe. <a href="ListarContratos.aspx" style="float:right;margin-top:-5px;" class="btn btn-danger btn-sm"><i class='glyphicon glyphicon-chevron-left'></i> Ver listado de contratos</a></div>
+            </div>
+        </asp:Panel>
     </div>
 </div>
 </asp:Content>

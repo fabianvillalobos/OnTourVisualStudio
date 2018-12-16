@@ -18,18 +18,25 @@ public partial class AgregarCliente : System.Web.UI.Page
         {
             Response.Redirect("~/View/PaginaPpal.aspx");
         }
-        
-        
+
+        string idContratoActual = Request.QueryString["id_contrato"];
+        decimal idContrato = int.Parse(idContratoActual);
+        EntitiesOnTour bd = new EntitiesOnTour();
+        var resultado = bd.CONTRATO.FirstOrDefault(x => x.ID_CONTRATO == idContrato);
+        if(resultado == null)
+        {
+            agregarClienteFormulario.Visible = false;
+            idNoValido.Visible = true;
+        }
+        backContrato_link.Attributes["href"] = "ModificarContrato.aspx?ID_CONTRATO=" + Request.QueryString["ID_CONTRATO"];
     }
 
     protected void btnAgregar_Click(object sender, EventArgs e)
     {
-
         try
         {
             EntitiesOnTour bd = new EntitiesOnTour();
             Librerias librerias = new Librerias();
-
 
             int rut = int.Parse(txtRut.Text.Trim());
             String dv = txtDv.Text.Trim().ToUpper();
@@ -43,7 +50,6 @@ public partial class AgregarCliente : System.Web.UI.Page
             String apellidoP = txtApellidoP.Text.Trim();
             String apellidoM = txtApellidoM.Text.Trim();
             String mail = txtMail.Text.Trim();
-
             String direccion = txtDireccion.Text.Trim();
             DateTime today = DateTime.Today;
             DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
@@ -61,26 +67,19 @@ public partial class AgregarCliente : System.Web.UI.Page
                 mail, activo, direccion, fechaNacimiento, telefono);
                 mensajeFinal += " Cliente agregado a la BD. ";
             }
-
-            //Buscar contrato para obtener id
-            int idContrato = int.Parse(DropDownListContratoAsociar.SelectedValue);
+            string idContratoActual = Request.QueryString["id_contrato"];
+            decimal idContrato = int.Parse(idContratoActual);
 
             bd.SP_INSERTARCUENTA(0, idContrato, numrutCliente, activo);
             mensajeFinal += "Cuenta asignada y cliente asignado al contrato";
             System.Windows.Forms.MessageBox.Show(mensajeFinal);
             bd.SaveChanges();
-
-
-
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
         }
         catch (Exception ex)
         {
-
             System.Windows.Forms.MessageBox.Show(ex.Message);
-            
         }
-
-
     }
 
     protected void bloquearCampos()
@@ -131,7 +130,6 @@ public partial class AgregarCliente : System.Web.UI.Page
             lblAviso.Text = "";
             EntitiesOnTour bd = new EntitiesOnTour();
             Librerias librerias = new Librerias();
-
             int rutMandante = int.Parse(txtBuscarRut.Text.Trim());
             String dv = txtDvBuscar.Text.Trim().ToUpper();
             String rutCompleto = rutMandante + dv;
@@ -144,12 +142,10 @@ public partial class AgregarCliente : System.Web.UI.Page
             CLIENTE cliente = bd.CLIENTE.FirstOrDefault(t => t.NUMRUT_CLI == rutMandante);
             if (cliente == null) //No existen coincidencias -> Crear nuevo cliente
             {
-                DropDownListContratoAsociar.Enabled = true;
                 // RECUPERANDO EL NOMBRE DEL CLIENTE ASOCIADO AL RUT DEL DROPDOWNLIST
                 activarCampos();
                 txtRut.Text = txtBuscarRut.Text;               
                 txtDv.Text = txtDvBuscar.Text;
-
                 System.Windows.Forms.MessageBox.Show("No existe el pasajero, por favor rellene los campos");
                 // lblAviso.Text = "No existe el pasajero, por favor rellene los campos";
             }
@@ -159,7 +155,6 @@ public partial class AgregarCliente : System.Web.UI.Page
                 txtRut.Text = txtBuscarRut.Text;
                 txtDv.Text = txtDvBuscar.Text;
                 bloquearCampos();
-                DropDownListContratoAsociar.Enabled = true;
                 txtDv.Text = cliente.DRUT_CLI.ToString();
                 txtNombre.Text = cliente.NOMBRE_CLIE;
                 txtApellidoM.Text = cliente.APELLIDO_MAT_CLI;
@@ -169,47 +164,15 @@ public partial class AgregarCliente : System.Web.UI.Page
                 txtFecha.Text = cliente.FECHA_NACIMIENTO_CLI.ToString();
                 
                 DateTime fechaNacimiento = DateTime.Parse(cliente.FECHA_NACIMIENTO_CLI.ToString());
-
-
                 //Los str son netamente para que el usuario vea su fecha en el sistema, pero se usa
                 //el normal sin str
-                
                 txtFechaStr.Text = fechaNacimiento.ToShortDateString();
                 txtTelefono.Text = cliente.FONO_CLI;
-
             }
         }
         catch (Exception ex)
         {
             System.Windows.Forms.MessageBox.Show(ex.Message);
-            
         }
-
     }
-
-    protected void DropDownListContratoAsociar_DataBound(object sender, EventArgs e)
-    {
-        EntitiesOnTour bd = new EntitiesOnTour();
-        int intA = int.Parse(DropDownListContratoAsociar.SelectedValue);
-        CONTRATO contrato = bd.CONTRATO.FirstOrDefault(it => it.ID_CONTRATO == intA);
-        String rutX = contrato.NUMRUT_CLI_TITULAR.ToString();
-        int rutY = int.Parse(rutX);
-        CLIENTE clienteA = bd.CLIENTE.FirstOrDefault(it => it.NUMRUT_CLI == rutY);
-        String mostrarNombre = clienteA.NOMBRE_CLIE + " " + clienteA.APELLIDO_PAT_CLI + " " + clienteA.APELLIDO_MAT_CLI; // Se muestra el nombre del cliente concatenado
-      
-        txtMostrarNombre.Text = "Mandante: " + mostrarNombre + "\nID Contrato: " + contrato.ID_CONTRATO + "\nFecha Inicio: " + contrato.FECHA_INICIO;
-        txtMostrarNombre.DataBind();
-        txtMostrarNombre.Enabled = false;
-
-
-    }
-
-    protected void DropDownListContratoAsociar_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        DropDownListContratoAsociar_DataBound(sender, e);
-    }
-
-
-
-    
 }

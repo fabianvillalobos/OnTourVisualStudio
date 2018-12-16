@@ -262,7 +262,7 @@ public partial class View_ModificarContrato : System.Web.UI.Page
         decimal idContrato = int.Parse(idContratoActual);
         decimal clienteRut = decimal.Parse(datosPasajero.Text);
         EntitiesOnTour bd = new EntitiesOnTour();
-        var v_saldo = bd.CUENTA.FirstOrDefault(x => x.NUMRUT_CLI == clienteRut);
+        var v_saldo = bd.CUENTA.FirstOrDefault(x => x.ID_CONTRATO == idContrato && x.NUMRUT_CLI == clienteRut && x.ACTIVO.Equals("T"));
         decimal saldo_pasajero = v_saldo.SALDO;
         v_saldo.ACTIVO = "F";
         v_saldo.SALDO = 0;

@@ -157,11 +157,10 @@ body{
 .box .terminal{font-size:11px;}
 .box-encabezado h3{display:block; border-bottom:1px dotted #f2f2f2; font-size:18px; line-height:20px; padding-bottom:10px; margin:0px;margin-bottom:20px; padding-left:10px; padding-top:5px;}
 
-.pasajero{border:1px solid #f2f2f2; padding:10px;}
+.pasajero{border:1px solid #f2f2f2; padding:10px;position:relative;}
 .pasajero .rut{font-size:14px; color:black; font-weight:300; display:block;}
 .pasajero h5{font-weight:bold; font-size:14px; color:black; margin:0px; padding:0px; letter-spacing:0.2px;}
-
-
+.pasajero .opciones{position:absolute;top:15px; right:15px;}
 
 
 

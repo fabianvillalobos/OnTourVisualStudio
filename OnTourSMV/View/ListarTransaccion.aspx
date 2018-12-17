@@ -3,13 +3,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-
     <div class="container">
         <div class="row">
-            <h2>Transacciones</h2>
-            <br />
-            <br />
-            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay transacciones asociadas" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+            <div class="col-xs-6">
+                <h3>Transacciones</h3>
+                <br />
+            </div>
+            <div class="col-xs-6 text-right padding-top-20">
+                <a href="NuevaTransferencia.aspx?ID_CONTRATO=<%=Request.QueryString["ID_CONTRATO"] %>" class="btn btn-success"><i class='glyphicon glyphicon-plus'></i> <span>Nueva transacción</span></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay transacciones asociadas" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
                 <Columns>
                     <asp:BoundField DataField="ID_TRANSACCION" HeaderText="ID Transacción" SortExpression="ID_TRANSACCION"/>
                     <asp:BoundField DataField="FECHA_TRANSACCION" HeaderText="Fecha Transacción" SortExpression="FECHA_TRANSACCION" DataFormatString='{0:MM-dd-yyyy}' />
@@ -26,8 +32,9 @@
                     <asp:Parameter Name="id" Type="String" />
                 </SelectParameters>
             </asp:SqlDataSource>
+            </div>
             <div class="col-xs-6 text-left padding-top-20">
-                <asp:Button ID="btnVolverAContratos" runat="server" CssClass="btn btn-success" Text="Volver a Contratos" OnClick="btnVolverAContratos_Click" />
+                <asp:Button ID="btnVolverAContratos" runat="server" CssClass="btn btn-default" Text="Volver a Contratos" OnClick="btnVolverAContratos_Click" />
             </div>
         </div>
     </div>

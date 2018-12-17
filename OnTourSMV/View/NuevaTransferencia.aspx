@@ -7,7 +7,6 @@
         <div class="col-xs-12">
             <h3>Nueva transferencia</h3>
             <p>Realiza un depósito bancario<p>
-            <br />
         </div>
     </div>
     <div class="row">

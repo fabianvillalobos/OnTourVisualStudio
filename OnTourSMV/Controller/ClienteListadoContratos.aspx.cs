@@ -39,7 +39,7 @@ public partial class ClienteListadoContratos : System.Web.UI.Page
             if (perfilId == 3)
             {
                 int usuarioID = int.Parse(Session["UsuarioID"].ToString());
-                SqlDataSource1.SelectCommand = "SELECT ONTOUR.CONTRATO.ID_CONTRATO, ONTOUR.CLIENTE.NOMBRE_CLIE AS Nombre, ONTOUR.CLIENTE.APELLIDO_PAT_CLI AS Apellido, ONTOUR.CONTRATO.FECHA_INICIO, ONTOUR.CONTRATO.FECHA_TERMINO AS Termino, ONTOUR.CONTRATO.ESTADO AS Estado, ONTOUR.CONTRATO.MONTO_RESERVA AS Reserva, ONTOUR.CONTRATO.META AS Meta, ONTOUR.CUENTA.SALDO AS Saldo FROM ONTOUR.CONTRATO INNER JOIN ONTOUR.CLIENTE ON ONTOUR.CONTRATO.NUMRUT_CLI_TITULAR = ONTOUR.CLIENTE.NUMRUT_CLI INNER JOIN ONTOUR.EMPLEADO ON ONTOUR.CONTRATO.NUMRUT_EMP = ONTOUR.EMPLEADO.NUMRUT_EMP INNER JOIN ONTOUR.CUENTA ON ONTOUR.CONTRATO.ID_CONTRATO = ONTOUR.CUENTA.ID_CONTRATO AND ONTOUR.CLIENTE.NUMRUT_CLI = ONTOUR.CUENTA.NUMRUT_CLI WHERE CLIENTE.ID_USR = " + usuarioID;
+                SqlDataSource1.SelectCommand = "select DISTINCT c.id_contrato ID_CONTRATO, cli.NOMBRE_CLIE AS Nombre, cli.APELLIDO_PAT_CLI AS Apellido, c.FECHA_INICIO, c.FECHA_TERMINO AS Termino, c.ESTADO AS Estado, c.MONTO_RESERVA AS Reserva, c.META as Meta from contrato c join cuenta cu on c.id_contrato = cu.id_contrato join cliente cli on cu.numrut_cli = cli.numrut_cli join usuario u on cli.id_usr = u.id_usr where u.id_usr = " + usuarioID;
             }
         }
     }

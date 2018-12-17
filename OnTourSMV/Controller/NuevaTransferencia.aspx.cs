@@ -29,13 +29,14 @@ public partial class NuevaTransferencia : System.Web.UI.Page
     {
         try
         {
-            EntitiesOnTour bd = new EntitiesOnTour();
-            //DateTime fecha = new DateTime();
             int monto = int.Parse(txtMonto.Value);
+            EntitiesOnTour bd = new EntitiesOnTour();
             pasoDos.Visible = true;
             txtMonto.Disabled = true;
             DropDownListTipo.Enabled = false;
+            DropDownListTipo.CssClass = "form-control";
             continuar.Enabled = false;
+            continuar.CssClass = "btn btn-success";
         }
         catch (Exception ex)
         {
@@ -45,7 +46,6 @@ public partial class NuevaTransferencia : System.Web.UI.Page
 
     protected void Notificar_Click(object sender, EventArgs e)
     {
-        
         EntitiesOnTour bd = new EntitiesOnTour();
         DateTime fecha = DateTime.Now;
         int monto = int.Parse(txtMonto.Value);

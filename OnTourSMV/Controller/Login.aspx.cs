@@ -55,8 +55,15 @@ public partial class View_Login : System.Web.UI.Page
                     Session["Perfil"] = usuarioObj.TIPO_USUARIO.DESC_TIPO_USUARIO;
                     String perfilID = usuarioObj.TIPO_USUARIO.ID_TIPO_USUARIO.ToString();
                     Session["PerfilID"] = perfilID;
-
-                    Response.Redirect("~/View/ListarContratos.aspx");
+                    int perfilId = int.Parse(perfilID.ToString());
+                    if (perfilId == 3)
+                    {
+                        Response.Redirect("~/View/ClienteListadoContratos.aspx");
+                    }
+                    else
+                    {
+                     Response.Redirect("~/View/ListarContratos.aspx");
+                    }
                 }
                 else
                 {

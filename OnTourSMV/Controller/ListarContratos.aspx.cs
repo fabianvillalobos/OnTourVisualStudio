@@ -27,9 +27,7 @@ public partial class ListarContratos : System.Web.UI.Page
         int perfilId = int.Parse(Session["PerfilID"].ToString());
         if (perfilId == 3)
         {
-            //3 - Perfil Cliente
-            btnNuevoContrato.Visible = false;
-            btnExportar.Visible = false;
+            Response.Redirect("~/View/ClienteListadoContratos.aspx");
         }
     }
     

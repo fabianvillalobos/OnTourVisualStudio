@@ -66,7 +66,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <a href="LoginClientes.aspx" class="btn btn-danger"><i class="glyphicon glyphicon-chevron-left"></i> Volver al menu </a>
+                                    <a href="Login.aspx" class="btn btn-danger"><i class="glyphicon glyphicon-chevron-left"></i> Volver al menu </a>
                                 </div>
                             </div>
                         </div>

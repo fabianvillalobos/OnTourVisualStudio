@@ -34,7 +34,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="ListarContratos.aspx">Ver contratos</a></li>
                             <li runat="server" id="contraAgregaCon"><a href="AgregarContratos.aspx">Nuevo contrato</a></li>
-                            <li runat="server" id="contraAgregaCli"><a href="AgregarCliente.aspx">Agregar un pasajero</a></li>
+<%--                            <li runat="server" id="contraAgregaCli"><a href="AgregarCliente.aspx">Agregar un pasajero</a></li>--%>
                         </ul>
                     </li>
                     <li class="dropdown" runat="server" id="paquetes"><a class="dropdown-toggle glyphicon glyphicon-star-empty" data-toggle="dropdown" href="#">Paquetes<span class="caret"></span></a>
@@ -42,7 +42,7 @@
                             <li><a href="AgregarPaqueteViaje.aspx">Nuevo paquete de viaje</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown" runat="server" id="usuarios"><a class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" href="#">Usuario<span class="caret"></span></a>
+                    <li class="dropdown" runat="server" id="usuarios"><a class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" href="#">Cliente<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="ListarCliente.aspx">Ver clientes</a></li>
                             <li runat="server" id="usuariosSis"><a href="ListarUsuariosSistema.aspx">Ver usuarios del sistema</a></li>

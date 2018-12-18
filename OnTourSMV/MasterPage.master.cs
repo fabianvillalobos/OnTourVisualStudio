@@ -40,7 +40,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             if (perfilId == 3)
             {
                 contraAgregaCon.Visible = false;
-                contraAgregaCli.Visible = false;
+                //contraAgregaCli.Visible = false;
                 paquetes.Visible = false;
                 usuarios.Visible = false;
                 actAgrega.Visible = false;

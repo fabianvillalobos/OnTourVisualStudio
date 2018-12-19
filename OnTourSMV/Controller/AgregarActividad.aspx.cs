@@ -63,14 +63,9 @@ public partial class AgregarActividad : System.Web.UI.Page
             System.Windows.Forms.MessageBox.Show(ex.Message);
           //  lblAviso.Text = ex.Message;
         }
+        
 
-       
-    }
-
-    protected void btnVolverAActividades_Click(object sender, EventArgs e)
-    {
-        string idContratoActual = Request.QueryString["id_contrato"];
-        Response.Redirect("~/View/ListarActividadesContrato.aspx?" + idContratoActual);
 
     }
+
 }

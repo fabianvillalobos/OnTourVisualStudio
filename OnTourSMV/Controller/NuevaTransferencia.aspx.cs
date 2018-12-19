@@ -108,4 +108,11 @@ public partial class NuevaTransferencia : System.Web.UI.Page
 
         Page.Response.Redirect(Page.Request.Url.ToString(), true);
     }
+
+    protected void btnVolverATransacciones_Click(object sender, EventArgs e)
+    {
+        string idContratoActual = Request.QueryString["id_contrato"];
+        Response.Redirect("~/View/ListarTransaccion.aspx?" + idContratoActual);
+
+    }
 }

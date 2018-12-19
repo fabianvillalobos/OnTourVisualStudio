@@ -4,10 +4,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-6">
             <h3>Nueva transferencia</h3>
             <p>Realiza un depósito bancario<p>
         </div>
+        <div class="col-xs-6 text-right padding-top-20">
+                <asp:Button ID="btnVolverATransacciones" runat="server" CssClass="btn btn-success" Text="Volver a Transacciones" OnClick="btnVolverATransacciones_Click" />
+            </div>
     </div>
     <div class="row">
         <div class="col-xs-12">

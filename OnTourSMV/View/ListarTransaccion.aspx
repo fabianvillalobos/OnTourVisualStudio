@@ -34,7 +34,7 @@
             </asp:SqlDataSource>
             </div>
             <div class="col-xs-6 text-left padding-top-20">
-                <asp:Button ID="btnVolverAContratos" runat="server" CssClass="btn btn-default" Text="Volver a Contratos" OnClick="btnVolverAContratos_Click" />
+                <asp:Button ID="btnVolverAContratos" runat="server" CssClass="btn btn-success" Text="Volver a Contratos" OnClick="btnVolverAContratos_Click" />
             </div>
         </div>
     </div>

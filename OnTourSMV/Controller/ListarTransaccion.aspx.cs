@@ -39,6 +39,6 @@ public partial class ListarTransaccion : System.Web.UI.Page
     }
     protected void btnVolverAContratos_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/View/ListarCrontratos.aspx");
+        Response.Redirect("~/View/ListarContratos.aspx");
     }
 }

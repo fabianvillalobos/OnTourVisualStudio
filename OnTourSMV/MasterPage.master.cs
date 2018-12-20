@@ -46,10 +46,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 actAgrega.Visible = false;
                 transAgre.Visible = false;
             }
-            //if (perfilId == 4)
-            //{
-                
-            //}
+            if (perfilId == 4)
+            {
+                paquetes.Visible = false;
+                actividades.Visible = false;
+                contraAgregaCon.Visible = false;
+                transacciones.Visible = false;
+            }
 
         }
     }

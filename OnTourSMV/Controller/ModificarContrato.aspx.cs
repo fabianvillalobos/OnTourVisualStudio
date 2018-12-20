@@ -37,17 +37,18 @@ public partial class View_ModificarContrato : System.Web.UI.Page
             //Cargar paquete turisticos
             var listadoContratos = bd.CONTRATO_PAQUETE.Where( w => w.ID_CONTRATO == idContrato).ToList();
             foreach (var contrato in listadoContratos)
-            {
-                //ver alguna forma de pasar estos datos al aspx
-                string yourHTMLstring = "<div class='row bg-paquete'><div class='col-xs-12'>";
-                          
+            {       
                 var listadoServicios = from servicio in bd.SERVICIO
                     join servicio_paquete in bd.SERVICIO_PAQUETE on servicio.ID_SERVICIO equals servicio_paquete.ID_SERVICIO
                     where servicio_paquete.ID_PAQUETEVIAJE == contrato.ID_PAQUETEVIAJE
+                    orderby servicio.ID_TIPO_SERVICIO ascending
                     select new { Servicio = servicio, Servicio_Paquete = servicio_paquete };
+
+                string yourHTMLstring = "<div class='row bg-paquete modificar-contrato'><div class='col-xs-12'><button runat='server' CommandArgument='" + contrato.ID_PAQUETEVIAJE + "' OnClick='Borrar_Paquete'>x</button>";
+
                 foreach (var servicio in listadoServicios)
                 {
-                    decimal id_ws = servicio.Servicio.ID_TIPO_SERVICIO;
+                    decimal id_ws = servicio.Servicio.ID_SERVICIO_WS;
                     switch (servicio.Servicio.ID_TIPO_SERVICIO){
                         case 1://vuelo
                             var jsonVuelos = getJSONVuelosConID(id_ws);
@@ -58,7 +59,7 @@ public partial class View_ModificarContrato : System.Web.UI.Page
                             }
                             foreach (var item in dynJsonVuelos)
                             {
-                                yourHTMLstring += "<div class='box'><div class='box-encabezado'><h3><i class='glyphicon glyphicon-plane'></i> Viaje a "+item.d_ciudad+"</h3></div><div class='box-cuerpo'><div class='col-xs-2'><span class='aerolinea'>"+item.aerolinea+"</span><br /><span>Vuelo: "+item.id+"</span></div><div class='col-xs-3'><span class='terminal'>"+item.o_terminal+"</span><span class='ciudad'>"+item.o_ciudad+", "+item.o_pais+"</span><span class='hora'>"+item.salida+"</span><span class='salida'>28/06/2018</span></div><div class='col-xs-1'>></div><div class='col-xs-3'><span class='terminal'>"+item.d_terminal+"</span><span class='ciudad'>"+item.d_ciudad+", "+item.d_pais+"</span><span class='hora'>18:00:00</span><span class='salida'>28/06/2018</span></div></div></div>";
+                                yourHTMLstring += "<div class='box box-cuerpo'><div class='col-xs-3 padding-left-0'><div class='box-encabezado'><h3><i class='glyphicon glyphicon-plane'></i> Viaje a " + item.d_ciudad + "</h3></div></div><div class='col-xs-3'><span class='terminal'>" + item.o_terminal+"</span><span class='ciudad'>"+item.o_ciudad+", "+item.o_pais+"</span><span class='hora'>"+item.salida+ "</span></div><div class='col-xs-1'><i class='glyphicon glyphicon-menu-right big-icon'></i></div><div class='col-xs-3'><span class='terminal'>" + item.d_terminal+"</span><span class='ciudad'>"+item.d_ciudad+", "+item.d_pais+"</span></div></div>";
                             }
                             break;
 
@@ -72,7 +73,7 @@ public partial class View_ModificarContrato : System.Web.UI.Page
                             }
                             foreach (var item in dynJsonBuses)
                             {
-                                yourHTMLstring += "<div class='box'><div class='box-encabezado'><h3><i class='glyphicon glyphicon-plane'></i> Viaje a " + item.o_ciudad + "</h3></div><div class='box-cuerpo'><div class='col-xs-2'><span class='aerolinea'>" + item.linea + "</span><br /><span>Vuelo: " + item.id + "</span></div><div class='col-xs-3'><span class='terminal'>" + item.o_terminal + "</span><span class='ciudad'>" + item.o_ciudad + ", " + item.o_pais + "</span><span class='hora'>" + item.salida + "</span><span class='salida'>28/06/2018</span></div><div class='col-xs-1'>></div><div class='col-xs-3'><span class='terminal'>" + item.d_terminal + "</span><span class='ciudad'>" + item.d_ciudad + ", " + item.d_pais + "Pucón, Chile</span><span class='hora'>18:00:00</span><span class='salida'>28/06/2018</span></div></div></div>";
+                                yourHTMLstring += "<div class='box box-cuerpo'><div class='col-xs-3 padding-left-0'><div class='box-encabezado'><h3><i class='glyphicon glyphicon-plane'></i> Viaje a " + item.o_ciudad + "</h3></div></div><div class='col-xs-3'><span class='terminal'>" + item.o_terminal + "</span><span class='ciudad'>" + item.o_ciudad + ", " + item.o_pais + "</span><span class='hora'>" + item.salida + "</span></div><div class='col-xs-1'><i class='glyphicon glyphicon-menu-right big-icon'></i></div><div class='col-xs-3'><span class='terminal'>" + item.d_terminal + "</span><span class='ciudad'>" + item.d_ciudad + ", " + item.d_pais + "</span></div></div>";
                             }
                             break;
 
@@ -81,7 +82,7 @@ public partial class View_ModificarContrato : System.Web.UI.Page
                             dynamic dynJsonAlojamientos = JsonConvert.DeserializeObject(jsonAlojamientos);
                             foreach (var itemAloj in dynJsonAlojamientos)
                             {
-                                yourHTMLstring += "<div class='box'><div class='box-encabezado'><h3><i class='glyphicon glyphicon-bed'></i> Estadía en "+itemAloj.h_ciudad+"</h3></div><div class='box-cuerpo'><div class='col-xs-2'><span class='aerolinea'>PU</span><br /><span>Vuelo: "+itemAloj.h_id+"</span></div><div class='col-xs-3'><span class='terminal'>"+itemAloj.h_nombre+"</span><span class='ciudad'>"+itemAloj.h_direccion+"</span></div><div class='col-xs-7'><h5>Servicios disponibles</h5><span class='descripcion_estadia'>"+itemAloj.h_servicios+"</span></div></div></div>";
+                                yourHTMLstring += "<div class='box box-cuerpo'><div class='col-xs-3 padding-left-0'><div class='box-encabezado'><h3><i class='glyphicon glyphicon-bed'></i> Estadía en " + itemAloj.h_ciudad+ "</h3></div></div><div class='col-xs-3'><span class='terminal'>"+itemAloj.h_nombre+"</span><span class='ciudad'>"+itemAloj.h_direccion+"</span></div><div class='col-xs-6'><h5>Servicios disponibles</h5><span class='descripcion_estadia'>"+itemAloj.h_servicios+"</span></div></div>";
                             }
                             break;
 
@@ -90,7 +91,7 @@ public partial class View_ModificarContrato : System.Web.UI.Page
                             dynamic dynJsonSeguros = JsonConvert.DeserializeObject(jsonSeguros);
                             foreach (var itemSeg in dynJsonSeguros)
                             {
-                                yourHTMLstring += "<div class='box'><div class='box-encabezado'><h3><i class='glyphicon glyphicon-lock'> </i>Seguros</h3></div><div class='box-cuerpo'><div class='col-xs-2'><span class='aerolinea'>PU</span><br /><span>"+itemSeg.se_id+"</span></div><div class='col-xs-3'><span class='terminal'>"+itemSeg.se_nombre+"</span><span class='ciudad'>"+itemSeg.se_empresa+"</span><span>Vigencia: "+itemSeg.se_vigencia+"/span></div><div class='col-xs-7'><h5>Descripción</h5> <span class='descripcion_estadia'>"+itemSeg.se_desc+"</span></div></div></div>";
+                                yourHTMLstring += "<div class='box box-cuerpo'><div class='col-xs-3 padding-left-0'><div class='box-encabezado'><h3><i class='glyphicon glyphicon-lock'></i> Seguros</h3></div></div><div class='col-xs-3'><span class='terminal'>"+itemSeg.se_nombre+"</span><span class='ciudad'>"+itemSeg.se_empresa+"</span><span>Vigencia: "+itemSeg.se_vigencia+"</span></div><div class='col-xs-6'><h5>Descripción</h5> <span class='descripcion_estadia'>"+itemSeg.se_desc+"</span></div></div>";
                             }
                             break;
 
@@ -282,6 +283,12 @@ public partial class View_ModificarContrato : System.Web.UI.Page
     {
         datosPasajero.Text = (sender as System.Web.UI.WebControls.Button).CommandArgument;
         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalQuitarPasajero').modal('show');</script>", false);
+    }
+
+    protected void Borrar_Paquete(object sender, EventArgs e)
+    {
+        string Text = (sender as System.Web.UI.WebControls.Button).CommandArgument;
+        System.Windows.Forms.MessageBox.Show(Text);
     }
 }
 

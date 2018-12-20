@@ -29,6 +29,15 @@ public partial class ListarContratos : System.Web.UI.Page
         {
             Response.Redirect("~/View/ClienteListadoContratos.aspx");
         }
+        if (perfilId != 4)
+        {
+            btnExportar.Visible = false;
+        }
+        if (perfilId == 4)
+        {
+            btnNuevoContrato.Visible = false;
+            
+        }
     }
     
     protected void btnNuevoContrato_Click(object sender, EventArgs e)
@@ -44,7 +53,8 @@ public partial class ListarContratos : System.Web.UI.Page
         Response.Cache.SetCacheability(HttpCacheability.NoCache);
         StringWriter sw = new StringWriter();
         HtmlTextWriter hw = new HtmlTextWriter(sw);
-        GridView1.RenderControl(hw);
+        GridView2.Visible = true;
+        GridView2.RenderControl(hw);
         StringReader sr = new StringReader(sw.ToString());
         Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 100f, 0f);
         HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
@@ -77,6 +87,7 @@ public partial class ListarContratos : System.Web.UI.Page
         pdfDoc.Close();
         Response.Write(pdfDoc);
         Response.End();
+        GridView2.Visible = false;
 
     }
     public override void VerifyRenderingInServerForm(System.Web.UI.Control control)

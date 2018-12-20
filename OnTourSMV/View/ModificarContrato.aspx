@@ -127,7 +127,7 @@
             <p>Listado de paquetes turísticos asignados al contrato</p>
         </div>
     </div>
-   
+        
     <asp:Label ID="idcontrato" runat="server" Text="" Visible="false"></asp:Label>
     <asp:Panel ID="PaquetesContratados" runat="server"></asp:Panel>
 </div>
@@ -146,6 +146,25 @@
             <asp:HiddenField ID="idPasajero" runat="server" Value="0" />
             <asp:Button ID="btnYes" runat="server" Text="Eliminar" OnClick="QuitarPasajero" class="btn btn-danger"></asp:Button>
             <button id="btnNo" runat="server" class="btn btn-default">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- modal --> 
+
+    <div class="modal fade" id="modalQuitarPaquete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" Style="display: none;">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title">¡Atención!</h3>
+          </div>
+          <div class="modal-body">
+            Estás apunto de quitar de este contrato el paquete turístico seleccionado, ¿Deseas continuar?
+          </div>
+          <div class="modal-footer">
+            <asp:HiddenField ID="idPaqueteTuristico" runat="server" Value="0" />
+            <asp:Button ID="QuitarPaquete" runat="server" Text="Eliminar" OnClick="QuitarPaquete_Click" class="btn btn-danger"></asp:Button>
+            <button id="Button2" runat="server" class="btn btn-default">Cancelar</button>
           </div>
         </div>
       </div>

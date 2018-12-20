@@ -24,16 +24,24 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtFin" ErrorMessage="Requerido" ForeColor="Red" ValidationGroup="mandanteGroup"></asp:RequiredFieldValidator>
                 <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtInicio" ControlToValidate="txtFin" ErrorMessage="Rango No Valido" ForeColor="#FF3300" Operator="GreaterThan" ValidationGroup="contratoGroup"></asp:CompareValidator>
             </div>
-            <div class="col-xs-3">
-                <asp:Label ID="LabelTitular" runat="server" Text="Mandante:"></asp:Label>
-                <asp:DropDownList ID="DropDownListMandante" runat="server" CssClass="form-control" DataSourceID="SqlDataSourceMandante" DataTextField="Cliente" DataValueField="NUMRUT_CLI" AutoPostBack="True" OnSelectedIndexChanged="DropDownListMandante_SelectedIndexChanged">
-                    <asp:ListItem>Sin seleccionar</asp:ListItem>
-                </asp:DropDownList>
+
+            <div class="col-xs-2">
+                <asp:Label ID="Label2" runat="server" Text="Rut Mandante:"></asp:Label>
+                <asp:TextBox ID="rutMandanteBuscar" runat="server" MaxLength="8" CssClass="form-control"></asp:TextBox>
+                <!-- Validación rut Solo números del 0-9 -->
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="rutMandanteBuscar" Display="Dynamic" ErrorMessage="Campo Rut Requerido " ForeColor="#FF3300" ValidationGroup="mandanteGroup"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="rutMandanteBuscar" ErrorMessage="Rut No Valido" ForeColor="#FF3300" ValidationExpression="^[0-9]*$" Display="Dynamic" ValidationGroup="mandanteGroup"></asp:RegularExpressionValidator>
             </div>
-            <div class="col-xs-3">
+            <div class="col-xs-1">
+                <asp:Label ID="Label3" runat="server" Text="*"></asp:Label>
+                <asp:TextBox ID="rutMandanteBuscardv" runat="server" MaxLength="1" CssClass="form-control" Width="50px"></asp:TextBox>
+                <!-- Validación DV Solo números del 0-9 y Letra K -->
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="rutMandanteBuscardv" Display="Dynamic" ErrorMessage="Campo DV Requerido" ForeColor="#FF3300" ValidationGroup="mandanteGroup"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="rutMandanteBuscardv" ErrorMessage="Digito No Valido" ForeColor="#FF3300" ValidationExpression="^[0-9_kK]*$" Display="Dynamic" ValidationGroup="mandanteGroup"></asp:RegularExpressionValidator>
+            </div>
+
+            <div class="col-xs-3 padding-top-20">
                 <asp:Button ID="ButtonCargarMandante" runat="server" CssClass="btn btn-primary" Text="Cargar mandante" OnClick="ButtonCargarMandante_Click" ValidationGroup="contratoGroup" />
-                <asp:SqlDataSource ID="SqlDataSourceMandante" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="select NUMRUT_CLI || '-' || DRUT_CLI || '   ' || APELLIDO_PAT_CLI || ' ' || APELLIDO_MAT_CLI Cliente,
-NUMRUT_CLI, DRUT_CLI, NOMBRE_CLIE, APELLIDO_PAT_CLI, APELLIDO_MAT_CLI, MAIL_CLI, ACTIVO, ID_USR, DIRECCION_CLI, FECHA_NACIMIENTO_CLI, FONO_CLI from cliente ORDER BY NUMRUT_CLI"></asp:SqlDataSource>
             </div>
         </div>
 
@@ -41,6 +49,7 @@ NUMRUT_CLI, DRUT_CLI, NOMBRE_CLIE, APELLIDO_PAT_CLI, APELLIDO_MAT_CLI, MAIL_CLI,
             <div class="col-xs-6">
                 <p>Selecciona un mandante ya existente o puedes crear uno nuevo completando el formulario de abajo.</p>
             </div>
+        </div>
 
             <div class="row">
                 <div class="col-xs-12">
@@ -69,23 +78,6 @@ NUMRUT_CLI, DRUT_CLI, NOMBRE_CLIE, APELLIDO_PAT_CLI, APELLIDO_MAT_CLI, MAIL_CLI,
                             <asp:TextBox ID="txtApellidoM" runat="server" CssClass="form-control"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidatorApellidoM" runat="server" ControlToValidate="txtApellidoM" ErrorMessage="Campo Requerido" ForeColor="#FF3300" ValidationGroup="mandanteGroup"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="col-xs-2">
-                            <asp:Label ID="LabelRut" runat="server" Text="Rut:"></asp:Label>
-                            <asp:TextBox ID="txtRut" runat="server" MaxLength="8" CssClass="form-control"></asp:TextBox>
-                            <!-- Validación rut Solo números del 0-9 -->
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorRut" runat="server" ControlToValidate="txtRut" Display="Dynamic" ErrorMessage="Campo Rut Requerido " ForeColor="#FF3300" ValidationGroup="mandanteGroup"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtRut" ErrorMessage="Rut No Valido" ForeColor="#FF3300" ValidationExpression="^[0-9]*$" Display="Dynamic" ValidationGroup="mandanteGroup"></asp:RegularExpressionValidator>
-
-                        </div>
-                        <div class="col-xs-1">
-                            <asp:Label ID="Label1" runat="server" Text="*"></asp:Label>
-                            <asp:TextBox ID="txtDv" runat="server" MaxLength="1" CssClass="form-control" Width="50px"></asp:TextBox>
-                            <!-- Validación DV Solo números del 0-9 y Letra K -->
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorDv" runat="server" ControlToValidate="txtDv" Display="Dynamic" ErrorMessage="Campo DV Requerido" ForeColor="#FF3300" ValidationGroup="mandanteGroup"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtDv" ErrorMessage="Digito No Valido" ForeColor="#FF3300" ValidationExpression="^[0-9_kK]*$" Display="Dynamic" ValidationGroup="mandanteGroup"></asp:RegularExpressionValidator>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-xs-3">
                             <asp:Label ID="lblFechaStr" runat="server" Text="Fecha de Nacimiento:" Visible="False"></asp:Label>
                             <asp:TextBox ID="txtFechaStr" runat="server" TextMode="SingleLine" CssClass="form-control" Visible="False"></asp:TextBox>
@@ -95,6 +87,8 @@ NUMRUT_CLI, DRUT_CLI, NOMBRE_CLIE, APELLIDO_PAT_CLI, APELLIDO_MAT_CLI, MAIL_CLI,
                             <asp:TextBox ID="txtHoy" runat="server" TextMode="Date" Visible="False"></asp:TextBox>
                             <asp:CustomValidator ID="ValidadorFecNac" runat="server" ControlToValidate="txtFecha" ForeColor="#FF3300"></asp:CustomValidator>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-xs-3">
                             <asp:Label ID="LabelMail" runat="server" Text="Mail:"></asp:Label>
                             <asp:TextBox ID="txtMail" runat="server" CssClass="form-control" TextMode="Email"></asp:TextBox>
@@ -121,7 +115,7 @@ NUMRUT_CLI, DRUT_CLI, NOMBRE_CLIE, APELLIDO_PAT_CLI, APELLIDO_MAT_CLI, MAIL_CLI,
                     </div>
                 </div>
             </div>
-        </div>
+       
     </div>
 
 </asp:Content>

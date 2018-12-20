@@ -151,14 +151,14 @@ body{
 .margin-top-20{margin-top:20px;}
 .separador{height:1px; background-color:#f2f2f2;margin-top:15px;margin-bottom:15px;}
 
-.bg-paquete{background-color:#f2f2f2; padding-top:15px; padding-bottom:15px;}
+.bg-paquete{background-color:#f2f2f2; padding-top:15px; padding-bottom:40px;}
 .box{background-color:white; padding:15px; overflow:hidden;}
 .box span{display:block; font-size:12px; color:#666;}
 .box .ciudad{font-weight:bold; color:black;}
 .box .terminal{font-size:11px;}
 .box-encabezado h3{display:block; border-bottom:1px dotted #f2f2f2; font-size:18px; line-height:20px; padding-bottom:10px; margin:0px;margin-bottom:20px; padding-left:10px; padding-top:5px;}
 
-.pasajero{border:1px solid #f2f2f2; padding:10px;position:relative;}
+.pasajero{border:1px solid #f2f2f2; padding:10px;position:relative;margin-bottom:20px;}
 .pasajero .rut{font-size:14px; color:black; font-weight:300; display:block;}
 .pasajero h5{font-weight:bold; font-size:14px; color:black; margin:0px; padding:0px; letter-spacing:0.2px;}
 .pasajero .opciones{position:absolute;top:15px; right:15px;}
@@ -168,7 +168,7 @@ body{
 .modificar-contrato .bg{padding:8px;}
 .modificar-contrato .box {border-top: 1px solid #ccc;padding-bottom: 20px;}
 .modificar-contrato .box h5{margin-top:0px; padding-top:0px;}
-
+.btn-borrar-paquete-turistico{position:relative;top:-39px;font-size:12px; font-weight:bold;border-radius:0px;}
 
 
 

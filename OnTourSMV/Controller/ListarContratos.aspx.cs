@@ -124,5 +124,6 @@ public partial class ListarContratos : System.Web.UI.Page
     {
         EntitiesOnTour bd = new EntitiesOnTour();
         bd.SP_ELIMINACONTRATO(int.Parse(numeroContratoAEliminar.Text));
+        Page.Response.Redirect(Page.Request.Url.ToString(), true);
     }
 }

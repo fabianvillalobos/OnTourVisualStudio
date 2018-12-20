@@ -570,4 +570,13 @@ public partial class EntitiesOnTour : DbContext
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_SALDOPORRUT", rUT_CLIParameter, v_SALDO);
     }
+
+    public virtual int SP_ELIMINAPAQUETEVIAJECONTRATO(Nullable<decimal> iD_PAQUETE)
+    {
+        var iD_PAQUETEParameter = iD_PAQUETE.HasValue ?
+            new ObjectParameter("ID_PAQUETE", iD_PAQUETE) :
+            new ObjectParameter("ID_PAQUETE", typeof(decimal));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ELIMINAPAQUETEVIAJECONTRATO", iD_PAQUETEParameter);
+    }
 }

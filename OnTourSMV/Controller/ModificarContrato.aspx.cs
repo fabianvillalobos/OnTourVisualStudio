@@ -32,19 +32,24 @@ public partial class View_ModificarContrato : System.Web.UI.Page
             repeaterPasajeros.DataSource = clientes;
             repeaterPasajeros.DataBind();
 
-            
-
             //Cargar paquete turisticos
-            var listadoContratos = bd.CONTRATO_PAQUETE.Where( w => w.ID_CONTRATO == idContrato).ToList();
+            var listadoContratos = bd.CONTRATO_PAQUETE.Where( w => w.ID_CONTRATO == idContrato && w.ACTIVO == "T").ToList();
             foreach (var contrato in listadoContratos)
             {       
                 var listadoServicios = from servicio in bd.SERVICIO
                     join servicio_paquete in bd.SERVICIO_PAQUETE on servicio.ID_SERVICIO equals servicio_paquete.ID_SERVICIO
                     where servicio_paquete.ID_PAQUETEVIAJE == contrato.ID_PAQUETEVIAJE
+                    where servicio_paquete.ACTIVO.Equals("T")
                     orderby servicio.ID_TIPO_SERVICIO ascending
                     select new { Servicio = servicio, Servicio_Paquete = servicio_paquete };
 
-                string yourHTMLstring = "<div class='row bg-paquete modificar-contrato'><div class='col-xs-12'><button runat='server' CommandArgument='" + contrato.ID_PAQUETEVIAJE + "' OnClick='Borrar_Paquete'>x</button>";
+                Button btnBorrarPaquete = new Button();
+                btnBorrarPaquete.ID = "botonBorrarPaquete"+contrato.ID_PAQUETEVIAJE;
+                btnBorrarPaquete.Text = "Borrar paquete turístico";
+                btnBorrarPaquete.CssClass = "btn btn-danger btn-borrar-paquete-turistico";
+                btnBorrarPaquete.CommandArgument = contrato.ID_PAQUETEVIAJE.ToString();
+                btnBorrarPaquete.Click += new EventHandler(botonBorrarPaquete_Click);
+                string yourHTMLstring = "<div class='row bg-paquete modificar-contrato'><div class='col-xs-12'>";
 
                 foreach (var servicio in listadoServicios)
                 {
@@ -102,6 +107,7 @@ public partial class View_ModificarContrato : System.Web.UI.Page
                 }
                 yourHTMLstring += "</div></div>";
                 PaquetesContratados.Controls.Add(new LiteralControl(yourHTMLstring));
+                PaquetesContratados.Controls.Add(btnBorrarPaquete);
             }
         }
     }
@@ -285,10 +291,20 @@ public partial class View_ModificarContrato : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalQuitarPasajero').modal('show');</script>", false);
     }
 
-    protected void Borrar_Paquete(object sender, EventArgs e)
+    protected void botonBorrarPaquete_Click(object sender, EventArgs e)
     {
-        string Text = (sender as System.Web.UI.WebControls.Button).CommandArgument;
-        System.Windows.Forms.MessageBox.Show(Text);
+        idPaqueteTuristico.Value = (sender as System.Web.UI.WebControls.Button).CommandArgument;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalQuitarPaquete').modal('show');</script>", false);
+    }
+
+    protected void QuitarPaquete_Click(object sender, EventArgs e)
+    {
+        decimal idPaquete = decimal.Parse(idPaqueteTuristico.Value);
+        EntitiesOnTour bd = new EntitiesOnTour();
+        bd.SP_ELIMINAPAQUETEVIAJECONTRATO(idPaquete);
+        bd.SP_ELIMINAPAQUETEVIAJE(idPaquete);
+        bd.SaveChanges();
+        Page.Response.Redirect(Page.Request.Url.ToString(), true);
     }
 }
 

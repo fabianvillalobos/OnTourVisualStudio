@@ -37,6 +37,8 @@ public partial class AgregarCliente : System.Web.UI.Page
         {
             EntitiesOnTour bd = new EntitiesOnTour();
             Librerias librerias = new Librerias();
+            string idContratoActual = Request.QueryString["id_contrato"];
+            decimal idContrato = int.Parse(idContratoActual);
 
             int rut = int.Parse(txtRut.Text.Trim());
             String dv = txtDv.Text.Trim().ToUpper();
@@ -45,6 +47,11 @@ public partial class AgregarCliente : System.Web.UI.Page
             if (!rutValido)
             {
                 throw new Exception("Rut inválido");
+            }
+            int totalRegistros = bd.CUENTA.Count(x => x.ID_CONTRATO == idContrato && x.NUMRUT_CLI == rut && x.ACTIVO == "T");
+            if (totalRegistros > 0)
+            {
+                throw new Exception("Ya existe este pasajero en el contrato");
             }
             String nombre = txtNombre.Text.Trim();
             String apellidoP = txtApellidoP.Text.Trim();
@@ -67,14 +74,12 @@ public partial class AgregarCliente : System.Web.UI.Page
                 mail, activo, direccion, fechaNacimiento, telefono);
                 mensajeFinal += " Cliente agregado a la BD. ";
             }
-            string idContratoActual = Request.QueryString["id_contrato"];
-            decimal idContrato = int.Parse(idContratoActual);
-
+            
             bd.SP_INSERTARCUENTA(0, idContrato, numrutCliente, activo);
             mensajeFinal += "Cuenta asignada y cliente asignado al contrato";
             System.Windows.Forms.MessageBox.Show(mensajeFinal);
             bd.SaveChanges();
-            Page.Response.Redirect(Page.Request.Url.ToString(), true);
+            Page.Response.Redirect(Page.Request.Url.ToString(), false);
         }
         catch (Exception ex)
         {

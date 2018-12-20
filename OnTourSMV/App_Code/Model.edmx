@@ -408,6 +408,9 @@
         <Function Name="SP_ELIMINAPAQUETEVIAJE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
           <Parameter Name="ID_PAQUETE" Type="number" Mode="In" />
         </Function>
+        <Function Name="SP_ELIMINAPAQUETEVIAJECONTRATO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="ID_PAQUETE" Type="number" Mode="In" />
+        </Function>
         <Function Name="SP_ELIMINAUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
           <Parameter Name="PARAM_ID_USR" Type="number" Mode="In" />
         </Function>
@@ -1290,13 +1293,16 @@
             <Parameter Name="USR_PARAM" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SP_ELIMINACONTRATO">
-            <Parameter Name="PM_ID_CONTRATO" Mode="In" Type="Decimal" />
+          <Parameter Name="PM_ID_CONTRATO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SP_LISTATIPOUSUARIOSSINCLIENTE" />
           <FunctionImport Name="SP_LISTATIPOUSUARIOSSINEMP" />
           <FunctionImport Name="SP_SALDOPORRUT">
             <Parameter Name="RUT_CLI" Mode="In" Type="Decimal" />
             <Parameter Name="V_SALDO" Mode="Out" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ELIMINAPAQUETEVIAJECONTRATO">
+            <Parameter Name="ID_PAQUETE" Mode="In" Type="Decimal" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -1519,6 +1525,7 @@
           <FunctionImportMapping FunctionImportName="SP_LISTATIPOUSUARIOSSINCLIENTE" FunctionName="Model.Store.SP_LISTATIPOUSUARIOSSINCLIENTE" />
           <FunctionImportMapping FunctionImportName="SP_LISTATIPOUSUARIOSSINEMP" FunctionName="Model.Store.SP_LISTATIPOUSUARIOSSINEMP" />
           <FunctionImportMapping FunctionImportName="SP_SALDOPORRUT" FunctionName="Model.Store.SP_SALDOPORRUT" />
+          <FunctionImportMapping FunctionImportName="SP_ELIMINAPAQUETEVIAJECONTRATO" FunctionName="Model.Store.SP_ELIMINAPAQUETEVIAJECONTRATO" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -15,8 +15,20 @@ public partial class AgregarContratos : System.Web.UI.Page
         {
             Response.Redirect("~/View/Login.aspx");
         }
-        lblFechaStr.Visible = false;
-        txtFechaStr.Visible = false;
+        if (!IsPostBack)
+        {
+            lblFechaStr.Visible = false;
+            txtFechaStr.Visible = false;
+            txtNombre.Enabled = false;
+            txtApellidoP.Enabled = false;
+            txtApellidoM.Enabled = false;
+            txtFecha.Enabled = false;
+            txtMail.Enabled = false;
+            txtTelefono.Enabled = false;
+            txtDireccion.Enabled = false;
+        }
+        
+
         int perfilId = int.Parse(Session["PerfilID"].ToString());
         if (perfilId != 2) // Solo ejecutivos de ventas pueden agregar contratos
         {
@@ -39,11 +51,10 @@ public partial class AgregarContratos : System.Web.UI.Page
             Librerias librerias = new Librerias();
             //Agregar Mandante
 
-            int rutMandante = int.Parse(txtRut.Text.Trim());
-            String dv = txtDv.Text.Trim().ToUpper();
+            int rutMandante = int.Parse(rutMandanteBuscar.Text.Trim());
+            String dv = rutMandanteBuscardv.Text.Trim().ToUpper();
             String rutCompleto = rutMandante + dv;
            
-
             bool rutValido = librerias.validarRut(rutCompleto); //Validación de Rut
             if (!rutValido)
             {
@@ -54,16 +65,10 @@ public partial class AgregarContratos : System.Web.UI.Page
                 throw new Exception("Cliente ya existe"); //txtNombre es desactivado siempre que se cargue del botón
             }
             
-            
             String nombre = txtNombre.Text.Trim();
             String apellidoP = txtApellidoP.Text.Trim();
-
             String apellidoM = txtApellidoM.Text.Trim();
-
-
             DateTime fechaNacimiento = DateTime.Parse(txtFecha.Text);
-
-
             DateTime hoy = DateTime.Now;
             txtHoy.Text = hoy.ToShortDateString();
             if (fechaNacimiento > hoy)
@@ -71,10 +76,9 @@ public partial class AgregarContratos : System.Web.UI.Page
                 ValidadorFecNac.Text = "Fecha Invalida";
                 throw new Exception("Fecha Invalida");
             }
-                String mail = txtMail.Text.Trim();
+            String mail = txtMail.Text.Trim();
             String telefono = txtTelefono.Text;
             String direccion = txtDireccion.Text.Trim();
-            //Implícitos
             String activo = "T"; //Por defecto
 
             if (txtNombre.Enabled)
@@ -83,32 +87,21 @@ public partial class AgregarContratos : System.Web.UI.Page
             }
 
             //Agregar Contrato
-
             DateTime fechInicio = DateTime.Parse(txtInicio.Text);
             DateTime fechTermino = DateTime.Parse(txtFin.Text);
             int meta = 0;
             int montoReserva = 0;
-            String estado = "P"; //Por defecto, T Será cuando se complete y F cuando se cancele
+            String estado = "T"; //Por defecto, T Será cuando se complete y F cuando se cancele
                                  //int numrutEmpleado = int.Parse(empleadoObj.NUMRUT_EMP.ToString()); // Sesión usuario
 
             //Al crear un contrato se crea una cuenta inmediatamente, esta cuenta se debe asignar a los nuevos clientes (Pasajeros no mandantes)
+            
             bd.SP_INSERTCONTRATO(fechInicio, fechTermino, meta, montoReserva, estado, numrutEmpleado, rutMandante);
             bd.SaveChanges();
             CONTRATO contrato = bd.CONTRATO.FirstOrDefault(t => t.FECHA_INICIO == fechInicio && t.NUMRUT_CLI_TITULAR == rutMandante);
             bd.SP_INSERTARCUENTA(0, contrato.ID_CONTRATO, rutMandante, estado); //Sigue el estandar P del contrato
             bd.SaveChanges();
-            System.Windows.Forms.MessageBox.Show("Contrato y cuenta Generado.");
-            //LabelAviso.Text = "Contrato y cuenta Generado.";
-            DropDownListMandante.DataBind();//Actualizar dropdown
-            txtNombre.Text = "";
-            txtApellidoP.Text = "";
-            txtApellidoM.Text = "";
-            txtRut.Text = "";
-            txtDv.Text = "";
-            txtFecha.Text = "";
-            txtMail.Text = "";
-            txtTelefono.Text = "";
-            txtDireccion.Text = "";
+            Response.Redirect("ModificarContrato.aspx?ID_CONTRATO="+ contrato.ID_CONTRATO, false);
         }
         catch (Exception ex)
         {
@@ -118,34 +111,59 @@ public partial class AgregarContratos : System.Web.UI.Page
         }
     }
 
-
-
-   
-
     protected void ButtonCargarMandante_Click(object sender, EventArgs e)
     {
         try
         {
             LabelAviso.Text = "";
             EntitiesOnTour bd = new EntitiesOnTour();
-            if(DropDownListMandante.SelectedValue == "")
+
+            decimal numrut = Decimal.Parse(rutMandanteBuscar.Text);
+            string dv = rutMandanteBuscardv.Text;
+            string rutCompleto = numrut + dv;
+
+            Librerias librerias = new Librerias();
+            bool rutValido = librerias.validarRut(rutCompleto); //Validación de Rut
+            if (!rutValido)
             {
-                throw new Exception("No existen valores en el listado, se deben ingresar mandantes");
+                throw new Exception("Rut inválido");
+            }
+            int numrutMandante = int.Parse(rutMandanteBuscar.Text);
+            CLIENTE cliente = bd.CLIENTE.FirstOrDefault(t => t.NUMRUT_CLI == numrutMandante);
+            if (cliente == null)
+            {
+                txtNombre.Text = "";
+                txtApellidoP.Text = "";
+                txtApellidoM.Text = "";
+                txtFecha.Text = "";
+                txtMail.Text = "";
+                txtTelefono.Text = "";
+                txtDireccion.Text = "";
+                txtNombre.Enabled = true;
+                txtApellidoP.Enabled = true;
+                txtApellidoM.Enabled = true;
+                txtFecha.Enabled = true;
+                txtMail.Enabled = true;
+                txtTelefono.Enabled = true;
+                txtDireccion.Enabled = true;
+                txtFecha.Visible = true;
+                LabelFecNacimiento.Visible = true;
+                rutMandanteBuscar.Enabled = false;
+                rutMandanteBuscardv.Enabled = false;
+                txtInicio.Enabled = false;
+                txtFin.Enabled = false;
+                throw new Exception("El rut ingresado no existe en el sistema.");
             }
             lblFechaStr.Visible = true;
             txtFechaStr.Visible = true;
             txtFechaStr.Enabled = false;
             txtFecha.Visible = false;
             LabelFecNacimiento.Visible = false;
-            
-            int numrutMandante = int.Parse(DropDownListMandante.SelectedValue);
-            CLIENTE cliente = bd.CLIENTE.FirstOrDefault(t => t.NUMRUT_CLI == numrutMandante);
+           
             //Llenado de textbox
             txtNombre.Text = cliente.NOMBRE_CLIE;
             txtApellidoP.Text = cliente.APELLIDO_PAT_CLI;
             txtApellidoM.Text = cliente.APELLIDO_MAT_CLI;
-            txtRut.Text = cliente.NUMRUT_CLI.ToString();
-            txtDv.Text = cliente.DRUT_CLI;
             txtFecha.Text = cliente.FECHA_NACIMIENTO_CLI.Value.ToString();
 
             DateTime fec = DateTime.Parse(cliente.FECHA_NACIMIENTO_CLI.ToString());
@@ -158,8 +176,6 @@ public partial class AgregarContratos : System.Web.UI.Page
             txtNombre.Enabled = false;
             txtApellidoP.Enabled = false;
             txtApellidoM.Enabled = false;
-            txtRut.Enabled = false;
-            txtDv.Enabled = false;
             txtFecha.Enabled = false;
             txtMail.Enabled = false;
             txtTelefono.Enabled = false;
@@ -170,32 +186,6 @@ public partial class AgregarContratos : System.Web.UI.Page
             System.Windows.Forms.MessageBox.Show(ex.Message);
             //LabelAviso.Text = ex.Message;
         }
-        
-
-
     }
 
-    protected void DropDownListMandante_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        txtNombre.Text = "";
-        txtApellidoP.Text = "";
-        txtApellidoM.Text = "";
-        txtRut.Text = "";
-        txtDv.Text = "";
-        txtFecha.Text = "";
-        txtMail.Text = "";
-        txtTelefono.Text = "";
-        txtDireccion.Text = "";
-        txtNombre.Enabled = true;
-        txtApellidoP.Enabled = true;
-        txtApellidoM.Enabled = true;
-        txtRut.Enabled = true;
-        txtDv.Enabled = true;
-        txtFecha.Enabled = true;
-        txtMail.Enabled = true;
-        txtTelefono.Enabled = true;
-        txtDireccion.Enabled = true;
-        txtFecha.Visible = true;
-        LabelFecNacimiento.Visible = true;
-    }
 }

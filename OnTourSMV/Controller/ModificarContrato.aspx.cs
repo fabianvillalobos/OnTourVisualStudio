@@ -301,6 +301,51 @@ public partial class View_ModificarContrato : System.Web.UI.Page
     {
         decimal idPaquete = decimal.Parse(idPaqueteTuristico.Value);
         EntitiesOnTour bd = new EntitiesOnTour();
+
+        List<SERVICIO> servciosPaquete = new List<SERVICIO>();
+        servciosPaquete = bd.SP_LISTARSERVICIOSPORPAQUETE(idPaquete).ToList();
+
+        int restaTotal = 0;
+
+        foreach (var item in servciosPaquete)
+        {
+            string jsonServicioWS;
+            switch (item.ID_TIPO_SERVICIO) {
+                case 1 :
+                    jsonServicioWS = getJSONVuelosConID(item.ID_SERVICIO_WS);
+                    dynamic dynJsonVuelos = JsonConvert.DeserializeObject(jsonServicioWS);
+                    foreach (var servicioWS in dynJsonVuelos)
+                        restaTotal += servicioWS.precio;
+                    break;
+                case 2 :
+                    jsonServicioWS = getJSONBusesConID(item.ID_SERVICIO_WS);
+                    dynamic dynJsonBuses = JsonConvert.DeserializeObject(jsonServicioWS);
+                    foreach (var servicioWS in dynJsonBuses)
+                        restaTotal += servicioWS.precio;
+                    break;
+                case 3 :
+                    jsonServicioWS = getJSONAlojamientoConID(item.ID_SERVICIO_WS);
+                    dynamic dynJsonAlojamiento = JsonConvert.DeserializeObject(jsonServicioWS);
+                    foreach (var servicioWS in dynJsonAlojamiento)
+                        restaTotal += servicioWS.precio;
+                    break;
+                case 4 :
+                    jsonServicioWS = getJSONSegurosConId(item.ID_SERVICIO_WS);
+                    dynamic dynJsonSeguro = JsonConvert.DeserializeObject(jsonServicioWS);
+                    foreach (var servicioWS in dynJsonSeguro)
+                        restaTotal += servicioWS.precio;
+                    break;
+
+            }   
+                
+            
+        }
+
+        string idContratoActual = Request.QueryString["id_contrato"];
+        decimal idContrato = int.Parse(idContratoActual);
+        CONTRATO contrato = bd.CONTRATO.FirstOrDefault(x => x.ID_CONTRATO == idContrato);
+        contrato.META -= restaTotal;
+
         bd.SP_ELIMINAPAQUETEVIAJECONTRATO(idPaquete);
         bd.SP_ELIMINAPAQUETEVIAJE(idPaquete);
         bd.SaveChanges();

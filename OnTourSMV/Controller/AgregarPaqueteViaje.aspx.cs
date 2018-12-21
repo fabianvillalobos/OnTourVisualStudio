@@ -25,6 +25,9 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         {
             Response.Redirect("~/View/PaginaPpal.aspx");
         }
+        string idContratoActual = Request.QueryString["id_contrato"];
+        decimal idContrato = int.Parse(idContratoActual);
+        DropDownListContrato.SelectedValue= idContrato.ToString();
     }
 
     protected string getJSONVuelos(string origen_terminal, string origen_ciudad, string origen_pais, string destino_terminal,
@@ -268,6 +271,8 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         db.SaveChanges();
         PAQUETEVIAJE paquete = db.PAQUETEVIAJE.OrderByDescending(x => x.ID_PAQUETEVIAJE).First();
 
+        CONTRATO contrato = db.CONTRATO.FirstOrDefault(x => x.ID_CONTRATO == idContrato);
+        contrato.META+= int.Parse(lblPrecio.Text);
 
         db.SP_INSERTAPAQUETECONTRATO(idContrato, paquete.ID_PAQUETEVIAJE, activo);
         db.SaveChanges();

@@ -13,7 +13,7 @@
                             <h1>Crear cuenta</h1>
                             <div class="row">
                                 <div class="col-xs-3">
-                                <asp:Label ID="Label2" runat="server" Text="Ingresa tú rut:"></asp:Label>
+                                <asp:Label ID="Label2" runat="server" Text="Ingresa tu Rut:"></asp:Label>
                                 </div>
                                 <div class="col-xs-3">
                                     <asp:TextBox ID="txtBuscarRut" runat="server" CssClass="form-control" ValidationGroup="groupCargar" MaxLength="8"></asp:TextBox>

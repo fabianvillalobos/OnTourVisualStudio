@@ -8,7 +8,7 @@
         <div class="row">
             <h2>Empleados</h2>
             <br />
-            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay empleados asociados" AutoGenerateColumns="False" DataKeyNames="NUMRUT_EMP" DataSourceID="ListadoEmpleados">
+            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No hay empleados asociados" AutoGenerateColumns="False" DataKeyNames="NUMRUT_EMP" DataSourceID="ListadoEmpleados">
                 <Columns>
                     <asp:BoundField DataField="NUMRUT_EMP" HeaderText="Rut" ReadOnly="True" SortExpression="NUMRUT_EMP" />
                     <asp:BoundField DataField="DRUT_EMP" HeaderText="DRUT_EMP" SortExpression="DRUT_EMP" />

@@ -11,7 +11,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <asp:GridView ID="GridViewListarCLiente" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay Clientes asociados" AutoGenerateColumns="False" DataSourceID="SqlDataSourceListarCliente">
+            <asp:GridView ID="GridViewListarCLiente" runat="server" CssClass="table table-bordered" EmptyDataText="No hay clientes asociados" AutoGenerateColumns="False" DataSourceID="SqlDataSourceListarCliente">
                 <Columns>
                    <asp:BoundField DataField="ID_CONTRATO" HeaderText="ID Contrato" SortExpression="ID_CONTRATO" />
                     <asp:TemplateField HeaderText="Rut Cliente" SortExpression="Rut">

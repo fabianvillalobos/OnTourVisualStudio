@@ -12,7 +12,7 @@
             <div class="col-xs-6 text-right padding-top-20">
                 <asp:Button ID="btnNuevaActividad" runat="server" CssClass="btn btn-primary" Text="Nueva Actividad" OnClick="btnNuevaActividad_Click" />
             </div>
-            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay Actividades asociadas" AutoGenerateColumns="False" DataSourceID="SqlDataSourceActividades">
+            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No hay actividades asociadas" AutoGenerateColumns="False" DataSourceID="SqlDataSourceActividades">
                 <Columns>
                     <asp:BoundField DataField="ID_ACTIVIDAD" HeaderText="ID" SortExpression="ID_ACTIVIDAD" />
                     <asp:BoundField DataField="DESC_ACTIVIDAD" HeaderText="Descripcion" SortExpression="DESC_ACTIVIDAD" />

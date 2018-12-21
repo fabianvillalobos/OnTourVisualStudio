@@ -8,7 +8,7 @@
             <div class="col-xs-6">
                 <h3>Mis Contratos</h3>
             </div>
-            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay contratos asociados" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True">
+            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No hay contratos asociados" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True">
                 <Columns>
                     <asp:BoundField DataField="ID_CONTRATO" HeaderText="ID" SortExpression="ID_CONTRATO" />
                     <asp:TemplateField HeaderText="Nombre Mandante" SortExpression="Nombre">
@@ -17,7 +17,7 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="FECHA_INICIO" HeaderText="Inicio" SortExpression="FECHA_INICIO" DataFormatString='{0:MM-dd-yyyy}'/>
-                    <asp:BoundField DataField="TERMINO" HeaderText="Termino" SortExpression="TERMINO" DataFormatString='{0:MM-dd-yyyy}'/>
+                    <asp:BoundField DataField="TERMINO" HeaderText="Término" SortExpression="TERMINO" DataFormatString='{0:MM-dd-yyyy}'/>
                     <asp:TemplateField HeaderText="Estado" SortExpression="Estado">
                         <ItemTemplate>
                             <asp:Label Visible='<%# Eval("Estado").ToString().Equals("P") %>' Text="<div class='progreso btn-primary'>En Progreso</div>" runat="server" />

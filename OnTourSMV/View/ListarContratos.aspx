@@ -13,7 +13,7 @@
                 <asp:Button ID="btnNuevoContrato" runat="server" CssClass="btn btn-primary" Text="Nuevo Contrato" OnClick="btnNuevoContrato_Click" />
                 <asp:Button ID="btnExportar" runat="server" CssClass="btn btn-success" Text="Exportar PDF" OnClick="btnExportar_Click" />
             </div>
-            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay contratos asociados" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True">
+            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No hay contratos asociados" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True">
                 <Columns>
                     <asp:BoundField DataField="ID_CONTRATO" HeaderText="ID" SortExpression="ID_CONTRATO" />
                     <asp:TemplateField HeaderText="Nombre Mandante" SortExpression="Nombre">
@@ -22,7 +22,7 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="FECHA_INICIO" HeaderText="Inicio" SortExpression="FECHA_INICIO" DataFormatString='{0:MM-dd-yyyy}' />
-                    <asp:BoundField DataField="TERMINO" HeaderText="Termino" SortExpression="TERMINO" DataFormatString='{0:MM-dd-yyyy}' />
+                    <asp:BoundField DataField="TERMINO" HeaderText="Término" SortExpression="TERMINO" DataFormatString='{0:MM-dd-yyyy}' />
                     <asp:TemplateField HeaderText="Estado" SortExpression="Estado">
                         <ItemTemplate>
                             <asp:Label Visible='<%# Eval("Estado").ToString().Equals("P") %>' Text="<div class='progreso btn-primary'>En Progreso</div>" runat="server" />
@@ -36,7 +36,7 @@
                     <asp:HyperLinkField HeaderText="Actividades" ControlStyle-CssClass="btn btn-success progreso btn-editar" DataNavigateUrlFields="ID_CONTRATO" DataNavigateUrlFormatString="ListarActividadesContrato.aspx?ID_CONTRATO={0}" Text="<i class='glyphicon glyphicon-pencil'></i> <span>Ver</span>" />
                     <asp:HyperLinkField HeaderText="Transacciones" ControlStyle-CssClass="btn btn-success progreso btn-editar" DataNavigateUrlFields="ID_CONTRATO" DataNavigateUrlFormatString="ListarTransaccion.aspx?ID_CONTRATO={0}" Text="<i class='glyphicon glyphicon-pencil'></i> <span>Ver</span>" />
                     <asp:HyperLinkField HeaderText="Editar" ControlStyle-CssClass="btn btn-success progreso btn-editar" DataNavigateUrlFields="ID_CONTRATO" DataNavigateUrlFormatString="ModificarContrato.aspx?ID_CONTRATO={0}" Text="<i class='glyphicon glyphicon-pencil'></i> <span>Editar</span>" />
-                    <asp:TemplateField HeaderText="">
+                    <asp:TemplateField HeaderText="Borrar">
                         <ItemTemplate>
                             <asp:Button ID="btnDelete" runat="server" Text="Borrar" OnClick="btnDelete_Click" CommandArgument='<%# Eval("ID_CONTRATO") %>' class="btn btn-danger progreso btn-borrar" />
                         </ItemTemplate>

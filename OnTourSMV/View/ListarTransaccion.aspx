@@ -15,7 +15,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No Hay transacciones asociadas" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+                <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered" EmptyDataText="No hay transacciones asociadas" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
                 <Columns>
                     <asp:BoundField DataField="ID_TRANSACCION" HeaderText="ID Transacción" SortExpression="ID_TRANSACCION"/>
                     <asp:BoundField DataField="FECHA_TRANSACCION" HeaderText="Fecha Transacción" SortExpression="FECHA_TRANSACCION" DataFormatString='{0:MM-dd-yyyy}' />

@@ -83,7 +83,7 @@
             </div>
             <div class="col-xs-6">
                 <h4><span class="badge bg-success">3</span> Notificar</h4>
-                <p>Adjunta tu comprobate</p>
+                <p>Adjunta tu comprobante</p>
                 <input id="comprobante" runat="server" type="file" class="form-control" />
                 <br />
                 <asp:LinkButton id="btnNotificar" runat="server" OnClick="Notificar_Click" class="btn btn-success"><i class="glyphicon glyphicon-ok"></i> Confirmar transacción</asp:LinkButton>

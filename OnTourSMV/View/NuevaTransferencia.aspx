@@ -18,7 +18,8 @@
         </div>
         <div class="col-xs-3">
             <asp:label runat="server" text="Cantidad"></asp:label>
-            <input runat="server" id="txtMonto" type="number" placeholder="$0" class="form-control" required >            
+            <input runat="server" id="txtMonto" type="number" placeholder="$0" class="form-control" required >
+            <asp:RequiredFieldValidator ControlToValidate="txtMonto" ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ForeColor="Red" ValidationGroup="cargarGroup"></asp:RequiredFieldValidator>
         </div>
         <div class="col-xs-5">
             <asp:label text="Tipo de transacción:" runat="server" />
@@ -28,7 +29,7 @@
             <small><strong>Individual:</strong> El dinero depositado va directamente a tu cuenta del contrato.<br /><strong>Grupal:</strong> El dinero es repartido hacia todas las cuentas de los pasajeros del grupo.</small>
         </div>
         <div class="col-xs-3 padding-top-20">
-            <asp:LinkButton id="continuar" runat="server" OnClick="Continuar_Click" class="btn btn-success"><i class="glyphicon glyphicon-arrow-right"></i> Continuar</asp:LinkButton>
+            <asp:LinkButton id="continuar" runat="server" OnClick="Continuar_Click" class="btn btn-success" ValidationGroup="cargarGroup"><i class="glyphicon glyphicon-arrow-right" ValidationGroup="cargarGroup"></i> Continuar</asp:LinkButton>
         </div>
     </div>
     <div class="row">

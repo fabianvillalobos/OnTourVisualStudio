@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="col-xs-1"></div>
                                 <div class="col-xs-3">
-                                    <asp:Button ID="buscarRut" OnClick="buscarRut_Click" runat="server" CssClass="btn btn-primary" Text="Cargar rut" ValidationGroup="groupCargar" />
+                                    <asp:Button ID="buscarRut" OnClick="buscarRut_Click" runat="server" CssClass="btn btn-primary btn-rut" Text="Buscar rut" ValidationGroup="groupCargar" />
                                 </div>
                             </div>
 
@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-xs-3">
-                                            <asp:Button ID="crearCuenta" OnClick="crearCuenta_Click" runat="server" CssClass="btn btn-primary" Text="Crear cuenta" />
+                                            <asp:Button ID="crearCuenta" OnClick="crearCuenta_Click" runat="server" CssClass="btn btn-primary btn-rut" Text="Crear cuenta" />
                                         </div>
                                         <div class="alert-danger">
                                             <asp:Label ID="LabelAviso" runat="server" Text=""></asp:Label>

@@ -23,38 +23,28 @@ public partial class MasterPage : System.Web.UI.MasterPage
             lblUsuario.Text = Session["Usuario"].ToString().ToUpper();
             lblUsuario.Text += "<br>" + Session["Perfil"].ToString();
 
+            menuEjecutivo.Visible = false;
+            menuDueno.Visible = false;
+            menuCliente.Visible = false;
 
             Mantenedor.Visible = true;
             int perfilId = int.Parse(Session["PerfilID"].ToString());
-            if (perfilId == 1)
+            if (perfilId == 1) // admin no entra.
             {
-                contratos.Visible = false;
-                paquetes.Visible = false;
-                actividades.Visible = false;
-                actAgrega.Visible = false;
+                
             }
-            if (perfilId == 2)
+            if (perfilId == 2) //ejec
             {
-                usuariosSis.Visible = false;
-                actAgrega.Visible = false;
+                menuEjecutivo.Visible = true;
             }
-            if (perfilId == 3)
+            if (perfilId == 3) //Cliente
             {
-                contraAgregaCon.Visible = false;
-                //contraAgregaCli.Visible = false;
-                paquetes.Visible = false;
-                usuarios.Visible = false;
-                actAgrega.Visible = false;
-                transAgre.Visible = false;
-                actAgrega.Visible = false;
+                menuCliente.Visible = true;
+
             }
-            if (perfilId == 4)
+            if (perfilId == 4) //dueño
             {
-                paquetes.Visible = false;
-                actividades.Visible = false;
-                contraAgregaCon.Visible = false;
-                transacciones.Visible = false;
-                actAgrega.Visible = false;
+                menuDueno.Visible = true;
             }
 
         }

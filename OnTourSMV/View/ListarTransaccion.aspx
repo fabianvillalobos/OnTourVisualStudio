@@ -9,8 +9,8 @@
                 <h3>Transacciones</h3>
                 <br />
             </div>
-            <div class="col-xs-6 text-right padding-top-20">
-                <a href="NuevaTransferencia.aspx?ID_CONTRATO=<%=Request.QueryString["ID_CONTRATO"] %>" class="btn btn-success"><i class='glyphicon glyphicon-plus'></i> <span>Nueva transacción</span></a>
+            <div runat="server" id="btnNueva" class="col-xs-6 text-right padding-top-20">
+                <a   href="NuevaTransferencia.aspx?ID_CONTRATO=<%=Request.QueryString["ID_CONTRATO"] %>" class="btn btn-success"><i class='glyphicon glyphicon-plus'></i> <span>Nueva transacción</span></a>
             </div>
         </div>
         <div class="row">

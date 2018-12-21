@@ -23,7 +23,18 @@ public partial class CrearCuenta : System.Web.UI.Page
         try
         {
             EntitiesOnTour bd = new EntitiesOnTour();
-            int numeroRut = int.Parse(txtBuscarRut.Text);
+
+            Librerias librerias = new Librerias();
+            int numeroRut = int.Parse(txtBuscarRut.Text.Trim());
+            String dv = txtDvBuscar.Text.Trim().ToUpper();
+            String rutCompleto = numeroRut + dv;
+
+            bool rutValido = librerias.validarRut(rutCompleto); //Validación de Rut
+            if (!rutValido)
+            {
+                throw new Exception("El rut ingresado no es válido.");
+            }
+
             clienteObjeto = bd.CLIENTE.FirstOrDefault(x => x.NUMRUT_CLI == numeroRut);
             
             if (clienteObjeto == null) {

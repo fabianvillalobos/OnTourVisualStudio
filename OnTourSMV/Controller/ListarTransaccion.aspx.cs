@@ -13,23 +13,15 @@ public partial class ListarTransaccion : System.Web.UI.Page
         {
             Response.Redirect("~/View/Login.aspx");
         }
-        else
-        {/*
-            int perfilId = int.Parse(Session["PerfilID"].ToString());
-            if (perfilId == 3)
-            {
-                btnNuevaActividad.Enabled = false;
-                btnNuevaActividad.Visible = false;
-            }
-            else
-            {
-                btnNuevaActividad.Enabled = true;
-                btnNuevaActividad.Visible = true;
-            }
-            */
-            string idContratoActual = Request.QueryString["id_contrato"];
-            SqlDataSource1.SelectParameters["id"].DefaultValue = idContratoActual;
+        
+        int perfilId = int.Parse(Session["PerfilID"].ToString());
+        if (perfilId == 2)
+        {
+            btnNueva.Visible = false;
         }
+
+        string idContratoActual = Request.QueryString["id_contrato"];
+        SqlDataSource1.SelectParameters["id"].DefaultValue = idContratoActual;
     }
 
     protected void btnVolverAContratos_Click(object sender, EventArgs e)

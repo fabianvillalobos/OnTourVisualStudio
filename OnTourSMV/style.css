@@ -58,7 +58,10 @@ body{font-family: 'Roboto', sans-serif;-webkit-font-smoothing: antialiased; -moz
 Estilos aplicados para la barra superior.
 ==================================
 */
-.navbar{border-radius:0px;min-height:65px;}
+.navbar {
+    border-radius: 0px;
+    min-height: 65px;
+}
     .navbar .container-fluid,
     .navbar-header,
     .navbar-inverse .navbar-brand {
@@ -169,15 +172,18 @@ body{
 .modificar-contrato .box {border-top: 1px solid #ccc;padding-bottom: 20px;}
 .modificar-contrato .box h5{margin-top:0px; padding-top:0px;}
 .btn-borrar-paquete-turistico{position:relative;top:-39px;font-size:12px; font-weight:bold;border-radius:0px;}
+.navbar-right {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: 0px;
+    padding: 0px;
+}
 
-
-
-
-
-
-
-
-
+.navbar-inverse .container-fluid {
+    position: relative
+}
+.btn-rut{text-transform:inherit !important;font-weight:normal !important;}
 /*
 ==================================
 3. RESPONSIVE

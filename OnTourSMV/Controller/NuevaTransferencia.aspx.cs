@@ -122,6 +122,7 @@ public partial class NuevaTransferencia : System.Web.UI.Page
     protected void btnVolverATransacciones_Click(object sender, EventArgs e)
     {
         string idContratoActual = Request.QueryString["id_contrato"];
+        txtMonto.Attributes.Remove("required");
         Response.Redirect("~/View/ListarTransaccion.aspx?" + idContratoActual);
     }
 

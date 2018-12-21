@@ -187,4 +187,9 @@ public partial class AgregarContratos : System.Web.UI.Page
         lblModalTitulo.Text = titulo;
         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
     }
+
+    protected void btnVolverAContratos_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/View/ListarContratos.aspx");
+    }
 }

@@ -579,4 +579,53 @@ public partial class EntitiesOnTour : DbContext
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ELIMINAPAQUETEVIAJECONTRATO", iD_PAQUETEParameter);
     }
+
+    public virtual int SP_INSERTEMPLEADO(Nullable<decimal> cNUMRUT_EMP, string cDRUT_EMP, string cNOMBRE_EMP, string cAPELLIDO_PAT_EMP, string cAPELLIDO_MAT_EMP, string cMAIL_EMP, string cACTIVO_EMP, Nullable<decimal> cIDUSR_EMP, string cDIRECCION_EMP, Nullable<System.DateTime> cFECHA_NACIMIENTO_EMP, string cFONO_CLI)
+    {
+        var cNUMRUT_EMPParameter = cNUMRUT_EMP.HasValue ?
+            new ObjectParameter("CNUMRUT_EMP", cNUMRUT_EMP) :
+            new ObjectParameter("CNUMRUT_EMP", typeof(decimal));
+
+        var cDRUT_EMPParameter = cDRUT_EMP != null ?
+            new ObjectParameter("CDRUT_EMP", cDRUT_EMP) :
+            new ObjectParameter("CDRUT_EMP", typeof(string));
+
+        var cNOMBRE_EMPParameter = cNOMBRE_EMP != null ?
+            new ObjectParameter("CNOMBRE_EMP", cNOMBRE_EMP) :
+            new ObjectParameter("CNOMBRE_EMP", typeof(string));
+
+        var cAPELLIDO_PAT_EMPParameter = cAPELLIDO_PAT_EMP != null ?
+            new ObjectParameter("CAPELLIDO_PAT_EMP", cAPELLIDO_PAT_EMP) :
+            new ObjectParameter("CAPELLIDO_PAT_EMP", typeof(string));
+
+        var cAPELLIDO_MAT_EMPParameter = cAPELLIDO_MAT_EMP != null ?
+            new ObjectParameter("CAPELLIDO_MAT_EMP", cAPELLIDO_MAT_EMP) :
+            new ObjectParameter("CAPELLIDO_MAT_EMP", typeof(string));
+
+        var cMAIL_EMPParameter = cMAIL_EMP != null ?
+            new ObjectParameter("CMAIL_EMP", cMAIL_EMP) :
+            new ObjectParameter("CMAIL_EMP", typeof(string));
+
+        var cACTIVO_EMPParameter = cACTIVO_EMP != null ?
+            new ObjectParameter("CACTIVO_EMP", cACTIVO_EMP) :
+            new ObjectParameter("CACTIVO_EMP", typeof(string));
+
+        var cIDUSR_EMPParameter = cIDUSR_EMP.HasValue ?
+            new ObjectParameter("CIDUSR_EMP", cIDUSR_EMP) :
+            new ObjectParameter("CIDUSR_EMP", typeof(decimal));
+
+        var cDIRECCION_EMPParameter = cDIRECCION_EMP != null ?
+            new ObjectParameter("CDIRECCION_EMP", cDIRECCION_EMP) :
+            new ObjectParameter("CDIRECCION_EMP", typeof(string));
+
+        var cFECHA_NACIMIENTO_EMPParameter = cFECHA_NACIMIENTO_EMP.HasValue ?
+            new ObjectParameter("CFECHA_NACIMIENTO_EMP", cFECHA_NACIMIENTO_EMP) :
+            new ObjectParameter("CFECHA_NACIMIENTO_EMP", typeof(System.DateTime));
+
+        var cFONO_CLIParameter = cFONO_CLI != null ?
+            new ObjectParameter("CFONO_CLI", cFONO_CLI) :
+            new ObjectParameter("CFONO_CLI", typeof(string));
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_INSERTEMPLEADO", cNUMRUT_EMPParameter, cDRUT_EMPParameter, cNOMBRE_EMPParameter, cAPELLIDO_PAT_EMPParameter, cAPELLIDO_MAT_EMPParameter, cMAIL_EMPParameter, cACTIVO_EMPParameter, cIDUSR_EMPParameter, cDIRECCION_EMPParameter, cFECHA_NACIMIENTO_EMPParameter, cFONO_CLIParameter);
+    }
 }

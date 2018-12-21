@@ -300,38 +300,56 @@ public partial class View_ModificarContrato : System.Web.UI.Page
         decimal idPaquete = decimal.Parse(idPaqueteTuristico.Value);
         EntitiesOnTour bd = new EntitiesOnTour();
 
-        List<SERVICIO> servciosPaquete = new List<SERVICIO>();
-        servciosPaquete = bd.SP_LISTARSERVICIOSPORPAQUETE(idPaquete).ToList();
+        var servciosPaquete = (from servicio in bd.SERVICIO
+                        join servicio_paquete in bd.SERVICIO_PAQUETE on servicio.ID_SERVICIO equals servicio_paquete.ID_SERVICIO
+                        where servicio_paquete.ID_PAQUETEVIAJE == idPaquete
+                        select new { Servicio = servicio }).ToList();
 
         int restaTotal = 0;
 
         foreach (var item in servciosPaquete)
         {
             string jsonServicioWS;
-            switch (item.ID_TIPO_SERVICIO) {
+            switch (item.Servicio.ID_TIPO_SERVICIO) {
                 case 1 :
-                    jsonServicioWS = getJSONVuelosConID(item.ID_SERVICIO_WS);
+                    jsonServicioWS = getJSONVuelosConID(item.Servicio.ID_SERVICIO_WS);
                     dynamic dynJsonVuelos = JsonConvert.DeserializeObject(jsonServicioWS);
                     foreach (var servicioWS in dynJsonVuelos)
-                        restaTotal += servicioWS.precio;
+                    {
+                        string valorstrWS = servicioWS.precio;
+                        int valorWS = int.Parse(valorstrWS);
+                        restaTotal += valorWS;
+                    }
                     break;
                 case 2 :
-                    jsonServicioWS = getJSONBusesConID(item.ID_SERVICIO_WS);
+                    jsonServicioWS = getJSONBusesConID(item.Servicio.ID_SERVICIO_WS);
                     dynamic dynJsonBuses = JsonConvert.DeserializeObject(jsonServicioWS);
                     foreach (var servicioWS in dynJsonBuses)
-                        restaTotal += servicioWS.precio;
+                    {
+                        string valorstrWS = servicioWS.precio;
+                        int valorWS = int.Parse(valorstrWS);
+                        restaTotal += valorWS;
+                    }
                     break;
                 case 3 :
-                    jsonServicioWS = getJSONAlojamientoConID(item.ID_SERVICIO_WS);
+                    jsonServicioWS = getJSONAlojamientoConID(item.Servicio.ID_SERVICIO_WS);
                     dynamic dynJsonAlojamiento = JsonConvert.DeserializeObject(jsonServicioWS);
                     foreach (var servicioWS in dynJsonAlojamiento)
-                        restaTotal += servicioWS.precio;
+                    {
+                        string valorstrWS = servicioWS.h_precio;
+                        int valorWS = int.Parse(valorstrWS);
+                        restaTotal += valorWS;
+                    }
                     break;
                 case 4 :
-                    jsonServicioWS = getJSONSegurosConId(item.ID_SERVICIO_WS);
+                    jsonServicioWS = getJSONSegurosConId(item.Servicio.ID_SERVICIO_WS);
                     dynamic dynJsonSeguro = JsonConvert.DeserializeObject(jsonServicioWS);
                     foreach (var servicioWS in dynJsonSeguro)
-                        restaTotal += servicioWS.precio;
+                    {
+                        string valorstrWS = servicioWS.se_precio;
+                        int valorWS = int.Parse(valorstrWS);
+                        restaTotal += valorWS;
+                    }
                     break;
             }   
         }
@@ -352,6 +370,12 @@ public partial class View_ModificarContrato : System.Web.UI.Page
         lblModalMensaje.Text = contenido;
         lblModalTitulo.Text = titulo;
         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
+    }
+
+    protected void btnVolverAContratos_Click(object sender, EventArgs e)
+    {
+        string idContratoActual = Request.QueryString["id_contrato"];
+        Response.Redirect("~/View/ListarContratos.aspx");
     }
 }
 

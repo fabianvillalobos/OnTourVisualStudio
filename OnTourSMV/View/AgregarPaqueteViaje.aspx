@@ -12,10 +12,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-9">
             <h2>Nuevo paquete de viaje</h2>
             <p>Completa los campos para añadir un paquete de viaje a un contrato.</p>
             <br />
+        </div>
+        <div class="col-xs-3 padding-top-20">
+           <asp:Button ID="btnVolver" runat="server" Text="Volver a Contrato" CssClass="btn btn-defaut" OnClick="btnVolverAContratos_Click" CausesValidation="false" formnovalidate  />
         </div>
     </div>
     <div class="row">

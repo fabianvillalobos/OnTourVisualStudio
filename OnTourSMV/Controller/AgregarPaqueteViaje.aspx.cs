@@ -272,7 +272,7 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         PAQUETEVIAJE paquete = db.PAQUETEVIAJE.OrderByDescending(x => x.ID_PAQUETEVIAJE).First();
 
         CONTRATO contrato = db.CONTRATO.FirstOrDefault(x => x.ID_CONTRATO == idContrato);
-        contrato.META+= int.Parse(lblPrecio.Text);
+        contrato.META+= int.Parse(lblPrecio.Text.Substring(1));
 
         db.SP_INSERTAPAQUETECONTRATO(idContrato, paquete.ID_PAQUETEVIAJE, activo);
         db.SaveChanges();
@@ -320,6 +320,7 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         MostrarModal("Atención", "Se ha agregado el paquete de viaje correctamente.");
         deshabilitarFormulario();
         deshabilitarDropDowns();
+        Response.Redirect("ModificarContrato.aspx?ID_CONTRATO=" + contrato.ID_CONTRATO, false);
     }
 
   
@@ -391,5 +392,11 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         lblModalMensaje.Text = contenido;
         lblModalTitulo.Text = titulo;
         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
+    }
+
+    protected void btnVolverAContratos_Click(object sender, EventArgs e)
+    {
+        string idContratoActual = Request.QueryString["id_contrato"];
+        Response.Redirect("~/View/ModificarContrato.aspx?ID_CONTRATO="+ idContratoActual);
     }
 }

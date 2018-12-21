@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="col-xs-3 padding-top-20">
-                     <asp:Button ID="btnVolver" runat="server" Text="Volver a Actividades" CssClass="btn btn-defaut" OnClick="btnVolverAActividades_Click" />
+                     <asp:Button ID="btnVolver" runat="server" Text="Volver a Actividades" CssClass="btn btn-defaut" OnClick="btnVolverAActividades_Click" CausesValidation="false" formnovalidate  />
                 </div>
 
                 <div class="col-xs-3 padding-top-20">

@@ -65,6 +65,9 @@ public partial class AgregarActividad : System.Web.UI.Page
 
     protected void btnVolverAActividades_Click(object sender, EventArgs e)
     {
+        RangeValidator1.Enabled = false;
+        RequiredFieldValidator3.Enabled = false;
+
         string idContratoActual = Request.QueryString["id_contrato"];
         Response.Redirect("~/View/ListarActividadesContrato.aspx?" + idContratoActual);
 

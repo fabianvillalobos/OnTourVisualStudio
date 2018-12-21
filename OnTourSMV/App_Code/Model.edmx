@@ -390,6 +390,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="CUSTOM_AUTH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR" ReturnType="pl/sql boolean">
+          <Parameter Name="P_USERNAME" Type="varchar2" Mode="In" />
+          <Parameter Name="P_PASSWORD" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="CUSTOM_HASH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR" ReturnType="varchar2">
+          <Parameter Name="P_USERNAME" Type="varchar2" Mode="In" />
+          <Parameter Name="P_PASSWORD" Type="varchar2" Mode="In" />
+        </Function>
         <Function Name="SP_ACTUALIZAUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
           <Parameter Name="PARAM_ID_USR" Type="number" Mode="In" />
           <Parameter Name="PARAM_LOGIN_USR" Type="varchar2" Mode="In" />
@@ -476,6 +484,19 @@
           <Parameter Name="PESTADO" Type="char" Mode="In" />
           <Parameter Name="PNUMRUT_EMP" Type="number" Mode="In" />
           <Parameter Name="PNUMRUT_CLI_TITULAR" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_INSERTEMPLEADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR">
+          <Parameter Name="CNUMRUT_EMP" Type="number" Mode="In" />
+          <Parameter Name="CDRUT_EMP" Type="char" Mode="In" />
+          <Parameter Name="CNOMBRE_EMP" Type="varchar2" Mode="In" />
+          <Parameter Name="CAPELLIDO_PAT_EMP" Type="varchar2" Mode="In" />
+          <Parameter Name="CAPELLIDO_MAT_EMP" Type="varchar2" Mode="In" />
+          <Parameter Name="CMAIL_EMP" Type="varchar2" Mode="In" />
+          <Parameter Name="CACTIVO_EMP" Type="char" Mode="In" />
+          <Parameter Name="CIDUSR_EMP" Type="number" Mode="In" />
+          <Parameter Name="CDIRECCION_EMP" Type="varchar2" Mode="In" />
+          <Parameter Name="CFECHA_NACIMIENTO_EMP" Type="date" Mode="In" />
+          <Parameter Name="CFONO_CLI" Type="varchar2" Mode="In" />
         </Function>
         <Function Name="SP_LISTACLIENTESSINUSUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR" />
         <Function Name="SP_LISTAPAQUETEVIAJE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ONTOUR" />
@@ -1302,7 +1323,20 @@
             <Parameter Name="V_SALDO" Mode="Out" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SP_ELIMINAPAQUETEVIAJECONTRATO">
-            <Parameter Name="ID_PAQUETE" Mode="In" Type="Decimal" />
+          <Parameter Name="ID_PAQUETE" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INSERTEMPLEADO">
+            <Parameter Name="CNUMRUT_EMP" Mode="In" Type="Decimal" />
+            <Parameter Name="CDRUT_EMP" Mode="In" Type="String" />
+            <Parameter Name="CNOMBRE_EMP" Mode="In" Type="String" />
+            <Parameter Name="CAPELLIDO_PAT_EMP" Mode="In" Type="String" />
+            <Parameter Name="CAPELLIDO_MAT_EMP" Mode="In" Type="String" />
+            <Parameter Name="CMAIL_EMP" Mode="In" Type="String" />
+            <Parameter Name="CACTIVO_EMP" Mode="In" Type="String" />
+            <Parameter Name="CIDUSR_EMP" Mode="In" Type="Decimal" />
+            <Parameter Name="CDIRECCION_EMP" Mode="In" Type="String" />
+            <Parameter Name="CFECHA_NACIMIENTO_EMP" Mode="In" Type="DateTime" />
+            <Parameter Name="CFONO_CLI" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -1526,6 +1560,7 @@
           <FunctionImportMapping FunctionImportName="SP_LISTATIPOUSUARIOSSINEMP" FunctionName="Model.Store.SP_LISTATIPOUSUARIOSSINEMP" />
           <FunctionImportMapping FunctionImportName="SP_SALDOPORRUT" FunctionName="Model.Store.SP_SALDOPORRUT" />
           <FunctionImportMapping FunctionImportName="SP_ELIMINAPAQUETEVIAJECONTRATO" FunctionName="Model.Store.SP_ELIMINAPAQUETEVIAJECONTRATO" />
+          <FunctionImportMapping FunctionImportName="SP_INSERTEMPLEADO" FunctionName="Model.Store.SP_INSERTEMPLEADO" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

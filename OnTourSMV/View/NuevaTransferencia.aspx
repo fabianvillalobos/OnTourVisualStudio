@@ -9,8 +9,8 @@
             <p>Realiza un depósito bancario<p>
         </div>
         <div class="col-xs-6 text-right padding-top-20">
-                <asp:Button ID="btnVolverATransacciones" runat="server" CssClass="btn btn-default" Text="Volver a Transacciones" OnClick="btnVolverATransacciones_Click" />
-            </div>
+                <asp:Button ID="btnVolverATransacciones" runat="server" CssClass="btn btn-default" Text="Volver a Transacciones" OnClick="btnVolverATransacciones_Click" CausesValidation="false" formnovalidate />
+        </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
@@ -18,7 +18,7 @@
         </div>
         <div class="col-xs-3">
             <asp:label runat="server" text="Cantidad"></asp:label>
-            <input runat="server" id="txtMonto" type="number" placeholder="$0" class="form-control" required/>            
+            <input runat="server" id="txtMonto" type="number" placeholder="$0" class="form-control" required >            
         </div>
         <div class="col-xs-5">
             <asp:label text="Tipo de transacción:" runat="server" />

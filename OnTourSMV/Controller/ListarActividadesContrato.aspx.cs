@@ -24,12 +24,8 @@ public partial class ListarActividadesContrato : System.Web.UI.Page
                 btnNuevaActividad.Enabled = true;
                 btnNuevaActividad.Visible = true;
             }
-            
-
-
             string idContratoActual = Request.QueryString["id_contrato"];
             SqlDataSourceActividades.SelectParameters["id"].DefaultValue = idContratoActual;
-           // GridView1.DataBind();
         }
        
     }
@@ -43,5 +39,12 @@ public partial class ListarActividadesContrato : System.Web.UI.Page
     protected void btnVolverAContratos_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/View/ListarContratos.aspx");
+    }
+
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
     }
 }

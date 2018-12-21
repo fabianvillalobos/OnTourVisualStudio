@@ -37,7 +37,6 @@ public partial class ModificarCliente : System.Web.UI.Page
             txtTelefono.Text = cliente.FONO_CLI;
 
         }
-       
     }
 
     protected void btnModificar_Click(object sender, EventArgs e)
@@ -52,30 +51,30 @@ public partial class ModificarCliente : System.Web.UI.Page
             String apellidoM = txtApellidoMNuevo.Text.Trim();
             String mail = txtMailNuevo.Text.Trim();
             String activo = DropDownListActivoNuevo.SelectedValue; // AÚN NO IMPLEMENTADO EN SP
-            //int tipoUsuario = int.Parse(DropDownListTipoUsuario.SelectedValue);
             String direccion = txtDireccionNuevo.Text.Trim();
             DateTime fechaNacimiento = DateTime.Parse(txtFechaNuevo.Text);
             String telefono = txtTelefonoNuevo.Text;
 
             bd.SP_UPDATECLIENTE(rut, nombreNuevo, apellidoP, apellidoM, mail, activo ,direccion, fechaNacimiento, telefono);
-            
             bd.SaveChanges();
-            lblAviso.Text = "Cliente Modificado Exitosamente";
-            Page_Load(null, EventArgs.Empty); //Se recomienda MEJORAR con ajax
-
+            MostrarModal("Atención", "Cliente Modificado Exitosamente");
+            Page_Load(null, EventArgs.Empty);
         }
         catch(Exception ex)
         {
-            lblAviso.Text = ex.Message;
+            MostrarModal("Atención", ex.Message);
         }
-    
-       
     }
-
-
-
+    
     protected void ButtonActualizarUsuario_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/View/ActualizarUsuario.aspx");
+    }
+
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
     }
 }

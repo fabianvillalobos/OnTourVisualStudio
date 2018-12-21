@@ -72,18 +72,15 @@ public partial class AgregarCliente : System.Web.UI.Page
             {
                 bd.SP_INSERTCLIENTE(rut, dv, nombre, apellidoP, apellidoM,
                 mail, activo, direccion, fechaNacimiento, telefono);
-                mensajeFinal += " Cliente agregado a la BD. ";
             }
             
             bd.SP_INSERTARCUENTA(0, idContrato, numrutCliente, activo);
-            mensajeFinal += "Cuenta asignada y cliente asignado al contrato";
-            System.Windows.Forms.MessageBox.Show(mensajeFinal);
             bd.SaveChanges();
             Page.Response.Redirect(Page.Request.Url.ToString(), false);
         }
         catch (Exception ex)
         {
-            System.Windows.Forms.MessageBox.Show(ex.Message);
+            MostrarModal("Atención", ex.Message);
         }
     }
 
@@ -151,8 +148,7 @@ public partial class AgregarCliente : System.Web.UI.Page
                 activarCampos();
                 txtRut.Text = txtBuscarRut.Text;               
                 txtDv.Text = txtDvBuscar.Text;
-                System.Windows.Forms.MessageBox.Show("No existe el pasajero, por favor rellene los campos");
-                // lblAviso.Text = "No existe el pasajero, por favor rellene los campos";
+                throw new Exception("El pasajero ingresado no existe en la base de datos, complete por favor los campos.");
             }
             else //Existen coincidencias, se cargan los textbox
             {
@@ -177,7 +173,14 @@ public partial class AgregarCliente : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            System.Windows.Forms.MessageBox.Show(ex.Message);
+            MostrarModal("Atención",ex.Message);
         }
+    }
+
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
     }
 }

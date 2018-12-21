@@ -10,23 +10,16 @@ public partial class View_Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Se hace esto para que cuando se ingrese acá se borren las sesiones
         Session["Usuario"] = null;
-       
     }
 
     protected void btnLogin_Click(object sender, EventArgs e)
     {
-        //Los usuarios VIENEN creados desde cuando el cliente/empleado solicita/concreta el usuario/contrato
         try
         {
-
             EntitiesOnTour bd = new EntitiesOnTour();
-
             String usuario = txtUsuario.Text.Trim();
             String clave = txtClave.Text.Trim();
-
-            //Hasheo
             byte[] bytes = { 0x35, 0x24, 0, 76, 0x12 };
             MD5 md5 = new MD5CryptoServiceProvider();
             byte[] result = md5.ComputeHash(Encoding.ASCII.GetBytes(clave));
@@ -67,17 +60,19 @@ public partial class View_Login : System.Web.UI.Page
                 }
                 else
                 {
-                LabelAviso.Text = "Usuario no habilitado, contacte al administrador";
+                throw new Exception("Usuario no habilitado, contacte al administrador");
             }
-                
-            
-            
         }
         catch (Exception ex)
         {
-
-            LabelAviso.Text = ex.Message;
-
+            MostrarModal("Atención", ex.Message);
         }
+    }
+
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
     }
 }

@@ -16,9 +16,7 @@ public partial class CrearCuenta : System.Web.UI.Page
         {
             panelCrearCuenta.Visible = false;
         } 
-        
     }
-
 
     protected void buscarRut_Click(object sender, EventArgs e)
     {
@@ -29,7 +27,7 @@ public partial class CrearCuenta : System.Web.UI.Page
             clienteObjeto = bd.CLIENTE.FirstOrDefault(x => x.NUMRUT_CLI == numeroRut);
             
             if (clienteObjeto == null) {
-                System.Windows.Forms.MessageBox.Show("El rut ingresado no pertenece a ningún contrato");
+                throw new Exception("El rut ingresado no pertenece a ningún contrato");
             }
             else
             {  
@@ -42,13 +40,13 @@ public partial class CrearCuenta : System.Web.UI.Page
                 }
                 else
                 {
-                    System.Windows.Forms.MessageBox.Show("El rut si tiene cuenta");
+                    MostrarModal("Atención", "El rut si tiene cuenta");
                 }
             }
         }
         catch (Exception ex)
         {
-            System.Windows.Forms.MessageBox.Show(ex.Message);
+            MostrarModal("Atención", ex.Message);
         }
     }
 
@@ -83,7 +81,7 @@ public partial class CrearCuenta : System.Web.UI.Page
                     
                     bd.SP_UPDATEUSERCLI(numeroRut, idUsr);
                     bd.SaveChanges();
-                    System.Windows.Forms.MessageBox.Show("Credencial Generada.");
+                    MostrarModal("Atención", "Las credenciales han sido generadas correctamente.");
 
                     txtBuscarRut.Enabled = true;
                     txtDvBuscar.Enabled = true;
@@ -93,21 +91,27 @@ public partial class CrearCuenta : System.Web.UI.Page
                     txtDvBuscar.Text="";
                     txtNombre.Text="";
                     txtPass.Text="";
-
-                } else
+                }
+                else
                 {
-                    System.Windows.Forms.MessageBox.Show("El nombre de usuario ya existe");
+                    MostrarModal("Atención", "El nombre de usuario ya existe.");
                 }
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Las contraseñas no coinciden");
+                MostrarModal("Atención", "Las contraseñas no coinciden.");
             }
-            
         }
         catch (Exception ex)
         {
-            System.Windows.Forms.MessageBox.Show(ex.Message);
+            MostrarModal("Error", "Ha ocurrido un error en la operación, inténtalo de nuevo. Si el problema persiste contáctate con el administrador.");
         }
+    }
+
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
     }
 }

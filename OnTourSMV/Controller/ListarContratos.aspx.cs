@@ -36,7 +36,6 @@ public partial class ListarContratos : System.Web.UI.Page
         if (perfilId == 4)
         {
             btnNuevoContrato.Visible = false;
-            
         }
     }
     
@@ -48,46 +47,54 @@ public partial class ListarContratos : System.Web.UI.Page
     //public static iTextSharp.text.Image img = Image.GetInstance("airbus.jpg");
     protected void btnExportar_Click(object sender, EventArgs e)
     {
-        Response.ContentType = "application/pdf";
-        Response.AddHeader("content-disposition", "attachment;filename=Ontour.pdf");
-        Response.Cache.SetCacheability(HttpCacheability.NoCache);
-        StringWriter sw = new StringWriter();
-        HtmlTextWriter hw = new HtmlTextWriter(sw);
-        GridView2.Visible = true;
-        GridView2.RenderControl(hw);
-        StringReader sr = new StringReader(sw.ToString());
-        Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 100f, 0f);
-        HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
-        PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
-        pdfDoc.Open();
-        pdfDoc.AddTitle("Ontour");
-        //img.SetAbsolutePosition(0, 750);
-        //pdfDoc.Add(img);
+        try
+        {
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("content-disposition", "attachment;filename=Ontour.pdf");
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter hw = new HtmlTextWriter(sw);
+            GridView2.Visible = true;
+            GridView2.RenderControl(hw);
+            StringReader sr = new StringReader(sw.ToString());
+            Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 100f, 0f);
+            HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
+            PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
+            pdfDoc.Open();
+            pdfDoc.AddTitle("Ontour");
+            //img.SetAbsolutePosition(0, 750);
+            //pdfDoc.Add(img);
 
-        Font fuente = new Font();
-        fuente.Size = 28;
-        //Header
-        Paragraph header = new Paragraph("Agencia de viajes Ontour", fuente);
-        header.SpacingBefore = 200;
-        header.SpacingAfter = 0;
-        header.Alignment = 1; //0-Left, 1 middle,2 Right
-        //salto de linea        
-        Paragraph saltoDeLinea1 = new Paragraph("                                                                                                                                                                                                                                                                                                                                                                                   ");
-        //fecha
-        var fecha = new Paragraph(DateTime.Today.ToString("dd/MM/yyyy"));
+            Font fuente = new Font();
+            fuente.Size = 28;
+            //Header
+            Paragraph header = new Paragraph("Agencia de viajes Ontour", fuente);
+            header.SpacingBefore = 200;
+            header.SpacingAfter = 0;
+            header.Alignment = 1; //0-Left, 1 middle,2 Right
+                                  //salto de linea        
+            Paragraph saltoDeLinea1 = new Paragraph("                                                                                                                                                                                                                                                                                                                                                                                   ");
+            //fecha
+            var fecha = new Paragraph(DateTime.Today.ToString("dd/MM/yyyy"));
 
-        fecha.Alignment = 2;
-        fecha.Font.Size = 12;                           
+            fecha.Alignment = 2;
+            fecha.Font.Size = 12;
 
-        pdfDoc.Add(header);
-        pdfDoc.Add(fecha);
-        pdfDoc.Add(saltoDeLinea1);
+            pdfDoc.Add(header);
+            pdfDoc.Add(fecha);
+            pdfDoc.Add(saltoDeLinea1);
 
-        htmlparser.Parse(sr);
-        pdfDoc.Close();
-        Response.Write(pdfDoc);
-        Response.End();
-        GridView2.Visible = false;
+            htmlparser.Parse(sr);
+            pdfDoc.Close();
+            Response.Write(pdfDoc);
+            Response.End();
+            GridView2.Visible = false;
+        }
+        catch (Exception)
+        {
+            MostrarModal("Atención", "Ha ocurrido un error generando el reporte, si el problema persiste contacta al administrador");
+        }
+        
 
     }
     public override void VerifyRenderingInServerForm(System.Web.UI.Control control)
@@ -114,15 +121,6 @@ public partial class ListarContratos : System.Web.UI.Page
         }
     }
 
-    protected void mostrarModal(string titulo, string contenido)
-    {
-        System.Web.UI.WebControls.Label modtitulo = (System.Web.UI.WebControls.Label)this.FindControl("lblModalTitulo");
-        System.Web.UI.WebControls.Label modmensaje = (System.Web.UI.WebControls.Label)this.FindControl("lblModalMensaje");
-        modmensaje.Text = contenido;
-        modtitulo.Text = titulo;
-        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
-    }
-
     protected void btnDelete_Click(object sender, EventArgs e)
     {
         numeroContratoAEliminar.Text = (sender as System.Web.UI.WebControls.Button).CommandArgument;
@@ -134,5 +132,12 @@ public partial class ListarContratos : System.Web.UI.Page
         EntitiesOnTour bd = new EntitiesOnTour();
         bd.SP_ELIMINACONTRATO(int.Parse(numeroContratoAEliminar.Text));
         Page.Response.Redirect(Page.Request.Url.ToString(), true);
+    }
+
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
     }
 }

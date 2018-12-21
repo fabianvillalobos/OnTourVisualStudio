@@ -17,7 +17,6 @@ public partial class AgregarCuenta : System.Web.UI.Page
 
     protected void btnAgregar_Click(object sender, EventArgs e)
     {
-
         try
         {
             EntitiesOnTour bd = new EntitiesOnTour();
@@ -36,15 +35,18 @@ public partial class AgregarCuenta : System.Web.UI.Page
 
             bd.CUENTA.Add(cuenta);
             bd.SaveChanges();
-            System.Windows.Forms.MessageBox.Show("Cuenta Creada");
-            //lblAviso.Text = "Cuenta Creada";
+            MostrarModal("Atención", "La cuenta ha sido creada satisfactoriamente.");
         }
         catch (Exception ex)
         {
-            System.Windows.Forms.MessageBox.Show(ex.Message);
-            //lblAviso.Text = ex.Message;
+            MostrarModal("Atención", ex.Message);
         }
+    }
 
-
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
     }
 }

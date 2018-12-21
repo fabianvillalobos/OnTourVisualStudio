@@ -209,5 +209,12 @@ public partial class ClienteDetalleContrato : System.Web.UI.Page
             throw;
         }
     }
+
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
+    }
 }
 

@@ -27,7 +27,6 @@ public partial class AgregarContratos : System.Web.UI.Page
             txtTelefono.Enabled = false;
             txtDireccion.Enabled = false;
         }
-        
 
         int perfilId = int.Parse(Session["PerfilID"].ToString());
         if (perfilId != 2) // Solo ejecutivos de ventas pueden agregar contratos
@@ -58,11 +57,11 @@ public partial class AgregarContratos : System.Web.UI.Page
             bool rutValido = librerias.validarRut(rutCompleto); //Validación de Rut
             if (!rutValido)
             {
-                throw new Exception("Rut inválido");
+                throw new Exception("El rut ingresado no es válido.");
             }
             if (bd.CLIENTE.Any(it => it.NUMRUT_CLI == rutMandante) && txtNombre.Enabled)
             {
-                throw new Exception("Cliente ya existe"); //txtNombre es desactivado siempre que se cargue del botón
+                throw new Exception("El cliente ya existe en la base de datos.");
             }
             
             String nombre = txtNombre.Text.Trim();
@@ -74,7 +73,7 @@ public partial class AgregarContratos : System.Web.UI.Page
             if (fechaNacimiento > hoy)
             {
                 ValidadorFecNac.Text = "Fecha Invalida";
-                throw new Exception("Fecha Invalida");
+                throw new Exception("La fecha de nacimiento ingresada no es válida.");
             }
             String mail = txtMail.Text.Trim();
             String telefono = txtTelefono.Text;
@@ -86,7 +85,6 @@ public partial class AgregarContratos : System.Web.UI.Page
                 bd.SP_INSERTCLIENTE(rutMandante, dv, nombre, apellidoP, apellidoM, mail, activo, direccion, fechaNacimiento, telefono);
             }
 
-            //Agregar Contrato
             DateTime fechInicio = DateTime.Parse(txtInicio.Text);
             DateTime fechTermino = DateTime.Parse(txtFin.Text);
             int meta = 0;
@@ -94,8 +92,6 @@ public partial class AgregarContratos : System.Web.UI.Page
             String estado = "T"; //Por defecto, T Será cuando se complete y F cuando se cancele
                                  //int numrutEmpleado = int.Parse(empleadoObj.NUMRUT_EMP.ToString()); // Sesión usuario
 
-            //Al crear un contrato se crea una cuenta inmediatamente, esta cuenta se debe asignar a los nuevos clientes (Pasajeros no mandantes)
-            
             bd.SP_INSERTCONTRATO(fechInicio, fechTermino, meta, montoReserva, estado, numrutEmpleado, rutMandante);
             bd.SaveChanges();
             CONTRATO contrato = bd.CONTRATO.FirstOrDefault(t => t.FECHA_INICIO == fechInicio && t.NUMRUT_CLI_TITULAR == rutMandante);
@@ -105,9 +101,7 @@ public partial class AgregarContratos : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-           
-            System.Windows.Forms.MessageBox.Show(ex.Message);
-            //LabelAviso.Text = ex.Message;
+            MostrarModal("Atención", ex.Message);
         }
     }
 
@@ -126,7 +120,7 @@ public partial class AgregarContratos : System.Web.UI.Page
             bool rutValido = librerias.validarRut(rutCompleto); //Validación de Rut
             if (!rutValido)
             {
-                throw new Exception("Rut inválido");
+                throw new Exception("El rut ingresado no es válido.");
             }
             int numrutMandante = int.Parse(rutMandanteBuscar.Text);
             CLIENTE cliente = bd.CLIENTE.FirstOrDefault(t => t.NUMRUT_CLI == numrutMandante);
@@ -152,7 +146,7 @@ public partial class AgregarContratos : System.Web.UI.Page
                 rutMandanteBuscardv.Enabled = false;
                 txtInicio.Enabled = false;
                 txtFin.Enabled = false;
-                throw new Exception("El rut ingresado no existe en el sistema.");
+                throw new Exception("El rut ingresado no existe en la base de datos.");
             }
             lblFechaStr.Visible = true;
             txtFechaStr.Visible = true;
@@ -183,9 +177,14 @@ public partial class AgregarContratos : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            System.Windows.Forms.MessageBox.Show(ex.Message);
-            //LabelAviso.Text = ex.Message;
+            MostrarModal("Atención", ex.Message);
         }
     }
 
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
+    }
 }

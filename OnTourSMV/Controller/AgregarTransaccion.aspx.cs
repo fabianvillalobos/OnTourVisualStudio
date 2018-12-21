@@ -41,13 +41,11 @@ public partial class AgregarTransaccion : System.Web.UI.Page
             bd.SP_UPDATESALDOCUENTA(cuenta, varE);
             bd.SaveChanges();
 
-            System.Windows.Forms.MessageBox.Show("Transaccion Creada");
-            //lblAviso.Text = "Transaccion Creada";
+            MostrarModal("Operación realizada", "Se ha registrado la transacción correctamente.");
         }
         catch (Exception ex)
         {
-            System.Windows.Forms.MessageBox.Show(ex.Message);
-            //lblAviso.Text = ex.Message;
+            MostrarModal("Error", "Ha ocurrido un error en la operación, inténtalo de nuevo. Si el problema persiste contáctate con el administrador.");
         }
 
     }
@@ -73,5 +71,12 @@ public partial class AgregarTransaccion : System.Web.UI.Page
     protected void DropDownListCuenta_SelectedIndexChanged(object sender, EventArgs e)
     {
         DropDownListCuenta_DataBound(sender, e);
+    }
+
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
     }
 }

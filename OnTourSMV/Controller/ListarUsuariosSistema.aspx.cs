@@ -19,4 +19,11 @@ public partial class ListarUsuariosSistema : System.Web.UI.Page
             Response.Redirect("~/View/PaginaPpal.aspx");
         }
     }
+
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
+    }
 }

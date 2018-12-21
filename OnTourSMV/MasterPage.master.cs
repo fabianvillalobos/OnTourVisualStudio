@@ -59,12 +59,5 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
         }
     }
-
-    public void mostrarModal(string titulo, string contenido)
-    {
-        lblModalMensaje.Text = contenido;
-        lblModalTitulo.Text = titulo;
-        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
-    }
 }
  

@@ -23,11 +23,10 @@ public partial class NuevaTransferencia : System.Web.UI.Page
         }
         pasoDos.Visible = false;
         pasoError.Visible = false;
-
         
         if (!(Request.QueryString["send"]==null))
         {
-            //mostrarModal("Envío realizado","La transacción ha sido enviada correctamente.");
+            MostrarModal("Envío realizado","La transacción ha sido enviada correctamente.");
         }
     }
 
@@ -46,8 +45,7 @@ public partial class NuevaTransferencia : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            
-            
+            MostrarModal("Error", "Ha ocurrido un error durante el proceso, recarga la página e inténtalo de nuevo.");
         }
     }
     
@@ -103,7 +101,6 @@ public partial class NuevaTransferencia : System.Web.UI.Page
             "Fecha: "+fecha+ "\n" +
             "Rut de autor: "+cliente.NUMRUT_CLI+"-"+cliente.DRUT_CLI+ "\n" +
             "Nombre: "+cliente.NOMBRE_CLIE+" "+cliente.APELLIDO_PAT_CLI;
-
         string strFileName = System.IO.Path.GetFileName(comprobante.PostedFile.FileName);
         Attachment attachFile = new Attachment(comprobante.PostedFile.InputStream, strFileName);
         mail.Attachments.Add(attachFile);
@@ -117,9 +114,8 @@ public partial class NuevaTransferencia : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            //mostrarModal("Error","Ha ocurrido un error durante el envío de la notificación por email, puede que no tengas conexión o acceso a internet.");
+            MostrarModal("Error","Ha ocurrido un error durante el envío de la notificación por email, puede que no tengas conexión o acceso a internet.");
         }
-
         Page.Response.Redirect(Page.Request.Url.ToString()+"&send=true", true);
     }
 
@@ -127,6 +123,12 @@ public partial class NuevaTransferencia : System.Web.UI.Page
     {
         string idContratoActual = Request.QueryString["id_contrato"];
         Response.Redirect("~/View/ListarTransaccion.aspx?" + idContratoActual);
+    }
 
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
     }
 }

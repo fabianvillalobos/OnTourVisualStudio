@@ -27,18 +27,20 @@ public partial class ListarTransaccion : System.Web.UI.Page
                 btnNuevaActividad.Visible = true;
             }
             */
-
-
             string idContratoActual = Request.QueryString["id_contrato"];
             SqlDataSource1.SelectParameters["id"].DefaultValue = idContratoActual;
-            
         }
-
-
-
     }
+
     protected void btnVolverAContratos_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/View/ListarContratos.aspx");
+    }
+
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
     }
 }

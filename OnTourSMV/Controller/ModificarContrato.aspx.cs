@@ -252,14 +252,12 @@ public partial class View_ModificarContrato : System.Web.UI.Page
 
             bd.SP_UPDATECONTRATO(nId, nInicio, nFin, nMeta, nMonto, nEstado, nRutEmp, nRutTit);
             bd.SaveChanges();
-            System.Windows.Forms.MessageBox.Show("Contrato Modificado");
-           // LabelAviso.Text = "Contrato Modificado";
+            MostrarModal("Operación realizada", "El contrato ha sido modificado correctamente.");
             GridViewContratos.DataBind();
         }
         catch (Exception ex)
         {
-            System.Windows.Forms.MessageBox.Show(ex.Message);
-            //LabelAviso.Text = "Error: " + ex.Message;
+            MostrarModal("Error", "Ha ocurrido un error en la operación, inténtalo de nuevo.");
         }
     }
 
@@ -335,10 +333,7 @@ public partial class View_ModificarContrato : System.Web.UI.Page
                     foreach (var servicioWS in dynJsonSeguro)
                         restaTotal += servicioWS.precio;
                     break;
-
             }   
-                
-            
         }
 
         string idContratoActual = Request.QueryString["id_contrato"];
@@ -350,6 +345,13 @@ public partial class View_ModificarContrato : System.Web.UI.Page
         bd.SP_ELIMINAPAQUETEVIAJE(idPaquete);
         bd.SaveChanges();
         Page.Response.Redirect(Page.Request.Url.ToString(), true);
+    }
+
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
     }
 }
 

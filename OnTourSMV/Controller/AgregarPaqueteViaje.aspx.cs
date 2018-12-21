@@ -248,7 +248,7 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            System.Windows.Forms.MessageBox.Show(ex.Message);
+            MostrarModal("Atención", ex.Message);
             Page_Load(sender, e);
         }
     }
@@ -317,7 +317,7 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
             db.SP_INSERTASERVICIOPAQUETE(servicio.ID_SERVICIO, paquete.ID_PAQUETEVIAJE, activo);
             db.SaveChanges();
         }
-        System.Windows.Forms.MessageBox.Show("Se ha agregado el paquete de viaje");
+        MostrarModal("Atención", "Se ha agregado el paquete de viaje correctamente.");
         deshabilitarFormulario();
         deshabilitarDropDowns();
     }
@@ -384,5 +384,12 @@ public partial class AgregarPaqueteViaje : System.Web.UI.Page
     protected void ButtonEliminar_Click(object sender, EventArgs e)
     {
         Response.Redirect("AgregarPaqueteViaje.aspx");
+    }
+
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
     }
 }

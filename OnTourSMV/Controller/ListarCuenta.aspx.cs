@@ -14,4 +14,11 @@ public partial class ListarCuenta : System.Web.UI.Page
             Response.Redirect("~/View/Login.aspx");
         }
     }
+
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
+    }
 }

@@ -48,8 +48,7 @@ public partial class AgregarActividad : System.Web.UI.Page
 
             bd.ACTIVIDAD.Add(actividad);
             bd.SaveChanges();
-            System.Windows.Forms.MessageBox.Show("Actividad Creada");
-            //lblAviso.Text = "Actividad Creada";
+            MostrarModal("Atención", "La actividad ha sido registrada correctamente");
 
             txtDescripcion.Text = "";
             txtFechaActividad.Text = "";
@@ -60,12 +59,8 @@ public partial class AgregarActividad : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            System.Windows.Forms.MessageBox.Show(ex.Message);
-          //  lblAviso.Text = ex.Message;
+            MostrarModal("Atención", "Ha ocurrido un error en la operación, inténtalo de nuevo. Si el problema persiste contáctate con el administrador.");
         }
-        
-
-
     }
 
     protected void btnVolverAActividades_Click(object sender, EventArgs e)
@@ -75,4 +70,10 @@ public partial class AgregarActividad : System.Web.UI.Page
 
     }
 
+    public void MostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
+    }
 }

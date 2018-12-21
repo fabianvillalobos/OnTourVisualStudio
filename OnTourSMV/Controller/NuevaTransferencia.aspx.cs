@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Web;
-using System.Web.Mail;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using MailMessage = System.Net.Mail.MailMessage;
 
 public partial class NuevaTransferencia : System.Web.UI.Page
 {
@@ -107,29 +106,36 @@ public partial class NuevaTransferencia : System.Web.UI.Page
             };
             bd.TRANSACCION.Add(transaccion);
             bd.SaveChanges();
-        
-            System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
-            SmtpClient SmtpServer = new SmtpClient("mail.luisponce.cl");
-            mail.From = new MailAddress("info@luisponce.cl");
+
+
+            MailMessage mail = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient()
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential("computin.ponce@gmail.com", "jeanette0513"),
+                EnableSsl = true
+            };
+            mail.From = new MailAddress("computin.ponce@gmail.com");
             mail.To.Add("l.ponces@alumnos.duoc.cl");
-            mail.Subject = "Transferencia en contrato: " + idContrato;
+            mail.Subject = "Transferencia";
             mail.Body = "Monto: " + monto + "\n" +
-                "Fecha: " + fecha + "\n" +
-                "Rut de autor: " + cliente.NUMRUT_CLI + "-" + cliente.DRUT_CLI + "\n" +
-                "Nombre: " + cliente.NOMBRE_CLIE + " " + cliente.APELLIDO_PAT_CLI;
+            "Fecha: " + fecha + "\n" +
+            "Rut de autor: " + cliente.NUMRUT_CLI + "-" + cliente.DRUT_CLI + "\n" +
+            "Nombre: " + cliente.NOMBRE_CLIE + " " + cliente.APELLIDO_PAT_CLI;
+
             string strFileName = System.IO.Path.GetFileName(comprobante.PostedFile.FileName);
             Attachment attachFile = new Attachment(comprobante.PostedFile.InputStream, strFileName);
             mail.Attachments.Add(attachFile);
-            SmtpServer.Port = 465;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("info@luisponce.cl", "portafolio2018");
-            SmtpServer.EnableSsl = true;
+            
             SmtpServer.Send(mail);
 
             Page.Response.Redirect(Page.Request.Url.ToString() + "&send=true", true);
         }
         catch (Exception ex)
         {
-            MostrarModal("Atención","No hemos podido enviar la notificación.");
+            MostrarModal("Atención","No se ha podido conectar con el servidor de correo");
         }
     }
 

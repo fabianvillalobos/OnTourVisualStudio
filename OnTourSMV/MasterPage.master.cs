@@ -31,11 +31,12 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 contratos.Visible = false;
                 paquetes.Visible = false;
                 actividades.Visible = false;
-
+                actAgrega.Visible = false;
             }
             if (perfilId == 2)
             {
                 usuariosSis.Visible = false;
+                actAgrega.Visible = false;
             }
             if (perfilId == 3)
             {
@@ -45,6 +46,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 usuarios.Visible = false;
                 actAgrega.Visible = false;
                 transAgre.Visible = false;
+                actAgrega.Visible = false;
             }
             if (perfilId == 4)
             {
@@ -52,9 +54,17 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 actividades.Visible = false;
                 contraAgregaCon.Visible = false;
                 transacciones.Visible = false;
+                actAgrega.Visible = false;
             }
 
         }
+    }
+
+    public void mostrarModal(string titulo, string contenido)
+    {
+        lblModalMensaje.Text = contenido;
+        lblModalTitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
     }
 }
  

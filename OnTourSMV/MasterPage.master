@@ -1,5 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 
+
 <!DOCTYPE html>
 
 <html>
@@ -20,7 +21,7 @@
     </asp:ContentPlaceHolder>
     <!-- scripy link -->
 </head>
-<body>    
+<body>
     <form id="form1" runat="server">
         <nav class="navbar navbar-inverse" runat="server" id="Mantenedor">
             <div class="container-fluid">
@@ -34,7 +35,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="ListarContratos.aspx">Ver contratos</a></li>
                             <li runat="server" id="contraAgregaCon"><a href="AgregarContratos.aspx">Nuevo contrato</a></li>
-<%--                            <li runat="server" id="contraAgregaCli"><a href="AgregarCliente.aspx">Agregar un pasajero</a></li>--%>
+                            <%--                            <li runat="server" id="contraAgregaCli"><a href="AgregarCliente.aspx">Agregar un pasajero</a></li>--%>
                         </ul>
                     </li>
                     <li class="dropdown" runat="server" id="paquetes"><a class="dropdown-toggle glyphicon glyphicon-star-empty" data-toggle="dropdown" href="#">Paquetes<span class="caret"></span></a>
@@ -62,19 +63,34 @@
                         </ul>
                     </li>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="nombre-usuario"><asp:Label ID="lblUsuario" runat="server" ForeColor="White" Text=""></asp:Label></li>
+                        <li class="nombre-usuario">
+                            <asp:Label ID="lblUsuario" runat="server" ForeColor="White" Text=""></asp:Label></li>
                         <li><a href="Login.aspx"><span class="glyphicon glyphicon-off"></span>Salir</a></li>
                     </ul>
                 </ul>
-                
+
             </div>
         </nav>
 
-     
+
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         </asp:ContentPlaceHolder>
 
     </form>
+    <div class="modal fade" id="modalMensaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <asp:Label ID="lblModalTitulo" Text="" runat="server" CssClass="modal-title"></asp:Label>
+            </div>
+            <div class="modal-content">
+                <asp:Label ID="lblModalMensaje" Text="" runat="server" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>

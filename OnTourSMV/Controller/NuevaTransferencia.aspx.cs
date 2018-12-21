@@ -23,6 +23,12 @@ public partial class NuevaTransferencia : System.Web.UI.Page
         }
         pasoDos.Visible = false;
         pasoError.Visible = false;
+
+        
+        if (!(Request.QueryString["send"]==null))
+        {
+            //mostrarModal("Envío realizado","La transacción ha sido enviada correctamente.");
+        }
     }
 
     protected void Continuar_Click(object sender, EventArgs e)
@@ -40,9 +46,11 @@ public partial class NuevaTransferencia : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            System.Windows.Forms.MessageBox.Show(ex.Message);
+            
+            
         }
     }
+    
 
     protected void Notificar_Click(object sender, EventArgs e)
     {
@@ -100,13 +108,19 @@ public partial class NuevaTransferencia : System.Web.UI.Page
         Attachment attachFile = new Attachment(comprobante.PostedFile.InputStream, strFileName);
         mail.Attachments.Add(attachFile);
 
-        SmtpServer.Port = 25;
-        SmtpServer.Credentials = new System.Net.NetworkCredential("computin.ponce@gmail.com", "jeanette0513");
-        SmtpServer.EnableSsl = true;
-        SmtpServer.Send(mail);
-        System.Windows.Forms.MessageBox.Show("Confirmación enviada");
+        try
+        {
+            SmtpServer.Port = 25;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("computin.ponce@gmail.com", "jeanette0513");
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mail);
+        }
+        catch (Exception ex)
+        {
+            //mostrarModal("Error","Ha ocurrido un error durante el envío de la notificación por email, puede que no tengas conexión o acceso a internet.");
+        }
 
-        Page.Response.Redirect(Page.Request.Url.ToString(), true);
+        Page.Response.Redirect(Page.Request.Url.ToString()+"&send=true", true);
     }
 
     protected void btnVolverATransacciones_Click(object sender, EventArgs e)

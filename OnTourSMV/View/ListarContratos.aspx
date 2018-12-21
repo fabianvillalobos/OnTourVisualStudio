@@ -70,7 +70,7 @@
     <!-- modal -->
 
     <!-- Reporte-->
-    <asp:GridView ID="GridView2" runat="server" Visible="false" CssClass="table table-bordered" EmptyDataText="No Hay contratos asociados" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True">
+    <asp:GridView ID="GridView2" runat="server" AllowSorting="false" Visible="false" CssClass="table table-bordered" EmptyDataText="No Hay contratos asociados" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" >
         <Columns>
             <asp:BoundField DataField="ID_CONTRATO" HeaderText="ID" SortExpression="ID_CONTRATO" />
             <asp:TemplateField HeaderText="Nombre Mandante" SortExpression="Nombre">

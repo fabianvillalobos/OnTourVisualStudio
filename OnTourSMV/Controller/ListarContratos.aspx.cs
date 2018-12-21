@@ -114,6 +114,15 @@ public partial class ListarContratos : System.Web.UI.Page
         }
     }
 
+    protected void mostrarModal(string titulo, string contenido)
+    {
+        System.Web.UI.WebControls.Label modtitulo = (System.Web.UI.WebControls.Label)this.FindControl("lblModalTitulo");
+        System.Web.UI.WebControls.Label modmensaje = (System.Web.UI.WebControls.Label)this.FindControl("lblModalMensaje");
+        modmensaje.Text = contenido;
+        modtitulo.Text = titulo;
+        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "<script>$('#modalMensaje').modal('show');</script>", false);
+    }
+
     protected void btnDelete_Click(object sender, EventArgs e)
     {
         numeroContratoAEliminar.Text = (sender as System.Web.UI.WebControls.Button).CommandArgument;
